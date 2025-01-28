@@ -6,21 +6,21 @@ export default function Nav(){
     return(
     <>
         <div className="
-             w-200 h-flex p-2 ml-10 mr-10 mt-2 border-b-2 border-black rounded-lg bg-stone-900 bg-blend-overlay">
-            <div className="menu space-x-10 ">
-                <Link to='/'><div className="flex bold hover:underline hover:opacity-80 text-blue-900 bolded"><img src={logo} className="h-5 w-5 mr-2 mt-1" /> STATLOCK </div></Link>
+             w-200 h-flex p-2 ml-10 mr-10 mt-2 border-b-4 border-r-2 border-black rounded-lg bg-stone-800 bg-blend-overlay mb-5">
+            <div className="menu space-x-10 text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-black">
+                <Link to='/'><div className="flex bold hover:underline hover:opacity-80 text- bolded"><img src={logo} className="h-5 w-5 mr-2 mt-1" /> STATLOCK </div></Link>
 
-                <Link to='/stats'><div className="hover:underline hover:opacity-80 text-white">STATS</div></Link>
+                <Link to='/stats'><div className="hover:underline hover:opacity-80 text-white hover:text-stone-200">ꜱᴛᴀᴛꜱ</div></Link>
                 
-                <Link><div className="hover:underline hover:opacity-80 text-white">BUILDS</div></Link>
+                <Link to='/builds'><div className="hover:underline hover:opacity-80 text-white hover:text-stone-200">ʙᴜɪʟᴅꜱ</div></Link>
 
-                <Link><div className="hover:underline hover:opacity-80 text-white">MATCHES</div></Link>
+                <Link to='/matches'><div className="hover:underline hover:opacity-80 text-white hover:text-stone-200">ᴍᴀᴛᴄʜᴇꜱ</div></Link>
 
-                <Link><div className="hover:underline hover:opacity-80 text-white">RANKINGS</div></Link>
+                <Link to='/rankings'><div className="hover:underline hover:opacity-80 text-white hover:text-stone-200">ʀᴀɴᴋɪɴɢꜱ</div></Link>
 
-                <Link><div className="hover:underline hover:opacity-80 text-white">PATCH NOTES</div></Link>
+                <Link to='/patchnotes'><div className="hover:underline hover:opacity-80 text-white hover:text-stone-200">ᴘᴀᴛᴄʜ ɴᴏᴛᴇꜱ</div></Link>
 
-                <Link><div className="hover:underline hover:opacity-80 text-white">BIGCHUNGUS</div></Link>
+                <Link to='/items'><div className="hover:underline hover:opacity-80 text-white hover:text-stone-200">ɪᴛᴇᴍꜱ</div></Link>
 
             </div>
 

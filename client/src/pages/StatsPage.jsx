@@ -8,31 +8,35 @@ export default function StatsPage(){
     const [heroes, setHeroes] = useState([])
 
     useEffect(()=>{
-        console.log("DOGFROG")
+        getAPIData()
     },[])
 
     async function getAPIData(){
         const heroRes = await getHeroes()
         console.log(heroRes)
-        setHeroes(heroRes)
+        setHeroes(heroRes.filter((h)=>!h.disabled))
     }
 
     function renderHeroData(){
         return(
-            heroes.map((hero)=>{
+            <div style={{display:'flex',flexDirection:'row', flexWrap:'wrap', justifyContent:'center'}}>
+            {heroes.map((hero)=>{
                 return(
-                    <div id={hero[""]}>
-                    </div>    
+                    <div onClick={()=>{console.log(hero)}} key={hero["id"]} style={{maxWidth:70,border:'solid', borderWidth:1, marginRight:5}}>
+                        <div>
+                            <img style={{width:"auto", height:"auto"}} src={hero["images"]["icon_image_small_webp"]}/>
+                        </div>
+                    </div> 
                 )
-            })
+            })}
+            </div>
         )
         
     }
     
     return(
-        <div style={{display:'flex',flex:1, backgroundColor:"#fff", width:"100%", flexDirection:'column'}}>
-            <div>Why</div>
-            <div>Waht</div>
+        <div style={{display:'flex',flex:1, width:"100%", flexDirection:'column',}}>
+            {renderHeroData()}
         </div>
     )
     
