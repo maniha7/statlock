@@ -26,5 +26,21 @@ export async function getHeroes() : Promise<Array<Object>>{
 
     
     return(data)
+}
 
+
+export async function getItems() : Promise<Array<Object>>{
+
+    const apiRes = await fetch(assetsAPI+globals.Deadlock_Assets_Items_Endpoint,{
+        method:"get",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    const data = await apiRes.json()
+
+    if(!isValidResponse(data)){
+        return([])
+    }
+    return data
 }
