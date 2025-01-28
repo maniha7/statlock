@@ -2,6 +2,8 @@
 
 html, body {
     background-image: url(./assets/deadlockbg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .wrapper {
