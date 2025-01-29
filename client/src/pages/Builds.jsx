@@ -102,8 +102,8 @@ const Builds = () => {
             <div className="flex flex-row self-center mb-[10px] my-[10px] px-[5px] flex-wrap gap-x-2" style={{width:'100%'}}>
                     {[...Object.keys(globals.itemTypes), "search"].map((type)=>{
                         return (
-                            <div key={type} className="flex flex-1 flex-row mx-[2px] hover:opacity-80 py-2 justify-center hover:cursor-pointer hover:underline space-x-1 justify-center" onClick={()=>changeItemMenu(type)} style={{backgroundColor:globals.itemColors[type], borderRadius:12,}}>
-                                <img className="h-6  object-center" src={globals.itemTypeImgs[type]}/>
+                            <div key={type} className="flex flex-1 flex-row mx-[2px] hover:opacity-80 py-2 justify-center hover:cursor-pointer hover:underline space-x-1 justify-center" onClick={()=>changeItemMenu(type)} style={{backgroundColor:globals.itemColors[type].base, borderRadius:12,}}>
+                                <img className="h-6 object-center" src={globals.itemTypeImgs[type]}/>
                                 <div className="flex" style={{fontWeight:'bold',}}>
                                     {type.toUpperCase()}
                                 </div>
@@ -163,7 +163,7 @@ const Builds = () => {
                 {renderItemsSidebar()}
             </div>
 
-            {popupOpen && <ItemDescPopup item={popupItem} pos={popupPosition} left={popupDirection!=0}/>}
+            {popupOpen && <ItemDescPopup item={popupItem} pos={popupPosition} left={popupDirection!=0} open={()=>setPopupOpen(true)} close={()=>setPopupOpen(false)}/>}
 
         </div>
     )

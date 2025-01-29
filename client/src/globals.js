@@ -16,16 +16,31 @@ const globals = {
     globalColors:{
         greyBackground: "#333333",
         stone800Background: '#292524',
-        test: "bg-stone-800",
-        stoneBackgroundGradient: "bg-gradient-to-r from-stone-800 via-transparent to-stone-800"
-        
+        stoneBackgroundGradient: "bg-gradient-to-r from-stone-800 via-transparent to-stone-800",
+        offWhite:"#d2d2cb",
+       
     },
 
     itemColors: {
-        vitality:"#7cbb1e",
-        spirit:"#ce91ff",
-        weapon:"#ec981a",
-        search:"#ccbda7"
+        vitality:{
+            base:"#7cbb1e",
+            medium:"#6ca319",
+            mediumDark:"#4f7613",
+            dark:"#3a580e",
+        },
+        spirit:{
+            base:"#bc84e1",
+            medium:"#9063b6",
+            mediumDark:"#65388a",
+            dark:"#352145",
+        },
+        weapon:{
+            base:"#ec981a",
+            medium:"#d48611",
+            mediumDark:"#845815",
+            dark:"#5e3c08",
+        },
+        search:{base:"#ccbda7"}
     },
     
     itemTypes: {
@@ -40,6 +55,32 @@ const globals = {
         spirit:spiritIcon,
         search:EyeIcon
     },
+
+    innateHiddenProperties: new Set([
+        "MoveWhileShootingSpeedPenaltyReductionPercent",
+        "MoveWhileZoomedSpeedPenaltyReductionPercent",
+        "AirControlPercent", 
+        "TechRadiusMultiplier",
+        "HealAmpRegenPenaltyPercent",
+        "HealAmpCastPercent",
+        "HealAmpRegenPercent",
+        "DegenResistance",
+        "GroundDashReductionPercent",
+        "ChannelMoveSpeed",
+        "MoveSpeedMax",
+        "ImbuedTechRadiusMultiplier",
+        "NonImbuedTechRadiusMultiplier",
+        "TechArmorDamageReduction",
+        "TechPowerReduction",
+        "SkipFrames",
+        "HealAmpReceivePenaltyPercent",
+        "ActivatedFireRate",
+        "BonusFireRatePlayerUnit"
+    ]),
+
+    passiveHiddenProperties: new Set([
+        "AbilityCooldown"
+    ]),
 
     itemIDtoNameMap:{
         BaseAttackDamagePercent:"Weapon Damage",
@@ -62,18 +103,35 @@ const globals = {
         SpiritPower:"Spirit Power",
         LocalBulletArmorReduction:"Bullet Resist",
         SlowResistancePercent:"Movement Slow Resist",
-        BulletLifeStealPercent:"Bullet Lifesteal",
+        BulletLifestealPercent:"Bullet Lifesteal",
         MeleeResistPercent:"Melee Resist",
         TechResist:"Spirit Resist",
         BonusMoveSpeed:"Move Speed",
         BonusAttackRangePercent:"Weapon Fall-off Range",
         BonusZoomPercent:"Weapon Zoom",
         FireRateSlow:"Fire Rate Slow",
-        AbilityLifeStealPercentHero:"Spirit Lifesteal",
+        AbilityLifestealPercentHero:"Spirit Lifesteal",
         MaxHealthLossPercent:"Max Health",
         SlowPercent:"Bullet Slow Proc",
         StatusResistancePercent:"Debuff Resist",
         CooldownReduction:"Cooldown Reduction",
+        StaminaCooldownReduction:"Stamina Recovery",
+        BonusMeleeDamagePercent:"Melee Damage",
+        TechRangeMultiplier:"Ability Range",
+        AirMoveIncreasePercent:"Air Jump/Dash Distance",
+        CooldownReductionOnChargedAbilities:"Cooldown Reduction For Charged Abilities",
+        BonusAbilityDurationPercent:"Ability Duration",
+        ImbuedTechRangeMultiplier:"Imbued Ability Range",
+        NonImbuedTechRangeMultiplier:"Non-Imbued Ability Range",
+        BonusAbilityCharges:"Bonus Ability Charges",
+        CooldownBetweenChargeReduction:"Faster Time Between Charges",
+        ImbuedCooldownReduction:"Imbued Ability Cooldown Reduction",
+        NonImbuedCooldownReduction:"Non-Imbued Ability Cooldown Reduction",
+        ImbuedBonusDuration:"Imbued Ability Duration",
+        NonImbuedBonusDuration:"Non-Imbued Ability Duration",
+        TechArmorDamageReduction:"Spirit Resist On Spirit Damage",
+        Stamina:"Stamina"
+
     },
 
     itemIDtoUnitMap:{
@@ -89,7 +147,7 @@ const globals = {
         BonusHealthRegen:{sign:"+",units:""},
         NonPlayerBonusWeaponPower:{sign:"+",units:"%"},
         NonPlayerBulletResist:{sign:"+",units:"%"},
-        BonusSprintSpeed:{sign:"+",units:"m/s"},
+        BonusSprintSpeed:{sign:"+",units:"/s"},
         BonusClipSize:{sign:"+",units:""},
         SlideScale:{sign:"+",units:"%"},
         ReloadSpeedMultipler:{sign:"-",units:"%"},
@@ -97,18 +155,34 @@ const globals = {
         SpiritPower:{sign:"+",units:""},
         LocalBulletArmorReduction:{sign:"-",units:"%"},
         SlowResistancePercent:{sign:"+",units:"%"},
-        BulletLifeStealPercent:{sign:"+",units:"%"},
+        BulletLifestealPercent:{sign:"+",units:"%"},
         MeleeResistPercent:{sign:"+",units:"%"},
         TechResist:{sign:"+",units:"%"},
-        BonusMoveSpeed:{sign:"+",units:"m/s"},
+        BonusMoveSpeed:{sign:"+",units:"/s"},
         BonusAttackRangePercent:{sign:"+",units:"%"},
         BonusZoomPercent:{sign:"+",units:"%"},
         FireRateSlow:{sign:"",units:"%"},
-        AbilityLifeStealPercentHero:{sign:"+",units:"%"},
+        AbilityLifestealPercentHero:{sign:"+",units:"%"},
         MaxHealthLossPercent:{sign:"-",units:"%"},
         SlowPercent:{sign:"+",units:"%"},
         StatusResistancePercent:{sign:"+",units:"%"},
         CooldownReduction:{sign:"+",units:"%"},
+        StaminaCooldownReduction:{sign:"+",units:"%"},
+        BonusMeleeDamagePercent:{sign:"+",units:"%"},
+        TechRangeMultiplier:{sign:"+",units:"%"},
+        AirMoveIncreasePercent:{sign:"+",units:"%"},
+        CooldownReductionOnChargedAbilities:{sign:"+",units:"%"},
+        BonusAbilityDurationPercent:{sign:"+",units:"%"},
+        ImbuedTechRangeMultiplier:{sign:"+",units:"%"},
+        NonImbuedTechRangeMultiplier:{sign:"+",units:"%"},
+        BonusAbilityCharges:{sign:"+",units:""},
+        CooldownBetweenChargeReduction:{sign:"+",units:"%"},
+        ImbuedCooldownReduction:{sign:"+",units:"%"},
+        NonImbuedCooldownReduction:{sign:"+",units:"%"},
+        ImbuedBonusDuration:{sign:"+",units:"%"},
+        NonImbuedBonusDuration:{sign:"+",units:"%"},
+        TechArmorDamageReduction:{sign:"+",units:"%"},
+        Stamina:{sign:"+",units:""},
     }
 }
 

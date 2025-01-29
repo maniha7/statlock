@@ -5,6 +5,8 @@ export default function ShopItem(props){
 
     const item = props.item
 
+    const itemColorPallet = globals.itemColors[item["item_slot_type"]]
+
     const itemRef = useRef(null)
 
     function openPopup(){
@@ -18,7 +20,7 @@ export default function ShopItem(props){
 
     return(
         <div ref={itemRef} onMouseEnter={()=>openPopup()} onMouseLeave={()=>props.unhover()} className="flex my-[6px] mx-[6px]" onClick={()=>{console.log(item)}}>
-            <div className="flex flex-col items-center items-center max-w-[75px] hover:opacity-80 hover:cursor-pointer " style={{borderRadius:8, backgroundColor:globals.itemColors[item["item_slot_type"]]}}>
+            <div className="flex flex-col items-center items-center max-w-[75px] hover:opacity-80 hover:cursor-pointer " style={{borderRadius:8, backgroundColor:itemColorPallet.base}}>
                 {/* Item Image*/}
                 <img className="mx-5 my-1 max-w-[50px] min-w-[50px] min-h-[50px]" style={{ alignSelf:'center'}} src={item["image"]}/>
                 
