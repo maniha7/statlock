@@ -18,29 +18,30 @@ const globals = {
         stone800Background: '#292524',
         stoneBackgroundGradient: "bg-gradient-to-r from-stone-800 via-transparent to-stone-800",
         offWhite:"#d2d2cb",
-       
+        itemText:"#ffefd7"
     },
 
     itemColors: {
         vitality:{
             base:"#7cbb1e",
-            medium:"#6ca319",
-            mediumDark:"#4f7613",
-            dark:"#3a580e",
+            medium:"#659818",
+            mediumDark:"#4d7214",
+            dark:"#354f11",
         },
         spirit:{
             base:"#bc84e1",
-            medium:"#9063b6",
-            mediumDark:"#65388a",
-            dark:"#352145",
+            medium:"#8b56b4",
+            mediumDark:"#623585",
+            dark:"#43265b",
         },
         weapon:{
             base:"#ec981a",
-            medium:"#d48611",
-            mediumDark:"#845815",
-            dark:"#5e3c08",
+            medium:"#c97a03",
+            mediumDark:"#80550f",
+            dark:"#573908",
         },
         search:{base:"#ccbda7"}
+        
     },
     
     itemTypes: {

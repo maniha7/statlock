@@ -62,7 +62,7 @@ export default function ItemDescPopup(props, left){
                     }
                     return(
                         <div key={propertyName} className="flex flex-row text-white">
-                            <div className="mb-2 mt-1 mr-1" style={{lineHeight:1, fontWeight:'bold'}}>
+                            <div className="mb-2 mt-1 mr-1 ml-2" style={{lineHeight:1, fontWeight:'bold'}}>
                                 {(!["+","-"].includes(property.value.substring(0,1))?propUnits.sign:"") + property.value + propUnits.units}
                             </div>
                             <div className="mb-2 mt-1 ml-1" style={{lineHeight:1, color:gColors.offWhite}}>
@@ -80,10 +80,10 @@ export default function ItemDescPopup(props, left){
         console.log(passiveItemProps)
         if(passiveItemProps.length==0 && !hasCooldown){return null}
         return(
-            <div className="flex flex-row flex-1 pl-2" style={{backgroundColor:itemColorPallet.dark}}>
-                <div className="flex flex-1 py-1" style={{fontSize:16, color:gColors.offWhite, fontStyle:'italic', fontWeight:"bold"}}>Passive</div>
+            <div className="flex flex-row flex-1 pl-2 " style={{backgroundColor:itemColorPallet.dark}}>
+                <div className="flex flex-1 py-1 ml-2 mb-0.5" style={{fontSize:16, color:gColors.itemText, fontStyle:'italic', fontWeight:"bold"}}>Passive</div>
                 {item.properties["AbilityCooldown"]?.value!=0&&
-                    <div className="flex flex-col flex-0 px-3 text-white justify-center text-white" style={{backgroundColor:"#070d0d", fontWeight:'bold', color:"#f3f3f1"}}>
+                    <div className="flex flex-col flex-0 px-3 text-white justify-center" style={{backgroundColor:"#070d0d", fontWeight:'bold', color:"#f3f3f1"}}>
                             {item.properties["AbilityCooldown"].value+"s"}
                     </div>
                 }
@@ -94,7 +94,7 @@ export default function ItemDescPopup(props, left){
     return(
         item&&
         <div ref={itemRef} onMouseEnter={()=>props.open()} onMouseLeave={()=>props.close()} className="flex flex-col pt-1 min-w-[18%] max-w-[18%] drop-shadow-[0_8px_8px_rgba(0,0,0,0.65)]" style={{position:'absolute', borderRadius:8, backgroundColor:itemColorPallet.medium, top:pos.y-yOffset, left:pos.x-xOffset}}>
-            <div className="flex flex-col px-2 pb-2 ml-0.5 ">
+            <div className="flex flex-col px-2 pb-2 ml-0.5 p-2 ml-2">
                 <div className="text-white drop-shadow-[0_3px_3px_rgba(0,0,0,0.25)] mb-0.5" style={{fontSize:20, fontWeight:'bold'}}> {item["name"]}</div>
                 <div className="flex flex-row">
                     <img className="mr-1" src={souls}/>

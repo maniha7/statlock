@@ -129,15 +129,19 @@ const Builds = () => {
 
     function renderItemsSidebar(){
         return(
-            <div className={`flex flex-col flex-1 max-w-[30%] rounded-full border-b-4 ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8, height:itemListHeight}}>
+            <div className={`flex flex-col flex-1 max-w-[30%] rounded-full border-b-4`} style={{borderRadius:8, height:itemListHeight}}>
+                <div className="rounded-full">
 
-                {/* Item type select (weapon/vit/spirit)*/}
-                {renderItemTypeMenu()}
+                    {/* Item type select (weapon/vit/spirit)*/}
+                    {renderItemTypeMenu()}
+
+                </div>
 
                 {/* Item List*/}
-                <div className="flex flex-1 px-2 py-2 overflow-auto rounded-lg">
+                <div className={`flex flex-1 px-2 py-2 overflow-auto rounded-lg ${gColors.stoneBackgroundGradient}`}>
                     
                     {renderItemData()}
+                    
                 </div>
                 
             </div>
