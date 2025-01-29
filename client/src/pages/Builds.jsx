@@ -1,5 +1,7 @@
-import React, { useEffect, useState, useRef} from 'react';
+import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 
+import ShopItem from '../Components/ShopItem';
+import ItemDescPopup from '../Components/ItemDescPopup';
 import { getItems } from '../Util/ApiUtil';
 import globals from '../globals';
 
@@ -14,12 +16,21 @@ const Builds = () => {
     const [vitalityItems, setVitalityItems] = useState([])
     const [spiritItems, setSpiritItems] = useState([])
 
+    const [popupOpen, setPopupOpen] = useState(false)
+    const [popupItem, setPopupItem] = useState(null)
+    const [popupPosition, setPopupPosition] = useState(null)
+    const [popupDirection, setPopupDirection] = useState(0)
+
     const contentWindowRef = useRef(null)
 
     useEffect(()=>{
         getAPIData()
         setItemListHeight(contentWindowRef.current.clientHeight)
     },[])
+
+    useLayoutEffect(() => {
+        setItemListHeight(contentWindowRef.current.clientHeight)
+      }, []);
 
     async function getAPIData(){
         const itemRes = await getItems()
@@ -62,6 +73,13 @@ const Builds = () => {
         return item1["name"].localeCompare(item2["name"])
     }
 
+    function openItemPopup(item, position){
+        setPopupItem(item)
+        setPopupPosition(position)
+
+        setPopupOpen(true)
+    }
+
     function changeItemMenu(type){
         switch(type){
             case "build":
@@ -79,12 +97,13 @@ const Builds = () => {
         }
     }
 
-    function renderItemMenu(type){
+    function renderItemTypeMenu(type){
         return(
-            <div className="flex flex-row self-center mb-[10px] my-[10px] px-[5px]" style={{width:'100%'}}>
-                    {Object.keys(globals.itemTypes).map((type)=>{
+            <div className="flex flex-row self-center mb-[10px] my-[10px] px-[5px] flex-wrap gap-x-2" style={{width:'100%'}}>
+                    {[...Object.keys(globals.itemTypes), "search"].map((type)=>{
                         return (
-                            <div className="flex flex-1 mx-[2px] hover:opacity-80 py-2 justify-center" onClick={()=>changeItemMenu(type)} style={{backgroundColor:globals.itemColors[type], borderRadius:12,}}>
+                            <div key={type} className="flex flex-1 flex-row mx-[2px] hover:opacity-80 py-2 justify-center hover:cursor-pointer hover:underline space-x-1 justify-center" onClick={()=>changeItemMenu(type)} style={{backgroundColor:globals.itemColors[type], borderRadius:12,}}>
+                                <img className="h-6  object-center" src={globals.itemTypeImgs[type]}/>
                                 <div className="flex" style={{fontWeight:'bold',}}>
                                     {type.toUpperCase()}
                                 </div>
@@ -100,19 +119,7 @@ const Builds = () => {
             <div className="flex flex-row flex-wrap justify-center overflow-auto" style={{overflowY:'scroll',}}>
                 {displayedItems.map((item)=>{
                     return(
-                        <div className="flex my-[6px] mx-[6px]" onClick={()=>{console.log(item)}} key={item["id"]}>
-                            <div className="flex flex-col items-center items-center max-w-[75px] hover:opacity-80 " style={{borderRadius:8, backgroundColor:globals.itemColors[item["item_slot_type"]]}}>
-                                {/* Item Image*/}
-                                <img className="mx-5 my-1 max-w-[50px] min-w-[50px] min-h-[50px]" style={{ alignSelf:'center'}} src={item["image"]}/>
-                                
-                                {/* Item Label*/}
-                                <div className="px-1 py-1 flex flex-1 justify-center" style={{backgroundColor:"rgba(255,255,255,.7)", borderBottomRightRadius:8, borderBottomLeftRadius:8, width:'100%',}}>
-                                    <div className="flex self-center" style={{textAlign:'center', maxWidth:95, fontWeight:'bold', fontSize:11.5, lineHeight:1.2}}>
-                                        {item["name"]}
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
+                        <ShopItem item={item} key={item["id"]} hover={openItemPopup} unhover={setPopupOpen}/>
                     )
                 })}
             </div>
@@ -122,32 +129,33 @@ const Builds = () => {
 
     function renderItemsSidebar(){
         return(
-            <div className="flex flex-col flex-1 max-w-[30%]" style={{borderRadius:8, backgroundColor:gColors.greyBackground,height:itemListHeight}}>
+            <div className={`flex flex-col flex-1 max-w-[30%] rounded-full border-b-4 ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8, height:itemListHeight}}>
 
                 {/* Item type select (weapon/vit/spirit)*/}
-                {renderItemMenu()}
+                {renderItemTypeMenu()}
 
                 {/* Item List*/}
-                <div className="flex flex-1 px-2 py-2 overflow-auto">
+                <div className="flex flex-1 px-2 py-2 overflow-auto rounded-lg">
                     
                     {renderItemData()}
                 </div>
+                
             </div>
             
         )}
 
     function renderCurrentBuild(){
         return(
-            <div className="flex flex-1 mr-2 py-2 px-4" style={{borderRadius:8, backgroundColor:gColors.greyBackground}}>
+            <div className={`flex flex-1 mr-2 py-2 px-4 border-b-4  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
                 <div className="text-white" style={{fontWeight:'bold'}}>CURRENT BUILD</div>
 
             </div>
         )}
     
     return(
-        <div ref={contentWindowRef} className="flex flex-1 flex-col" style={{width:"100%", }}>
+        <div ref={contentWindowRef} className="flex flex-1 flex-col" style={{width:"100%",}}>
 
-            <div className="flex flex-row flex-1 px-[10px]">
+            <div className="flex flex-row flex-1 px-[10px] ">
                 {/* Current build*/}
                 {renderCurrentBuild()}
 
@@ -155,7 +163,7 @@ const Builds = () => {
                 {renderItemsSidebar()}
             </div>
 
-            
+            {popupOpen && <ItemDescPopup item={popupItem} pos={popupPosition} left={popupDirection!=0}/>}
 
         </div>
     )

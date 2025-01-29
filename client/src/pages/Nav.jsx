@@ -1,13 +1,16 @@
 import logo from '../assets/logo.png'
+import globals from '../globals';
+
+const gColors = globals.globalColors
 
 import { Link } from "react-router-dom";
 
 export default function Nav(){
     return(
     <>
-        <div className="w-200 h-flex p-2 ml-10 mr-10 mt-2 border-b-4 border-r-2 border-black rounded-lg bg-stone-800 bg-blend-overlay mb-5">
-            <div className="menu space-x-10 text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-black">
-                <Link to='/'><div className="flex bold hover:underline hover:opacity-80 text-white bolded"><img src={logo} className="h-5 w-5 mr-2 mt-1" /> STATLOCK </div></Link>
+        <div className="w-50 md:w-175 lg:w-175 h-flex p-2 ml-5 mt-2 border-b-4 border-r-2 border-black rounded-lg bg-stone-800 mb-5">
+            <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row space-y-1 md:space-x-10 lg:space-x-10">
+                <Link to='/'><div className="flex bold hover:underline hover:opacity-80  text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-stone-500"><img src={logo} className="h-5 w-5 mr-2 mt-1" /> STATLOCK </div></Link>
 
                 <Link to='/stats'><div className="hover:underline hover:opacity-80 text-white hover:text-stone-200">ꜱᴛᴀᴛꜱ</div></Link>
                 
