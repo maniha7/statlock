@@ -30,7 +30,7 @@ const Builds = () => {
 
     useLayoutEffect(() => {
         setItemListHeight(contentWindowRef.current.clientHeight)
-      }, []);
+      });
 
     async function getAPIData(){
         const itemRes = await getItems()

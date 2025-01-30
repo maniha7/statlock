@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef} from 'react';
+
 import globals from '../globals';
 import souls from "../assets/souls.png"
 import timer from "../assets/time_icon.png"
@@ -11,6 +12,7 @@ export default function ItemDescPopup(props, left){
     const properties = item.properties
     const gColors = globals.globalColors
 
+    //GET INNATE ITEM PROPERTIES
     const innateItemProps = Object.keys(properties).filter((property)=>
         properties[property].provided_property_type 
         && properties[property].value!="0"
@@ -21,8 +23,9 @@ export default function ItemDescPopup(props, left){
 
     const hasCooldown = item.properties["AbilityCooldown"]?.value!="0"
 
+    //GET PASSIVE ITEM PROPERTIES
     const passiveItemProps = Object.keys(properties).filter((property)=>
-        properties[property].tooltip_section=="passive"
+        (properties[property].tooltip_section=="passive" || properties[property].tooltip_is_important)
         && properties[property].value!="0"
         && properties[property].tooltip_section!="innate"
         && properties[property].tooltip_section!="active"
@@ -38,18 +41,63 @@ export default function ItemDescPopup(props, left){
 
     useEffect(()=>{
         setXOffset(itemRef.current.clientWidth)
-        setYOffset(itemRef.current.clientHeight/2)
+        setCorrectHeight()
     })
 
-    function renderImportantTooltip(){
+    function setCorrectHeight(){
+        const baseYOffset = itemRef.current.clientHeight/2
+        let res = baseYOffset
+        if(pos.y+baseYOffset>window.innerHeight){
+            let extraOffset = pos.y+baseYOffset - window.innerHeight + 30
+            res+=extraOffset
+        }
+        setYOffset(res)
+    }
+
+    function renderPassiveImportantTooltip(){
         return(
-            null
+            <div className="flex flex-2 flex-row space-x-2 mb-2" style={{width:"100%", }}>
+                {passiveImportantProps.length>0 && passiveImportantProps.map((propName)=>{
+                    const prop = properties[propName]
+                    const propTitle = globals.itemIDtoNameMapPassive[propName]??globals.itemIDtoNameMap[propName]??propName
+                    let propUnits = globals.itemIDtoUnitMapPassive[propName]??globals.itemIDtoUnitMap[propName]??{sign:"",units:""}
+                    if(propUnits.sign==undefined){propUnits={sign:"",units:""}}
+                    return(
+                        <div key={propName} className="flex flex-1 flex-col p-2 items-center justify-center rounded-lg " style={{backgroundColor:itemColorPallet.dark}}>
+                            <div style={{fontWeight:'bold', fontSize:20, color:gColors.itemText}}>
+                                {(!["+","-"].includes(prop.value.substring(0,1))?propUnits.sign:"") + prop.value + propUnits.units}
+                            </div>
+                            <div className="text-white flex-wrap text-center" style={{fontSize:14}}>
+                                {propTitle}
+                            </div>
+                            
+                        </div>
+                    )
+                })}
+            </div>
         )
     }
 
-    function renderUnimportantTooltip(){
+    function renderPassiveUnimportantTooltip(){
         return(
-            null
+            <div hidden={passiveUnimportantProps.length==0} className="flex flex-col p-2 rounded-lg mb-2" style={{backgroundColor:itemColorPallet.dark, width:passiveImportantProps.length>1?"100%":undefined}}>
+                {passiveUnimportantProps.length>0 && passiveUnimportantProps.map((propName)=>{
+                    const prop = properties[propName]
+                    const propTitle = globals.itemIDtoNameMapPassive[propName]??globals.itemIDtoNameMap[propName]??propName
+                    let propUnits = globals.itemIDtoUnitMapPassive[propName]??globals.itemIDtoUnitMap[propName]??{sign:"",units:""}
+                    if(propUnits.sign==undefined){propUnits={sign:"",units:""}}
+                    return(
+                        <div className="flex flex-row" key={propName}>
+                            <div className="text-white mr-2" style={{fontWeight:'bold', fontSize:14}}>
+                                {(!["+","-"].includes(prop.value.substring(0,1))?propUnits.sign:"") + prop.value + propUnits.units}
+                            </div>
+                            <div className="text-white flex-wrap " style={{fontSize:14}}>
+                                {propTitle}
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
         )
     }
 
@@ -82,9 +130,11 @@ export default function ItemDescPopup(props, left){
         if(passiveItemProps.length==0 && !hasCooldown){return null}
         return(
             <div className='flex flex-col'>
-                {/*Passive cooldown bar */}
+                {/*Passive/Active cooldown bar */}
                 <div className="flex flex-row flex-1 pl-2 " style={{backgroundColor:itemColorPallet.dark}}>
-                    <div className="flex flex-1 py-1 ml-2 mb-0.5" style={{fontSize:16, color:gColors.itemText, fontStyle:'italic', fontWeight:"bold"}}>Passive</div>
+                    <div className="flex flex-1 py-1 ml-2 mb-0.5" style={{fontSize:16, color:gColors.itemText, fontStyle:'italic', fontWeight:"bold"}}>
+                        Passive
+                    </div>
                     {item.properties["AbilityCooldown"]?.value!=0&&
                         <div className="flex flex-row flex-0 px-6 text-white items-center justify-center" style={{backgroundColor:"#070d0d", fontWeight:'bold', color:gColors.itemText}}>
                             <img src={timer} className="mr-1.5" style={{height:16, width:'auto'}}/>
@@ -95,49 +145,16 @@ export default function ItemDescPopup(props, left){
                         </div>
                     }
                 </div>
-                {/*Passive description */}
+                {/*Text description */}
                 <div className='px-4 text-white py-2' style={{lineHeight:1.2, fontSize:15,}} dangerouslySetInnerHTML={{__html:item.description?.desc}} />
+                <div className='px-4 text-white py-2' style={{lineHeight:1.2, fontSize:15,}} dangerouslySetInnerHTML={{__html:item.description?.active}} />
 
                 {/*Passive properties */}
                 <div className="flex flex-1 flex-row flex-wrap space-x-2 px-4" style={{width:"100%"}}>
                     {/*"Important" properties */}
-                    <div className="flex flex-2 flex-row space-x-2 mb-2" style={{width:"100%", }}>
-                        {passiveImportantProps.length>0 && passiveImportantProps.map((propName)=>{
-                            const prop = properties[propName]
-                            const propTitle = globals.itemIDtoNameMapPassive[propName]??globals.itemIDtoNameMap[propName]??propName
-                            return(
-                                <div key={propName} className="flex flex-1 flex-col p-2 items-center justify-center rounded-lg " style={{backgroundColor:itemColorPallet.dark}}>
-                                    <div style={{fontWeight:'bold', fontSize:20, color:gColors.itemText}}>
-                                        {prop.value}
-                                    </div>
-                                    <div className="text-white flex-wrap text-center" style={{fontSize:14}}>
-                                        {propTitle}
-                                    </div>
-                                    
-                                </div>
-                            )
-                        })}
-                    </div>
+                    {renderPassiveImportantTooltip()}
                     {/*"Unimportant" properties */}
-                    <div hidden={passiveUnimportantProps.length==0} className="flex flex-col p-2 rounded-lg mb-2" style={{backgroundColor:itemColorPallet.dark, width:passiveImportantProps.length>1?"100%":undefined}}>
-
-                        {passiveUnimportantProps.length>0 && passiveUnimportantProps.map((propName)=>{
-                            const prop = properties[propName]
-                            const propTitle = globals.itemIDtoNameMapPassive[propName]??globals.itemIDtoNameMap[propName]??propName
-                            return(
-                                <div className="flex flex-row" key={propName}>
-                                    <div className="text-white mr-2" style={{fontWeight:'bold', fontSize:14}}>
-                                        {prop.value}
-                                    </div>
-                                    <div className="text-white flex-wrap " style={{fontSize:14}}>
-                                        {propTitle}
-                                    </div>
-                                </div>
-                                    
-                                
-                            )
-                        })}
-                    </div>
+                    {renderPassiveUnimportantTooltip()}
                 
                 </div>
                 
