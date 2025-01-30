@@ -19,7 +19,8 @@ const globals = {
         stoneBackgroundGradient: "bg-gradient-to-r from-stone-800 to-stone-900",
         stoneBackgroundGradient2: "bg-gradient-to-r from-stone-800 via-transparent to-stone-900",
         offWhite:"#d2d2cb",
-        itemText:"#ffefd7"
+        itemText:"#ffefd7",
+        itemBlack:"#070d0d"
     },
 
     itemColors: {
@@ -48,7 +49,8 @@ const globals = {
             t4gradient:"bg-gradient-to-br from-[#a06d2c] to-[#f0c685]",
             basetw:"bg-[#d08d3e]"
         },
-        search:{base:"#ccbda7"}
+        search:{base:"#ccbda7"},
+        
         
     },
     
