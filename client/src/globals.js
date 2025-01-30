@@ -16,29 +16,37 @@ const globals = {
     globalColors:{
         greyBackground: "#333333",
         stone800Background: '#292524',
-        stoneBackgroundGradient: "bg-gradient-to-r from-stone-800 via-transparent to-stone-800",
+        stoneBackgroundGradient: "bg-gradient-to-r from-stone-800 to-stone-900",
+        stoneBackgroundGradient2: "bg-gradient-to-r from-stone-800 via-transparent to-stone-900",
         offWhite:"#d2d2cb",
         itemText:"#ffefd7"
     },
 
     itemColors: {
         vitality:{
-            base:"#7cbb1e",
+            base:"#74b01c",
             medium:"#659818",
             mediumDark:"#4d7214",
             dark:"#354f11",
+            t4gradient:"bg-gradient-to-br from-[#709c34] to-[#c7ee8e]",
+            basetw:"bg-[#74b01c]"
+
         },
         spirit:{
-            base:"#bc84e1",
+            base:"#c288f0",
             medium:"#8b56b4",
             mediumDark:"#623585",
             dark:"#43265b",
+            t4gradient:"bg-gradient-to-br from-[#9065b3] to-[#dabef0]",
+            basetw:"bg-[#c288f0]"
         },
         weapon:{
-            base:"#ec981a",
+            base:"#d08d3e",
             medium:"#c97a03",
             mediumDark:"#80550f",
             dark:"#573908",
+            t4gradient:"bg-gradient-to-br from-[#a06d2c] to-[#f0c685]",
+            basetw:"bg-[#d08d3e]"
         },
         search:{base:"#ccbda7"}
         
@@ -131,7 +139,57 @@ const globals = {
         ImbuedBonusDuration:"Imbued Ability Duration",
         NonImbuedBonusDuration:"Non-Imbued Ability Duration",
         TechArmorDamageReduction:"Spirit Resist On Spirit Damage",
-        Stamina:"Stamina"
+        Stamina:"Stamina",
+
+    },
+
+    itemIDtoNameMapPassive:{
+        MagicIncreasePerStack:"Spirit Amp Per Stack",
+        SpiritDamage:"Spirit Damage",
+        TechArmorGain:"Spirit Resist Steal",
+        TechPowerGain:"Spirit Power Steal",
+        AmmoPerSoul:"Ammo Per Soul",
+        SpiritPowerPerSoul:"Spirit Power Per Soul",
+        AbilityDuration:"Duration",
+        MaxStacks:"Max Stacks",
+        BulletArmorReduction:"Bullet Resist",
+        FireRateBonus:"Fire Rate Bonus",
+        ProcCooldown:"Max Frequency",
+        MaxHealthDamage:"Max Health Bonus Damage",
+        MovementSpeedSlow:"Movement Slow",
+        ImbuedTechPower:"Imbued Ability Spirit Power",
+        MovementSpeedBonusDuration:"Move Speed Duration",
+        DamagePulseAmount:"Pulse Damage",
+        DamagePulseRadius:"Pulse Radius",
+        BulletShieldOnCast:"Bullet Shield",
+        TechShieldOnCast:"Spirit Shield",
+        BuffDuration:"Buff Duration",
+        TechDamagePercent:"Damage",
+        DelayDuration:"Delay Duration",
+        CloseRangeBonusWeaponPower:"Weapon Damage",
+        CloseRangeBonusDamageRange:"Close Range",
+        HeadShotBonusDamage:"Head Shot Bonus Damage",
+        LongRangeBonusWeaponPower:"Weapon Damage",
+        LongRangeBonusWeaponPowerMinRange:"Min. Distance",
+        BonusHeavyMeleeDamage:"Bonus Heavy Damage",
+        SlowDuration:"Slow Duration",
+        SlowPercent:"Movement Slow",
+        ShreddersTechAmp:"Spirit Amp",
+        MaxArmorStacks:"Max Bullet Resist",
+        BulletResistDuration:"Stack Duration",
+        BulletResistPerStack:"Bullet Resist Per Stack",
+        HealPercentPerHeadshot:"Heal Per Headshot",
+        BaseAttackDamagePercentAtMaxDuration:"Max Weapon Damage",
+        ShootDurationForMax:"Time for Max Damage",
+        BaseAttackDamagePercentBonus:"Weapon Damage",
+        BonusAmpPerHeadshot:"Spirit Amp Per Headshot",
+        DebuffDuration:"Debuff Duration",
+        AbilityLifestealPercentHero:"Spirit Lifesteal Proc",
+
+
+
+
+
 
     },
 

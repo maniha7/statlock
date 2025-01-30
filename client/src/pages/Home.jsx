@@ -1,24 +1,21 @@
+import globals from '../globals';
 
-
+const gColors = globals.globalColors
 
 
 const Home = () => {
     return (
-       
-        <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3
-        ">
-            <div className="mt-20 ml-20 w-256 h-128 p-2">
-                test
+    <>
+        <div className={`mt-2 mb-2 ml-5 mr-10 p-2 border-b-4 border-l-1 border-black rounded-lg text-center w-400 ${gColors.stoneBackgroundGradient2}`} style={{}}>
+            <div className="text-3xl mt-10" style={{fontFamily: "'customFont', Colus-Regular"}}>
+                Test
             </div>
+         </div>
 
-            <div className="mt-20 ml-20 w-256 h-128 p-2">
-                test wef
-            </div>
-
-            <div className="mt-20 ml-20 w-256 h-128 p-2">
-                test fewf
-            </div>
-        </div>
+         <div className={`mt-2 mb-2 border-b-4 border-r-1 rounded-lg mr-5 w-[15%] ${gColors.stoneBackgroundGradient2}`}>
+            AdSpace
+         </div>
+    </>
         
     )
 }

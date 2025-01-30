@@ -10,6 +10,7 @@ html, body {
     min-height: 100vh;
     max-height:100vh;
     overflow-y: hidden;
+    overflow-x: hidden;
     display: flex;
     flex-direction:column;
 }
@@ -18,4 +19,28 @@ html, body {
     display: flex;
     justify-content: center;
 
+}
+
+.invert{
+    -webkit-filter: invert(1);
+    filter: invert(1);
+    opacity: .8;
+}
+
+.highlight{
+    font-weight:700;
+}
+
+@font-face {
+    font-family: Colus;
+    font-style: normal;
+    src: url('./fonts/Colus-Regular.woff2') format("woff2"),
+         url('./fonts/Colus-Regular.woff') format("woff"),
+         url('./fonts/Colus-Regular.eot') format("eot")
+         
+ 
+}
+
+.fonter {
+    font-family: var(url('./fonts/Colus-Regular.woff2'));
 }
