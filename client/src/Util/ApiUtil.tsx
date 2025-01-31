@@ -3,7 +3,6 @@ import globals from "../globals.js"
 const assetsAPI = globals.Deadlock_Assets_API_Address
 
 
-
 function isValidResponse(data) : boolean{
     if(data.detail){
         return false
@@ -29,7 +28,7 @@ export async function getHeroes() : Promise<Array<Object>>{
 }
 
 
-export async function getItems() : Promise<Array<Object>>{
+export async function getItems() : Promise<Object>{
 
     const apiRes = await fetch(assetsAPI+globals.Deadlock_Assets_Items_Endpoint,{
         method:"get",
@@ -38,9 +37,13 @@ export async function getItems() : Promise<Array<Object>>{
         }
     })
     const data = await apiRes.json()
+    const res = {}
 
     if(!isValidResponse(data)){
-        return([])
+        return(res)
     }
-    return data
+    data.forEach((item)=>{
+        res[item.class_name] = {...item}
+    })
+    return res
 }

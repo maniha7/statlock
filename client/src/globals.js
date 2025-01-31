@@ -13,11 +13,13 @@ const globals = {
     Deadlock_Data_API_Address: "https://data.deadlock-api.com",
     Deadlock_Data_PatchNotes_Endpoint: "/v1/patch-notes",
 
+
     globalColors:{
         greyBackground: "#333333",
         stone800Background: '#292524',
-        stoneBackgroundGradient: "bg-gradient-to-r from-stone-800 to-stone-900",
+        stoneBackgroundGradient: "bg-gradient-to-br from-stone-800 via-stone-700 to-stone-900",
         stoneBackgroundGradient2: "bg-gradient-to-r from-stone-800 via-transparent to-stone-900",
+        stoneBackgroundGradient3: "bg-gradient-to-r from-stone-900 to-stone-800",
         offWhite:"#d2d2cb",
         itemText:"#ffefd7",
         itemBlack:"#070d0d"
@@ -90,6 +92,12 @@ const globals = {
     ]),
 
     passiveHiddenProperties: new Set([
+        "AbilityCooldown",
+        "ChainTickRate",
+        "ImmunityDuration",
+    ]),
+
+    activeHiddenProperties: new Set([
         "AbilityCooldown",
         "ChainTickRate",
         "ImmunityDuration",
@@ -200,7 +208,6 @@ const globals = {
         ChainRadius:"Jump Radius",
         ProcChange:"Proc Chance",
         ChainCount:"Max Jumps",
-
         DotHealthPercent:"Bleed Damage",
         HealAmpReceivePenaltyPercent:"Healing Reduction",
         BulletResistReduction:"Bullet Resist Reduction",
@@ -215,8 +222,27 @@ const globals = {
         SilenceDuration:"Silence Duration",
         TechDamageReduction:"Spirit Damage Reduction",
         BonusSpirit:"Spirit Power",
+        AttackDamageWhenShielded:"Weapon Damage While Shielded",
+        FireRateWhenShielded:"Fire Rate While Shielded",
+        BonusSpiritWithMagicShield:"Spirit Power While Shielded",
+        CooldownReductionWithShield:"Cooldown Reduction While Shielded",
+        HealOnKill:"Heal On Hero Kill",
+        VexBarrierBulletMaxHealth:"Bullet Shield Health",
+        VexBarrierTechMaxHealth:"Spirit Shield Health",
+        VexBarrierShieldDuration:"Duration",
+        OutgoingDamagePenaltyPercent:"Damage Penalty",
+        HealthSteal:"Max HP Steal Per Bullet",
+        StealDuration:"Steal Duration",
+        InvisDuration:"Invisibility Duration",
+    },
 
-
+    itemIDtoNameMapActive:{
+        ActiveBonusMoveSpeed:"Move Speed",
+        AmbushBonusTechPower:"Ambush Spirit Power",
+        AmbushBonusFireRate:"Ambush Fire Rate",
+        AmbushDuration:"Ambush Duration",
+        AbilityDuration:"Duration",
+        ActiveBonusFireRate:"Fire Rate",
     },
 
     itemIDtoUnitMap:{
@@ -337,8 +363,21 @@ const globals = {
         SilenceDuration:{sign:"",units:"s"},
         TechDamageReduction:{sign:"",units:"%"},
         BonusSpirit:{sign:"+",units:""},
-
-
+        AttackDamageWhenShielded:{sign:"+",units:"%"},
+        FireRateWhenShielded:{sign:"+",units:"%"},
+        BonusSpiritWithMagicShield:{sign:"+",units:""},
+        CooldownReductionWithShield:{sign:"+",units:"%"},
+        HealOnKill:{sign:"",units:""},
+        VexBarrierBulletMaxHealth:{sign:"+",units:""},
+        VexBarrierTechMaxHealth:{sign:"+",units:""},
+        VexBarrierShieldDuration:{sign:"",units:"s"},
+        OutgoingDamagePenaltyPercent:{sign:"",units:"%"},
+        HealthSteal:{sign:"",units:""},
+        StealDuration:{sign:"",units:"s"},
+        InvisDuration:{sign:"",units:"s"},
+    },
+    
+    itemIDtoUnitMapActive:{
 
     }
 }

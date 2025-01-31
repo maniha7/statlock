@@ -3,7 +3,9 @@ import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import ShopItem from '../Components/ShopItem';
 import ItemDescPopup from '../Components/ItemDescPopup';
 import { getItems } from '../Util/ApiUtil';
+import { genItems } from '../Util/generateItems';
 import globals from '../globals';
+import dlItems from "../assets/dlItems.json"
 
 const gColors = globals.globalColors
 
@@ -20,6 +22,7 @@ const Builds = () => {
     const [popupItem, setPopupItem] = useState(null)
     const [popupPosition, setPopupPosition] = useState(null)
     const [popupDirection, setPopupDirection] = useState(0)
+    const [ires, setres] = useState(null)
 
     const contentWindowRef = useRef(null)
 
@@ -33,12 +36,12 @@ const Builds = () => {
       });
 
     async function getAPIData(){
-        const itemRes = await getItems()
+        const itemRes = dlItems
 
         let weaponItemsRes = []
         let vitItemsRes = []
         let spiritItemsRes = []
-        itemRes.forEach((item)=>{
+        Object.values(itemRes).forEach((item)=>{
             item.name = item.name.replaceAll("_"," ")
             if(item.disabled){return}
             switch(item["item_slot_type"]){
@@ -67,6 +70,12 @@ const Builds = () => {
         const tierDif = item1["item_tier"] - item2["item_tier"]
         if(tierDif!=0){
             return tierDif
+        }
+
+        //compare by isActive
+        const activeDif = +((item1['activation']=="instant_cast" || item1['activation']=="press") - (item2['activation']=="instant_cast" || item2['activation']=="press"))
+        if(activeDif!=0){
+            return activeDif
         }
 
         //compare by name
@@ -150,8 +159,16 @@ const Builds = () => {
 
     function renderCurrentBuild(){
         return(
-            <div className={`flex flex-1 mr-2 py-2 px-4 border-b-4  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
+            <div className={`flex flex-col flex-1 mr-2 py-2 px-4 border-b-4  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
                 <div className="text-white" style={{fontWeight:'bold'}}>CURRENT BUILD</div>
+
+                <div className='flex flex-row'>
+                    <div className='flex ' onClick={()=>{return false;genItems(setres)}} style={{backgroundColor:"#fff",display:'block'}}>manually generates a file, dont click it again</div>
+                </div>
+                <div>
+                    {ires}
+                </div>
+                
 
             </div>
         )}

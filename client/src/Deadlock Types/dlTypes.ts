@@ -39,5 +39,10 @@ export interface Hero {
     skin: number,
     readability: number,
     images: HeroImages,
+    //todo finish
+}
 
+
+export interface ShopItem {
+    
 }
