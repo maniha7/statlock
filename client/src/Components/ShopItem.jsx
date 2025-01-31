@@ -30,19 +30,24 @@ export default function ShopItem(props){
         props.hover(item, position)
     }
 
+    function closePopup(){
+        
+        props.unhover()
+    }
+
     return(
-        <div ref={itemRef} onMouseEnter={()=>openPopup()} onMouseLeave={()=>props.unhover()} className="flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)]" onClick={()=>{console.log(item)}}>
-            <div className={`flex flex-col items-center items-center max-w-[75px] hover:opacity-80 hover:cursor-pointer ${bgColor}`} style={{borderRadius:8}}>
+        <div ref={itemRef} onMouseEnter={()=>openPopup()} onMouseLeave={()=>closePopup()} className="flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)]" onClick={()=>{console.log(item)}}>
+            <div className={`flex flex-col items-center items-center max-w-[75px] hover:opacity-80 hover:cursor-pointer transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 ${bgColor}`} style={{borderRadius:8}}>
                 {/* Item Image*/}
-                <img className="mx-5 my-1 max-w-[45px] min-w-[45px] min-h-[45px] invert" style={{ alignSelf:'center'}} src={item["image"]}/>
+                <img className="mx-5 my-1 max-w-[45px] min-w-[45px] min-h-[45px] invert " style={{ alignSelf:'center'}} src={item["image"]}/>
 
                 
                 
                 {/* Item Label*/}
-                <div className="px-[2px] pt-2 pb-1 flex flex-1 justify-center min-h-8" style={{backgroundColor:"rgba(255,255,255,.78)", position:'relative', borderBottomRightRadius:8, borderBottomLeftRadius:8, width:'100%',}}>
+                <div className="px-[2px] pt-2 pb-1 flex flex-1 justify-center min-h-8 " style={{backgroundColor:"rgba(255,255,255,.78)", position:'relative', borderBottomRightRadius:8, borderBottomLeftRadius:8, width:'100%',}}>
                     {/* Active Tag */}
                     {isActive &&
-                        <div ref={tagRef} className="py-[.5px] px-[8px]" style={{backgroundColor:gColors.itemLabelBlack, borderRadius:3, position:'absolute', top:-tagHeight}}>
+                        <div ref={tagRef} onMouseEnter={()=>openPopup()} className="py-[.5px] px-[8px]" style={{backgroundColor:gColors.itemLabelBlack, borderRadius:3, position:'absolute', top:-tagHeight}}>
                             <div style={{fontWeight:'bold',fontSize:10,color:gColors.offWhite,}}>
                                 ACTIVE
                             </div>

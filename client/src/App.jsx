@@ -7,7 +7,7 @@ import { Home, Layout, StatsPage, Builds, Patches, Matches, Rankings, Items, Pri
 
 function App() {
   return (
-    <>
+
       <Routes>
       <Route path="/" element={<Layout><Home /></Layout>} />
       <Route path="/stats" element={<Layout><StatsPage /></Layout>} />
@@ -21,7 +21,7 @@ function App() {
       <Route path="/about" element={<Layout><About /></Layout>} />
       <Route path="/contact" element={<Layout><Contact /></Layout>} />
       </Routes>
-    </>
+
   )
 }
 

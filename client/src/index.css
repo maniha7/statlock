@@ -4,14 +4,18 @@ html, body {
     background-image: url(./assets/deadlockbg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    height:100%;
+    width:100%;
+    overflow:auto;
 }
 
+
 .wrapper {
-    min-height: 100vh;
-    max-height:100vh;
-    overflow-x: hidden;
+    width:100%;
+    min-height:100%;
     display: flex;
     flex-direction:column;
+    flex:1;
 }
 
 .menu {
@@ -34,10 +38,6 @@ html, body {
     font-family: Forevs;
     font-style: normal;
     src: url('./fonts/ForevsBoldItalic.otf') format("otf"),
-
-
-         
- 
 }
 
 @theme {

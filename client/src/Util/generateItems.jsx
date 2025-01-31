@@ -1,7 +1,25 @@
 import globals from '../globals';
 import { getItems } from "./ApiUtil";
 import { getItemByID } from './ItemUtil';
+import dlItems from "../assets/dlItems.json"
 
+export async function filterItems(setres){
+    const res = dlItems
+    Object.keys(res).forEach((itemName)=>{
+
+        delete res[itemName]["weapon_info"]
+        if(res[itemName]["upgradesFrom"]){
+            delete res[itemName]["upgradesFrom"]["weapon_info"]
+            
+            if(res[itemName]["upgradesFrom"]["upgradesFrom"]){
+                delete res[itemName]["upgradesFrom"]["upgradesFrom"]["weapon_info"]
+            }
+        }
+        
+    })
+    const jsonres = JSON.stringify(res)
+    setres(jsonres)
+}
 
 
 export async function genItems(setres){

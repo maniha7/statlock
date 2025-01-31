@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 
 import ShopItem from '../Components/ShopItem';
 import ItemDescPopup from '../Components/ItemDescPopup';
-import { genItems } from '../Util/generateItems';
+import { genItems, filterItems } from '../Util/generateItems';
 import globals from '../globals';
 import dlItems from "../assets/dlItems.json"
 
@@ -17,6 +17,7 @@ const Builds = () => {
     const [displayedT3s, setDisplayedT3s] = useState([])
     const [displayedT4s, setDisplayedT4s] = useState([])
     const [itemListHeight, setItemListHeight] = useState(0)
+    const [activeItemType, setActiveItemType]=useState("weapon")
     const [buildItems, setBuildItems] = useState([])
     const [weaponItems, setWeaponItems] = useState([])
     const [vitalityItems, setVitalityItems] = useState([])
@@ -121,7 +122,17 @@ const Builds = () => {
         setPopupOpen(true)
     }
 
+    function closeItemPopup(){
+        const position = {
+            x:0,
+            y:0
+        }
+        setPopupPosition(position)
+        setPopupOpen(false)
+    }
+
     function changeItemMenu(type){
+        setActiveItemType(type)
         switch(type){
             case "weapon":
                 setItemsByTier(weaponItems)
@@ -137,10 +148,14 @@ const Builds = () => {
 
     function renderItemTypeMenu(type){
         return(
-            <div className="flex flex-row self-center mb-[10px] my-[10px] px-[5px] flex-wrap gap-x-2" style={{width:'100%'}}>
+            <div className="flex flex-row self-center mb-[10px] my-[10px] px-[5px] flex-wrap gap-x-2 " style={{width:'100%'}}>
                     {[...Object.keys(globals.itemTypes), "search"].map((type)=>{
                         return (
-                            <div key={type} className="flex flex-1 flex-row mx-[2px] hover:opacity-80 py-2 justify-center hover:cursor-pointer hover:underline space-x-1 justify-center" onClick={()=>changeItemMenu(type)} style={{backgroundColor:globals.itemColors[type].base, borderRadius:12,}}>
+                            <div key={type} 
+                            className={`flex flex-1 flex-row mx-[2px] hover:opacity-80 py-2 justify-center hover:cursor-pointer hover:underline space-x-1 justify-center transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 ${type==activeItemType&&""}`}
+                            onClick={()=>changeItemMenu(type)} style={{backgroundColor:globals.itemColors[type].base, borderRadius:12, }}
+                            >
+     
                                 <img className="h-6 object-center" src={globals.itemTypeImgs[type]}/>
                                 <div className="flex" style={{fontWeight:'bold',}}>
                                     {type.toUpperCase()}
@@ -155,7 +170,7 @@ const Builds = () => {
     function renderTierData(cost, tierItems){
         return(
             <>  
-                <div className="flex flex-row items-center pt-2">
+                <div className="flex flex-row items-center pt-2 ">
                     <img className="ml-1 mr-2 drop-shadow-[0_3px_3px_rgba(0,0,0,0.55)]" style={{height:22, width:'auto'}} src={souls}/>
                     <div className="drop-shadow-[0_3px_3px_rgba(0,0,0,0.55)]" style={{fontSize:22, fontWeight:'bold', color:gColors.itemCost}}>
                         {cost}
@@ -165,7 +180,7 @@ const Builds = () => {
                 <div className='flex flex-row flex-wrap'>
                     {tierItems.map((item)=>{
                         return(
-                            <ShopItem item={item} key={item["id"]} hover={openItemPopup} unhover={setPopupOpen}/>
+                            <ShopItem item={item} key={item["id"]} hover={openItemPopup} unhover={closeItemPopup}/>
                         )
                     })}
                 </div>
@@ -175,7 +190,7 @@ const Builds = () => {
 
     function renderItemData(){
         return(
-            <div className="flex overflow-auto" style={{overflowY:'scroll',width:'100%'}}>
+            <div className="flex " style={{width:'100%', height:'100%'}}>
                 <div className="flex flex-1 flex-col ">
 
                     {/* TIER 1 */}
@@ -201,8 +216,8 @@ const Builds = () => {
 
     function renderItemsSidebar(){
         return(
-            <div className={`flex flex-col flex-1 max-w-[30%] rounded-full border-b-4`} style={{borderRadius:8, height:itemListHeight}}>
-                <div className="rounded-full">
+            <div className={`flex flex-col flex-1 max-w-[30%] rounded-full`} style={{borderRadius:8}}>
+                <div className="rounded-full ">
 
                     {/* Item type select (weapon/vit/spirit)*/}
                     {renderItemTypeMenu()}
@@ -210,7 +225,7 @@ const Builds = () => {
                 </div>
 
                 {/* Item List*/}
-                <div className={`flex flex-1 px-2 overflow-auto rounded-lg border-l-2 border-r-1 ${gColors.stoneBackgroundGradient}`}>
+                <div className={`flex flex-1 px-2 overflow-auto rounded-lg border-l-2 border-r-1 border-b-4  ${gColors.stoneBackgroundGradient}`}>
                     
                     {renderItemData()}
                     
@@ -226,7 +241,7 @@ const Builds = () => {
                 <div className="text-white" style={{fontWeight:'bold'}}>CURRENT BUILD</div>
 
                 <div className='flex flex-row'>
-                    <div className='flex ' onClick={()=>{genItems(setres)}} style={{backgroundColor:"#fff",display:'block'}}>manually generates a file, dont click it again</div>
+                    <div className='flex ' onClick={()=>{filterItems(setres)}} style={{backgroundColor:"#fff",display:'block'}}>manually generates a file, dont click it again</div>
                 </div>
                 <div>
                     {ires}
@@ -237,9 +252,9 @@ const Builds = () => {
         )}
     
     return(
-        <div ref={contentWindowRef} className="flex flex-1 flex-col" style={{width:"100%",}}>
+        <div ref={contentWindowRef} className="flex flex-1 flex-col" style={{width:"100%",height:'100%', minHeight:400}}>
 
-            <div className="flex flex-row flex-1 px-[10px] ">
+            <div className="flex flex-row flex-1 px-[10px] " style={{height:'100%', maxHeight:"100%"}}>
                 {/* Current build*/}
                 {renderCurrentBuild()}
 
@@ -247,9 +262,9 @@ const Builds = () => {
                 {renderItemsSidebar()}
             </div>
 
-            {popupOpen && <ItemDescPopup item={popupItem} pos={popupPosition} left={popupDirection!=0} open={()=>setPopupOpen(true)} close={()=>setPopupOpen(false)}/>}
+            {popupOpen && (popupPosition.x+popupPosition.y>0)&&<ItemDescPopup item={popupItem} isOpen={popupOpen} pos={popupPosition} />}
 
-        </div>
+        </div> /*Big Chungus Word puzzle eats lebron james hairline guy */
     )
 }
 

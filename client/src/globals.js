@@ -24,7 +24,9 @@ const globals = {
         itemText:"#ffefd7",
         itemUnitsText:"#c4beb5",
         itemLabelBlack:"#070d0d",
-        itemCost:"#9affd6"
+        itemCost:"#9affd6",
+        deadLockDark:"#231f20",
+        deadLockLight:"#f0dfbf",
     },
 
     itemColors: {

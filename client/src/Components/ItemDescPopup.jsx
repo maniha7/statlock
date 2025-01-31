@@ -4,10 +4,10 @@ import globals from '../globals';
 import souls from "../assets/souls.png"
 import timer from "../assets/time_icon.png"
 
-export default function ItemDescPopup(props, left){
+export default function ItemDescPopup(props){
 
     const item = props.item
-    const pos = props.pos
+    const pos = props.pos??{x:0,y:0}
     const itemColorPallet = globals.itemColors[item["item_slot_type"]]
     const hasCooldown = item.properties["AbilityCooldown"]?.value!="0"
     
@@ -19,6 +19,7 @@ export default function ItemDescPopup(props, left){
 
     const [xOffset, setXOffset] = useState(0)
     const [yOffset, setYOffset] = useState(0)
+    const [initted, setInitted] = useState(false)
 
     const itemRef = useRef(null)
 
@@ -26,6 +27,7 @@ export default function ItemDescPopup(props, left){
         setXOffset(itemRef.current.clientWidth)
         setCorrectHeight()
     })
+
 
     function setCorrectHeight(){
         const baseYOffset = itemRef.current.clientHeight/2
@@ -35,6 +37,7 @@ export default function ItemDescPopup(props, left){
             res+=extraOffset
         }
         setYOffset(res)
+        setInitted(true)
     }
 
     function renderPassiveImportantTooltip(){
@@ -234,7 +237,7 @@ export default function ItemDescPopup(props, left){
     }
 
     function renderActiveTooltip(){
-        if(item.activeImportantProperties.length==0 && item.activeUnimportantProperties.length==0){ return null}
+        if(!itemIsActive){ return null}
         return(
             <div className='flex flex-col'>
                 {/*Active label bar */}
@@ -258,7 +261,11 @@ export default function ItemDescPopup(props, left){
                     <div className='px-4 py-2' style={{lineHeight:1.2, fontSize:15, color:gColors.offWhite}} dangerouslySetInnerHTML={{__html:item.description?.desc}} />
                     
                 }
-                <div className='px-4 text-white py-2' style={{lineHeight:1.2, fontSize:15,}} dangerouslySetInnerHTML={{__html:item.description?.active}} />
+                {
+                    item.description.active &&
+                    <div className='px-4 text-white py-2' style={{lineHeight:1.2, fontSize:15,}} dangerouslySetInnerHTML={{__html:item.description?.active}} />
+                }
+                
 
                 {/*Active properties */}
                 <div className="flex flex-1 flex-row flex-wrap space-x-2 px-4" style={{width:"100%"}}>
@@ -272,7 +279,11 @@ export default function ItemDescPopup(props, left){
     }
 
     function renderExtraToolTip(){
-        if(!item.upgradesFrom){return null}
+        if((!item.extraImportantProperties || item.extraImportantProperties.length==0)
+            && (!item.extraUnimportantProperties || item.extraUnimportantProperties.length==0) 
+            && !item.extraDescription)
+            { return null}
+
         let itemTypeTitle="Passive"
         if(item.upgradesFrom.activation=="instant_cast" || item.upgradesFrom.activation=="press"){
             itemTypeTitle = "Active"
@@ -305,8 +316,12 @@ export default function ItemDescPopup(props, left){
     }
 
     return(
-        item&&
-        <div ref={itemRef} onMouseEnter={()=>props.open()} onMouseLeave={()=>props.close()} className="flex flex-col select-none pt-1 min-w-[18%] max-w-[18%] drop-shadow-[0_8px_8px_rgba(0,0,0,0.65)]" style={{position:'absolute', borderRadius:8, backgroundColor:itemColorPallet.medium, top:pos.y-yOffset, left:pos.x-xOffset}}>
+        item
+        &&
+
+        <div ref={itemRef} className="flex flex-col select-none pt-1 min-w-[18%] max-w-[18%] drop-shadow-[0_8px_8px_rgba(0,0,0,0.65)]" 
+        style={{position:'absolute', borderRadius:8, backgroundColor:itemColorPallet.medium, top:yOffset==0?0:pos.y-yOffset, left:yOffset==0?0:pos.x-xOffset, opacity:initted?undefined:0}}
+        >
             {/*Item name and cost */}
             <div className="flex flex-col px-2 pb-2 ml-0.5 p-2 ml-2">
                 <div className="drop-shadow-[0_3px_3px_rgba(0,0,0,0.25)] mb-0.5" style={{fontSize:20, fontWeight:'bold', color:gColors.itemText}}> {item["name"]}</div>

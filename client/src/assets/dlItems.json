@@ -120,32 +120,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 3,
@@ -268,32 +242,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -541,32 +489,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 2,
@@ -761,32 +683,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 2,
@@ -968,32 +864,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 1,
@@ -1055,7 +925,7 @@
   "upgrade_proc_tech_damage": {
     "id": 184951197,
     "class_name": "upgrade_proc_tech_damage",
-    "name": "upgrade_proc_tech_damage",
+    "name": "upgrade proc tech damage",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/tech_imbued_bullets.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/tech_imbued_bullets.webp",
@@ -1176,32 +1046,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -1378,32 +1222,6 @@
         "tooltip_section": "passive",
         "tooltip_is_important": true,
         "propName": "WeaponPowerPerKill"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -1593,32 +1411,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 2,
@@ -1664,7 +1456,7 @@
   "upgrade_burst_fire_actuator": {
     "id": 253917113,
     "class_name": "upgrade_burst_fire_actuator",
-    "name": "upgrade_burst_fire_actuator",
+    "name": "upgrade burst fire actuator",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_utility/fast_reload.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_utility/fast_reload.webp",
@@ -1801,32 +1593,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 2,
@@ -1883,7 +1649,7 @@
   "upgrade_aerial_assault": {
     "id": 271801138,
     "class_name": "upgrade_aerial_assault",
-    "name": "upgrade_aerial_assault",
+    "name": "upgrade aerial assault",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_utility/springy_boots.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_utility/springy_boots.webp",
@@ -2023,32 +1789,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 4,
@@ -2116,7 +1856,7 @@
   "upgrade_weapon_instant_reload": {
     "id": 315518818,
     "class_name": "upgrade_weapon_instant_reload",
-    "name": "upgrade_weapon_instant_reload",
+    "name": "upgrade weapon instant reload",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_utility/fast_reload.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_utility/fast_reload.webp",
@@ -2213,32 +1953,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -2398,32 +2112,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 3,
@@ -2561,32 +2249,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -2909,39 +2571,13 @@
         "propName": "WeaponPowerPerStack"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 4,
     "description": {
       "passive": "While you are <span class=\"highlight\">below 50% health</span>, you gain stat bonuses."
     },
-    "extraDescription":"Your <span class=\"highlight\">Weapon Damage</span> increases as you take sustained damage.",
+    "extraDescription": "Your <span class=\"highlight\">Weapon Damage</span> increases as you take sustained damage.",
     "activation": "passive",
     "component_items": [
       "upgrade_berserker"
@@ -3083,32 +2719,6 @@
           "propName": "WeaponPowerPerStack"
         }
       },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
-        }
-      },
       "type": "upgrade",
       "item_slot_type": "weapon",
       "item_tier": 2,
@@ -3207,7 +2817,6 @@
           "units": ""
         }
       }
-      
     ],
     "passiveUnimportantProperties": [],
     "innateProperties": [
@@ -3250,7 +2859,7 @@
         }
       }
     ],
-    "extraImportantProperties":[
+    "extraImportantProperties": [
       {
         "value": "7",
         "css_class": "bullet_damage",
@@ -3263,39 +2872,39 @@
         }
       }
     ],
-    "extraUnimportantProperties":[
+    "extraUnimportantProperties": [
       {
         "propName": "DamageDuration",
         "value": "10",
         "css_class": "duration",
         "tooltip_is_important": false,
         "title": "Duration",
-          "units": {
-            "sign": "",
-            "units": "s"
-          }
-        },
-        {
-          "propName": "DamageToStack",
-          "value": "120",
-          "css_class": "bullet_armor_up",
-          "tooltip_is_important": false,
-          "title": "Damage Taken To Stack",
-          "units": {
-            "sign": "",
-            "units": ""
-          }
-        },
-        {
-          "propName": "MaxStacks",
-          "value": 10,
-          "tooltip_is_important": false,
-          "title": "Max Stacks",
-          "units": {
-            "sign": "",
-            "units": ""
-          }
+        "units": {
+          "sign": "",
+          "units": "s"
         }
+      },
+      {
+        "propName": "DamageToStack",
+        "value": "120",
+        "css_class": "bullet_armor_up",
+        "tooltip_is_important": false,
+        "title": "Damage Taken To Stack",
+        "units": {
+          "sign": "",
+          "units": ""
+        }
+      },
+      {
+        "propName": "MaxStacks",
+        "value": 10,
+        "tooltip_is_important": false,
+        "title": "Max Stacks",
+        "units": {
+          "sign": "",
+          "units": ""
+        }
+      }
     ],
     "upgradesTo": null
   },
@@ -3413,7 +3022,7 @@
         "propName": "MaxClipBonus"
       },
       "MaxHealthLossPercent": {
-        "value": "-12",
+        "value": "12",
         "provided_property_type": "MODIFIER_VALUE_HEALTH_MAX_PERCENT",
         "css_class": "health",
         "tooltip_section": "innate",
@@ -3458,32 +3067,6 @@
         "tooltip_section": "passive",
         "tooltip_is_important": true,
         "propName": "WeaponPowerPerKill"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -3620,32 +3203,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -3936,32 +3493,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 2,
@@ -4171,32 +3702,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 2,
@@ -4300,7 +3805,7 @@
   "upgrade_stasis_bomb": {
     "id": 385745034,
     "class_name": "upgrade_stasis_bomb",
-    "name": "upgrade_stasis_bomb",
+    "name": "upgrade stasis bomb",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_utility/stasis.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_utility/stasis.webp",
@@ -4473,32 +3978,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 4,
@@ -4591,7 +4070,7 @@
   "upgrade_weapon_eater": {
     "id": 389243496,
     "class_name": "upgrade_weapon_eater",
-    "name": "upgrade_weapon_eater",
+    "name": "upgrade weapon eater",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/advanced_weaponry.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/advanced_weaponry.webp",
@@ -4707,32 +4186,6 @@
         "value": "3.5",
         "css_class": "bullet_damage",
         "propName": "WeaponPowerPerKill"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -4872,32 +4325,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -5107,32 +4534,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 2,
@@ -5317,32 +4718,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -5561,32 +4936,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 1,
@@ -5677,7 +5026,7 @@
   "upgrade_weapon_power_and_health_drain": {
     "id": 471704443,
     "class_name": "upgrade_weapon_power_and_health_drain",
-    "name": "upgrade_weapon_power_and_health_drain",
+    "name": "upgrade weapon power and health drain",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/overdrive.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/overdrive.webp",
@@ -5791,32 +5140,6 @@
         "propName": "WeaponPowerWhileActivated"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 2,
@@ -5876,7 +5199,7 @@
   "upgrade_mod_disruptor": {
     "id": 481022061,
     "class_name": "upgrade_mod_disruptor",
-    "name": "upgrade_mod_disruptor",
+    "name": "upgrade mod disruptor",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/thermal_detonator.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/thermal_detonator.webp",
@@ -6014,32 +5337,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 4,
@@ -6137,7 +5434,7 @@
   "upgrade_aoe_silence": {
     "id": 486220748,
     "class_name": "upgrade_aoe_silence",
-    "name": "upgrade_aoe_silence",
+    "name": "upgrade aoe silence",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_utility/emp_wave.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_utility/emp_wave.webp",
@@ -6266,32 +5563,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -6474,32 +5745,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 2,
@@ -6653,32 +5898,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -6910,32 +6129,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 3,
@@ -7011,7 +6204,7 @@
   "upgrade_weapon_overdrive_clip": {
     "id": 607292868,
     "class_name": "upgrade_weapon_overdrive_clip",
-    "name": "upgrade_weapon_overdrive_clip",
+    "name": "upgrade weapon overdrive clip",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/overdrive.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/overdrive.webp",
@@ -7131,32 +6324,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -7356,32 +6523,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -7598,32 +6739,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 4,
@@ -7795,32 +6910,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 1,
@@ -7974,32 +7063,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -8163,32 +7226,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 1,
@@ -8234,7 +7271,7 @@
   "upgrade_weapon_detention_ammo": {
     "id": 775925321,
     "class_name": "upgrade_weapon_detention_ammo",
-    "name": "upgrade_weapon_detention_ammo",
+    "name": "upgrade weapon detention ammo",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/detention_rounds.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/detention_rounds.webp",
@@ -8371,32 +7408,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 4,
@@ -8454,7 +7465,7 @@
   "upgrade_aoe_tech_shield": {
     "id": 776145721,
     "class_name": "upgrade_aoe_tech_shield",
-    "name": "upgrade_aoe_tech_shield",
+    "name": "upgrade aoe tech shield",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/tech_shield_pulse.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/tech_shield_pulse.webp",
@@ -8555,32 +7566,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -8728,32 +7713,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 3,
@@ -8888,32 +7847,6 @@
           "propName": "WeaponPower"
         }
       },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
-        }
-      },
       "type": "upgrade",
       "item_slot_type": "spirit",
       "item_tier": 1,
@@ -9031,7 +7964,7 @@
   "upgrade_double_jump": {
     "id": 790496977,
     "class_name": "upgrade_double_jump",
-    "name": "upgrade_double_jump",
+    "name": "upgrade double jump",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/double_jump.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/double_jump.webp",
@@ -9136,32 +8069,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -9323,32 +8230,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -9594,32 +8475,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 4,
@@ -9757,32 +8612,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -10134,32 +8963,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 4,
@@ -10418,32 +9221,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 4,
@@ -10668,32 +9445,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 2,
@@ -10737,7 +9488,7 @@
   "upgrade_aoe_smoke_bomb": {
     "id": 937242723,
     "class_name": "upgrade_aoe_smoke_bomb",
-    "name": "upgrade_aoe_smoke_bomb",
+    "name": "upgrade aoe smoke bomb",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_utility/smoke.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_utility/smoke.webp",
@@ -10880,32 +9631,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -11088,32 +9813,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 1,
@@ -11292,32 +9991,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 1,
@@ -11385,7 +10058,7 @@
   "upgrade_armor_reduction_debuff": {
     "id": 1031828968,
     "class_name": "upgrade_armor_reduction_debuff",
-    "name": "upgrade_armor_reduction_debuff",
+    "name": "upgrade armor reduction debuff",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/armor_breaking_bullets.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/armor_breaking_bullets.webp",
@@ -11498,32 +10171,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -11715,32 +10362,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 2,
@@ -11803,7 +10424,7 @@
   "upgrade_arcane_medallion": {
     "id": 1052584266,
     "class_name": "upgrade_arcane_medallion",
-    "name": "upgrade_arcane_medallion",
+    "name": "upgrade arcane medallion",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/arcane_medallion.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/arcane_medallion.webp",
@@ -11904,32 +10525,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -12126,32 +10721,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 4,
@@ -12266,7 +10835,7 @@
   "upgrade_nearby_enemy_boost": {
     "id": 1100809516,
     "class_name": "upgrade_nearby_enemy_boost",
-    "name": "upgrade_nearby_enemy_boost",
+    "name": "upgrade nearby enemy boost",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/adrenaline_rush.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/adrenaline_rush.webp",
@@ -12402,32 +10971,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -12665,32 +11208,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 3,
@@ -12828,32 +11345,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -13050,7 +11541,7 @@
   "upgrade_attack_speed_1": {
     "id": 1109351073,
     "class_name": "upgrade_attack_speed_1",
-    "name": "upgrade_attack_speed_1",
+    "name": "upgrade attack speed 1",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/fire_rate_plus.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/fire_rate_plus.webp",
@@ -13148,32 +11639,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -13361,32 +11826,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -13618,32 +12057,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -13886,32 +12299,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 3,
@@ -14057,32 +12444,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -14305,7 +12666,7 @@
   "upgrade_aoe_root": {
     "id": 1152158042,
     "class_name": "upgrade_aoe_root",
-    "name": "upgrade_aoe_root",
+    "name": "upgrade aoe root",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/area_immobilize.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/area_immobilize.webp",
@@ -14435,32 +12796,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -14677,32 +13012,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 3,
@@ -14832,32 +13141,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -15086,32 +13369,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 3,
@@ -15286,32 +13543,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -15511,32 +13742,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -15798,32 +14003,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 3,
@@ -15971,32 +14150,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -16279,32 +14432,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 3,
@@ -16546,32 +14673,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 4,
@@ -16655,7 +14756,7 @@
   "upgrade_bonus_ability_charge_3": {
     "id": 1288322878,
     "class_name": "upgrade_bonus_ability_charge_3",
-    "name": "upgrade_bonus_ability_charge_3",
+    "name": "upgrade bonus ability charge 3",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/extra_charge.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/extra_charge.webp",
@@ -16754,32 +14855,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -16962,32 +15037,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 3,
@@ -17077,7 +15126,7 @@
   "upgrade_bullet_damage_reduction_aura": {
     "id": 1298427343,
     "class_name": "upgrade_bullet_damage_reduction_aura",
-    "name": "upgrade_bullet_damage_reduction_aura",
+    "name": "upgrade bullet damage reduction aura",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/weapon_jammer.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/weapon_jammer.webp",
@@ -17184,32 +15233,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 2,
@@ -17254,7 +15277,7 @@
   "upgrade_active_bullet_shield": {
     "id": 1319649491,
     "class_name": "upgrade_active_bullet_shield",
-    "name": "upgrade_active_bullet_shield",
+    "name": "upgrade active bullet shield",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/bullet_shield.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/bullet_shield.webp",
@@ -17380,32 +15403,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 4,
@@ -17483,7 +15480,7 @@
   "upgrade_belt_fed_magazine": {
     "id": 1326137213,
     "class_name": "upgrade_belt_fed_magazine",
-    "name": "upgrade_belt_fed_magazine",
+    "name": "upgrade belt fed magazine",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/auto_reloader.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/auto_reloader.webp",
@@ -17603,32 +15600,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -17790,32 +15761,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -18016,32 +15961,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -18277,32 +16196,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -18546,32 +16439,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 4,
@@ -18786,32 +16653,6 @@
         "propName": "WeaponPowerPerStack"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 2,
@@ -18839,11 +16680,11 @@
     ],
     "passiveUnimportantProperties": [
       {
-      "propName": "DamageDuration",
-      "value": "10",
-      "css_class": "duration",
-      "tooltip_is_important": false,
-      "title": "Duration",
+        "propName": "DamageDuration",
+        "value": "10",
+        "css_class": "duration",
+        "tooltip_is_important": false,
+        "title": "Duration",
         "units": {
           "sign": "",
           "units": "s"
@@ -19036,32 +16877,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 1,
@@ -19124,7 +16939,7 @@
   "upgrade_toughness_3": {
     "id": 1448361452,
     "class_name": "upgrade_toughness_3",
-    "name": "upgrade_toughness_3",
+    "name": "upgrade toughness 3",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/health.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/health.webp",
@@ -19233,32 +17048,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 2,
@@ -19305,7 +17094,7 @@
   "upgrade_proc_disarm": {
     "id": 1503218332,
     "class_name": "upgrade_proc_disarm",
-    "name": "upgrade_proc_disarm",
+    "name": "upgrade proc disarm",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/disarm.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/disarm.webp",
@@ -19419,32 +17208,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 2,
@@ -19502,7 +17265,7 @@
   "upgrade_stabilizer": {
     "id": 1544322593,
     "class_name": "upgrade_stabilizer",
-    "name": "upgrade_stabilizer",
+    "name": "upgrade stabilizer",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/stabilizer.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/stabilizer.webp",
@@ -19612,32 +17375,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -19779,32 +17516,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 1,
@@ -19848,7 +17559,7 @@
   "upgrade_health_regen_1": {
     "id": 1575167590,
     "class_name": "upgrade_health_regen_1",
-    "name": "upgrade_health_regen_1",
+    "name": "upgrade health regen 1",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/health_regen.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/health_regen.webp",
@@ -19949,32 +17660,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 1,
@@ -20008,7 +17693,7 @@
   "upgrade_quarantine": {
     "id": 1641353616,
     "class_name": "upgrade_quarantine",
-    "name": "upgrade_quarantine",
+    "name": "upgrade quarantine",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_utility/stasis.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_utility/stasis.webp",
@@ -20106,32 +17791,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -20323,32 +17982,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -20580,32 +18213,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 1,
@@ -20708,7 +18315,7 @@
   "upgrade_slow_immunity": {
     "id": 1711193274,
     "class_name": "upgrade_slow_immunity",
-    "name": "upgrade_slow_immunity",
+    "name": "upgrade slow immunity",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/sprint_booster.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/sprint_booster.webp",
@@ -20799,32 +18406,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -20974,32 +18555,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -21272,32 +18827,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 4,
@@ -21370,7 +18899,7 @@
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "SpottedRadius",
-        "title": "SpottedRadius",
+        "title": "Spot Radius",
         "units": {
           "sign": "",
           "units": ""
@@ -21579,32 +19108,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -21880,32 +19383,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 2,
@@ -22032,32 +19509,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -22239,7 +19690,7 @@
   "upgrade_high_impact_armor": {
     "id": 1825391146,
     "class_name": "upgrade_high_impact_armor",
-    "name": "upgrade_high_impact_armor",
+    "name": "upgrade high impact armor",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/bullet_armor.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/bullet_armor.webp",
@@ -22340,32 +19791,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 2,
@@ -22385,7 +19810,7 @@
   "upgrade_small_attack_speed": {
     "id": 1889400890,
     "class_name": "upgrade_small_attack_speed",
-    "name": "upgrade_small_attack_speed",
+    "name": "upgrade small attack speed",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/fire_rate_plus.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/fire_rate_plus.webp",
@@ -22483,32 +19908,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -22664,32 +20063,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -22955,32 +20328,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 1600
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 1600
-          }
-        ],
-        "domain_maxs": [
-          100,
-          1600
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 3,
@@ -23121,7 +20468,7 @@
   "upgrade_tech_defender": {
     "id": 1947620709,
     "class_name": "upgrade_tech_defender",
-    "name": "upgrade_tech_defender",
+    "name": "upgrade tech defender",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/tech_defender.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/tech_defender.webp",
@@ -23235,32 +20582,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 4,
@@ -23323,7 +20644,7 @@
   "upgrade_imbued_ability": {
     "id": 1959600032,
     "class_name": "upgrade_imbued_ability",
-    "name": "upgrade_imbued_ability",
+    "name": "upgrade imbued ability",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/tech_damage.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/tech_damage.webp",
@@ -23451,32 +20772,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 4,
@@ -23558,7 +20853,7 @@
   "upgrade_camouflage": {
     "id": 1962740586,
     "class_name": "upgrade_camouflage",
-    "name": "upgrade_camouflage",
+    "name": "upgrade camouflage",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/camouflage_suit.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/camouflage_suit.webp",
@@ -23689,32 +20984,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -23880,32 +21149,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 2,
@@ -23993,7 +21236,7 @@
   "upgrade_long_range_slowing_tech": {
     "id": 1993213427,
     "class_name": "upgrade_long_range_slowing_tech",
-    "name": "upgrade_long_range_slowing_tech",
+    "name": "upgrade long range slowing tech",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/tech_range.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/tech_range.webp",
@@ -24113,32 +21356,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -24324,32 +21541,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 1,
@@ -24529,32 +21720,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -24750,32 +21915,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 4,
@@ -24863,7 +22002,7 @@
   "upgrade_frenzy": {
     "id": 2039312305,
     "class_name": "upgrade_frenzy",
-    "name": "upgrade_frenzy",
+    "name": "upgrade frenzy",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/health_stealing_bullets.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/health_stealing_bullets.webp",
@@ -24995,32 +22134,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -25217,32 +22330,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -25465,32 +22552,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 3,
@@ -25625,32 +22686,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -25902,32 +22937,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 2,
@@ -26135,32 +23144,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 3,
@@ -26293,32 +23276,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -26637,32 +23594,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 3,
@@ -26930,32 +23861,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 3,
@@ -27094,32 +23999,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -27401,32 +24280,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 3,
@@ -27576,32 +24429,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -27924,32 +24751,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 3,
@@ -28064,32 +24865,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -28318,32 +25093,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 4,
@@ -28562,32 +25311,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 3,
@@ -28750,32 +25473,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 3,
@@ -28919,32 +25616,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -29224,32 +25895,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 3,
@@ -29369,32 +26014,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -29623,32 +26242,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -29886,32 +26479,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 4,
@@ -30040,7 +26607,7 @@
   "upgrade_discord": {
     "id": 2417568017,
     "class_name": "upgrade_discord",
-    "name": "upgrade_discord",
+    "name": "upgrade discord",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/rupture.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/rupture.webp",
@@ -30168,32 +26735,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -30413,32 +26954,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 2,
@@ -30569,32 +27084,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -30853,32 +27342,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 3,
@@ -31092,32 +27555,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 4,
@@ -31269,7 +27706,7 @@
         "propName": "BonusHealth"
       },
       "BulletArmorReduction": {
-        "value": "-8",
+        "value": "8",
         "css_class": "bullet_armor_down",
         "tooltip_section": "passive",
         "tooltip_is_important": true,
@@ -31313,32 +27750,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -31560,32 +27971,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 3,
@@ -31690,7 +28075,7 @@
   "upgrade_cloaking_device": {
     "id": 2560018361,
     "class_name": "upgrade_cloaking_device",
-    "name": "upgrade_cloaking_device",
+    "name": "upgrade cloaking device",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_utility/cloaking_device.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_utility/cloaking_device.webp",
@@ -31818,32 +28203,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -31993,32 +28352,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 2,
@@ -32066,7 +28399,7 @@
   "upgrade_predator_precision": {
     "id": 2574520834,
     "class_name": "upgrade_predator_precision",
-    "name": "upgrade_predator_precision",
+    "name": "upgrade predator precision",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/close_range.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/close_range.webp",
@@ -32180,32 +28513,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -32387,32 +28694,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -32609,32 +28890,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 4,
@@ -32713,7 +28968,7 @@
   "upgrade_disarm": {
     "id": 2645639421,
     "class_name": "upgrade_disarm",
-    "name": "upgrade_disarm",
+    "name": "upgrade disarm",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/disarm.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/disarm.webp",
@@ -32838,32 +29093,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 1,
@@ -32951,7 +29180,7 @@
   "upgrade_stabilizing_tripod": {
     "id": 2672389724,
     "class_name": "upgrade_stabilizing_tripod",
-    "name": "upgrade_stabilizing_tripod",
+    "name": "upgrade stabilizing tripod",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_utility/base_utility.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_utility/base_utility.webp",
@@ -33104,32 +29333,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -33305,32 +29508,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 1,
@@ -33394,7 +29571,7 @@
   "upgrade_arcane_eater": {
     "id": 2717142638,
     "class_name": "upgrade_arcane_eater",
-    "name": "upgrade_arcane_eater",
+    "name": "upgrade arcane eater",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/arcane_eater.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/arcane_eater.webp",
@@ -33523,32 +29700,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -33755,32 +29906,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 3,
@@ -33922,32 +30047,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -34236,32 +30335,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 3,
@@ -34542,32 +30615,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 4,
@@ -34578,7 +30625,7 @@
     "is_active_item": true,
     "shopable": true,
     "cost": 6000,
-    "passiveCooldown": 32,
+    "activeCooldown": 32,
     "activeImportantProperties": [
       {
         "value": "400",
@@ -34864,32 +30911,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 4,
@@ -35100,32 +31121,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 1,
@@ -35168,7 +31163,7 @@
   "upgrade_height_advantage": {
     "id": 2854211216,
     "class_name": "upgrade_height_advantage",
-    "name": "upgrade_height_advantage",
+    "name": "upgrade height advantage",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/height_advantage.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/height_advantage.webp",
@@ -35267,32 +31262,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 1,
@@ -35324,7 +31293,7 @@
   "upgrade_clip_size_fixed_t3": {
     "id": 2861048274,
     "class_name": "upgrade_clip_size_fixed_t3",
-    "name": "upgrade_clip_size_fixed_t3",
+    "name": "upgrade clip size fixed t3",
     "start_trained": true,
     "properties": {
       "AbilityCastDelay": {
@@ -35418,32 +31387,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -35575,32 +31518,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -35780,32 +31697,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -36062,32 +31953,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 2,
@@ -36300,32 +32165,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 2,
@@ -36469,32 +32308,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -36806,32 +32619,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 2,
@@ -36846,7 +32633,7 @@
     "activeUnimportantProperties": [],
     "passiveImportantProperties": [
       {
-        "value": "-12",
+        "value": "12",
         "provided_property_type": "MODIFIER_VALUE_BULLET_ARMOR_DAMAGE_RESIST_REDUCTION",
         "css_class": "bullet_armor_down",
         "tooltip_section": "passive",
@@ -36907,7 +32694,7 @@
   "upgrade_magic_clarity": {
     "id": 2985482185,
     "class_name": "upgrade_magic_clarity",
-    "name": "upgrade_magic_clarity",
+    "name": "upgrade magic clarity",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/clarity.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/clarity.webp",
@@ -37029,32 +32816,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -37213,7 +32974,7 @@
         "propName": "ProcCooldown"
       },
       "TechArmorDamageReduction": {
-        "value": "-12",
+        "value": "12",
         "provided_property_type": "MODIFIER_VALUE_TECH_ARMOR_DAMAGE_RESIST_REDUCTION",
         "css_class": "tech_armor_down",
         "loc_token_override": "EscalatingExposureTechArmorDamageReduction",
@@ -37241,32 +33002,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -37394,32 +33129,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -37583,7 +33292,7 @@
   "upgrade_slowing_tech": {
     "id": 3013879715,
     "class_name": "upgrade_slowing_tech",
-    "name": "upgrade_slowing_tech",
+    "name": "upgrade slowing tech",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/slowing_tech.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/slowing_tech.webp",
@@ -37691,32 +33400,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 1,
@@ -37763,7 +33446,7 @@
   "upgrade_regenerative_armor": {
     "id": 3038950099,
     "class_name": "upgrade_regenerative_armor",
-    "name": "upgrade_regenerative_armor",
+    "name": "upgrade regenerative armor",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/last_stand.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/last_stand.webp",
@@ -37862,32 +33545,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 2,
@@ -37919,7 +33576,7 @@
   "upgrade_full_spectrum": {
     "id": 3064545951,
     "class_name": "upgrade_full_spectrum",
-    "name": "upgrade_full_spectrum",
+    "name": "upgrade full spectrum",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/tech_range.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/tech_range.webp",
@@ -38046,32 +33703,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -38263,32 +33894,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -38486,32 +34091,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 4,
@@ -38647,32 +34226,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -38937,32 +34490,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 3,
@@ -39081,32 +34608,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -39322,32 +34823,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -39617,32 +35092,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -39928,32 +35377,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 3,
@@ -40096,32 +35519,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -40462,32 +35859,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 3,
@@ -40626,32 +35997,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -40922,32 +36267,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 3,
@@ -41042,7 +36361,7 @@
   "upgrade_reload_speed": {
     "id": 3276909180,
     "class_name": "upgrade_reload_speed",
-    "name": "upgrade_reload_speed",
+    "name": "upgrade reload speed",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_utility/fast_reload.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_utility/fast_reload.webp",
@@ -41140,32 +36459,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 2,
@@ -41196,7 +36489,7 @@
   "upgrade_galvanic_storm": {
     "id": 3316018900,
     "class_name": "upgrade_galvanic_storm",
-    "name": "upgrade_galvanic_storm",
+    "name": "upgrade galvanic storm",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/electrified_bullets.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/electrified_bullets.webp",
@@ -41369,32 +36662,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 4,
@@ -41510,7 +36777,7 @@
   "upgrade_health_regen_aura": {
     "id": 3321728133,
     "class_name": "upgrade_health_regen_aura",
-    "name": "upgrade_health_regen_aura",
+    "name": "upgrade health regen aura",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/health_regen_aura.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/health_regen_aura.webp",
@@ -41622,32 +36889,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -41840,32 +37081,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -42085,32 +37300,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -42345,32 +37534,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 7000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 7000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          7000
-        ],
-        "domain_mins": [
-          0,
-          1
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 2,
@@ -42492,32 +37655,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -42663,7 +37800,7 @@
   "upgrade_cheat_death": {
     "id": 3361811174,
     "class_name": "upgrade_cheat_death",
-    "name": "upgrade_cheat_death",
+    "name": "upgrade cheat death",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/torment_aura.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/torment_aura.webp",
@@ -42806,32 +37943,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -43058,32 +38169,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 1,
@@ -43287,32 +38372,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 2,
@@ -43404,7 +38463,7 @@
   "upgrade_clip_size_3": {
     "id": 3449296332,
     "class_name": "upgrade_clip_size_3",
-    "name": "upgrade_clip_size_3",
+    "name": "upgrade clip size 3",
     "start_trained": true,
     "properties": {
       "AbilityCastDelay": {
@@ -43502,32 +38561,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 3,
@@ -43560,7 +38593,7 @@
   "upgrade_clip_size_fixed": {
     "id": 3535785353,
     "class_name": "upgrade_clip_size_fixed",
-    "name": "upgrade_clip_size_fixed",
+    "name": "upgrade clip size fixed",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/clip_size.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/clip_size.webp",
@@ -43660,32 +38693,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 2,
@@ -43718,7 +38725,7 @@
   "upgrade_charmed_wraps": {
     "id": 3572021243,
     "class_name": "upgrade_charmed_wraps",
-    "name": "upgrade_charmed_wraps",
+    "name": "upgrade charmed wraps",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/charmed_wraps.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/charmed_wraps.webp",
@@ -43822,32 +38829,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -44011,32 +38992,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 3,
@@ -44160,32 +39115,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -44409,32 +39338,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 4,
@@ -44567,32 +39470,6 @@
           "propName": "WeaponPower"
         }
       },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
-        }
-      },
       "type": "upgrade",
       "item_slot_type": "spirit",
       "item_tier": 3,
@@ -44715,32 +39592,6 @@
             "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
             "disable_value": "0",
             "propName": "WeaponPower"
-          }
-        },
-        "weapon_info": {
-          "bullet_speed_curve": {
-            "spline": [
-              {
-                "slope_incoming": 0,
-                "slope_outgoing": 0,
-                "x": 0,
-                "y": 10000
-              },
-              {
-                "slope_incoming": 0,
-                "slope_outgoing": 0,
-                "x": 100,
-                "y": 10000
-              }
-            ],
-            "domain_maxs": [
-              100,
-              10000
-            ],
-            "domain_mins": [
-              0,
-              0
-            ]
           }
         },
         "type": "upgrade",
@@ -45042,32 +39893,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 1,
@@ -45113,7 +39938,7 @@
   "upgrade_fire_rate_aura": {
     "id": 3662153307,
     "class_name": "upgrade_fire_rate_aura",
-    "name": "upgrade_fire_rate_aura",
+    "name": "upgrade fire rate aura",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_utility/fire_rate_aura.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_utility/fire_rate_aura.webp",
@@ -45224,32 +40049,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -45449,32 +40248,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 3,
@@ -45636,32 +40409,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -45849,32 +40596,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 3,
@@ -46009,32 +40730,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -46309,32 +41004,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 1,
@@ -46391,7 +41060,7 @@
   "upgrade_duration_extender": {
     "id": 3789823638,
     "class_name": "upgrade_duration_extender",
-    "name": "upgrade_duration_extender",
+    "name": "upgrade duration extender",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/tech_duration_extender.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/tech_duration_extender.webp",
@@ -46490,32 +41159,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 2,
@@ -46548,7 +41191,7 @@
   "upgrade_attack_speed_2": {
     "id": 3791295884,
     "class_name": "upgrade_attack_speed_2",
-    "name": "upgrade_attack_speed_2",
+    "name": "upgrade attack speed 2",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/fire_rate_plus_plus.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/fire_rate_plus_plus.webp",
@@ -46646,32 +41289,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -46824,32 +41441,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -47031,32 +41622,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -47276,32 +41841,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 4,
@@ -47514,32 +42053,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 2,
@@ -47726,32 +42239,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -47960,32 +42447,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -48198,32 +42659,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 3,
@@ -48356,32 +42791,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -48543,7 +42952,7 @@
   "upgrade_combo_breaker": {
     "id": 4066757307,
     "class_name": "upgrade_combo_breaker",
-    "name": "upgrade_combo_breaker",
+    "name": "upgrade combo breaker",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/tech_purge.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/tech_purge.webp",
@@ -48665,32 +43074,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
@@ -48917,32 +43300,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 3,
@@ -49080,32 +43437,6 @@
           "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
           "disable_value": "0",
           "propName": "WeaponPower"
-        }
-      },
-      "weapon_info": {
-        "bullet_speed_curve": {
-          "spline": [
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 0,
-              "y": 10000
-            },
-            {
-              "slope_incoming": 0,
-              "slope_outgoing": 0,
-              "x": 100,
-              "y": 10000
-            }
-          ],
-          "domain_maxs": [
-            100,
-            10000
-          ],
-          "domain_mins": [
-            0,
-            0
-          ]
         }
       },
       "type": "upgrade",
@@ -49406,32 +43737,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 2,
@@ -49611,32 +43916,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 1,
@@ -49705,7 +43984,7 @@
   "upgrade_ablative_coat": {
     "id": 4168302000,
     "class_name": "upgrade_ablative_coat",
-    "name": "upgrade_ablative_coat",
+    "name": "upgrade ablative coat",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_armor/bullet_shield.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_armor/bullet_shield.webp",
@@ -49834,32 +44113,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "vitality",
     "item_tier": 4,
@@ -49933,7 +44186,7 @@
   "upgrade_drum_magazine": {
     "id": 4190165534,
     "class_name": "upgrade_drum_magazine",
-    "name": "upgrade_drum_magazine",
+    "name": "upgrade drum magazine",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/auto_reloader.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_weapon/auto_reloader.webp",
@@ -50036,32 +44289,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "weapon",
     "item_tier": 3,
@@ -50102,7 +44329,7 @@
   "upgrade_charge_mastery": {
     "id": 4245766497,
     "class_name": "upgrade_charge_mastery",
-    "name": "upgrade_charge_mastery",
+    "name": "upgrade charge mastery",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/extra_charge.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/extra_charge.webp",
@@ -50221,32 +44448,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 4,
@@ -50303,7 +44504,7 @@
   "upgrade_tech_cleave": {
     "id": 4249800570,
     "class_name": "upgrade_tech_cleave",
-    "name": "upgrade_tech_cleave",
+    "name": "upgrade tech cleave",
     "start_trained": true,
     "image": "https://assets.deadlock-api.com/images/upgrades/mods_tech/quantum_chimaera.png",
     "image_webp": "https://assets.deadlock-api.com/images/upgrades/mods_tech/quantum_chimaera.webp",
@@ -50413,32 +44614,6 @@
         "propName": "WeaponPower"
       }
     },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
-      }
-    },
     "type": "upgrade",
     "item_slot_type": "spirit",
     "item_tier": 3,
@@ -50471,7 +44646,7 @@
   "upgrade_clip_size_2": {
     "id": 4284855775,
     "class_name": "upgrade_clip_size_2",
-    "name": "upgrade_clip_size_2",
+    "name": "upgrade clip size 2",
     "start_trained": true,
     "properties": {
       "AbilityCastDelay": {
@@ -50565,32 +44740,6 @@
         "provided_property_type": "MODIFIER_VALUE_WEAPON_POWER",
         "disable_value": "0",
         "propName": "WeaponPower"
-      }
-    },
-    "weapon_info": {
-      "bullet_speed_curve": {
-        "spline": [
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 0,
-            "y": 10000
-          },
-          {
-            "slope_incoming": 0,
-            "slope_outgoing": 0,
-            "x": 100,
-            "y": 10000
-          }
-        ],
-        "domain_maxs": [
-          100,
-          10000
-        ],
-        "domain_mins": [
-          0,
-          0
-        ]
       }
     },
     "type": "upgrade",
