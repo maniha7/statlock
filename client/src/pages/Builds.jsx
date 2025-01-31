@@ -147,7 +147,7 @@ const Builds = () => {
                 </div>
 
                 {/* Item List*/}
-                <div className={`flex flex-1 px-2 py-2 overflow-auto rounded-lg ${gColors.stoneBackgroundGradient}`}>
+                <div className={`flex flex-1 px-2 py-2 overflow-auto rounded-lg border-l-2 border-r-1 ${gColors.stoneBackgroundGradient}`}>
                     
                     {renderItemData()}
                     
@@ -159,11 +159,11 @@ const Builds = () => {
 
     function renderCurrentBuild(){
         return(
-            <div className={`flex flex-col flex-1 mr-2 py-2 px-4 border-b-4  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
+            <div className={`flex flex-col flex-1 mr-2 py-2 px-4 border-b-4 border-l-2 border-r-1  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
                 <div className="text-white" style={{fontWeight:'bold'}}>CURRENT BUILD</div>
 
                 <div className='flex flex-row'>
-                    <div className='flex ' onClick={()=>{return false;genItems(setres)}} style={{backgroundColor:"#fff",display:'block'}}>manually generates a file, dont click it again</div>
+                    <div className='flex ' onClick={()=>{genItems(setres)}} style={{backgroundColor:"#fff",display:'block'}}>manually generates a file, dont click it again</div>
                 </div>
                 <div>
                     {ires}

@@ -2,14 +2,16 @@ import globals from '../globals';
 const gColors = globals.globalColors
 
 import { Link } from "react-router-dom";
+import lash from "../assets/funny_lash.png"
 
 const Contact = () => {
     return(
         <>
-        <div className="flex justify-center" style={{width:'100%'}}> 
-            <div className={`flex border-b-4 border-l-2 border-r-1 rounded-lg self-center p-4 ${gColors.stoneBackgroundGradient}`}> 
+        
+        <div className="flex justify-center" style={{width:'100%'}}>
+            <div className={`flex border-b-4 border-l-2 border-r-1 rounded-lg self-center p-4 mb-15 ${gColors.stoneBackgroundGradient}`}> 
                 <div className="p-2 text-center" >
-                    <h1 className="text-3xl text-white underline font-bold">ᴄᴏɴᴛᴀᴄᴛ ᴜꜱ</h1>
+                    <h1 className="text-3xl text-white underline font-bold">ᴄᴏɴᴛᴀᴄᴛ ᴜꜱ</h1> 
               <form action="#" method="POST" className="mt-6 grid grid-cols-1 gap-y-10 sm:grid-cols-2 sm:gap-x-8 ">
                   <div className="relative">
                     <input
@@ -79,6 +81,7 @@ const Contact = () => {
                   </button>
                 </div>
               </form>
+              
             </div>
             </div>
             </div>

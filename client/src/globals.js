@@ -355,7 +355,7 @@ const globals = {
         MagicResistReduction:{sign:"",units:"%"},
         FervorBulletResist:{sign:"+",units:"%"},
         FervorFireRate:{sign:"+",units:"%"},
-        FervorMovespeed:{sign:"+",units:"%"},
+        FervorMovespeed:{sign:"+",units:""},
         WeaponPowerPerKill:{sign:"+",units:"%"},
         CritDamagePercent:{sign:"+",units:"%"},
         RicochetDamagePercent:{sign:"",units:"%"},

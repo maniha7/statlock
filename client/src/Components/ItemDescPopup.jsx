@@ -17,37 +17,6 @@ export default function ItemDescPopup(props, left){
 
     const inheritedDescription = null
 
-    //GET INNATE ITEM PROPERTIES
-    const innateItemProps = Object.keys(properties).filter((property)=>
-        properties[property].provided_property_type 
-        && properties[property].value!="0"
-        && properties[property].tooltip_section!="passive"
-        && properties[property].tooltip_section!="active"
-        && (!globals.innateHiddenProperties.has(property) || properties[property].tooltip_section=="innate")
-    )
-
-    //GET PASSIVE ITEM PROPERTIES
-    let passiveItemProps = Object.keys(properties).filter((property)=>
-        (properties[property].tooltip_section=="passive" || properties[property].tooltip_is_important)
-        && properties[property].value!="0"
-        && properties[property].tooltip_section!="innate"
-        && properties[property].tooltip_section!="active"
-        && !globals.passiveHiddenProperties.has(property) 
-    )
-    const passiveImportantProps = passiveItemProps.filter((p)=>properties[p].tooltip_is_important)
-    const passiveUnimportantProps = passiveItemProps.filter((p)=>!properties[p].tooltip_is_important)
-
-    //GET ACTIVE ITEM PROPERTIES
-    const activeItemProps = Object.keys(properties).filter((property)=>
-        (properties[property].tooltip_section=="active")
-        && properties[property].value!="0"
-        && properties[property].tooltip_section!="innate"
-        && properties[property].tooltip_section!="passive"
-        && !globals.activeHiddenProperties.has(property) 
-    )
-    const activeImportantProps = activeItemProps.filter((p)=>properties[p].tooltip_is_important)
-    const activeUnimportantProps = activeItemProps.filter((p)=>!properties[p].tooltip_is_important)
-
     const [xOffset, setXOffset] = useState(0)
     const [yOffset, setYOffset] = useState(0)
 
@@ -111,6 +80,48 @@ export default function ItemDescPopup(props, left){
         )
     }
 
+    function renderExtraImportantTooltip(){
+        if(!item.extraImportantProperties||item.extraImportantProperties.length==0){return null}
+        return(
+            <div className="flex flex-col p-2 rounded-lg mb-2 justify-center" style={{backgroundColor:itemColorPallet.dark, width:"100%"}}>
+                {item.extraImportantProperties.map((prop)=>{
+                    let propUnits = prop.units
+                    return(
+                        <div className="flex flex-row" key={prop.propName}>
+                            <div className="text-white mr-2" style={{fontWeight:'bold', fontSize:14}}>
+                                {propUnits.sign + prop.value + propUnits.units}
+                            </div>
+                            <div className="text-white flex-wrap " style={{fontSize:14}}>
+                                {prop.title}
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
+        )
+    }
+
+    function renderExtraUnimportantTooltip(){
+        if(!item.extraUnimportantProperties||item.extraUnimportantProperties.length==0){return null}
+        return(
+            <div className="flex flex-col p-2 rounded-lg mb-2 justify-center" style={{backgroundColor:itemColorPallet.dark, width:"100%"}}>
+                {item.extraUnimportantProperties.map((prop)=>{
+                    let propUnits = prop.units
+                    return(
+                        <div className="flex flex-row" key={prop.propName}>
+                            <div className="text-white mr-2" style={{fontWeight:'bold', fontSize:14}}>
+                                {propUnits.sign + prop.value + propUnits.units}
+                            </div>
+                            <div className="text-white flex-wrap " style={{fontSize:14}}>
+                                {prop.title}
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
+        )
+    }
+
     function renderActiveImportantTooltip(){
         if(item.activeImportantProperties.length==0){return null}
         return(
@@ -150,6 +161,39 @@ export default function ItemDescPopup(props, left){
                         </div>
                     )
                 })}
+            </div>
+        )
+    }
+
+    function renderExtraToolTip(){
+        if(!item.upgradesFrom){return null}
+        let itemTypeTitle="Passive"
+        if(item.upgradesFrom.activation=="instant_cast" || item.upgradesFrom.activation=="press"){
+            itemTypeTitle = "Active"
+        }
+        return(
+            <div className='flex flex-col'>
+                {/*Extra label bar */}
+                <div className="flex flex-row flex-1 pl-2 " style={{backgroundColor:itemColorPallet.dark}}>
+                    <div className="flex flex-1 py-1 ml-2 mb-0.5" style={{fontSize:16, color:gColors.itemText, fontStyle:'italic', fontWeight:"bold"}}>
+                        {itemTypeTitle}
+                    </div>
+                </div>
+
+                {/*Extra text description */}
+                {
+                    (item.extraDescription)&&
+                    <div className='px-4 text-white py-2' style={{lineHeight:1.2, fontSize:15,}} dangerouslySetInnerHTML={{__html:item.extraDescription}} />
+                }
+                
+
+                {/*Extra properties */}
+                <div className="flex flex-1 flex-row flex-wrap space-x-2 px-4" style={{width:"100%"}}>
+                    {/*"Important" properties */}
+                    {renderExtraImportantTooltip()}
+                    {/*"Unimportant" properties */}
+                    {renderExtraUnimportantTooltip()}
+                </div>
             </div>
         )
     }
@@ -198,7 +242,7 @@ export default function ItemDescPopup(props, left){
                 {/*Item text description */}
                 {
                     (!itemIsActive || item.description.active)&&
-                    <div className='px-4 text-white py-2' style={{lineHeight:1.2, fontSize:15,}} dangerouslySetInnerHTML={{__html:item.description?.desc}} />
+                    <div className='px-4 text-white py-2' style={{lineHeight:1.2, fontSize:15,}} dangerouslySetInnerHTML={{__html:item.description?.passive??item.description?.desc}} />
                 }
                 
 
@@ -267,6 +311,7 @@ export default function ItemDescPopup(props, left){
                 {renderInnateTooltip()}
                 {renderPassiveToolTip()}
                 {renderActiveTooltip()}
+                {renderExtraToolTip()}
             </div>
             
         </div> 

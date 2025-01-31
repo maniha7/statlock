@@ -9,13 +9,20 @@ export async function genItems(setres){
     const res = {}
     Object.keys(items).forEach((itemID)=>{
         const item = items[itemID]
+        
+        if(item.cost==6200){
+            item.cost=6000
+        }
 
         //get components
         if(item.component_items && item.component_items.length>0){
             let componentID = item.component_items[0]
             const componentItem = getItemByID(componentID)
-            //TODO: ADD COMPONENT
+            item.upgradeFrom = componentItem
         }
+
+        
+
 
         //get cooldown type
         if(item.properties["AbilityCooldown"]?.value!=0){
@@ -108,7 +115,6 @@ export async function genItems(setres){
             passiveUnimportantProperties: passiveUnimportantProps,
             innateProperties: innateItemProps,
             upgradesTo:null,
-            upgradesFrom:null,
         }
 
     })  
