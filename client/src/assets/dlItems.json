@@ -27634,7 +27634,7 @@
       ],
       "passiveUnimportantProperties": [
         {
-          "value": "15m",
+          "value": "15",
           "provided_property_type": "MODIFIER_VALUE_BONUS_WEAPON_DAMAGE_LONG_RANGE_MIN_RANGE",
           "css_class": "distance",
           "tooltip_section": "passive",
@@ -27643,7 +27643,7 @@
           "title": "Min. Distance",
           "units": {
             "sign": "",
-            "units": ""
+            "units": "m"
           }
         }
       ],
@@ -27676,7 +27676,7 @@
           }
         },
         {
-          "value": "-20",
+          "value": "20",
           "provided_property_type": "MODIFIER_VALUE_RELOAD_SPEED",
           "tooltip_section": "innate",
           "tooltip_is_important": false,
@@ -27711,7 +27711,7 @@
     ],
     "passiveUnimportantProperties": [
       {
-        "value": "15m",
+        "value": "15",
         "provided_property_type": "MODIFIER_VALUE_BONUS_WEAPON_DAMAGE_LONG_RANGE_MIN_RANGE",
         "css_class": "distance",
         "tooltip_section": "passive",
@@ -27720,7 +27720,7 @@
         "title": "Min. Distance",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       }
     ],
@@ -27753,7 +27753,7 @@
         }
       },
       {
-        "value": "-1m",
+        "value": "1",
         "provided_property_type": "MODIFIER_VALUE_MOVEMENT_SPEED_MAX",
         "css_class": "move_speed",
         "tooltip_section": "innate",
@@ -27761,8 +27761,8 @@
         "propName": "BonusMoveSpeed",
         "title": "Move Speed",
         "units": {
-          "sign": "+",
-          "units": "/s"
+          "sign": "-",
+          "units": "m/s"
         }
       },
       {
@@ -27804,7 +27804,7 @@
         }
       },
       {
-        "value": "-20",
+        "value": "20",
         "provided_property_type": "MODIFIER_VALUE_RELOAD_SPEED",
         "tooltip_section": "innate",
         "tooltip_is_important": false,
@@ -34289,7 +34289,7 @@
         }
       },
       {
-        "value": "2m",
+        "value": "2",
         "provided_property_type": "MODIFIER_VALUE_MOVEMENT_SPEED_MAX",
         "css_class": "move_speed",
         "tooltip_is_important": true,
@@ -34297,7 +34297,7 @@
         "title": "Move Speed",
         "units": {
           "sign": "+",
-          "units": "/s"
+          "units": "m/s"
         }
       }
     ],
@@ -34329,7 +34329,7 @@
         }
       },
       {
-        "value": "2m",
+        "value": "2",
         "provided_property_type": "MODIFIER_VALUE_MOVEMENT_SPEED_MAX",
         "css_class": "move_speed",
         "tooltip_is_important": true,
@@ -34337,7 +34337,7 @@
         "title": "Move Speed",
         "units": {
           "sign": "+",
-          "units": "/s"
+          "units": "m/s"
         }
       },
       {
@@ -41898,7 +41898,7 @@
     ],
     "passiveUnimportantProperties": [
       {
-        "value": "15m",
+        "value": "15",
         "provided_property_type": "MODIFIER_VALUE_BONUS_WEAPON_DAMAGE_LONG_RANGE_MIN_RANGE",
         "css_class": "distance",
         "tooltip_section": "passive",
@@ -41907,7 +41907,7 @@
         "title": "Min. Distance",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       }
     ],
@@ -41940,7 +41940,7 @@
         }
       },
       {
-        "value": "-20",
+        "value": "20",
         "provided_property_type": "MODIFIER_VALUE_RELOAD_SPEED",
         "tooltip_section": "innate",
         "tooltip_is_important": false,
@@ -43327,7 +43327,7 @@
     "activeCooldown": 20,
     "activeImportantProperties": [
       {
-        "value": "3m",
+        "value": "3",
         "provided_property_type": "MODIFIER_VALUE_MOVEMENT_SPEED_MAX",
         "css_class": "move_speed",
         "tooltip_section": "active",
@@ -43335,8 +43335,8 @@
         "propName": "ActiveBonusMoveSpeed",
         "title": "Move Speed",
         "units": {
-          "sign": "",
-          "units": ""
+          "sign": "+",
+          "units": "m/s"
         }
       },
       {
@@ -43365,7 +43365,7 @@
         "title": "Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       }
     ],
@@ -47776,7 +47776,7 @@
         "tooltip_section": "passive",
         "tooltip_is_important": true,
         "propName": "BonusClipSize",
-        "title": "Ammo",
+        "title": "Temporary Ammo",
         "units": {
           "sign": "+",
           "units": ""
@@ -49470,7 +49470,7 @@
         }
       },
       {
-        "value": "-5",
+        "value": "5",
         "provided_property_type": "MODIFIER_VALUE_BULLET_ARMOR_DAMAGE_RESIST_REDUCTION",
         "css_class": "bullet_armor_down",
         "tooltip_section": "innate",

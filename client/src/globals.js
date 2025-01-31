@@ -22,7 +22,9 @@ const globals = {
         stoneBackgroundGradient3: "bg-gradient-to-r from-stone-900 to-stone-800",
         offWhite:"#d2d2cb",
         itemText:"#ffefd7",
-        itemBlack:"#070d0d"
+        itemUnitsText:"#c4beb5",
+        itemLabelBlack:"#070d0d",
+        itemCost:"#9affd6"
     },
 
     itemColors: {

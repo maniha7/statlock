@@ -2,16 +2,20 @@ import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 
 import ShopItem from '../Components/ShopItem';
 import ItemDescPopup from '../Components/ItemDescPopup';
-import { getItems } from '../Util/ApiUtil';
 import { genItems } from '../Util/generateItems';
 import globals from '../globals';
 import dlItems from "../assets/dlItems.json"
+
+import souls from "../assets/souls.png"
 
 const gColors = globals.globalColors
 
 const Builds = () => {
 
-    const [displayedItems, setDisplayedItems] = useState([])
+    const [displayedT1s, setDisplayedT1s] = useState([])
+    const [displayedT2s, setDisplayedT2s] = useState([])
+    const [displayedT3s, setDisplayedT3s] = useState([])
+    const [displayedT4s, setDisplayedT4s] = useState([])
     const [itemListHeight, setItemListHeight] = useState(0)
     const [buildItems, setBuildItems] = useState([])
     const [weaponItems, setWeaponItems] = useState([])
@@ -59,10 +63,38 @@ const Builds = () => {
         weaponItemsRes.sort(itemSort)
         vitItemsRes.sort(itemSort)
         spiritItemsRes.sort(itemSort)
-        setDisplayedItems(weaponItemsRes)
+        setItemsByTier(weaponItemsRes)
         setWeaponItems(weaponItemsRes)
         setVitalityItems(vitItemsRes)
         setSpiritItems(spiritItemsRes)
+    }
+
+    function setItemsByTier(items){
+        const t1s = []
+        const t2s = []
+        const t3s = []
+        const t4s = []
+        items.forEach((item)=>{
+            switch(item.cost){
+                case 500:
+                    console.log('frog')
+                    t1s.push(item)
+                    break;
+                case 1250:
+                    t2s.push(item)
+                    break;
+                case 3000:
+                    t3s.push(item)
+                    break;
+                default:
+                    t4s.push(item)
+                    break;
+            }
+        })
+        setDisplayedT1s(t1s)
+        setDisplayedT2s(t2s)
+        setDisplayedT3s(t3s)
+        setDisplayedT4s(t4s)
     }
 
     function itemSort(item1,item2){
@@ -91,17 +123,14 @@ const Builds = () => {
 
     function changeItemMenu(type){
         switch(type){
-            case "build":
-                setDisplayedItems(buildItems)
-                break;
             case "weapon":
-                setDisplayedItems(weaponItems)
+                setItemsByTier(weaponItems)
                 break;
             case "vitality":
-                setDisplayedItems(vitalityItems)
+                setItemsByTier(vitalityItems)
                 break;
             default:
-                setDisplayedItems(spiritItems)
+                setItemsByTier(spiritItems)
                 break;
         }
     }
@@ -123,14 +152,48 @@ const Builds = () => {
                 </div> 
     )}
 
+    function renderTierData(cost, tierItems){
+        return(
+            <>  
+                <div className="flex flex-row items-center pt-2">
+                    <img className="ml-1 mr-2 drop-shadow-[0_3px_3px_rgba(0,0,0,0.55)]" style={{height:22, width:'auto'}} src={souls}/>
+                    <div className="drop-shadow-[0_3px_3px_rgba(0,0,0,0.55)]" style={{fontSize:22, fontWeight:'bold', color:gColors.itemCost}}>
+                        {cost}
+                    </div>
+                </div>
+                
+                <div className='flex flex-row flex-wrap'>
+                    {tierItems.map((item)=>{
+                        return(
+                            <ShopItem item={item} key={item["id"]} hover={openItemPopup} unhover={setPopupOpen}/>
+                        )
+                    })}
+                </div>
+            </>
+        )
+    }
+
     function renderItemData(){
         return(
-            <div className="flex flex-row flex-wrap justify-center overflow-auto" style={{overflowY:'scroll',}}>
-                {displayedItems.map((item)=>{
-                    return(
-                        <ShopItem item={item} key={item["id"]} hover={openItemPopup} unhover={setPopupOpen}/>
-                    )
-                })}
+            <div className="flex overflow-auto" style={{overflowY:'scroll',width:'100%'}}>
+                <div className="flex flex-1 flex-col ">
+
+                    {/* TIER 1 */}
+                    {renderTierData("500", displayedT1s)}
+
+                    {/* TIER 2 */}
+                    {renderTierData("1250", displayedT2s)}
+
+                    {/* TIER 3 */}
+                    {renderTierData("3000", displayedT3s)}
+
+                    {/* TIER 4 */}
+                    {renderTierData("6000+", displayedT4s)}
+
+                    {/* spacer */}
+                    <div><div style={{height:15}}></div></div>
+
+                </div>
             </div>
     )}
 
@@ -147,7 +210,7 @@ const Builds = () => {
                 </div>
 
                 {/* Item List*/}
-                <div className={`flex flex-1 px-2 py-2 overflow-auto rounded-lg border-l-2 border-r-1 ${gColors.stoneBackgroundGradient}`}>
+                <div className={`flex flex-1 px-2 overflow-auto rounded-lg border-l-2 border-r-1 ${gColors.stoneBackgroundGradient}`}>
                     
                     {renderItemData()}
                     

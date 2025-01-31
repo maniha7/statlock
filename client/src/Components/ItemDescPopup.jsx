@@ -46,9 +46,9 @@ export default function ItemDescPopup(props, left){
                     return(
                         <div key={prop.propName} className="flex flex-1 flex-col mx-1 mb-1 p-2 items-center justify-center rounded-lg min-w-[28%]" style={{backgroundColor:itemColorPallet.dark}}>
                             <div style={{fontWeight:'bold', fontSize:20, color:gColors.itemText}}>
-                                {propUnits.sign + prop.value + propUnits.units}
+                                {renderPropValue(prop)}
                             </div>
-                            <div className="text-white flex-wrap text-center" style={{fontSize:14}}>
+                            <div className="flex-wrap text-center" style={{fontSize:14, color:gColors.offWhite}}>
                                 {prop.title}
                             </div>
                             
@@ -68,9 +68,9 @@ export default function ItemDescPopup(props, left){
                     return(
                         <div className="flex flex-row" key={prop.propName}>
                             <div className="text-white mr-2" style={{fontWeight:'bold', fontSize:14}}>
-                                {propUnits.sign + prop.value + propUnits.units}
+                                {renderPropValue(prop)}
                             </div>
-                            <div className="text-white flex-wrap " style={{fontSize:14}}>
+                            <div className="flex-wrap " style={{fontSize:14, color:gColors.offWhite}}>
                                 {prop.title}
                             </div>
                         </div>
@@ -89,9 +89,9 @@ export default function ItemDescPopup(props, left){
                     return(
                         <div className="flex flex-row" key={prop.propName}>
                             <div className="text-white mr-2" style={{fontWeight:'bold', fontSize:14}}>
-                                {propUnits.sign + prop.value + propUnits.units}
+                                {renderPropValue(prop)}
                             </div>
-                            <div className="text-white flex-wrap " style={{fontSize:14}}>
+                            <div className="flex-wrap " style={{fontSize:14, color:gColors.offWhite}}>
                                 {prop.title}
                             </div>
                         </div>
@@ -110,9 +110,9 @@ export default function ItemDescPopup(props, left){
                     return(
                         <div className="flex flex-row" key={prop.propName}>
                             <div className="text-white mr-2" style={{fontWeight:'bold', fontSize:14}}>
-                                {propUnits.sign + prop.value + propUnits.units}
+                                {renderPropValue(prop)}
                             </div>
-                            <div className="text-white flex-wrap " style={{fontSize:14}}>
+                            <div className="flex-wrap " style={{fontSize:14, color:gColors.offWhite}}>
                                 {prop.title}
                             </div>
                         </div>
@@ -131,9 +131,9 @@ export default function ItemDescPopup(props, left){
                     return(
                         <div key={prop.propName} className="flex flex-1 flex-col mx-1 mb-1 p-2 items-center justify-center rounded-lg min-w-[28%]" style={{backgroundColor:itemColorPallet.dark}}>
                             <div style={{fontWeight:'bold', fontSize:20, color:gColors.itemText}}>
-                                {propUnits.sign + prop.value + propUnits.units}
+                                {renderPropValue(prop)}
                             </div>
-                            <div className="text-white flex-wrap text-center" style={{fontSize:14}}>
+                            <div className="flex-wrap text-center" style={{fontSize:14, color:gColors.offWhite}}>
                                 {prop.title}
                             </div>
                             
@@ -153,9 +153,9 @@ export default function ItemDescPopup(props, left){
                     return(
                         <div className="flex flex-row" key={prop.propName}>
                             <div className="text-white mr-2" style={{fontWeight:'bold', fontSize:14}}>
-                                {propUnits.sign + prop.value + propUnits.units}
+                                {renderPropValue(prop)}
                             </div>
-                            <div className="text-white flex-wrap " style={{fontSize:14}}>
+                            <div className=" flex-wrap " style={{fontSize:14, color:gColors.offWhite}}>
                                 {prop.title}
                             </div>
                         </div>
@@ -165,36 +165,12 @@ export default function ItemDescPopup(props, left){
         )
     }
 
-    function renderExtraToolTip(){
-        if(!item.upgradesFrom){return null}
-        let itemTypeTitle="Passive"
-        if(item.upgradesFrom.activation=="instant_cast" || item.upgradesFrom.activation=="press"){
-            itemTypeTitle = "Active"
-        }
+    function renderPropValue(prop){
+        let propUnits = prop.units
         return(
-            <div className='flex flex-col'>
-                {/*Extra label bar */}
-                <div className="flex flex-row flex-1 pl-2 " style={{backgroundColor:itemColorPallet.dark}}>
-                    <div className="flex flex-1 py-1 ml-2 mb-0.5" style={{fontSize:16, color:gColors.itemText, fontStyle:'italic', fontWeight:"bold"}}>
-                        {itemTypeTitle}
-                    </div>
-                </div>
-
-                {/*Extra text description */}
-                {
-                    (item.extraDescription)&&
-                    <div className='px-4 text-white py-2' style={{lineHeight:1.2, fontSize:15,}} dangerouslySetInnerHTML={{__html:item.extraDescription}} />
-                }
-                
-
-                {/*Extra properties */}
-                <div className="flex flex-1 flex-row flex-wrap space-x-2 px-4" style={{width:"100%"}}>
-                    {/*"Important" properties */}
-                    {renderExtraImportantTooltip()}
-                    {/*"Unimportant" properties */}
-                    {renderExtraUnimportantTooltip()}
-                </div>
-            </div>
+            <span>
+                <span style={{color:gColors.itemUnitsText}}>{propUnits.sign}</span><span style={{color:gColors.itemText}}>{prop.value}</span><span style={{color:gColors.itemUnitsText}}>{propUnits.units}</span>
+            </span>
         )
     }
 
@@ -230,7 +206,7 @@ export default function ItemDescPopup(props, left){
                         Passive
                     </div>
                     {item.passiveCooldown&&
-                        <div className="flex flex-row flex-0 px-6 text-white items-center justify-center" style={{backgroundColor:"#070d0d", fontWeight:'bold', color:gColors.itemText}}>
+                        <div className="flex flex-row flex-0 px-6 text-white items-center justify-center" style={{backgroundColor:gColors.itemLabelBlack, fontWeight:'bold', color:gColors.itemText}}>
                             <img src={timer} className="mr-1.5" style={{height:16, width:'auto'}}/>
                             <div>
                                 {item.passiveCooldown+"s"}
@@ -242,7 +218,7 @@ export default function ItemDescPopup(props, left){
                 {/*Item text description */}
                 {
                     (!itemIsActive || item.description.active)&&
-                    <div className='px-4 text-white py-2' style={{lineHeight:1.2, fontSize:15,}} dangerouslySetInnerHTML={{__html:item.description?.passive??item.description?.desc}} />
+                    <div className='px-4 py-2' style={{lineHeight:1.2, fontSize:15, color:gColors.offWhite}} dangerouslySetInnerHTML={{__html:item.description?.passive??item.description?.desc}} />
                 }
                 
 
@@ -267,7 +243,7 @@ export default function ItemDescPopup(props, left){
                         Active
                     </div>
                     {item.activeCooldown&&
-                        <div className="flex flex-row flex-0 px-6 text-white items-center justify-center" style={{backgroundColor:"#070d0d", fontWeight:'bold', color:gColors.itemText}}>
+                        <div className="flex flex-row flex-0 px-6 text-white items-center justify-center" style={{backgroundColor:gColors.itemLabelBlack, fontWeight:'bold', color:gColors.itemText}}>
                             <img src={timer} className="mr-1.5" style={{height:16, width:'auto'}}/>
                             <div>
                                 {item.activeCooldown+"s"}
@@ -279,7 +255,7 @@ export default function ItemDescPopup(props, left){
                 {/*Item text description */}
                 {
                     (itemIsActive && !item.description.active)&& 
-                    <div className='px-4 text-white py-2' style={{lineHeight:1.2, fontSize:15,}} dangerouslySetInnerHTML={{__html:item.description?.desc}} />
+                    <div className='px-4 py-2' style={{lineHeight:1.2, fontSize:15, color:gColors.offWhite}} dangerouslySetInnerHTML={{__html:item.description?.desc}} />
                     
                 }
                 <div className='px-4 text-white py-2' style={{lineHeight:1.2, fontSize:15,}} dangerouslySetInnerHTML={{__html:item.description?.active}} />
@@ -295,6 +271,39 @@ export default function ItemDescPopup(props, left){
         )
     }
 
+    function renderExtraToolTip(){
+        if(!item.upgradesFrom){return null}
+        let itemTypeTitle="Passive"
+        if(item.upgradesFrom.activation=="instant_cast" || item.upgradesFrom.activation=="press"){
+            itemTypeTitle = "Active"
+        }
+        return(
+            <div className='flex flex-col'>
+                {/*Extra label bar */}
+                <div className="flex flex-row flex-1 pl-2 " style={{backgroundColor:itemColorPallet.dark}}>
+                    <div className="flex flex-1 py-1 ml-2 mb-0.5" style={{fontSize:16, color:gColors.itemText, fontStyle:'italic', fontWeight:"bold"}}>
+                        {itemTypeTitle}
+                    </div>
+                </div>
+
+                {/*Extra text description */}
+                {
+                    (item.extraDescription)&&
+                    <div className='px-4 py-2' style={{lineHeight:1.2, fontSize:15, color:gColors.offWhite}} dangerouslySetInnerHTML={{__html:item.extraDescription}} />
+                }
+                
+
+                {/*Extra properties */}
+                <div className="flex flex-1 flex-row flex-wrap space-x-2 px-4" style={{width:"100%"}}>
+                    {/*"Important" properties */}
+                    {renderExtraImportantTooltip()}
+                    {/*"Unimportant" properties */}
+                    {renderExtraUnimportantTooltip()}
+                </div>
+            </div>
+        )
+    }
+
     return(
         item&&
         <div ref={itemRef} onMouseEnter={()=>props.open()} onMouseLeave={()=>props.close()} className="flex flex-col select-none pt-1 min-w-[18%] max-w-[18%] drop-shadow-[0_8px_8px_rgba(0,0,0,0.65)]" style={{position:'absolute', borderRadius:8, backgroundColor:itemColorPallet.medium, top:pos.y-yOffset, left:pos.x-xOffset}}>
@@ -303,7 +312,7 @@ export default function ItemDescPopup(props, left){
                 <div className="drop-shadow-[0_3px_3px_rgba(0,0,0,0.25)] mb-0.5" style={{fontSize:20, fontWeight:'bold', color:gColors.itemText}}> {item["name"]}</div>
                 <div className="flex flex-row items-center">
                     <img className="mr-1" style={{height:18, width:'auto'}} src={souls}/>
-                    <div className="mb-0.5" style={{fontSize:16, fontWeight:'bold', color:"#9affd6"}}> {item["cost"]}</div>
+                    <div className="mb-0.5" style={{fontSize:16, fontWeight:'bold', color:gColors.itemCost}}> {item["cost"]}</div>
                 </div>
             </div>
 

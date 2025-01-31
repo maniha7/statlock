@@ -21,9 +21,6 @@ export async function genItems(setres){
             item.upgradeFrom = componentItem
         }
 
-        
-
-
         //get cooldown type
         if(item.properties["AbilityCooldown"]?.value!=0){
             if(item.properties["AbilityCooldown"]?.tooltip_section!="active"){
@@ -33,7 +30,6 @@ export async function genItems(setres){
                 item.activeCooldown = item.properties["AbilityCooldown"].value
             }
         }
-
 
         //get all properties
         const properties = item.properties
