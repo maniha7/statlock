@@ -65,7 +65,7 @@ export default function ItemDescPopup(props){
     function renderPassiveUnimportantTooltip(){
         if(item.passiveUnimportantProperties.length==0){return null}
         return(
-            <div className="flex flex-col p-2 rounded-lg mb-2 justify-center" style={{backgroundColor:itemColorPallet.dark, width:"100%"}}>
+            <div className="flex flex-col p-2 rounded-lg mb-2 justify-center " style={{backgroundColor:itemColorPallet.dark, width:"100%"}}>
                 {item.passiveUnimportantProperties.map((prop)=>{
                     let propUnits = prop.units
                     return(
@@ -108,7 +108,7 @@ export default function ItemDescPopup(props){
     function renderExtraUnimportantTooltip(){
         if(!item.extraUnimportantProperties||item.extraUnimportantProperties.length==0){return null}
         return(
-            <div className="flex flex-col p-2 rounded-lg mb-2 justify-center" style={{backgroundColor:itemColorPallet.dark, width:"100%"}}>
+            <div className="flex flex-col p-2 rounded-lg mb-2 justify-center " style={{backgroundColor:itemColorPallet.dark, width:"100%"}}>
                 {item.extraUnimportantProperties.map((prop)=>{
                     let propUnits = prop.units
                     return(
@@ -129,7 +129,7 @@ export default function ItemDescPopup(props){
     function renderActiveImportantTooltip(){
         if(item.activeImportantProperties.length==0){return null}
         return(
-            <div className="flex flex-2 flex-row flex-wrap gap-2" style={{width:"100%", }}>
+            <div className="flex flex-2 flex-row flex-wrap gap-2 " style={{width:"100%", }}>
                 {item.activeImportantProperties.map((prop)=>{
                     let propUnits = prop.units
                     return(
@@ -151,7 +151,7 @@ export default function ItemDescPopup(props){
     function renderActiveUnimportantTooltip(){
         if(item.activeUnimportantProperties.length==0){return null}
         return(
-            <div className="flex flex-col p-2 rounded-lg mb-2 justify-center" style={{backgroundColor:itemColorPallet.dark, width:"100%"}}>
+            <div className="flex flex-col p-2 rounded-lg mb-2 justify-center " style={{backgroundColor:itemColorPallet.dark, width:"100%"}}>
                 {item.activeUnimportantProperties.map((prop)=>{
                     let propUnits = prop.units
                     return(
@@ -185,7 +185,7 @@ export default function ItemDescPopup(props){
 
                     let propUnits = property.units
                     return(
-                        <div key={property.propName} className="flex flex-row">
+                        <div key={property.propName} className="flex flex-row forevs">
                             <div className="mb-2 mt-1 mr-1 ml-2" style={{lineHeight:1, fontWeight:'bold', color:gColors.itemText}}>
                                 {propUnits.sign + property.value + propUnits.units}
                             </div>
@@ -203,7 +203,7 @@ export default function ItemDescPopup(props){
     function renderPassiveToolTip(){
         if(item.passiveImportantProperties.length==0 && item.passiveUnimportantProperties.length==0 && !item.passiveCooldown){return null}
         return(
-            <div className='flex flex-col'>
+            <div className='flex flex-col forevs'>
                 {/*Passive label bar */}
                 <div className="flex flex-row flex-1 pl-2 " style={{backgroundColor:itemColorPallet.dark}}>
                     <div className="flex flex-1 py-1 ml-2 mb-0.5" style={{fontSize:16, color:gColors.itemText, fontStyle:'italic', fontWeight:"bold"}}>
@@ -222,7 +222,7 @@ export default function ItemDescPopup(props){
                 {/*Item text description */}
                 {
                     (!itemIsActive || item.description.active)&&
-                    <div className='px-4 py-2' style={{lineHeight:1.2, fontSize:15, color:gColors.offWhite}} dangerouslySetInnerHTML={{__html:item.description?.passive??item.description?.desc}} />
+                    <div className='px-4 py-2 ' style={{lineHeight:1.2, fontSize:15, color:gColors.offWhite}} dangerouslySetInnerHTML={{__html:item.description?.passive??item.description?.desc}} />
                 }
                 
 
@@ -320,7 +320,7 @@ export default function ItemDescPopup(props){
         style={{position:'absolute', borderRadius:8, backgroundColor:itemColorPallet.medium, top:yOffset==0?0:pos.y-yOffset, left:yOffset==0?0:pos.x-xOffset, opacity:initted?undefined:0}}
         >
             {/*Item name and cost */}
-            <div className="flex flex-col px-2 pb-2 ml-0.5 p-2 ml-2">
+            <div className="flex flex-col px-2 pb-2 ml-0.5 p-2 ml-2 forevs">
                 <div className="drop-shadow-[0_3px_3px_rgba(0,0,0,0.25)] mb-0.5" style={{fontSize:20, fontWeight:'bold', color:gColors.itemText}}> {item["name"]}</div>
                 <div className="flex flex-row items-center">
                     <img className="mr-1" style={{height:18, width:'auto'}} src={souls}/>

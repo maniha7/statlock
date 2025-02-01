@@ -1,4 +1,6 @@
+@import url("https://p.typekit.net/p.css?s=1&k=sei2jxi&ht=tk&f=58190&a=9949264&app=typekit&e=css");
 @import "tailwindcss";
+
 
 html, body {
     background-image: url(./assets/deadlockbg.jpg);
@@ -34,22 +36,32 @@ html, body {
     font-weight:700;
 }
 
+
+
 @font-face {
-    font-family: Forevs;
-    font-style: normal;
-    src: url('./fonts/ForevsBoldItalic.otf') format("otf"),
+    font-family:"forevs";
+src:url("https://use.typekit.net/af/91afcc/000000000000000077544df8/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") 
+format("woff2"),
+url("https://use.typekit.net/af/91afcc/000000000000000077544df8/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") 
+format("woff")
+,url("https://use.typekit.net/af/91afcc/000000000000000077544df8/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") 
+format("opentype");
+font-stretch: expanded;
 }
 
-@theme {
-  --font-display: 'Forevs', "ForevsBoldItalic";
-}
-
-.fonter {
-    font-family: var(url('./fonts/ForevsBoldItalic.otf'));
-}
 
 .opacityAppear{
     animation: appear .2s ease;
+}
+
+.forevs { font-family: "forevs",sans-serif;
+    font-weight: 500;
+    font-style: normal; }
+
+.forevs2 {
+    font-family: "forevs", sans-serif;
+    font-weight: 700;
+    font-style: normal
 }
 
 @keyframes appear {

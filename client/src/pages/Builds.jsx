@@ -152,12 +152,12 @@ const Builds = () => {
                     {[...Object.keys(globals.itemTypes), "search"].map((type)=>{
                         return (
                             <div key={type} 
-                            className={`flex flex-1 flex-row mx-[2px] hover:opacity-80 py-2 justify-center hover:cursor-pointer hover:underline space-x-1 justify-center transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 ${type==activeItemType&&""}`}
+                            className={` flex flex-1 flex-row mx-[2px] hover:opacity-80 py-2 justify-center hover:cursor-pointer hover:underline space-x-1 justify-center transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 ${type==activeItemType&&""}`}
                             onClick={()=>changeItemMenu(type)} style={{backgroundColor:globals.itemColors[type].base, borderRadius:12, }}
                             >
      
                                 <img className="h-6 object-center" src={globals.itemTypeImgs[type]}/>
-                                <div className="flex" style={{fontWeight:'bold',}}>
+                                <div className="flex forevs text-md mt-0.5" style={{fontWeight:'bold',}}>
                                     {type.toUpperCase()}
                                 </div>
                                 
@@ -191,7 +191,7 @@ const Builds = () => {
     function renderItemData(){
         return(
             <div className="flex " style={{width:'100%', height:'100%'}}>
-                <div className="flex flex-1 flex-col ">
+                <div className="flex flex-1 flex-col forevs">
 
                     {/* TIER 1 */}
                     {renderTierData("500", displayedT1s)}
