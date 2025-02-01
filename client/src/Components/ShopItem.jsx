@@ -37,7 +37,7 @@ export default function ShopItem(props){
 
     return(
         <div ref={itemRef} onMouseEnter={()=>openPopup()} onMouseLeave={()=>closePopup()} className="flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)]" onClick={()=>{console.log(item)}}>
-            <div className={`flex flex-col items-center items-center max-w-[75px] hover:opacity-80 hover:cursor-pointer transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 forevs  ${bgColor}`} style={{borderRadius:8}}>
+            <div className={`flex flex-col items-center items-center max-w-[75px] hover:opacity-80 hover:cursor-pointer transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  ${bgColor}`} style={{borderRadius:8}}>
                 {/* Item Image*/}
                 <img className="mx-5 my-1 max-w-[45px] min-w-[45px] min-h-[45px] invert " style={{ alignSelf:'center'}} src={item["image"]}/>
 
@@ -54,7 +54,7 @@ export default function ShopItem(props){
                             
                         </div>
                     }
-                    <div className="flex self-center text-sm" style={{textAlign:'center', maxWidth:95, lineHeight:1.2}}>
+                    <div className="flex self-center text-sm " style={{textAlign:'center', maxWidth:95, lineHeight:1.2}}>
                         {item["name"]}
                     </div>
                 </div>

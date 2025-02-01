@@ -185,7 +185,7 @@ export default function ItemDescPopup(props){
 
                     let propUnits = property.units
                     return(
-                        <div key={property.propName} className="flex flex-row forevs">
+                        <div key={property.propName} className="flex flex-row">
                             <div className="mb-2 mt-1 mr-1 ml-2" style={{lineHeight:1, fontWeight:'bold', color:gColors.itemText}}>
                                 {propUnits.sign + property.value + propUnits.units}
                             </div>
@@ -203,7 +203,7 @@ export default function ItemDescPopup(props){
     function renderPassiveToolTip(){
         if(item.passiveImportantProperties.length==0 && item.passiveUnimportantProperties.length==0 && !item.passiveCooldown){return null}
         return(
-            <div className='flex flex-col forevs'>
+            <div className='flex flex-col'>
                 {/*Passive label bar */}
                 <div className="flex flex-row flex-1 pl-2 " style={{backgroundColor:itemColorPallet.dark}}>
                     <div className="flex flex-1 py-1 ml-2 mb-0.5" style={{fontSize:16, color:gColors.itemText, fontStyle:'italic', fontWeight:"bold"}}>
@@ -292,6 +292,14 @@ export default function ItemDescPopup(props){
                     <div className="flex flex-1 py-1 ml-2 mb-0.5" style={{fontSize:16, color:gColors.itemText, fontStyle:'italic', fontWeight:"bold"}}>
                         {item.extraTooltipLabel}
                     </div>
+                    {item.extraTooltipCooldown&&
+                        <div className="flex flex-row flex-0 px-6 text-white items-center justify-center" style={{backgroundColor:gColors.itemLabelBlack, fontWeight:'bold', color:gColors.itemText}}>
+                            <img src={timer} className="mr-1.5" style={{height:16, width:'auto'}}/>
+                            <div>
+                                {item.extraTooltipCooldown+"s"}
+                            </div>
+                        </div>
+                    }
                 </div>}
 
                 {/*Extra text description */}
@@ -328,7 +336,7 @@ export default function ItemDescPopup(props){
                 </div>
             </div>
 
-            <div className="py-2 pb-1" style={{backgroundColor:itemColorPallet.mediumDark, borderBottomLeftRadius:8,borderBottomRightRadius:8}}>
+            <div className="py-2 pb-1 " style={{backgroundColor:itemColorPallet.mediumDark, borderBottomLeftRadius:8,borderBottomRightRadius:8}}>
                 {renderInnateTooltip()}
                 {renderPassiveToolTip()}
                 {renderActiveTooltip()}
