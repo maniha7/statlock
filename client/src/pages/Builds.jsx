@@ -26,9 +26,8 @@ const Builds = () => {
     const [popupOpen, setPopupOpen] = useState(false)
     const [popupItem, setPopupItem] = useState(null)
     const [popupPosition, setPopupPosition] = useState(null)
-    const [popupDirection, setPopupDirection] = useState(0)
+    
     const [ires, setres] = useState(null)
-
     const contentWindowRef = useRef(null)
 
     useEffect(()=>{
@@ -116,6 +115,7 @@ const Builds = () => {
     }
 
     function openItemPopup(item, position){
+
         setPopupItem(item)
         setPopupPosition(position)
 

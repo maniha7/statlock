@@ -48,3 +48,17 @@ html, body {
     font-family: var(url('./fonts/ForevsBoldItalic.otf'));
 }
 
+.opacityAppear{
+    animation: appear .2s ease;
+}
+
+@keyframes appear {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+

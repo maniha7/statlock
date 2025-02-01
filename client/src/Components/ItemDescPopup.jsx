@@ -43,11 +43,11 @@ export default function ItemDescPopup(props){
     function renderPassiveImportantTooltip(){
         if(item.passiveImportantProperties.length==0){return null}
         return(
-            <div className="flex flex-2 flex-row flex-wrap mb-2" style={{width:"100%", }}>
+            <div className="flex flex-2 flex-row gap-2 flex-wrap" style={{width:"100%", }}>
                 {item.passiveImportantProperties.map((prop)=>{
                     let propUnits = prop.units
                     return(
-                        <div key={prop.propName} className="flex flex-1 flex-col mx-1 mb-1 p-2 items-center justify-center rounded-lg min-w-[28%]" style={{backgroundColor:itemColorPallet.dark}}>
+                        <div key={prop.propName} className="flex flex-1 flex-col mb-1 p-2 items-center justify-center rounded-lg min-w-[28%]" style={{backgroundColor:itemColorPallet.dark}}>
                             <div style={{fontWeight:'bold', fontSize:20, color:gColors.itemText}}>
                                 {renderPropValue(prop)}
                             </div>
@@ -86,17 +86,18 @@ export default function ItemDescPopup(props){
     function renderExtraImportantTooltip(){
         if(!item.extraImportantProperties||item.extraImportantProperties.length==0){return null}
         return(
-            <div className="flex flex-col p-2 rounded-lg mb-2 justify-center" style={{backgroundColor:itemColorPallet.dark, width:"100%"}}>
+            <div className="flex flex-2 flex-row gap-2 flex-wrap" style={{}}>
                 {item.extraImportantProperties.map((prop)=>{
                     let propUnits = prop.units
                     return(
-                        <div className="flex flex-row" key={prop.propName}>
-                            <div className="text-white mr-2" style={{fontWeight:'bold', fontSize:14}}>
+                        <div key={prop.propName} className="flex flex-1 flex-col mb-1 p-2 items-center justify-center rounded-lg min-w-[28%]" style={{backgroundColor:itemColorPallet.dark}}>
+                            <div style={{fontWeight:'bold', fontSize:20, color:gColors.itemText}}>
                                 {renderPropValue(prop)}
                             </div>
-                            <div className="flex-wrap " style={{fontSize:14, color:gColors.offWhite}}>
+                            <div className="flex-wrap text-center" style={{fontSize:14, color:gColors.offWhite}}>
                                 {prop.title}
                             </div>
+                            
                         </div>
                     )
                 })}
@@ -128,11 +129,11 @@ export default function ItemDescPopup(props){
     function renderActiveImportantTooltip(){
         if(item.activeImportantProperties.length==0){return null}
         return(
-            <div className="flex flex-2 flex-row flex-wrap mb-2" style={{width:"100%", }}>
+            <div className="flex flex-2 flex-row flex-wrap gap-2" style={{width:"100%", }}>
                 {item.activeImportantProperties.map((prop)=>{
                     let propUnits = prop.units
                     return(
-                        <div key={prop.propName} className="flex flex-1 flex-col mx-1 mb-1 p-2 items-center justify-center rounded-lg min-w-[28%]" style={{backgroundColor:itemColorPallet.dark}}>
+                        <div key={prop.propName} className="flex flex-1 flex-col mb-1 p-2 items-center justify-center rounded-lg min-w-[28%]" style={{backgroundColor:itemColorPallet.dark}}>
                             <div style={{fontWeight:'bold', fontSize:20, color:gColors.itemText}}>
                                 {renderPropValue(prop)}
                             </div>
@@ -226,7 +227,7 @@ export default function ItemDescPopup(props){
                 
 
                 {/*Passive properties */}
-                <div className="flex flex-1 flex-row flex-wrap space-x-2 px-4" style={{width:"100%"}}>
+                <div className="flex flex-1 flex-row flex-wrap gap-2 px-4" style={{width:"100%"}}>
                     {/*"Important" properties */}
                     {renderPassiveImportantTooltip()}
                     {/*"Unimportant" properties */}
@@ -268,7 +269,7 @@ export default function ItemDescPopup(props){
                 
 
                 {/*Active properties */}
-                <div className="flex flex-1 flex-row flex-wrap space-x-2 px-4" style={{width:"100%"}}>
+                <div className="flex flex-1 flex-row flex-wrap gap-2 px-4" style={{width:"100%"}}>
                     {/*"Important" properties */}
                     {renderActiveImportantTooltip()}
                     {/*"Unimportant" properties */}
@@ -283,19 +284,15 @@ export default function ItemDescPopup(props){
             && (!item.extraUnimportantProperties || item.extraUnimportantProperties.length==0) 
             && !item.extraDescription)
             { return null}
-
-        let itemTypeTitle="Passive"
-        if(item.upgradesFrom.activation=="instant_cast" || item.upgradesFrom.activation=="press"){
-            itemTypeTitle = "Active"
-        }
+        
         return(
             <div className='flex flex-col'>
                 {/*Extra label bar */}
-                <div className="flex flex-row flex-1 pl-2 " style={{backgroundColor:itemColorPallet.dark}}>
+                {item.extraTooltipLabel&&<div className="flex flex-row flex-1 pl-2 " style={{backgroundColor:itemColorPallet.dark}}>
                     <div className="flex flex-1 py-1 ml-2 mb-0.5" style={{fontSize:16, color:gColors.itemText, fontStyle:'italic', fontWeight:"bold"}}>
-                        {itemTypeTitle}
+                        {item.extraTooltipLabel}
                     </div>
-                </div>
+                </div>}
 
                 {/*Extra text description */}
                 {
@@ -305,7 +302,7 @@ export default function ItemDescPopup(props){
                 
 
                 {/*Extra properties */}
-                <div className="flex flex-1 flex-row flex-wrap space-x-2 px-4" style={{width:"100%"}}>
+                <div className="flex flex-1 flex-row flex-wrap gap-2 px-4" style={{width:"100%"}}>
                     {/*"Important" properties */}
                     {renderExtraImportantTooltip()}
                     {/*"Unimportant" properties */}
@@ -319,7 +316,7 @@ export default function ItemDescPopup(props){
         item
         &&
 
-        <div ref={itemRef} className="flex flex-col select-none pt-1 min-w-[18%] max-w-[18%] drop-shadow-[0_8px_8px_rgba(0,0,0,0.65)]" 
+        <div ref={itemRef} className="flex flex-col select-none pt-1 min-w-[18%] max-w-[18%] drop-shadow-[0_8px_8px_rgba(0,0,0,0.65)] opacityAppear" 
         style={{position:'absolute', borderRadius:8, backgroundColor:itemColorPallet.medium, top:yOffset==0?0:pos.y-yOffset, left:yOffset==0?0:pos.x-xOffset, opacity:initted?undefined:0}}
         >
             {/*Item name and cost */}

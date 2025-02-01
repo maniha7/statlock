@@ -3325,7 +3325,7 @@
         }
       },
       {
-        "value": "1m",
+        "value": "1",
         "provided_property_type": "MODIFIER_VALUE_MOVEMENT_SPEED_MAX",
         "css_class": "move_speed",
         "tooltip_section": "innate",
@@ -3334,11 +3334,11 @@
         "title": "Move Speed",
         "units": {
           "sign": "+",
-          "units": "/s"
+          "units": "m/s"
         }
       },
       {
-        "value": "-12",
+        "value": "12",
         "provided_property_type": "MODIFIER_VALUE_HEALTH_MAX_PERCENT",
         "css_class": "health",
         "tooltip_section": "innate",
@@ -8284,7 +8284,7 @@
         }
       },
       {
-        "value": "8m",
+        "value": "8",
         "css_class": "distance",
         "tooltip_section": "passive",
         "tooltip_is_important": false,
@@ -8292,7 +8292,7 @@
         "title": "Jump Radius",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       },
       {
@@ -8300,7 +8300,7 @@
         "tooltip_section": "passive",
         "tooltip_is_important": false,
         "propName": "ProcChance",
-        "title": "ProcChance",
+        "title": "Proc Chance",
         "units": {
           "sign": "",
           "units": ""
@@ -10741,8 +10741,8 @@
         "propName": "ActiveBonusFireRate",
         "title": "Fire Rate",
         "units": {
-          "sign": "",
-          "units": ""
+          "sign": "+",
+          "units": "%"
         }
       },
       {
@@ -10752,10 +10752,10 @@
         "tooltip_section": "active",
         "tooltip_is_important": true,
         "propName": "ActiveBonusLifesteal",
-        "title": "ActiveBonusLifesteal",
+        "title": "Bullet Lifesteal",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "%"
         }
       }
     ],
@@ -10771,7 +10771,7 @@
         "title": "Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       },
       {
@@ -10779,10 +10779,10 @@
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "ActiveReloadPercent",
-        "title": "ActiveReloadPercent",
+        "title": "Ammo",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "%"
         }
       }
     ],
@@ -11840,7 +11840,21 @@
     "cost": 6000,
     "activeImportantProperties": [],
     "activeUnimportantProperties": [],
-    "passiveImportantProperties": [],
+    "passiveImportantProperties": [
+      
+      {
+        "value": "Silenced",
+        "tooltip_section": "passive",
+        "tooltip_is_important": false,
+        "propName": "BuildUpPerShot",
+        "title": "Status Effect",
+        "units": {
+          "sign": "",
+          "units": ""
+        }
+      }
+      
+    ],
     "passiveUnimportantProperties": [
       {
         "value": "1.298",
@@ -16477,7 +16491,26 @@
         }
       }
     ],
-    "passiveUnimportantProperties": [],
+    "passiveUnimportantProperties": [
+      {
+        "value": "34",
+        "propName": "ProcChance",
+        "title": "Proc Chance",
+        "units": {
+          "sign": "",
+          "units": "%"
+        }
+      },
+      {
+        "value": "1.5",
+        "propName": "SlowDuration",
+        "title": "Slow Duration",
+        "units": {
+          "sign": "",
+          "units": "s"
+        }
+      }
+    ],
     "innateProperties": [
       {
         "value": "30",
@@ -18851,58 +18884,20 @@
         "title": "Duration",
         "units": {
           "sign": "",
-          "units": ""
-        }
-      },
-      {
-        "value": "30",
-        "provided_property_type": "MODIFIER_VALUE_FIRE_RATE",
-        "css_class": "bullet_damage",
-        "tooltip_section": "active",
-        "tooltip_is_important": true,
-        "propName": "AmbushBonusFireRate",
-        "title": "Ambush Fire Rate",
-        "units": {
-          "sign": "",
-          "units": ""
-        }
-      },
-      {
-        "value": "55",
-        "provided_property_type": "MODIFIER_VALUE_TECH_POWER",
-        "css_class": "tech_damage",
-        "tooltip_section": "active",
-        "tooltip_is_important": true,
-        "propName": "AmbushBonusTechPower",
-        "title": "Ambush Spirit Power",
-        "units": {
-          "sign": "",
-          "units": ""
+          "units": "s"
         }
       }
     ],
     "activeUnimportantProperties": [
       {
-        "value": "8",
-        "css_class": "duration",
-        "tooltip_section": "active",
-        "tooltip_is_important": false,
-        "propName": "AmbushDuration",
-        "title": "Ambush Duration",
-        "units": {
-          "sign": "",
-          "units": ""
-        }
-      },
-      {
-        "value": "26m",
+        "value": "26",
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "SpottedRadius",
         "title": "Spot Radius",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       }
     ],
@@ -18945,6 +18940,46 @@
         "units": {
           "sign": "+",
           "units": ""
+        }
+      }
+    ],
+    "extraImportantProperties":[
+    {
+      "value": "30",
+      "provided_property_type": "MODIFIER_VALUE_FIRE_RATE",
+      "css_class": "bullet_damage",
+      "tooltip_is_important": true,
+      "propName": "AmbushBonusFireRate",
+      "title": "Ambush Fire Rate",
+      "units": {
+        "sign": "+",
+        "units": "%"
+      }
+    },
+    {
+      "value": "55",
+      "provided_property_type": "MODIFIER_VALUE_TECH_POWER",
+      "css_class": "tech_damage",
+      "tooltip_is_important": true,
+      "propName": "AmbushBonusTechPower",
+      "title": "Ambush Spirit Power",
+      "units": {
+        "sign": "+",
+        "units": ""
+      }
+    }
+    ],
+    "extraUnimportantProperties":[
+      {
+        "value": "8",
+        "css_class": "duration",
+        "tooltip_section": "active",
+        "tooltip_is_important": false,
+        "propName": "AmbushDuration",
+        "title": "Ambush Duration",
+        "units": {
+          "sign": "",
+          "units": "s"
         }
       }
     ],
@@ -20393,7 +20428,7 @@
         }
       },
       {
-        "value": "10m",
+        "value": "10",
         "css_class": "distance",
         "tooltip_section": "active",
         "tooltip_is_important": false,
@@ -20401,7 +20436,7 @@
         "title": "Radius",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       }
     ],
@@ -20423,7 +20458,7 @@
         }
       },
       {
-        "value": "1m",
+        "value": "1",
         "provided_property_type": "MODIFIER_VALUE_SPRINT_SPEED_BONUS",
         "css_class": "move_speed",
         "tooltip_section": "innate",
@@ -20432,7 +20467,7 @@
         "title": "Sprint Speed",
         "units": {
           "sign": "+",
-          "units": "/s"
+          "units": "m/s"
         }
       },
       {
@@ -23608,7 +23643,7 @@
     "activeCooldown": 20,
     "activeImportantProperties": [
       {
-        "value": "2m",
+        "value": "2",
         "provided_property_type": "MODIFIER_VALUE_MOVEMENT_SPEED_MAX",
         "css_class": "move_speed",
         "tooltip_section": "active",
@@ -23617,7 +23652,7 @@
         "title": "Move Speed",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       },
       {
@@ -23646,11 +23681,11 @@
         "title": "Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       },
       {
-        "value": "30m",
+        "value": "30",
         "css_class": "distance",
         "tooltip_section": "active",
         "tooltip_is_important": false,
@@ -23658,7 +23693,7 @@
         "title": "Radius",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       }
     ],
@@ -27580,7 +27615,26 @@
         }
       }
     ],
-    "passiveUnimportantProperties": [],
+    "passiveUnimportantProperties": [
+      {
+        "value": "2",
+        "propName": "RicochetTargets",
+        "title": "Ricochet Targets",
+        "units": {
+          "sign": "",
+          "units": ""
+        }
+      },
+      {
+        "value": "11",
+        "propName": "RicochetRange",
+        "title": "Ricochet Range",
+        "units": {
+          "sign": "",
+          "units": "m"
+        }
+      }
+    ],
     "innateProperties": [
       {
         "value": "35",
@@ -27766,7 +27820,7 @@
     "activeUnimportantProperties": [],
     "passiveImportantProperties": [
       {
-        "value": "-8",
+        "value": "8",
         "css_class": "bullet_armor_down",
         "tooltip_section": "passive",
         "tooltip_is_important": true,
@@ -34305,19 +34359,6 @@
     },
     "activeCooldown": 36,
     "activeImportantProperties": [],
-    "activeUnimportantProperties": [
-      {
-        "value": "2",
-        "tooltip_section": "active",
-        "tooltip_is_important": false,
-        "propName": "EMPDuration",
-        "title": "EMPDuration",
-        "units": {
-          "sign": "",
-          "units": ""
-        }
-      }
-    ],
     "passiveImportantProperties": [],
     "passiveUnimportantProperties": [],
     "innateProperties": [
@@ -36281,7 +36322,7 @@
     "activeCooldown": 16,
     "activeImportantProperties": [
       {
-        "value": "11m",
+        "value": "11",
         "can_set_token_override": true,
         "css_class": "range",
         "loc_token_override": "WarpStoneRange",
@@ -36289,10 +36330,10 @@
         "tooltip_section": "active",
         "tooltip_is_important": true,
         "propName": "AbilityCastRange",
-        "title": "AbilityCastRange",
+        "title": "Teleport Range",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       },
       {
@@ -36316,10 +36357,10 @@
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "CasterBuffDuration",
-        "title": "CasterBuffDuration",
+        "title": "Buff Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       }
     ],
@@ -40273,13 +40314,13 @@
         }
       },
       {
-        "value": "-50",
+        "value": "50",
         "provided_property_type": "MODIFIER_VALUE_HEAL_AMP_RECEIVE_PERCENT",
         "tooltip_is_important": true,
         "propName": "HealAmpReceivePenaltyPercent",
         "title": "Healing Reduction",
         "units": {
-          "sign": "",
+          "sign": "-",
           "units": "%"
         }
       }
