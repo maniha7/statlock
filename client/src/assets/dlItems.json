@@ -331,7 +331,7 @@
         }
       },
       {
-        "value": "1m",
+        "value": "1",
         "provided_property_type": "MODIFIER_VALUE_SPRINT_SPEED_BONUS",
         "css_class": "move_speed",
         "tooltip_section": "innate",
@@ -340,7 +340,7 @@
         "title": "Sprint Speed",
         "units": {
           "sign": "+",
-          "units": "/s"
+          "units": "m/s"
         }
       },
       {
@@ -4964,7 +4964,7 @@
         }
       },
       {
-        "value": "-12",
+        "value": "12",
         "provided_property_type": "MODIFIER_VALUE_TECH_ARMOR_DAMAGE_RESIST_REDUCTION",
         "css_class": "tech_armor_down",
         "tooltip_section": "passive",
@@ -4972,7 +4972,7 @@
         "propName": "TechArmorDamageReduction",
         "title": "Spirit Resist On Spirit Damage",
         "units": {
-          "sign": "+",
+          "sign": "-",
           "units": "%"
         }
       }
@@ -6552,21 +6552,21 @@
     ],
     "activeUnimportantProperties": [
       {
-        "value": "25m",
+        "value": "25",
         "can_set_token_override": true,
         "css_class": "range",
         "display_units": "EDisplayUnit_Meters",
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "AbilityCastRange",
-        "title": "AbilityCastRange",
+        "title": "Cast Range",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       },
       {
-        "value": "3.0",
+        "value": "3",
         "can_set_token_override": true,
         "css_class": "duration",
         "disable_value": "0",
@@ -6576,18 +6576,7 @@
         "title": "Duration",
         "units": {
           "sign": "",
-          "units": ""
-        }
-      },
-      {
-        "value": 24,
-        "tooltip_section": "active",
-        "tooltip_is_important": false,
-        "propName": "CooldownOnMiss",
-        "title": "CooldownOnMiss",
-        "units": {
-          "sign": "",
-          "units": ""
+          "units": "s"
         }
       }
     ],
@@ -6595,7 +6584,7 @@
     "passiveUnimportantProperties": [],
     "innateProperties": [
       {
-        "value": "1m",
+        "value": "1",
         "provided_property_type": "MODIFIER_VALUE_SPRINT_SPEED_BONUS",
         "css_class": "move_speed",
         "tooltip_section": "innate",
@@ -6604,7 +6593,7 @@
         "title": "Sprint Speed",
         "units": {
           "sign": "+",
-          "units": "/s"
+          "units": "m/s"
         }
       },
       {
@@ -9277,7 +9266,7 @@
         }
       },
       {
-        "value": "16m",
+        "value": "16",
         "css_class": "distance",
         "tooltip_section": "passive",
         "tooltip_is_important": false,
@@ -9285,7 +9274,7 @@
         "title": "Radius",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       }
     ],
@@ -12555,6 +12544,19 @@
     "passiveImportantProperties": [
       {
         "value": "18",
+        "provided_property_type": "MODIFIER_VALUE_TECH_RANGE_PERCENT",
+        "css_class": "distance",
+        "tooltip_section": "passive",
+        "tooltip_is_important": true,
+        "propName": "TechRangeMultiplier",
+        "title": "Ability Range",
+        "units": {
+          "sign": "+",
+          "units": "%"
+        }
+      },
+      {
+        "value": "18",
         "provided_property_type": "MODIFIER_VALUE_BONUS_ABILITY_DURATION_PERCENTAGE",
         "css_class": "duration",
         "tooltip_section": "passive",
@@ -12578,20 +12580,8 @@
           "sign": "+",
           "units": ""
         }
-      },
-      {
-        "value": "18",
-        "provided_property_type": "MODIFIER_VALUE_TECH_RANGE_PERCENT",
-        "css_class": "distance",
-        "tooltip_section": "passive",
-        "tooltip_is_important": true,
-        "propName": "TechRangeMultiplier",
-        "title": "Ability Range",
-        "units": {
-          "sign": "+",
-          "units": "%"
-        }
       }
+      
     ],
     "passiveUnimportantProperties": [
       {
@@ -14456,21 +14446,21 @@
     "is_active_item": true,
     "shopable": true,
     "cost": 3000,
-    "passiveCooldown": 40,
+    "activeCooldown": 40,
     "activeImportantProperties": [],
     "activeUnimportantProperties": [
       {
-        "value": "45m",
+        "value": "45",
         "can_set_token_override": true,
         "css_class": "range",
         "display_units": "EDisplayUnit_Meters",
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "AbilityCastRange",
-        "title": "AbilityCastRange",
+        "title": "Cast Range",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       },
       {
@@ -14479,10 +14469,10 @@
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "StunDuration",
-        "title": "StunDuration",
+        "title": "Stun Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       }
     ],
@@ -15067,7 +15057,7 @@
     "activeUnimportantProperties": [],
     "passiveImportantProperties": [
       {
-        "value": "2m",
+        "value": "2",
         "provided_property_type": "MODIFIER_VALUE_MOVEMENT_SPEED_MAX",
         "css_class": "move_speed",
         "tooltip_section": "passive",
@@ -15076,7 +15066,7 @@
         "title": "Move Speed",
         "units": {
           "sign": "+",
-          "units": "/s"
+          "units": "m/s"
         }
       },
       {
@@ -15995,7 +15985,7 @@
         "tooltip_section": "active",
         "tooltip_is_important": true,
         "propName": "ImpactDamage",
-        "title": "ImpactDamage",
+        "title": "Damage",
         "units": {
           "sign": "",
           "units": ""
@@ -16008,10 +15998,10 @@
         "tooltip_section": "active",
         "tooltip_is_important": true,
         "propName": "SlowDuration",
-        "title": "SlowDuration",
+        "title": "Disarm & Slow Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       },
       {
@@ -16021,26 +16011,26 @@
         "tooltip_section": "active",
         "tooltip_is_important": true,
         "propName": "SlowPercent",
-        "title": "Bullet Slow Proc",
+        "title": "Movement Slow",
         "units": {
-          "sign": "+",
+          "sign": "",
           "units": "%"
         }
       }
     ],
     "activeUnimportantProperties": [
       {
-        "value": "25m",
+        "value": "25",
         "can_set_token_override": true,
         "css_class": "range",
         "display_units": "EDisplayUnit_Meters",
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "AbilityCastRange",
-        "title": "AbilityCastRange",
+        "title": "Cast Range",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       }
     ],
@@ -18622,9 +18612,9 @@
         "tooltip_section": "active",
         "tooltip_is_important": true,
         "propName": "BonusSpirit",
-        "title": "BonusSpirit",
+        "title": "Spirit Power",
         "units": {
-          "sign": "",
+          "sign": "+",
           "units": ""
         }
       }
@@ -18641,7 +18631,7 @@
         "title": "Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       }
     ],
@@ -19159,45 +19149,31 @@
     "activeCooldown": 36,
     "activeImportantProperties": [
       {
-        "value": "0m",
-        "provided_property_type": "MODIFIER_VALUE_MOVEMENT_SPEED_MAX",
-        "css_class": "move_speed",
-        "display_units": "EDisplayUnit_Meters",
-        "tooltip_section": "active",
-        "tooltip_is_important": true,
-        "propName": "BonusMoveSpeed",
-        "title": "Move Speed",
-        "units": {
-          "sign": "+",
-          "units": "/s"
-        }
-      },
-      {
         "value": "26",
         "css_class": "healing",
         "tooltip_section": "active",
         "tooltip_is_important": true,
         "propName": "HealPercentAmount",
-        "title": "HealPercentAmount",
+        "title": "Heal Amount",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "%"
         }
       }
     ],
     "activeUnimportantProperties": [
       {
-        "value": "28m",
+        "value": "28",
         "can_set_token_override": true,
         "css_class": "range",
         "display_units": "EDisplayUnit_Meters",
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "AbilityCastRange",
-        "title": "AbilityCastRange",
+        "title": "Cast Range",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       },
       {
@@ -19208,10 +19184,10 @@
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "AbilityChannelTime",
-        "title": "AbilityChannelTime",
+        "title": "Channel Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       }
     ],
@@ -19620,16 +19596,16 @@
         }
       },
       {
-        "value": "-30",
+        "value": "30",
         "provided_property_type": "MODIFIER_VALUE_MOVEMENT_GROUND_DASH_REDUCTION_PERCENT",
         "css_class": "slow",
         "tooltip_section": "active",
         "tooltip_is_important": true,
         "propName": "GroundDashReductionPercent",
-        "title": "GroundDashReductionPercent",
+        "title": "Dash Distance",
         "units": {
-          "sign": "",
-          "units": ""
+          "sign": "-",
+          "units": "%"
         }
       },
       {
@@ -19639,16 +19615,16 @@
         "tooltip_section": "active",
         "tooltip_is_important": true,
         "propName": "SlowPercent",
-        "title": "Bullet Slow Proc",
+        "title": "Movement Slow",
         "units": {
-          "sign": "+",
+          "sign": "",
           "units": "%"
         }
       }
     ],
     "activeUnimportantProperties": [
       {
-        "value": "25m",
+        "value": "25",
         "can_set_token_override": true,
         "css_class": "range",
         "display_units": "EDisplayUnit_Meters",
@@ -19658,7 +19634,7 @@
         "title": "AbilityCastRange",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       },
       {
@@ -19672,7 +19648,7 @@
         "title": "Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       }
     ],
@@ -21216,7 +21192,7 @@
         "tooltip_section": "active",
         "tooltip_is_important": true,
         "propName": "SlowPercent",
-        "title": "Bullet Slow Proc",
+        "title": "Movement Slow",
         "units": {
           "sign": "+",
           "units": "%"
@@ -21225,7 +21201,7 @@
     ],
     "activeUnimportantProperties": [
       {
-        "value": "3.0",
+        "value": "3",
         "can_set_token_override": true,
         "css_class": "duration",
         "disable_value": "0",
@@ -21235,19 +21211,19 @@
         "title": "Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       },
       {
-        "value": "14m",
+        "value": "14",
         "css_class": "distance",
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "EndRadius",
-        "title": "EndRadius",
+        "title": "End Radius",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       }
     ],
@@ -22989,7 +22965,7 @@
     "activeUnimportantProperties": [],
     "passiveImportantProperties": [
       {
-        "value": "-12",
+        "value": "12",
         "provided_property_type": "MODIFIER_VALUE_TECH_ARMOR_DAMAGE_RESIST_REDUCTION",
         "css_class": "tech_armor_down",
         "tooltip_section": "passive",
@@ -22997,7 +22973,7 @@
         "propName": "TechArmorDamageReduction",
         "title": "Spirit Resist On Spirit Damage",
         "units": {
-          "sign": "+",
+          "sign": "-",
           "units": "%"
         }
       }
@@ -25684,7 +25660,7 @@
           }
         },
         {
-          "value": "-12",
+          "value": "12",
           "provided_property_type": "MODIFIER_VALUE_TECH_ARMOR_DAMAGE_RESIST_REDUCTION",
           "css_class": "tech_armor_down",
           "tooltip_section": "passive",
@@ -25692,7 +25668,7 @@
           "propName": "TechArmorDamageReduction",
           "title": "Spirit Resist On Spirit Damage",
           "units": {
-            "sign": "+",
+            "sign": "-",
             "units": "%"
           }
         }
@@ -28052,13 +28028,13 @@
         "title": "Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       }
     ],
     "activeUnimportantProperties": [
       {
-        "value": "3m",
+        "value": "3",
         "provided_property_type": "MODIFIER_VALUE_MOVEMENT_SPEED_MAX",
         "css_class": "move_speed",
         "tooltip_section": "active",
@@ -28067,7 +28043,7 @@
         "title": "Move Speed",
         "units": {
           "sign": "+",
-          "units": "/s"
+          "units": "m/s"
         }
       },
       {
@@ -28076,21 +28052,9 @@
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "BonusTechPower",
-        "title": "BonusTechPower",
+        "title": "Spirit Power",
         "units": {
-          "sign": "",
-          "units": ""
-        }
-      },
-      {
-        "value": "5",
-        "css_class": "duration",
-        "tooltip_section": "active",
-        "tooltip_is_important": false,
-        "propName": "BuffDuration",
-        "title": "BuffDuration",
-        "units": {
-          "sign": "",
+          "sign": "+",
           "units": ""
         }
       },
@@ -28105,6 +28069,18 @@
         "units": {
           "sign": "+",
           "units": "%"
+        }
+      },
+      {
+        "value": "5",
+        "css_class": "duration",
+        "tooltip_section": "active",
+        "tooltip_is_important": false,
+        "propName": "BuffDuration",
+        "title": "Buff Duration",
+        "units": {
+          "sign": "",
+          "units": "s"
         }
       }
     ],
@@ -28961,20 +28937,6 @@
     "activeImportantProperties": [],
     "activeUnimportantProperties": [
       {
-        "value": "20m",
-        "can_set_token_override": true,
-        "css_class": "range",
-        "display_units": "EDisplayUnit_Meters",
-        "tooltip_section": "active",
-        "tooltip_is_important": false,
-        "propName": "AbilityCastRange",
-        "title": "AbilityCastRange",
-        "units": {
-          "sign": "",
-          "units": ""
-        }
-      },
-      {
         "value": "3.25",
         "can_set_token_override": true,
         "css_class": "duration",
@@ -28985,7 +28947,21 @@
         "title": "Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
+        }
+      },
+      {
+        "value": "20",
+        "can_set_token_override": true,
+        "css_class": "range",
+        "display_units": "EDisplayUnit_Meters",
+        "tooltip_section": "active",
+        "tooltip_is_important": false,
+        "propName": "AbilityCastRange",
+        "title": "Cast Range",
+        "units": {
+          "sign": "",
+          "units": "m"
         }
       }
     ],
@@ -30692,7 +30668,7 @@
         "tooltip_section": "active",
         "tooltip_is_important": true,
         "propName": "FlyingBulletShield",
-        "title": "FlyingBulletShield",
+        "title": "Bullet Shield Health",
         "units": {
           "sign": "",
           "units": ""
@@ -30706,7 +30682,7 @@
         "tooltip_section": "active",
         "tooltip_is_important": true,
         "propName": "FlyingTechShield",
-        "title": "FlyingTechShield",
+        "title": "Spirit Shield Health",
         "units": {
           "sign": "",
           "units": ""
@@ -30725,11 +30701,11 @@
         "title": "Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       },
       {
-        "value": "6m",
+        "value": "6",
         "provided_property_type": "MODIFIER_VALUE_MOVEMENT_SPEED_MAX",
         "css_class": "move_speed",
         "loc_token_override": "MagicCarpetMoveSpeed",
@@ -30737,10 +30713,10 @@
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "FlyMoveSpeed",
-        "title": "FlyMoveSpeed",
+        "title": "Bonus Fly Speed",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m/s"
         }
       },
       {
@@ -30750,10 +30726,10 @@
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "ShieldDuration",
-        "title": "ShieldDuration",
+        "title": "Shield Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       },
       {
@@ -30761,10 +30737,10 @@
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "SummonDuration",
-        "title": "SummonDuration",
+        "title": "Summon Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       }
     ],
@@ -30996,6 +30972,19 @@
         }
       },
       {
+        "value": "700",
+        "provided_property_type": "MODIFIER_VALUE_TECH_SHIELD_HEALTH_MAX",
+        "css_class": "tech_armor_up",
+        "tooltip_section": "passive",
+        "tooltip_is_important": true,
+        "propName": "TechShieldOnCast",
+        "title": "Spirit Shield",
+        "units": {
+          "sign": "",
+          "units": ""
+        }
+      },
+      {
         "value": "40",
         "can_set_token_override": true,
         "provided_property_type": "MODIFIER_VALUE_TECH_POWER",
@@ -31007,19 +30996,6 @@
         "title": "Spirit Power",
         "units": {
           "sign": "+",
-          "units": ""
-        }
-      },
-      {
-        "value": "700",
-        "provided_property_type": "MODIFIER_VALUE_TECH_SHIELD_HEALTH_MAX",
-        "css_class": "tech_armor_up",
-        "tooltip_section": "passive",
-        "tooltip_is_important": true,
-        "propName": "TechShieldOnCast",
-        "title": "Spirit Shield",
-        "units": {
-          "sign": "",
           "units": ""
         }
       }
@@ -31769,19 +31745,6 @@
     "activeCooldown": 15,
     "activeImportantProperties": [
       {
-        "value": "-12",
-        "provided_property_type": "MODIFIER_VALUE_BULLET_ARMOR_DAMAGE_RESIST_REDUCTION",
-        "css_class": "bullet_armor_down",
-        "tooltip_section": "active",
-        "tooltip_is_important": true,
-        "propName": "BulletArmorReduction",
-        "title": "BulletArmorReduction",
-        "units": {
-          "sign": "",
-          "units": ""
-        }
-      },
-      {
         "value": "50",
         "css_class": "tech_damage",
         "tooltip_section": "active",
@@ -31805,21 +31768,34 @@
           "sign": "",
           "units": "%"
         }
+      },
+      {
+        "value": "12",
+        "provided_property_type": "MODIFIER_VALUE_BULLET_ARMOR_DAMAGE_RESIST_REDUCTION",
+        "css_class": "bullet_armor_down",
+        "tooltip_section": "active",
+        "tooltip_is_important": true,
+        "propName": "BulletArmorReduction",
+        "title": "Bullet Resist",
+        "units": {
+          "sign": "-",
+          "units": "%"
+        }
       }
     ],
     "activeUnimportantProperties": [
       {
-        "value": "30m",
+        "value": "30",
         "can_set_token_override": true,
         "css_class": "range",
         "display_units": "EDisplayUnit_Meters",
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "AbilityCastRange",
-        "title": "AbilityCastRange",
+        "title": "Cast Range",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       },
       {
@@ -31834,7 +31810,7 @@
         "title": "Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       }
     ],
@@ -34887,38 +34863,38 @@
         "tooltip_section": "active",
         "tooltip_is_important": true,
         "propName": "DotHealthPercent",
-        "title": "DotHealthPercent",
+        "title": "Bleed Damage",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "%/sec"
         }
       },
       {
-        "value": "-55",
+        "value": "55",
         "provided_property_type": "MODIFIER_VALUE_HEAL_AMP_RECEIVE_PERCENT",
         "tooltip_section": "active",
         "tooltip_is_important": true,
         "propName": "HealAmpReceivePenaltyPercent",
-        "title": "HealAmpReceivePenaltyPercent",
+        "title": "Healing Reduction",
         "units": {
-          "sign": "",
-          "units": ""
+          "sign": "-",
+          "units": "%"
         }
       }
     ],
     "activeUnimportantProperties": [
       {
-        "value": "15m",
+        "value": "15",
         "can_set_token_override": true,
         "css_class": "range",
         "display_units": "EDisplayUnit_Meters",
         "tooltip_section": "active",
         "tooltip_is_important": false,
         "propName": "AbilityCastRange",
-        "title": "AbilityCastRange",
+        "title": "Cast Range",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "m"
         }
       },
       {
@@ -34932,7 +34908,7 @@
         "title": "Duration",
         "units": {
           "sign": "",
-          "units": ""
+          "units": "s"
         }
       }
     ],

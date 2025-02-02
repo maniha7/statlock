@@ -328,8 +328,10 @@ export default function ItemDescPopup(props){
         style={{position:'absolute', borderRadius:8, backgroundColor:itemColorPallet.medium, top:yOffset==0?0:pos.y-yOffset, left:yOffset==0?0:pos.x-xOffset, opacity:initted?undefined:0}}
         >
             {/*Item name and cost */}
-            <div className="flex flex-col px-2 pb-2 ml-0.5 p-2 ml-2 forevs">
-                <div className="drop-shadow-[0_3px_3px_rgba(0,0,0,0.25)] mb-0.5" style={{fontSize:20, fontWeight:'bold', color:gColors.itemText}}> {item["name"]}</div>
+            <div className="flex flex-col px-2 pb-2 ml-0.5 p-2 ml-2">
+                <div className="drop-shadow-[0_3px_3px_rgba(0,0,0,0.25)] mb-0.5 forevs" style={{fontSize:20, fontWeight:'bold', color:gColors.itemText}}>
+                    {item["name"]}
+                </div>
                 <div className="flex flex-row items-center">
                     <img className="mr-1" style={{height:18, width:'auto'}} src={souls}/>
                     <div className="mb-0.5" style={{fontSize:16, fontWeight:'bold', color:gColors.itemCost}}> {item["cost"]}</div>
