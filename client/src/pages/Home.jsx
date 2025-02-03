@@ -1,4 +1,5 @@
 import globals from '../globals';
+import logo from '../assets/statlock_logo.png'
 
 const gColors = globals.globalColors
 
@@ -8,11 +9,10 @@ import { Link } from "react-router-dom";
 const Home = () => {
     return (
     <>
-        <div className={`flex-1 flex flex-col mt-2 mb-2 ml-5 mr-10 p-2 border-b-4 border-l-2 border-r-1 border-black border-black rounded-lg text-center min-h-200 w-400 ${gColors.stoneBackgroundGradient}`} style={{}}>
-        <h1 className="text-stone-200 text-3xl mt-10 mb-2">header</h1> 
-
+        <div className={`flex-1 flex flex-col mt-2 mb-2 ml-5 mr-10 p-2 border-b-4 border-l-2 border-r-1 border-black border-black rounded-lg text-center min-h-200 w-400 ${gColors.stoneBackgroundGradient}`} style={{}}> 
+            <div className="flex justify-center mt-1 mb-5"><img className="object-center w-40" src={logo} /></div>
             {/*Main*/}
-            <div className="mb-10 mt-5 border-b-4 border-x-2 border-t-2 mx-5 bg-stone-900 rounded-lg w-[80%] self-center text-stone-500">
+            <div className="mb-10 border-b-4 border-x-2 border-t-2 mx-5 bg-stone-900 rounded-lg w-[80%] self-center text-stone-500">
 
                 {/*Steam Profile Search Bar*/}
                 <div className="flex flex-row">

@@ -1,4 +1,4 @@
-import logo from '../assets/logo.png'
+import logo from '../assets/statlock_logo.png'
 import globals from '../globals';
 import discord from '../assets/discordlogo2.png'
 import steam from '../assets/steam_logo.png'
@@ -25,7 +25,7 @@ export default function Nav(){
         <div className={`w-30 md:w-175 lg:w-185 h-flex p-2 ml-5 mt-2 border-b-4 border-r-2 rounded-lg ${gColors.stoneBackgroundGradient} mb-5`}>
             <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row space-y-1 md:space-x-10 lg:space-x-10">
 
-                <Link to='/'><div className="flex bold hover:underline hover:opacity-80  text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-stone-500 font-display "><img src={logo} className="h-5 w-5 mr-2 mt-1"  /> STATLOCK </div></Link>
+                <Link to='/'><div className="flex hover:underline hover:opacity-80 text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-stone-500 forevs2 text-lg mt-0.5"><img src={logo} className="h-6 ml-1 w-flex mr-0.5"  />statlock</div></Link>
 
                 <Link to='/stats'><div className="hover:underline hover:opacity-80 text-white hover:text-stone-200 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ꜱᴛᴀᴛꜱ</div></Link>
                 
