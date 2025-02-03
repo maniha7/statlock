@@ -1,7 +1,7 @@
 import weaponIcon from './assets/weaponitems_icon.png'
 import vitalityIcon from './assets/vitalityitems_icon.png'
 import spiritIcon from './assets/spirititems_icon.png'
-import { EyeIcon } from '@heroicons/react/24/outline'
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 const globals = {
     //ASSETS API
@@ -21,6 +21,7 @@ const globals = {
         stoneBackgroundGradient2: "bg-gradient-to-r from-stone-800 via-transparent to-stone-900",
         stoneBackgroundGradient3: "bg-gradient-to-r from-stone-900 to-stone-800",
         offWhite:"#d2d2cb",
+        itemLabelBackground:"#F0E1CB",
         itemText:"#ffefd7",
         itemUnitsText:"#c4beb5",
         itemLabelBlack:"#070d0d",
@@ -31,27 +32,39 @@ const globals = {
 
     itemColors: {
         vitality:{
+            light:"#fff", //todo?
             base:"#74b01c",
             medium:"#659818",
             mediumDark:"#4d7214",
+            mediumDarker:"#436310",
             dark:"#354f11",
+            darkPlus:"#203500",
+            veryDark:"#172801",
             t4gradient:"bg-gradient-to-br from-[#709c34] to-[#c7ee8e]",
             basetw:"bg-[#74b01c]"
 
         },
         spirit:{
+            light:"#dbbff2",
             base:"#c288f0",
             medium:"#8b56b4",
             mediumDark:"#623585",
+            mediumDarker:"#552D74",
             dark:"#43265b",
+            darkPlus:"#372248",
+            veryDark:"#291937",
             t4gradient:"bg-gradient-to-br from-[#9065b3] to-[#dabef0]",
             basetw:"bg-[#c288f0]"
         },
         weapon:{
+            light:"#fff", //todo?
             base:"#d08d3e",
             medium:"#c97a03",
             mediumDark:"#80550f",
+            mediumDarker:"#704A0C",
             dark:"#573908",
+            darkPlus:"#573908",
+            veryDark:"#392709",
             t4gradient:"bg-gradient-to-br from-[#a06d2c] to-[#f0c685]",
             basetw:"bg-[#d08d3e]"
         },
@@ -70,7 +83,33 @@ const globals = {
         weapon:weaponIcon,
         vitality:vitalityIcon,
         spirit:spiritIcon,
-        search:EyeIcon
+        search:MagnifyingGlassIcon
+    },
+
+    itemBaseBonuses:{
+        weapon:{
+            "500":6,
+            "1250":10,
+            "3000":12,
+            "6000":18
+        },
+        vitality:{
+            "500":11,
+            "1250":14,
+            "3000":17,
+            "6000":20
+        },
+        spirit:{
+            "500":4,
+            "1250":8,
+            "3000":12,
+            "6000":16
+        },
+    },
+    itemBaseBonusTypes:{
+        weapon:"Weapon Damage",
+        vitality:"Base Health",
+        spirit:"Spirit Power"
     },
 
     innateHiddenProperties: new Set([

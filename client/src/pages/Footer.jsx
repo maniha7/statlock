@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 
 const gColors = globals.globalColors
 
-export default function Footer(props){
+export default function Footer(){
     return(
 
-        <div ref={props.r} className="self-center">
+        <div className="self-center">
             <div className={`mt-2 mb-2 p-2 border-b-4 border-black w-[100%] px-10 text-lg font-bold border-stone-800`} style={{}}>
                 <div className="text-white flex flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row justify-center font-display">
 

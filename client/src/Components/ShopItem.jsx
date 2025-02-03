@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef} from 'react';
 import globals from '../globals';
+import { getItemByID } from '../Util/ItemUtil';
 
 export default function ShopItem(props){
     const gColors = globals.globalColors
@@ -8,6 +9,7 @@ export default function ShopItem(props){
     const itemTier = item.item_tier
     const itemColorPallet = globals.itemColors[item["item_slot_type"]]
     const bgColor = itemTier==4?itemColorPallet.t4gradient:itemColorPallet.basetw
+    const upgradesFrom = item.upgradesFrom?getItemByID(item.upgradesFrom):null
     
 
     const itemRef = useRef(null)
@@ -36,25 +38,44 @@ export default function ShopItem(props){
     }
 
     return(
-        <div ref={itemRef} onMouseEnter={()=>openPopup()} onMouseLeave={()=>closePopup()} className="flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)]" onClick={()=>{console.log(item)}}>
-            <div className={`flex flex-col items-center items-center max-w-[75px] hover:opacity-80 hover:cursor-pointer transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  ${bgColor}`} style={{borderRadius:8}}>
-                {/* Item Image*/}
-                <img className="mx-5 my-1 max-w-[45px] min-w-[45px] min-h-[45px] invert " style={{ alignSelf:'center'}} src={item["image"]}/>
+        <div ref={itemRef} onMouseEnter={()=>openPopup()} onMouseLeave={()=>closePopup()} className="flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)] " onClick={()=>{console.log(item)}}>
+            <div className={`flex flex-col items-center items-center max-w-[90px] hover:opacity-80 hover:cursor-pointer transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  ${bgColor}`} style={{borderRadius:8}}>
+                
+                <div style={{position:'relative'}}>
+                    {/* Item Image*/}
+                    <img className="mx-5 my-1 max-w-[52px] min-w-[52px] min-h-[52px] invert py-2 px-2" style={{ alignSelf:'center'}} src={item["image"]}/>
 
-                
-                
+                    {/* Item Upgrade Icon*/}
+                    {upgradesFrom &&
+                    <div className="absolute right-1 rounded-full p-1" style={{bottom:-5, backgroundColor:gColors.itemLabelBackground, zIndex:2}}>
+                        <img className="max-w-[22px] min-w-[22px] min-h-[22px] invert " style={{ alignSelf:'center'}} src={upgradesFrom["image"]}/>
+                    </div> 
+                        
+                    }
+
+                </div>
                 {/* Item Label*/}
-                <div className="px-[2px] pt-2 pb-1 flex flex-1 justify-center min-h-8 " style={{backgroundColor:"rgba(255,255,255,.78)", position:'relative', borderBottomRightRadius:8, borderBottomLeftRadius:8, width:'100%',}}>
+                <div className="relative px-[2px] pt-2 pb-1 flex flex-1 justify-center min-h-10 " style={{backgroundColor:gColors.itemLabelBackground, borderBottomRightRadius:8, borderBottomLeftRadius:8, width:'100%',}}>
                     {/* Active Tag */}
                     {isActive &&
-                        <div ref={tagRef} onMouseEnter={()=>openPopup()} className="py-[.5px] px-[8px]" style={{backgroundColor:gColors.itemLabelBlack, borderRadius:3, position:'absolute', top:-tagHeight}}>
-                            <div style={{fontWeight:'bold',fontSize:10,color:gColors.offWhite,}}>
+                        <div ref={tagRef} className="py-[.5px] px-[8px]" style={{backgroundColor:gColors.itemLabelBlack, borderRadius:3, position:'absolute', top:-tagHeight, zIndex:1}}>
+                            <div style={{fontWeight:800,fontSize:10,color:gColors.offWhite,}}>
                                 ACTIVE
                             </div>
                             
                         </div>
                     }
-                    <div className="flex self-center text-sm " style={{textAlign:'center', maxWidth:95, lineHeight:1.2}}>
+                    {/* Imbue Tag */}
+                    {
+                        item.imbue &&
+                        <div ref={tagRef} className="flex py-[.5px] px-[8px]" style={{backgroundColor:itemColorPallet.light, borderRadius:3, position:'absolute', top:-tagHeight}}>
+                            <div style={{fontWeight:800,fontSize:10,color:itemColorPallet.dark, textAlign:'center'}}>
+                                IMBUE
+                            </div>
+                            
+                        </div>
+                    }
+                    <div className="flex self-center forevs2" style={{textAlign:'center', fontSize:14.5, maxWidth:95, lineHeight:1.2,}}>
                         {item["name"]}
                     </div>
                 </div>

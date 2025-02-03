@@ -77,7 +77,6 @@ const Builds = () => {
         items.forEach((item)=>{
             switch(item.cost){
                 case 500:
-                    console.log('frog')
                     t1s.push(item)
                     break;
                 case 1250:
@@ -148,7 +147,7 @@ const Builds = () => {
 
     function renderItemTypeMenu(type){
         return(
-            <div className="flex flex-row self-center mb-[10px] my-[10px] px-[5px] flex-wrap gap-x-2 " style={{width:'100%'}}>
+            <div className="flex flex-row self-center mb-[10px] mb-[10px] px-[5px] flex-wrap gap-x-2 " style={{width:'100%'}}>
                     {[...Object.keys(globals.itemTypes), "search"].map((type)=>{
                         return (
                             <div key={type} 
@@ -191,7 +190,7 @@ const Builds = () => {
     function renderItemData(){
         return(
             <div className="flex " style={{width:'100%', height:'100%'}}>
-                <div className="flex flex-1 flex-col forevs">
+                <div className="flex flex-1 flex-col">
 
                     {/* TIER 1 */}
                     {renderTierData("500", displayedT1s)}
@@ -252,7 +251,7 @@ const Builds = () => {
         )}
     
     return(
-        <div ref={contentWindowRef} className="flex flex-1 flex-col" style={{width:"100%",height:'100%', minHeight:400}}>
+        <div ref={contentWindowRef} className="flex flex-1 flex-col" style={{width:"100%",height:'100%', }}>
 
             <div className="flex flex-row flex-1 px-[10px] " style={{height:'100%', maxHeight:"100%"}}>
                 {/* Current build*/}

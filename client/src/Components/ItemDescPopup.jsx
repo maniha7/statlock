@@ -3,19 +3,23 @@ import React, { useEffect, useState, useRef} from 'react';
 import globals from '../globals';
 import souls from "../assets/souls.png"
 import timer from "../assets/time_icon.png"
+import { getItemByID } from '../Util/ItemUtil';
 
 export default function ItemDescPopup(props){
 
     const item = props.item
     const pos = props.pos??{x:0,y:0}
-    const itemColorPallet = globals.itemColors[item["item_slot_type"]]
-    const hasCooldown = item.properties["AbilityCooldown"]?.value!="0"
-    
+    const upgradesFrom = item.upgradesFrom?getItemByID(item.upgradesFrom):null
+    const upgradesTo = item.upgradesTo?getItemByID(item.upgradesTo):null
     const itemIsActive = item.activation=="instant_cast" || item.activation=="press"
-    const properties = item.properties
+    const itemBaseBonus = globals.itemBaseBonuses[item["item_slot_type"]][item.cost]
+    const itemBaseBonusType = globals.itemBaseBonusTypes[item["item_slot_type"]]
+
+    const itemColorPallet = globals.itemColors[item["item_slot_type"]]
+    const upgradesFromColors = upgradesFrom?globals.itemColors[upgradesFrom["item_slot_type"]]:null
+    const upgradesToColors = upgradesTo?globals.itemColors[upgradesTo["item_slot_type"]]:null
     const gColors = globals.globalColors
 
-    const inheritedDescription = null
 
     const [xOffset, setXOffset] = useState(0)
     const [yOffset, setYOffset] = useState(0)
@@ -24,149 +28,31 @@ export default function ItemDescPopup(props){
     const itemRef = useRef(null)
 
     useEffect(()=>{
+        //position popup box relative to its respective shop item
         setXOffset(itemRef.current.clientWidth)
-        setCorrectHeight()
+        setCorrectY()
     })
 
 
-    function setCorrectHeight(){
+    function setCorrectY(){
         const baseYOffset = itemRef.current.clientHeight/2
         let res = baseYOffset
-        if(pos.y+baseYOffset>window.innerHeight){
+
+        //if box extends below bottom of window, move it up
+        if(pos.y+baseYOffset>window.innerHeight){ 
             let extraOffset = pos.y+baseYOffset - window.innerHeight + 30
             res+=extraOffset
         }
+
+        //if box extends above top of window, move it down
+        if(pos.y-baseYOffset<0){
+            console.log(pos.y-baseYOffset)
+            let extraOffset = Math.abs(pos.y-baseYOffset) + 30
+            res-=extraOffset
+        }
+
         setYOffset(res)
         setInitted(true)
-    }
-
-    function renderPassiveImportantTooltip(){
-        if(item.passiveImportantProperties.length==0){return null}
-        return(
-            <div className="flex flex-2 flex-row gap-2 flex-wrap" style={{width:"100%", }}>
-                {item.passiveImportantProperties.map((prop)=>{
-                    let propUnits = prop.units
-                    return(
-                        <div key={prop.propName} className="flex flex-1 flex-col mb-1 p-2 items-center justify-center rounded-lg min-w-[28%]" style={{backgroundColor:itemColorPallet.dark}}>
-                            <div style={{fontWeight:'bold', fontSize:20, color:gColors.itemText}}>
-                                {renderPropValue(prop)}
-                            </div>
-                            <div className="flex-wrap text-center" style={{fontSize:14, color:gColors.offWhite}}>
-                                {prop.title}
-                            </div>
-                            
-                        </div>
-                    )
-                })}
-            </div>
-        )
-    }
-
-    function renderPassiveUnimportantTooltip(){
-        if(item.passiveUnimportantProperties.length==0){return null}
-        return(
-            <div className="flex flex-col p-2 rounded-lg mb-2 justify-center " style={{backgroundColor:itemColorPallet.dark, width:"100%"}}>
-                {item.passiveUnimportantProperties.map((prop)=>{
-                    let propUnits = prop.units
-                    return(
-                        <div className="flex flex-row" key={prop.propName}>
-                            <div className="text-white mr-2" style={{fontWeight:'bold', fontSize:14}}>
-                                {renderPropValue(prop)}
-                            </div>
-                            <div className="flex-wrap " style={{fontSize:14, color:gColors.offWhite}}>
-                                {prop.title}
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
-        )
-    }
-
-    function renderExtraImportantTooltip(){
-        if(!item.extraImportantProperties||item.extraImportantProperties.length==0){return null}
-        return(
-            <div className="flex flex-2 flex-row gap-2 flex-wrap" style={{}}>
-                {item.extraImportantProperties.map((prop)=>{
-                    let propUnits = prop.units
-                    return(
-                        <div key={prop.propName} className="flex flex-1 flex-col mb-1 p-2 items-center justify-center rounded-lg min-w-[28%]" style={{backgroundColor:itemColorPallet.dark}}>
-                            <div style={{fontWeight:'bold', fontSize:20, color:gColors.itemText}}>
-                                {renderPropValue(prop)}
-                            </div>
-                            <div className="flex-wrap text-center" style={{fontSize:14, color:gColors.offWhite}}>
-                                {prop.title}
-                            </div>
-                            
-                        </div>
-                    )
-                })}
-            </div>
-        )
-    }
-
-    function renderExtraUnimportantTooltip(){
-        if(!item.extraUnimportantProperties||item.extraUnimportantProperties.length==0){return null}
-        return(
-            <div className="flex flex-col p-2 rounded-lg mb-2 justify-center " style={{backgroundColor:itemColorPallet.dark, width:"100%"}}>
-                {item.extraUnimportantProperties.map((prop)=>{
-                    let propUnits = prop.units
-                    return(
-                        <div className="flex flex-row" key={prop.propName}>
-                            <div className="text-white mr-2" style={{fontWeight:'bold', fontSize:14}}>
-                                {renderPropValue(prop)}
-                            </div>
-                            <div className="flex-wrap " style={{fontSize:14, color:gColors.offWhite}}>
-                                {prop.title}
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
-        )
-    }
-
-    function renderActiveImportantTooltip(){
-        if(item.activeImportantProperties.length==0){return null}
-        return(
-            <div className="flex flex-2 flex-row flex-wrap gap-2 " style={{width:"100%", }}>
-                {item.activeImportantProperties.map((prop)=>{
-                    let propUnits = prop.units
-                    return(
-                        <div key={prop.propName} className="flex flex-1 flex-col mb-1 p-2 items-center justify-center rounded-lg min-w-[28%]" style={{backgroundColor:itemColorPallet.dark}}>
-                            <div style={{fontWeight:'bold', fontSize:20, color:gColors.itemText}}>
-                                {renderPropValue(prop)}
-                            </div>
-                            <div className="flex-wrap text-center" style={{fontSize:14, color:gColors.offWhite}}>
-                                {prop.title}
-                            </div>
-                            
-                        </div>
-                    )
-                })}
-            </div>
-        )
-    }
-
-    function renderActiveUnimportantTooltip(){
-        if(item.activeUnimportantProperties.length==0){return null}
-        return(
-            <div className="flex flex-col p-2 rounded-lg mb-2 justify-center " style={{backgroundColor:itemColorPallet.dark, width:"100%"}}>
-                {item.activeUnimportantProperties.map((prop)=>{
-                    let propUnits = prop.units
-                    return(
-                        <div className="flex flex-row" key={prop.propName}>
-                            <div className="text-white mr-2" style={{fontWeight:'bold', fontSize:14}}>
-                                {renderPropValue(prop)}
-                            </div>
-                            <div className=" flex-wrap " style={{fontSize:14, color:gColors.offWhite}}>
-                                {prop.title}
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
-        )
     }
 
     function renderPropValue(prop){
@@ -178,11 +64,67 @@ export default function ItemDescPopup(props){
         )
     }
 
+    /**render a single "important" item property (non-innate prop which gets its own container)**/
+    function renderImportantProp(prop){
+        return(
+            <div key={prop.propName} className="flex flex-1 flex-col mb-1 p-2 items-center justify-center rounded-lg min-w-[28%]" style={{backgroundColor:itemColorPallet.dark}}>
+                <div style={{fontWeight:'bold', fontSize:20, color:gColors.itemText}}>
+                    {renderPropValue(prop)}
+                </div>
+                <div className="flex-wrap text-center" style={{fontSize:14, color:gColors.offWhite}}>
+                    {prop.title}
+                </div>
+                
+            </div>
+        )
+    }
+
+    /**render a single "unimportant" item property (grouped into container with other unimportant properties of same class (active, passive, or extra))**/
+    function renderUnimportantProp(prop){
+        return(
+            <div className="flex flex-row" key={prop.propName}>
+                <div className="text-white mr-2" style={{fontWeight:'bold', fontSize:14}}>
+                    {renderPropValue(prop)}
+                </div>
+                <div className="flex-wrap " style={{fontSize:14, color:gColors.offWhite}}>
+                    {prop.title}
+                </div>
+            </div>
+        )
+    }
+
+    /**render tooltip of all important properties of a class (active, passive, or extra)**/
+    function renderImportantTooltip(tooltipItems){
+        if(!tooltipItems || tooltipItems.length == 0){return null}
+        return(
+            <div className="flex flex-2 flex-row gap-2 flex-wrap" style={{width:"100%", }}>
+                {tooltipItems.map((prop)=>{
+                    return(
+                        renderImportantProp(prop)
+                    )
+                })}
+            </div>
+        )
+    }
+
+    /**render tooltip of all unimportant properties of a class (active, passive, or extra)**/
+    function renderUnimportantTooltip(tooltipItems){
+        if(!tooltipItems || tooltipItems.length == 0){return null}
+        return(
+            <div className="flex flex-col p-2 rounded-lg mb-2 justify-center " style={{backgroundColor:itemColorPallet.dark, width:"100%"}}>
+                {tooltipItems.map((prop)=>{
+                    return(
+                        renderUnimportantProp(prop)
+                    )
+                })}
+            </div>
+        )
+    }
+
     function renderInnateTooltip(){
         return(
             <div className="px-2">
                 {item.innateProperties.map((property)=>{
-
                     let propUnits = property.units
                     return(
                         <div key={property.propName} className="flex flex-row">
@@ -229,9 +171,9 @@ export default function ItemDescPopup(props){
                 {/*Passive properties */}
                 <div className="flex flex-1 flex-row flex-wrap gap-2 px-4" style={{width:"100%"}}>
                     {/*"Important" properties */}
-                    {renderPassiveImportantTooltip()}
+                    {renderImportantTooltip(item.passiveImportantProperties)}
                     {/*"Unimportant" properties */}
-                    {renderPassiveUnimportantTooltip()}
+                    {renderUnimportantTooltip(item.passiveUnimportantProperties)}
                 </div>
             </div>
         )
@@ -271,9 +213,9 @@ export default function ItemDescPopup(props){
                 {/*Active properties */}
                 <div className="flex flex-1 flex-row flex-wrap gap-2 px-4" style={{width:"100%"}}>
                     {/*"Important" properties */}
-                    {renderActiveImportantTooltip()}
+                    {renderImportantTooltip(item.activeImportantProperties)}
                     {/*"Unimportant" properties */}
-                    {renderActiveUnimportantTooltip()}
+                    {renderUnimportantTooltip(item.activeUnimportantProperties)}
                 </div>
             </div>
         )
@@ -312,9 +254,9 @@ export default function ItemDescPopup(props){
                 {/*Extra properties */}
                 <div className="flex flex-1 flex-row flex-wrap gap-2 px-4" style={{width:"100%"}}>
                     {/*"Important" properties */}
-                    {renderExtraImportantTooltip()}
+                    {renderImportantTooltip(item.extraImportantProperties)}
                     {/*"Unimportant" properties */}
-                    {renderExtraUnimportantTooltip()}
+                    {renderUnimportantTooltip(item.extraUnimportantProperties)}
                 </div>
             </div>
         )
@@ -327,25 +269,71 @@ export default function ItemDescPopup(props){
         <div ref={itemRef} className="flex flex-col select-none pt-1 min-w-[18%] max-w-[18%] drop-shadow-[0_8px_8px_rgba(0,0,0,0.65)] opacityAppear" 
         style={{position:'absolute', borderRadius:8, backgroundColor:itemColorPallet.medium, top:yOffset==0?0:pos.y-yOffset, left:yOffset==0?0:pos.x-xOffset, opacity:initted?undefined:0}}
         >
-            {/*Item name and cost */}
-            <div className="flex flex-col px-2 pb-2 ml-0.5 p-2 ml-2">
-                <div className="drop-shadow-[0_3px_3px_rgba(0,0,0,0.25)] mb-0.5 forevs" style={{fontSize:20, fontWeight:'bold', color:gColors.itemText}}>
-                    {item["name"]}
+            
+            <div className="flex flex-row px-4 py-2 width-full" >
+                <div className="flex flex-1 flex-col">
+                    {/*Item name*/}
+                    <div className="drop-shadow-[0_3px_3px_rgba(0,0,0,0.25)] mb-0.5 forevs" style={{fontSize:20, fontWeight:'bold', color:gColors.itemText}}>
+                        {item.name}
+                    </div>
+                    {/*Item cost*/}
+                    <div className="flex flex-row items-center"> 
+                        <img className="mr-1" style={{height:18, width:'auto'}} src={souls}/>
+                        <div className="mb-0.5" style={{fontSize:16, fontWeight:'bold', color:gColors.itemCost}}> {item.cost}</div>
+                    </div>
                 </div>
-                <div className="flex flex-row items-center">
-                    <img className="mr-1" style={{height:18, width:'auto'}} src={souls}/>
-                    <div className="mb-0.5" style={{fontSize:16, fontWeight:'bold', color:gColors.itemCost}}> {item["cost"]}</div>
+                {/*Item base bonus*/}
+                <div className="flex flex-col justify-center text-center" style={{fontWeight:700,}}>
+                    <div style={{backgroundColor:itemColorPallet.mediumDark,}}>
+                        <div className="px-2" >
+                            <span style={{color:gColors.itemUnitsText}}>+</span><span style={{color:gColors.offWhite}}>{itemBaseBonus}</span><span style={{color:gColors.itemUnitsText}}>%</span>
+                        </div>
+                        <div className="px-2 py-[2px] flex-wrap max-w-[85px]" style={{backgroundColor:itemColorPallet.mediumDarker, fontSize:11, fontWeight:600, color:gColors.itemUnitsText}}>
+                            {itemBaseBonusType}
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
+            
 
-            <div className="py-2 pb-1 " style={{backgroundColor:itemColorPallet.mediumDark, borderBottomLeftRadius:8,borderBottomRightRadius:8}}>
+            {/*Component*/}
+            {
+                upgradesFrom&&
+                <div className="flex flex-col px-2 py-1" style={{backgroundColor:itemColorPallet.darkPlus, color:gColors.offWhite, fontSize:12, fontWeight:800}}>
+                    COMPONENTS:
+                    <div className="flex flex-row rounded-full items-center mt-1" style={{backgroundColor:itemColorPallet.veryDark}}>
+                        <div className="p-1 rounded-full" style={{backgroundColor:upgradesFromColors.base}}>
+                            <img className="max-w-[28px] min-w-[28px] min-h-[28px] invert " style={{ alignSelf:'center'}} src={upgradesFrom.image}/>
+                        </div>
+                        <span className="pl-2" style={{fontSize:14, fontWeight:700}}>{upgradesFrom.name}</span>  
+                    </div>
+                </div>
+            }
+
+            <div className="py-2 pb-1 " style={{backgroundColor:itemColorPallet.mediumDark, borderBottomLeftRadius:upgradesTo?0:8,borderBottomRightRadius:upgradesTo?0:8}}>
                 {renderInnateTooltip()}
                 {renderPassiveToolTip()}
                 {renderActiveTooltip()}
                 {renderExtraToolTip()}
             </div>
+
+            {/*Is Component Of*/}
+            {
+                upgradesTo&&
+                <div className="flex flex-col px-2 py-1" style={{backgroundColor:itemColorPallet.mediumDarker, color:gColors.offWhite, fontSize:12, fontWeight:800, borderBottomLeftRadius:5,borderBottomRightRadius:5}}>
+                    IS COMPONENT OF:
+                    <div className="flex flex-row rounded-full items-center mt-1" style={{backgroundColor:itemColorPallet.dark}}>
+                        <div className="p-1 rounded-full" style={{backgroundColor:upgradesToColors.base}}>
+                            <img className="max-w-[28px] min-w-[28px] min-h-[28px] invert " style={{ alignSelf:'center'}} src={upgradesTo.image}/>
+                        </div>
+                        <span className="pl-2" style={{fontSize:14, fontWeight:700}}>{upgradesTo.name}</span>  
+                    </div>
+                </div>
+            }
             
         </div> 
     )
 
 }
+
