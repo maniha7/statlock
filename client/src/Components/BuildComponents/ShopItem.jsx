@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef} from 'react';
-import globals from '../globals';
-import { getItemByID } from '../Util/ItemUtil';
+import globals from '../../globals';
+import { getItemByID } from '../../Util/ItemUtil';
 
 export default function ShopItem(props){
     const gColors = globals.globalColors
@@ -38,10 +38,10 @@ export default function ShopItem(props){
     }
 
     return(
-        <div ref={itemRef} onClick={()=>props.click(item)} onMouseEnter={()=>openPopup()} onMouseLeave={()=>closePopup()} className="flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)] ">
+        <div ref={itemRef} onClick={()=>props.click(item)} onMouseEnter={()=>openPopup()} onMouseLeave={()=>closePopup()} className="flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)] "  >
             <div className={`flex flex-col items-center items-center max-w-[90px] hover:opacity-80 hover:cursor-pointer transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  ${bgColor}`} style={{borderRadius:8}}>
                 
-                <div style={{position:'relative'}}>
+                <div style={{position:'relative', padding:0}}>
                     {/* Item Image*/}
                     <img className="mx-5 my-1 max-w-[52px] min-w-[52px] min-h-[52px] invert py-2 px-2" style={{ alignSelf:'center'}} src={item["image"]}/>
 
@@ -52,7 +52,14 @@ export default function ShopItem(props){
                     </div> 
                         
                     }
-
+                    {/* 'Item has been bought' overlay*/}
+                    {props.bought&&
+                    <div className='absolute flex flex-wrap max-w-[90px] left-[1px] top-0 items-center justify-center' style={{width:'100%', height:'100%', backgroundColor:"rgba(0,0,0,.8)", borderTopLeftRadius:7, borderTopRightRadius:7}}>
+                        <div className='text-white' style={{fontWeight:700}}>
+                            In Build
+                        </div>
+                    </div>
+                    }
                 </div>
                 {/* Item Label*/}
                 <div className="relative px-[2px] pt-2 pb-1 flex flex-1 justify-center min-h-10 " style={{backgroundColor:gColors.itemLabelBackground, borderBottomRightRadius:8, borderBottomLeftRadius:8, width:'100%',}}>

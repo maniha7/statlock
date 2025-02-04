@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import globals from '../globals';
+import globals from '../../globals';
 
 const gColors = globals.globalColors
 

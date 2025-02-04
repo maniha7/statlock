@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
-
-import ShopItem from '../Components/ShopItem';
-import ItemDescPopup from '../Components/ItemDescPopup';
-import LineChart from '../Components/LineChart';
-import { genItems, filterItems } from '../Util/generateItems';
+import { v4 as uuidv4 } from 'uuid';
+import ShopItem from '../Components/BuildComponents/ShopItem';
+import ItemDescPopup from '../Components/BuildComponents/ItemDescPopup';
+import CurrentBuild from '../Components/BuildComponents/CurrentBuildSection';
+import BuildStats from '../Components/BuildComponents/BuildStatsSection';
 import globals from '../globals';
 import dlItems from "../assets/dlItems.json"
 
@@ -12,6 +12,16 @@ import souls from "../assets/souls.png"
 const gColors = globals.globalColors
 
 const Builds = () => {
+    const initID = uuidv4()
+    const baseBuild = {
+        categories:{
+            [initID]:{
+                name:"Category 1",
+                data:[],
+            }
+        },
+        items:{}
+    }
 
     const [displayedT1s, setDisplayedT1s] = useState([])
     const [displayedT2s, setDisplayedT2s] = useState([])
@@ -24,7 +34,9 @@ const Builds = () => {
     const [vitalityItems, setVitalityItems] = useState([])
     const [spiritItems, setSpiritItems] = useState([])
 
-    const [buildItems, setBuildItems] = useState([])
+    const [build, setBuild] = useState(baseBuild)
+    const [buildUpdate, setBuildUpdate] = useState(0)
+    const [curCategory, setCurCategory] = useState(initID)
     const [buildChartType, setBuildChartType] = useState("DmgVsResistances")
 
     const [popupOpen, setPopupOpen] = useState(false)
@@ -32,8 +44,7 @@ const Builds = () => {
     const [popupPosition, setPopupPosition] = useState(null)
 
     const contentWindowRef = useRef(null)
-    const chartContainerRef = useRef(null)
-    const chartYAxisRef = useRef(null)
+    
 
     useEffect(()=>{
         getAPIData()
@@ -44,6 +55,8 @@ const Builds = () => {
         setItemListHeight(contentWindowRef.current.clientHeight)
       });
 
+
+    //doesn't actually fetch API data anymore--fetches internal rewritten item objects
     async function getAPIData(){
         const itemRes = dlItems
 
@@ -74,6 +87,8 @@ const Builds = () => {
         setSpiritItems(spiritItemsRes)
     }
 
+
+    //load items of selected type into shop menu, sorted into tier categories, like in game
     function setItemsByTier(items){
         const t1s = []
         const t2s = []
@@ -118,13 +133,19 @@ const Builds = () => {
         return item1["name"].localeCompare(item2["name"])
     }
 
-    function addItemToBuild(item){
-        console.log(buildItems)
-        setBuildItems(oldItems=>[...oldItems, item])
+    function updateBuild(newBuild){
+        setBuild(newBuild)
+        setBuildUpdate(buildUpdate+1) //force state update (newBuild object property updates do not trigger react re-render)
     }
 
-    function removeItemFromBuild(item){
-
+    function addItemToBuild(item){
+        if(!build.categories[curCategory]){return}
+        const newBuild = {...build}
+        if(!newBuild.items[item.id]){
+            newBuild.items[item.id] = true
+            newBuild.categories[curCategory].data.push(item)
+        }
+        updateBuild(newBuild)
     }
 
     function openItemPopup(item, position){
@@ -193,7 +214,7 @@ const Builds = () => {
                 <div className='flex flex-row flex-wrap'>
                     {tierItems.map((item)=>{
                         return(
-                            <ShopItem item={item} key={item["id"]} hover={openItemPopup} unhover={closeItemPopup} click={addItemToBuild}/>
+                            <ShopItem item={item} key={item.id} hover={openItemPopup} unhover={closeItemPopup} click={addItemToBuild} bought={build.items[item.id]}/>
                         )
                     })}
                 </div>
@@ -246,73 +267,14 @@ const Builds = () => {
                 
             </div>
             
-        )}
+        )}    
 
-    function renderCurrentBuild(){
-        return(
-            <div className='flex flex-col'>
-                <div className="text-white" style={{fontWeight:'bold'}}>CURRENT BUILD</div>
-                <div className="flex flex-wrap p-2" style={{backgroundColor:gColors.darkGrey, borderRadius:5, width:'100%'}}>
-                    {
-                        buildItems.map((item)=>{
-                            return(
-                                <ShopItem item={item} key={item["id"]} hover={openItemPopup} unhover={closeItemPopup} />
-                            )
-                            
-                        })
-                    }
-                </div>
-            </div>
-        )}
-    
-    function renderChartXAxis(){
-        switch(buildChartType){
-            case "DmgVsItemsBought":
-            default:
-                return(
-                    "Items Bought"
-                )
-        }
-    }
-
-    function renderChartYAxis(){
-        switch(buildChartType){
-            case "DmgVsItemsBought":
-            default:
-                return(
-                    "Damage (Weapon / Spirit / Total)"
-                )
-        }
-    }
-
-    function renderBuildStats(){
-        return(
-            <div className='flex flex-col' >
-                <div className="text-white" style={{fontWeight:'bold'}}>BUILD STATS</div>
-                <div className="flex flex-wrap p-2" style={{backgroundColor:gColors.darkGrey, borderRadius:5, width:'100%', }}>
-                    
-                    <div className='flex flex-row relative pl-5' style={{backgroundColor:gColors.LineChartBackground, width:"100%", alignItems:"center",}}>
-                        <span ref={chartYAxisRef} className="absolute" style={{left:-chartYAxisRef.current?.offsetWidth + 165, color:"#fff", fontSize:19, fontStyle:"italic", fontWeight:700,transform:"rotate(270deg)"}}>{renderChartYAxis()}</span>
-                        <div className='flex flex-1 flex-col items-center p-5' style={{ width:'100%'}}>
-                            <div ref={chartContainerRef} style={{width:"100%"}} >
-                                <LineChart style={{width:chartContainerRef.current?.clientWidth, height:600}}/>
-                            </div>
-                            <span style={{color:"#fff", fontSize:19, fontStyle:"italic", fontWeight:700}}>{renderChartXAxis()}</span>
-                        </div>
-                        
-                    </div>
-                    
-                    
-                </div>
-            </div>
-        )
-    }
     
     function renderMainContent(){
         return(
             <div className={`flex flex-col flex-1 mr-2 py-2 px-4 border-b-4 border-l-2 border-r-1  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
-                {renderCurrentBuild()}
-                {renderBuildStats()}
+                <CurrentBuild build={build} setBuild={updateBuild} openPopup={openItemPopup} closePopup={closeItemPopup} curCategory={curCategory} setCategory={setCurCategory}/>
+                <BuildStats chartType={buildChartType}/>
             </div>
         )
     }
