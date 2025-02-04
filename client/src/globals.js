@@ -31,6 +31,7 @@ const globals = {
         itemCost:"#9affd6",
         deadLockDark:"#231f20",
         deadLockLight:"#f0dfbf",
+        LineChartBackground:"#181830",
     },
 
     itemColors: {

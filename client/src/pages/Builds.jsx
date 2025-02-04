@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 
 import ShopItem from '../Components/ShopItem';
 import ItemDescPopup from '../Components/ItemDescPopup';
+import LineChart from '../Components/LineChart';
 import { genItems, filterItems } from '../Util/generateItems';
 import globals from '../globals';
 import dlItems from "../assets/dlItems.json"
@@ -17,17 +18,22 @@ const Builds = () => {
     const [displayedT3s, setDisplayedT3s] = useState([])
     const [displayedT4s, setDisplayedT4s] = useState([])
     const [itemListHeight, setItemListHeight] = useState(0)
+
     const [activeItemType, setActiveItemType]=useState("weapon")
-    const [buildItems, setBuildItems] = useState([])
     const [weaponItems, setWeaponItems] = useState([])
     const [vitalityItems, setVitalityItems] = useState([])
     const [spiritItems, setSpiritItems] = useState([])
+
+    const [buildItems, setBuildItems] = useState([])
+    const [buildChartType, setBuildChartType] = useState("DmgVsResistances")
 
     const [popupOpen, setPopupOpen] = useState(false)
     const [popupItem, setPopupItem] = useState(null)
     const [popupPosition, setPopupPosition] = useState(null)
 
     const contentWindowRef = useRef(null)
+    const chartContainerRef = useRef(null)
+    const chartYAxisRef = useRef(null)
 
     useEffect(()=>{
         getAPIData()
@@ -258,11 +264,46 @@ const Builds = () => {
                 </div>
             </div>
         )}
+    
+    function renderChartXAxis(){
+        switch(buildChartType){
+            case "DmgVsItemsBought":
+            default:
+                return(
+                    "Items Bought"
+                )
+        }
+    }
+
+    function renderChartYAxis(){
+        switch(buildChartType){
+            case "DmgVsItemsBought":
+            default:
+                return(
+                    "Damage (Weapon / Spirit / Total)"
+                )
+        }
+    }
 
     function renderBuildStats(){
         return(
-            <div>
+            <div className='flex flex-col' >
                 <div className="text-white" style={{fontWeight:'bold'}}>BUILD STATS</div>
+                <div className="flex flex-wrap p-2" style={{backgroundColor:gColors.darkGrey, borderRadius:5, width:'100%', }}>
+                    
+                    <div className='flex flex-row relative pl-5' style={{backgroundColor:gColors.LineChartBackground, width:"100%", alignItems:"center",}}>
+                        <span ref={chartYAxisRef} className="absolute" style={{left:-chartYAxisRef.current?.offsetWidth + 165, color:"#fff", fontSize:19, fontStyle:"italic", fontWeight:700,transform:"rotate(270deg)"}}>{renderChartYAxis()}</span>
+                        <div className='flex flex-1 flex-col items-center p-5' style={{ width:'100%'}}>
+                            <div ref={chartContainerRef} style={{width:"100%"}} >
+                                <LineChart style={{width:chartContainerRef.current?.clientWidth, height:600}}/>
+                            </div>
+                            <span style={{color:"#fff", fontSize:19, fontStyle:"italic", fontWeight:700}}>{renderChartXAxis()}</span>
+                        </div>
+                        
+                    </div>
+                    
+                    
+                </div>
             </div>
         )
     }
