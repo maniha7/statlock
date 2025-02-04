@@ -5,6 +5,11 @@ import souls from "../assets/souls.png"
 import timer from "../assets/time_icon.png"
 import { getItemByID } from '../Util/ItemUtil';
 
+import dpsIcon from "../assets/stat-icons/dps-icon.png"
+import regenIcon from "../assets/stat-icons/health-regen-icon.png"
+import movespeedIcon from "../assets/stat-icons/movement-speed-icon.png"
+
+
 export default function ItemDescPopup(props){
 
     const item = props.item
@@ -56,24 +61,51 @@ export default function ItemDescPopup(props){
     }
 
     function renderPropValue(prop){
-        let propUnits = prop.units
+        const propUnits = prop.units
+        const isBad = prop.isBad??false
         return(
             <span>
-                <span style={{color:gColors.itemUnitsText}}>{propUnits.sign}</span><span style={{color:gColors.itemText}}>{prop.value}</span><span style={{color:gColors.itemUnitsText}}>{propUnits.units}</span>
+                <span style={{color:isBad?gColors.itemNegativePropertyRed:gColors.itemUnitsText}}>{propUnits.sign}</span><span style={{color:isBad?gColors.itemNegativePropertyRed:gColors.itemText}}>{prop.value}</span><span style={{color:isBad?gColors.itemNegativePropertyRed:gColors.itemUnitsText}}>{propUnits.units}</span>
             </span>
         )
     }
 
     /**render a single "important" item property (non-innate prop which gets its own container)**/
     function renderImportantProp(prop){
+        let propColor = gColors.offWhite
+        let propIcon = null
+        if(prop.css_class=="tech_damage"){
+            propColor = globals.itemColors.spirit.base
+        }
+        if(prop.css_class=="bullet_damage"){
+            propColor = globals.itemColors.weapon.base
+        }
+        if(prop.css_class=="healing"){
+            propColor = globals.itemColors.vitality.typeText
+        }
+
         return(
             <div key={prop.propName} className="flex flex-1 flex-col mb-1 p-2 items-center justify-center rounded-lg min-w-[28%]" style={{backgroundColor:itemColorPallet.dark}}>
-                <div style={{fontWeight:'bold', fontSize:20, color:gColors.itemText}}>
-                    {renderPropValue(prop)}
+                <div className="flex flex-row">
+                    {propIcon &&
+                        <img style={{maxWidth:14, aspectRatio:1}} src={propIcon}/>
+                    }
+                    <div style={{fontWeight:'bold', fontSize:20, color:gColors.itemText}}>
+                        {renderPropValue(prop)}
+                    </div>
                 </div>
-                <div className="flex-wrap text-center" style={{fontSize:14, color:gColors.offWhite}}>
+                    
+                <div className="flex-wrap text-center" style={{fontSize:14, color:propColor, fontWeight:700}}>
                     {prop.title}
                 </div>
+
+                
+                {/* 'Conditional' / 'Status Effect' Text */}
+                {prop.type&&
+                    <div style={{fontWeight:600, fontStyle:"italic", color:gColors.itemUnitsText}}>
+                        {prop.type}
+                    </div>
+                }
                 
             </div>
         )
@@ -125,10 +157,11 @@ export default function ItemDescPopup(props){
         return(
             <div className="px-2">
                 {item.innateProperties.map((property)=>{
-                    let propUnits = property.units
+                    const propUnits = property.units
+                    const isBad = property.isBad??false
                     return(
                         <div key={property.propName} className="flex flex-row">
-                            <div className="mb-2 mt-1 mr-1 ml-2" style={{lineHeight:1, fontWeight:'bold', color:gColors.itemText}}>
+                            <div className="mb-2 mt-1 mr-1 ml-2" style={{lineHeight:1, fontWeight:'bold', color:isBad?gColors.itemNegativePropertyRed:gColors.itemText}}>
                                 {propUnits.sign + property.value + propUnits.units}
                             </div>
                             <div className="mb-2 mt-1 ml-1" style={{lineHeight:1, color:gColors.offWhite}}>
@@ -283,12 +316,12 @@ export default function ItemDescPopup(props){
                     </div>
                 </div>
                 {/*Item base bonus*/}
-                <div className="flex flex-col justify-center text-center" style={{fontWeight:700,}}>
-                    <div style={{backgroundColor:itemColorPallet.mediumDark,}}>
-                        <div className="px-2" >
+                <div className="flex flex-col justify-center text-center" style={{fontWeight:700}}>
+                    <div style={{backgroundColor:itemColorPallet.mediumDark, borderRadius:5}}>
+                        <div className="px-2 py-[2px]" >
                             <span style={{color:gColors.itemUnitsText}}>+</span><span style={{color:gColors.offWhite}}>{itemBaseBonus}</span><span style={{color:gColors.itemUnitsText}}>%</span>
                         </div>
-                        <div className="px-2 py-[2px] flex-wrap max-w-[85px]" style={{backgroundColor:itemColorPallet.mediumDarker, fontSize:11, fontWeight:600, color:gColors.itemUnitsText}}>
+                        <div className="px-2 py-[3px] flex-wrap max-w-[85px]" style={{backgroundColor:itemColorPallet.mediumDarker, fontSize:11, fontWeight:600, color:gColors.itemUnitsText, borderBottomLeftRadius:5, borderBottomRightRadius:5}}>
                             {itemBaseBonusType}
                         </div>
                     </div>

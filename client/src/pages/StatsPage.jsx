@@ -19,10 +19,10 @@ export default function StatsPage(){
 
     function renderHeroData(){
         return(
-            <div style={{display:'flex',flexDirection:'row', flexWrap:'wrap', justifyContent:'center'}}>
+            <div className="" style={{display:'flex',flexDirection:'row', flexWrap:'wrap', justifyContent:'center'}}>
             {heroes.map((hero)=>{
                 return(
-                    <div onClick={()=>{console.log(hero)}} key={hero["id"]} style={{maxWidth:70,border:'solid', borderWidth:1, marginRight:5}}>
+                    <div onClick={()=>{console.log(hero)}} key={hero["id"]} className="border-2 border-stone-600 bg-stone-700 rounded-md" style={{maxWidth:70, marginRight:5}}>
                         <div>
                             <img style={{width:"auto", height:"auto"}} src={hero["images"]["icon_image_small_webp"]}/>
                         </div>

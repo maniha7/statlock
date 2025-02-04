@@ -38,7 +38,7 @@ export default function ShopItem(props){
     }
 
     return(
-        <div ref={itemRef} onMouseEnter={()=>openPopup()} onMouseLeave={()=>closePopup()} className="flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)] " onClick={()=>{console.log(item)}}>
+        <div ref={itemRef} onClick={()=>props.click(item)} onMouseEnter={()=>openPopup()} onMouseLeave={()=>closePopup()} className="flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)] ">
             <div className={`flex flex-col items-center items-center max-w-[90px] hover:opacity-80 hover:cursor-pointer transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  ${bgColor}`} style={{borderRadius:8}}>
                 
                 <div style={{position:'relative'}}>

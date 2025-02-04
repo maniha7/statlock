@@ -16,15 +16,18 @@ const globals = {
 
     globalColors:{
         greyBackground: "#333333",
+        darkGrey:"#0d0d0d",
         stone800Background: '#292524',
         stoneBackgroundGradient: "bg-gradient-to-br from-stone-800 via-stone-700 to-stone-900",
         stoneBackgroundGradient2: "bg-gradient-to-r from-stone-800 via-transparent to-stone-900",
         stoneBackgroundGradient3: "bg-gradient-to-r from-stone-900 to-stone-800",
+        stoneBorderGradient: "border-gradient-to-r from-stone-600 to-stone-700",
         offWhite:"#d2d2cb",
         itemLabelBackground:"#F0E1CB",
         itemText:"#ffefd7",
         itemUnitsText:"#c4beb5",
         itemLabelBlack:"#070d0d",
+        itemNegativePropertyRed:"#FF6B6B",
         itemCost:"#9affd6",
         deadLockDark:"#231f20",
         deadLockLight:"#f0dfbf",
@@ -32,6 +35,7 @@ const globals = {
 
     itemColors: {
         vitality:{
+            typeText:"#00FF9A",
             light:"#fff", //todo?
             base:"#74b01c",
             medium:"#659818",
@@ -45,6 +49,7 @@ const globals = {
 
         },
         spirit:{
+            typeText:"#CE91FF",
             light:"#dbbff2",
             base:"#c288f0",
             medium:"#8b56b4",
@@ -57,6 +62,7 @@ const globals = {
             basetw:"bg-[#c288f0]"
         },
         weapon:{
+            typeText:"#E39319",
             light:"#fff", //todo?
             base:"#d08d3e",
             medium:"#c97a03",

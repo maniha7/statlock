@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 const Home = () => {
     return (
     <>
-        <div className={`flex-1 flex flex-col mt-2 mb-2 ml-5 mr-10 p-2 border-b-4 border-l-2 border-r-1 border-black border-black rounded-lg text-center min-h-200 w-400 ${gColors.stoneBackgroundGradient}`} style={{}}> 
-            <div className="flex justify-center mt-1 mb-5"><img className="object-center w-40" src={logo} /></div>
+        <div className={`flex-1 flex flex-col mt-2 mb-2 ml-5 mr-10 p-2 border-b-4 border-l-1 border-r-2 border-stone-600 rounded-lg text-center min-h-200 w-400 ${gColors.stoneBackgroundGradient}`} style={{}}> 
+            <div className="flex justify-center mt-1 mb-5"><img className="object-center w-40 transition spin-slow duration-1 ease-in-out hover:-translate-y-0.5 hover:scale-110" src={logo} /></div>
             {/*Main*/}
             <div className="mb-10 border-b-4 border-x-2 border-t-2 mx-5 bg-stone-900 rounded-lg w-[80%] self-center text-stone-500">
 

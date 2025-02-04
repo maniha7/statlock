@@ -26,8 +26,7 @@ const Builds = () => {
     const [popupOpen, setPopupOpen] = useState(false)
     const [popupItem, setPopupItem] = useState(null)
     const [popupPosition, setPopupPosition] = useState(null)
-    
-    const [ires, setres] = useState(null)
+
     const contentWindowRef = useRef(null)
 
     useEffect(()=>{
@@ -113,6 +112,15 @@ const Builds = () => {
         return item1["name"].localeCompare(item2["name"])
     }
 
+    function addItemToBuild(item){
+        console.log(buildItems)
+        setBuildItems(oldItems=>[...oldItems, item])
+    }
+
+    function removeItemFromBuild(item){
+
+    }
+
     function openItemPopup(item, position){
 
         setPopupItem(item)
@@ -179,7 +187,7 @@ const Builds = () => {
                 <div className='flex flex-row flex-wrap'>
                     {tierItems.map((item)=>{
                         return(
-                            <ShopItem item={item} key={item["id"]} hover={openItemPopup} unhover={closeItemPopup}/>
+                            <ShopItem item={item} key={item["id"]} hover={openItemPopup} unhover={closeItemPopup} click={addItemToBuild}/>
                         )
                     })}
                 </div>
@@ -236,26 +244,44 @@ const Builds = () => {
 
     function renderCurrentBuild(){
         return(
-            <div className={`flex flex-col flex-1 mr-2 py-2 px-4 border-b-4 border-l-2 border-r-1  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
+            <div className='flex flex-col'>
                 <div className="text-white" style={{fontWeight:'bold'}}>CURRENT BUILD</div>
-
-                <div className='flex flex-row'>
-                    <div className='flex ' onClick={()=>{filterItems(setres)}} style={{backgroundColor:"#fff",display:'block'}}>manually generates a file, dont click it again</div>
+                <div className="flex flex-wrap p-2" style={{backgroundColor:gColors.darkGrey, borderRadius:5, width:'100%'}}>
+                    {
+                        buildItems.map((item)=>{
+                            return(
+                                <ShopItem item={item} key={item["id"]} hover={openItemPopup} unhover={closeItemPopup} />
+                            )
+                            
+                        })
+                    }
                 </div>
-                <div>
-                    {ires}
-                </div>
-                
-
             </div>
         )}
+
+    function renderBuildStats(){
+        return(
+            <div>
+                <div className="text-white" style={{fontWeight:'bold'}}>BUILD STATS</div>
+            </div>
+        )
+    }
+    
+    function renderMainContent(){
+        return(
+            <div className={`flex flex-col flex-1 mr-2 py-2 px-4 border-b-4 border-l-2 border-r-1  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
+                {renderCurrentBuild()}
+                {renderBuildStats()}
+            </div>
+        )
+    }
     
     return(
         <div ref={contentWindowRef} className="flex flex-1 flex-col" style={{width:"100%",height:'100%', }}>
 
             <div className="flex flex-row flex-1 px-[10px] " style={{height:'100%', maxHeight:"100%"}}>
-                {/* Current build*/}
-                {renderCurrentBuild()}
+                {/* Current build & build stats*/}
+                {renderMainContent()}
 
                 {/* Item menu*/}
                 {renderItemsSidebar()}
@@ -263,7 +289,7 @@ const Builds = () => {
 
             {popupOpen && (popupPosition.x+popupPosition.y>0)&&<ItemDescPopup item={popupItem} isOpen={popupOpen} pos={popupPosition} />}
 
-        </div> /*Big Chungus Word puzzle eats lebron james hairline guy */
+        </div>
     )
 }
 
