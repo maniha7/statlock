@@ -1,5 +1,5 @@
 import globals from '../globals';
-import logo from '../assets/statlock_logo.png'
+import logo from '../assets/statlock_logo2.png'
 
 const gColors = globals.globalColors
 

@@ -1,4 +1,4 @@
-import logo from '../assets/statlock_logo.png'
+import logo from '../assets/statlock_logo2.png'
 import globals from '../globals';
 import discord from '../assets/discordlogo2.png'
 import steam from '../assets/steam_logo.png'
