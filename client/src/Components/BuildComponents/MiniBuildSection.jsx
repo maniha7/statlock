@@ -14,7 +14,7 @@ export default function MiniBuild(props) {
         const category = build.categories[categoryName]
         return(
             <div className="flex flex-wrap flex-col p-2 mr-2" key={categoryName} style={{userSelect:"none", borderColor:"#fff", borderRadius:5}}>
-                <div className='text-white' style={{fontSize:18, fontWeight:700}}>{categoryName.toUpperCase()}</div>
+                <div className='text-white forevs2' style={{fontSize:18, fontWeight:700}}>{categoryName.toUpperCase()}</div>
                 <div className="flex grid grid-flow-row grid-cols-2 flex-wrap">
                     {
                         [0,1,2,3].map((index)=>{
@@ -35,7 +35,7 @@ export default function MiniBuild(props) {
     return(
             <div className='flex flex-col'>
                 <div className="flex flex-row items-center" style={{width:"100%"}}>
-                    <div className="flex flex-1 text-white" style={{fontWeight:'bold'}}>BUILD</div>
+                    <div className="flex flex-1 text-white mb-2 forevs2 text-2xl mt-1 justify-center" style={{fontWeight:'bold'}}>ʙᴜɪʟᴅ</div>
                 </div>
                 
                 <div className="flex flex-wrap flex-row p-2 space-y-3" style={{backgroundColor:gColors.darkGrey, borderRadius:5, width:'100%'}}>
