@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import ShopItem from '../Components/BuildComponents/ShopItem';
 import ItemDescPopup from '../Components/BuildComponents/ItemDescPopup';
 import CurrentBuild from '../Components/BuildComponents/CurrentBuildSection';
+import MiniBuild from '../Components/BuildComponents/MiniBuildSection';
 import BuildStats from '../Components/BuildComponents/BuildStatsSection';
 import globals from '../globals';
 import dlItems from "../assets/dlItems.json"
@@ -13,6 +14,15 @@ const gColors = globals.globalColors
 
 const Builds = () => {
     const initID = uuidv4()
+    const baseMiniBuild = {
+        categories:{
+            weapon:[],
+            vitality:[],
+            spirit:[],
+            flex:[],
+        },
+        allItems:{}
+    }
     const baseBuild = {
         categories:{
             [initID]:{
@@ -34,7 +44,9 @@ const Builds = () => {
     const [vitalityItems, setVitalityItems] = useState([])
     const [spiritItems, setSpiritItems] = useState([])
 
+    const [buildType, setBuildType] = useState("mini")
     const [build, setBuild] = useState(baseBuild)
+    const [miniBuild, setMiniBuild] = useState(baseMiniBuild)
     const [buildUpdate, setBuildUpdate] = useState(0)
     const [curCategory, setCurCategory] = useState(initID)
     const [buildChartType, setBuildChartType] = useState("DmgVsResistances")
@@ -122,30 +134,52 @@ const Builds = () => {
         if(tierDif!=0){
             return tierDif
         }
-
         //compare by isActive
         const activeDif = +((item1['activation']=="instant_cast" || item1['activation']=="press") - (item2['activation']=="instant_cast" || item2['activation']=="press"))
         if(activeDif!=0){
             return activeDif
         }
-
         //compare by name
         return item1["name"].localeCompare(item2["name"])
     }
 
+    //update current build
     function updateBuild(newBuild){
         setBuild(newBuild)
-        setBuildUpdate(buildUpdate+1) //force state update (newBuild object property updates do not trigger react re-render)
+        setBuildUpdate(buildUpdate+1) //force state update (build object property updates do not trigger react re-render)
+    }
+
+    //update current mini build
+    function updateMiniBuild(newMiniBuild){
+        setMiniBuild(newMiniBuild)
+        setBuildUpdate(buildUpdate+1) //force state update (build object property updates do not trigger react re-render)
     }
 
     function addItemToBuild(item){
-        if(!build.categories[curCategory]){return}
-        const newBuild = {...build}
-        if(!newBuild.items[item.id]){
-            newBuild.items[item.id] = true
-            newBuild.categories[curCategory].data.push(item)
+        if(buildType=="mini"){
+            const category =  item.item_slot_type
+            const newMini = {...miniBuild}
+            if(newMini.allItems[item.id]){return}
+            if (newMini.categories[category].length<4){
+                newMini.categories[category].push(item)
+                newMini.allItems[item.id]=true
+            }
+            else if(newMini.categories['flex'].length<4){
+                newMini.categories['flex'].push(item)
+                newMini.allItems[item.id]=true
+            }
+            updateMiniBuild(newMini)
         }
-        updateBuild(newBuild)
+        else if(buildType=="full"){
+            if(!build.categories[curCategory]){return}
+            const newBuild = {...build}
+            if(!newBuild.items[item.id]){
+                newBuild.items[item.id] = true
+                newBuild.categories[curCategory].data.push(item)
+            }
+            updateBuild(newBuild)
+        }
+        
     }
 
     function openItemPopup(item, position){
@@ -201,6 +235,15 @@ const Builds = () => {
                 </div> 
     )}
 
+    function itemIsInBuild(itemID){
+        if(buildType=="mini"){
+            return miniBuild.allItems[itemID]
+        }
+        else if(buildType=="full"){
+            return build.items[itemID]
+        }
+    }
+
     function renderTierData(cost, tierItems){
         return(
             <>  
@@ -214,7 +257,7 @@ const Builds = () => {
                 <div className='flex flex-row flex-wrap'>
                     {tierItems.map((item)=>{
                         return(
-                            <ShopItem item={item} key={item.id} hover={openItemPopup} unhover={closeItemPopup} click={addItemToBuild} bought={build.items[item.id]}/>
+                            <ShopItem item={item} key={item.id} hover={openItemPopup} unhover={closeItemPopup} click={addItemToBuild} bought={itemIsInBuild(item.id)}/>
                         )
                     })}
                 </div>
@@ -273,8 +316,10 @@ const Builds = () => {
     function renderMainContent(){
         return(
             <div className={`flex flex-col flex-1 mr-2 py-2 px-4 border-b-4 border-l-2 border-r-1  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
-                <CurrentBuild build={build} setBuild={updateBuild} openPopup={openItemPopup} closePopup={closeItemPopup} curCategory={curCategory} setCategory={setCurCategory}/>
+                {false&&<CurrentBuild build={build} setBuild={updateBuild} openPopup={openItemPopup} closePopup={closeItemPopup} curCategory={curCategory} setCategory={setCurCategory}/>}
+                <MiniBuild build={miniBuild} openPopup={openItemPopup} closePopup={closeItemPopup}/>              
                 <BuildStats chartType={buildChartType}/>
+                
             </div>
         )
     }

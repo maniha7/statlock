@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import globals from '../../globals';
 import ShopItem from './ShopItem';
+import EditableText from '../MiscComponents/editableText';
 
 const gColors = globals.globalColors
 
@@ -53,13 +54,18 @@ export default function CurrentBuild(props) {
         props.setCategory(newCurCategory)
     }
 
+    function renameCategory(value, ID){
+        build.categories[ID].name = value
+        props.setBuild(build)
+    }
+
 
     //render all items in a build category
     function renderCategory(categoryID){
         const category = build.categories[categoryID]
         return(
-            <div onClick={()=>props.setCategory(categoryID)} key={categoryID} className="p-2" style={{width:"100%", borderWidth:categoryID==props.curCategory?3:1, borderColor:"#fff", borderRadius:5}}>
-                <div style={{fontSize:16, fontWeight:700, color:"#fff"}}>{category.name}</div>
+            <div onClick={()=>props.setCategory(categoryID)} key={categoryID} className="p-2" style={{width:"100%", userSelect:"none", borderWidth:categoryID==props.curCategory?3:1, borderColor:"#fff", borderRadius:5}}>
+                <EditableText initVal={category.name} effect={(newVal)=>renameCategory(newVal,categoryID)}/>
                 <div className="flex flex-row flex-wrap">
                     {category.data.map((item)=>{
                         return(

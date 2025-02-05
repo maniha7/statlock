@@ -13,6 +13,8 @@ const globals = {
     Deadlock_Data_API_Address: "https://data.deadlock-api.com",
     Deadlock_Data_PatchNotes_Endpoint: "/v1/patch-notes",
 
+    shopItemMaxWidth:"90px",
+    itemPopupWidth:"350px",
 
     globalColors:{
         greyBackground: "#333333",

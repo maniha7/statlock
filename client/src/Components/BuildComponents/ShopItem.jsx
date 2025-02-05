@@ -5,12 +5,6 @@ import { getItemByID } from '../../Util/ItemUtil';
 export default function ShopItem(props){
     const gColors = globals.globalColors
     const item = props.item
-    const isActive = item.activation=="instant_cast" || item.activation=="press"
-    const itemTier = item.item_tier
-    const itemColorPallet = globals.itemColors[item["item_slot_type"]]
-    const bgColor = itemTier==4?itemColorPallet.t4gradient:itemColorPallet.basetw
-    const upgradesFrom = item.upgradesFrom?getItemByID(item.upgradesFrom):null
-    
 
     const itemRef = useRef(null)
     const tagRef = useRef(null)
@@ -23,11 +17,23 @@ export default function ShopItem(props){
         
     },[])
 
+    //IF ITEM IS NULL, RENDER ITEM PLACEHOLDER
+    if(!item){return(renderBlankItem())}
+
+    const isActive = item.activation=="instant_cast" || item.activation=="press"
+    const itemTier = item.item_tier
+    const itemColorPallet = globals.itemColors[item["item_slot_type"]]
+    const bgColor = itemTier==4?itemColorPallet.t4gradient:itemColorPallet.basetw
+    const upgradesFrom = item.upgradesFrom?getItemByID(item.upgradesFrom):null
+
     function openPopup(){
         const rect = itemRef.current.getBoundingClientRect()
         const position = {
             x:rect.x-15,
             y:rect.y+rect.height/2
+        }
+        if(props.renderRight){
+            position.x = rect.x+rect.width
         }
         props.hover(item, position)
     }
@@ -37,9 +43,18 @@ export default function ShopItem(props){
         props.unhover()
     }
 
+    function renderBlankItem(){
+        return(
+            <div className="flex my-[6px] mx-[6px] shadow-[inset_0_-2px_4px_rgba(0,0,0,0.6)]" style={{backgroundColor:"#1a1a1a", borderRadius:8, width:props.widthOverride??globals.shopItemMaxWidth, height:props.heightOverride??globals.shopItemMaxWidth}}>
+
+            </div>
+        )
+        
+    }
+
     return(
-        <div ref={itemRef} onClick={()=>props.click(item)} onMouseEnter={()=>openPopup()} onMouseLeave={()=>closePopup()} className="flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)] "  >
-            <div className={`flex flex-col items-center items-center max-w-[90px] hover:opacity-80 hover:cursor-pointer transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  ${bgColor}`} style={{borderRadius:8}}>
+        (<div ref={itemRef} onClick={()=>props.click(item)} onMouseEnter={()=>openPopup()} onMouseLeave={()=>closePopup()} className={`flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)] ${props.transition?`opacityAppear`:``}`}  >
+            <div className={`flex flex-1 flex-col items-center items-center hover:opacity-80 hover:cursor-pointer transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  ${bgColor}`} style={{borderRadius:8, maxWidth:props.widthOverride??globals.shopItemMaxWidth, width:props.widthOverride, height:props.heightOverride}}>
                 
                 <div style={{position:'relative', padding:0}}>
                     {/* Item Image*/}
@@ -87,7 +102,7 @@ export default function ShopItem(props){
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>) 
     )
 
 }
