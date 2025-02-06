@@ -1,61 +1,112 @@
-import { useEffect, useState } from "react"
-import { getPatchNotes } from '../Util/ApiUtil'
+import { useState } from "react"
+import patchData from '../assets/patch_notes.json'
 import globals from '../globals';
 const gColors = globals.globalColors
 
 
+
+const categoryColors = {
+    "Character Patches": "text-[#f0dfbf]",      
+    "Weapon Item Patches": "text-[#d08d3e]", 
+    "Vitality Item Patches": "text-[#74b01c]", 
+    "Spirit Item Patches": "text-[#c288f0]",
+    "General Updates": "text-[#f0dfbf]",         
+};
+
+
+const groupUpdates = (lines) => {
+    const characterUpdates = {};
+    const generalUpdates = [];
+
+    lines.forEach(line => {
+        const splitLine = line.split(":");
+        const firstWord = splitLine[0]?.replace("-", "").trim();
+        const updateText = splitLine.slice(1).join(":").trim();
+
+        // Jank ass way of sorting between character names and non character names 
+        if (splitLine.length > 1 && /^[A-Z][a-z]+/.test(firstWord)) {
+            if (!characterUpdates[firstWord]) {
+                characterUpdates[firstWord] = [];
+            }
+            characterUpdates[firstWord].push(updateText);
+        } else {
+            generalUpdates.push(line);
+        }
+    });
+
+    return { characterUpdates, generalUpdates };
+};
+
 export default function Patches() {
-    const [ patchNotes, setPatchNotes ] = useState([]);
-
-    useEffect(() => {
-        fetchPatchNotes();
-    }, []);
-
-    async function fetchPatchNotes() {
-        const notes = await getPatchNotes();
-        setPatchNotes(Object.values(notes));
-    }
-
-    {/* Image and Link Filter */}
-    function cleanHTML(html) {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, "text/html");
-    
-       
-        doc.querySelectorAll("img").forEach(img => img.remove());
-    
-        
-        doc.querySelectorAll("a").forEach(a => {
-            const textNode = document.createTextNode(a.textContent);
-            a.replaceWith(textNode);
-        });
-    
-        return doc.body.innerHTML;
-    }
+    const [patches] = useState(patchData);
 
     return (
-    <>
-        <div className={`flex-1 flex flex-col mt-2 mb-2 ml-5 mr-10 p-2 border-b-4 border-l-2 border-r-1 border-black border-black rounded-lg text-center min-h-200 w-400 ${gColors.stoneBackgroundGradient}`}>
-            <h1 className="text-5xl font-bold mt-10 text-stone-200 forevs2 underline">Patch Notes</h1>
-                <div className="mt-5">
-                <ul>
-                    {patchNotes.map((note, index) => (
-                        <li key={index}>
-                            <h3 className="font-">{note.title}</h3>
-                            <p className="patch-description" dangerouslySetInnerHTML={{__html:cleanHTML(note.content_encoded)}} />
-                        </li>
-                    ))} 
-                </ul>
+        <>
+            <div className={`flex-1 flex flex-col mt-2 mb-2 ml-5 mr-10 p-2 border-b-4 border-l-2 border-r-1 border-stone-600 rounded-lg min-h-200 w-400 ${gColors.stoneBackgroundGradient}`}>
+                <h1 className="text-5xl font-bold mt-10 text-stone-200 forevs2 underline text-center">Patch Notes</h1>
+                <div className="grid grid-cols-1 justify-center ml-5">
+                    {patches.map((patch, index) => (
+                        <div key={index} className="mt-5">
+                            {/* Patch Title */}
+                            <h3 className="text-stone-400 text-2xl underline forevs2 mb-1">{patch.title}</h3>
+                            <a href={patch.url} target="_blank" rel="noopener noreferrer" className="hover:underline text-indigo-400 text-md forevs2">
+                                <div className="transition duration-300 ease-in-out hover:-translate-y-0.5">
+                                    Deadlock Forums Link
+                                </div>
+                            </a>
+    
+                        {/*Categorizer*/}
+                        {Object.entries(patch.categories).map(([category, lines]) => (
+                            lines.length > 0 && (
+                                <div key={category} className="mt-4 space-y-5 border-b-2 py-1 mr-6 border-stone-600">
+                                    <h4 className={`text-xl font-bold underline ${categoryColors[category] || "text-white"}`}>{category}:</h4>
+                                    
 
+                                    
+                                    {(() => {
+                                        const { characterUpdates, generalUpdates } = groupUpdates(lines);
 
+                                        return (
+                                            <>
+                                                {/* Character-Specific Updates */}
+                                                {Object.entries(characterUpdates).map(([character, updates]) => (
+                                                    <div key={character} className="mt-3">
+                                                        <h5 className="text-xl font-bold text-stone-200 forevs2 mb-1">{character}:</h5>
+                                                        <ul className="ml-6 space-y-1 text-lg text-stone-300 list-disc">
+                                                            {updates.map((update, idx) => (
+                                                                <li key={idx}>{update}</li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                ))}
+
+                                                {/* General Updates (non-character related) */}
+                                                {generalUpdates.length > 0 && (
+                                                    <div className="mt-3">
+                                                        <ul className="ml-2 space-y-1 text-lg text-stone-300 list-disc">
+                                                            {generalUpdates.map((update, idx) => (
+                                                                <div key={idx}>{update}</div>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                )}
+                                            </>
+                                        );
+                                    })()}
+                                </div>
+                            )
+                        ))}
+                        <br />
+                    </div>
+                ))}
             </div>
-            
         </div>
 
-        {/*AdSpace*/}
-        <div className={`mt-2 mb-2 border-b-4 border-r-1 rounded-lg mr-5 w-[15%] ${gColors.stoneBackgroundGradient2}`}>
-            AdSpace
-         </div>
-    </>
-    )
-}
+    
+            {/* AdSpace */}
+            <div className={`mt-2 mb-2 border-b-4 border-r-1 rounded-lg mr-5 w-[15%] ${gColors.stoneBackgroundGradient2}`}>
+                AdSpace
+            </div>
+        </>
+        );
+    }
