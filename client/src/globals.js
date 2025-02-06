@@ -22,7 +22,7 @@ const globals = {
         stone800Background: '#292524',
         stoneBackgroundGradient: "bg-gradient-to-br from-stone-800 via-stone-700 to-stone-900",
         stoneBackgroundGradient2: "bg-gradient-to-r from-stone-800 via-transparent to-stone-900",
-        stoneBackgroundGradient3: "bg-gradient-to-r from-stone-900 to-stone-800",
+        stoneBackgroundGradient3: "bg-gradient-to-r from-stone-800 via-stone-900 to-stone-900",
         stoneBorderGradient: "border-gradient-to-r from-stone-600 to-stone-700",
         offWhite:"#d2d2cb",
         itemLabelBackground:"#F0E1CB",

@@ -10,7 +10,25 @@ JSON_FILE = "../assets/patch_notes.json"
 # New Patches are put as the TOP Url !!!
 PATCH_URLS = [
     "https://forums.playdeadlock.com/threads/01-27-2025-update.54590/",
-    "https://forums.playdeadlock.com/threads/01-19-2025-update.53961/"
+    "https://forums.playdeadlock.com/threads/01-19-2025-update.53961/",
+    "https://forums.playdeadlock.com/threads/01-17-2025-update.53607/",
+    "https://forums.playdeadlock.com/threads/01-12-2025-update.53389/",
+    "https://forums.playdeadlock.com/threads/12-31-2024-update.52769/",
+    "https://forums.playdeadlock.com/threads/12-21-2024-update.52206/",
+    "https://forums.playdeadlock.com/threads/12-17-2024-update.52008/",
+    "https://forums.playdeadlock.com/threads/12-06-2024-update.50599/",
+    "https://forums.playdeadlock.com/threads/11-29-2024-update.49470/",
+    "https://forums.playdeadlock.com/threads/11-21-2024-update.47476/",
+    "https://forums.playdeadlock.com/threads/11-13-2024-update.46391/",
+    "https://forums.playdeadlock.com/threads/11-10-2024-update.45689/",
+    "https://forums.playdeadlock.com/threads/11-07-2024-update.44786/",
+    "https://forums.playdeadlock.com/threads/11-01-2024-update.43705/",
+    "https://forums.playdeadlock.com/threads/10-29-2024-update.42985/",
+    "https://forums.playdeadlock.com/threads/10-27-2024-update.42492/",
+    "https://forums.playdeadlock.com/threads/10-24-2024-update.40951/",
+    "https://forums.playdeadlock.com/threads/10-18-2024-update-2.39693/",
+    "https://forums.playdeadlock.com/threads/10-18-2024-update.39630/",
+    "https://forums.playdeadlock.com/threads/10-15-2024-update.38925/",
 ]
 
 # Keywords for different categories
