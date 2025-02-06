@@ -8,6 +8,7 @@ import {
     rectSwappingStrategy,
     rectSortingStrategy
   } from '@dnd-kit/sortable';
+import { getHeroes } from '../../Util/ApiUtil.tsx';
 import globals from '../../globals';
 import ShopItem from './ShopItem';
 import { DraggableShopItem } from './DraggableShopItem';
@@ -17,6 +18,20 @@ const gColors = globals.globalColors
 export default function MiniBuild(props) {
 
     const build = props.build
+
+    const [heroes, setHeroes] = useState([])
+
+    useEffect(()=>{
+        getAPIData()
+    },[])
+
+    async function getAPIData(){
+        const heroRes = await getHeroes()
+        const filteredHeroes = heroRes.filter((h)=>!h.disabled)
+        setHeroes(filteredHeroes)
+        build.hero = filteredHeroes[0]
+        props.setBuild(build)
+    }
 
     const sensors = useSensors(
         useSensor(MouseSensor, {
@@ -36,15 +51,22 @@ export default function MiniBuild(props) {
         
       );
 
+      function removeItemFromBuild(item){
+        Object.keys(build.categories).forEach((cat)=>{
+            build.categories[cat] = build.categories[cat].filter((item2)=>item2.id!=item.id)
+        })
+        build.itemOrder = build.itemOrder.filter((item2)=>item2.id!=item.id)
+        delete build.allItems[item.id]
+        props.setBuild(build)
+      }
+
       function onDragEnd(e){
         const {active, over} = e;
-        Array.prototype.swapItems = function(a, b){
-            this[a] = this.splice(b, 1, this[a])[0];
-            return this;
-        }
+        
         if(active.id !== over.id){
-            const swapped = build.itemOrder.swapItems(active.id, over.id)
-            build.itemOrder = swapped
+            
+            const swapItem = build.itemOrder.splice(active.id,1)[0]
+            build.itemOrder.splice(over.id,0,swapItem)
             props.setBuild(build)
         }
       }
@@ -63,7 +85,7 @@ export default function MiniBuild(props) {
                             
                             const item = category[index]??null
                             return(
-                                <ShopItem item={item} key={index} hover={props.openPopup} unhover={props.closePopup} widthOverride={90} heightOverride={100} transition renderRight/>
+                                <ShopItem item={item} key={index} hover={props.openPopup} unhover={props.closePopup} click={removeItemFromBuild} widthOverride={83} heightOverride={90} transition renderRight removable/>
                             )
                             
                             
@@ -95,6 +117,20 @@ export default function MiniBuild(props) {
             
         )
     }
+
+    function renderHeroSelect(){
+        const hero = build.hero
+        if(!hero){return null}
+        return(
+            <div className="flex flex-1 flex-row justify-end" style={{borderWidth:2}}>
+                <div className="flex flex-col mr-10" style={{borderWidth:2}}>
+                    <div className="text-white">Select Hero</div>
+                    <img style={{width:"auto", height:"auto"}} src={hero.images["icon_image_small_webp"]}/>
+                    <div>{hero.name}</div>
+                </div>
+            </div>
+        )
+    }
     
     return(
             <div className='flex flex-col'>
@@ -113,11 +149,14 @@ export default function MiniBuild(props) {
                                 
                             })
                         }
+                        {renderHeroSelect()}
                     </div>
                     {/* buy order */}
                     {renderBuyOrder()}
 
                 </div>
+
+               
             </div>
     )
 }

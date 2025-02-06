@@ -13,7 +13,6 @@ export default function StatsPage(){
 
     async function getAPIData(){
         const heroRes = await getHeroes()
-        console.log(heroRes)
         setHeroes(heroRes.filter((h)=>!h.disabled))
     }
 

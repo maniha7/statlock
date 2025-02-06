@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
 import ShopItem from '../Components/BuildComponents/ShopItem';
 import ItemDescPopup from '../Components/BuildComponents/ItemDescPopup';
 import CurrentBuild from '../Components/BuildComponents/CurrentBuildSection';
@@ -22,7 +23,8 @@ const Builds = () => {
             flex:[],
         },
         itemOrder:[],
-        allItems:{}
+        allItems:{},
+        hero:null
     }
     const baseBuild = {
         categories:{
@@ -52,6 +54,8 @@ const Builds = () => {
     const [curCategory, setCurCategory] = useState(initID)
     const [buildChartType, setBuildChartType] = useState("DmgVsResistances")
 
+    const [selectedHero, setSelectedHero] = useState(null)
+
     const [popupOpen, setPopupOpen] = useState(false)
     const [popupItem, setPopupItem] = useState(null)
     const [popupPosition, setPopupPosition] = useState(null)
@@ -69,7 +73,7 @@ const Builds = () => {
       });
 
 
-    //doesn't actually fetch API data anymore--fetches internal rewritten item objects
+    //fetches internal rewritten item objects
     async function getAPIData(){
         const itemRes = dlItems
 

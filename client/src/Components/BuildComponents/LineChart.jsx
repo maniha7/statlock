@@ -6,8 +6,7 @@ const gColors = globals.globalColors
 export default function LineChart(props) {
     const canvasRef = useRef(null);
     const data = props.data
-    const innerPadding = 15
-    const textSize = 30
+    const innerPadding = 24
 
     const [canvasWidth, setCanvasWidth] = useState(0)
 
@@ -20,7 +19,8 @@ export default function LineChart(props) {
 
     useEffect(()=>{
         fullRender()
-    },[data.length])
+    },[data.length,canvasWidth])
+
 
 
     function fullRender(){
@@ -45,6 +45,7 @@ export default function LineChart(props) {
     function drawAxisTicks(canvas, context){
         
         context.strokeStyle = "#8b8ba7"
+        context.fillStyle="#b6b6c8"
         const numTicks = data.length
         const tickSize = (canvas.width - innerPadding*2 - 20) / (numTicks)
         let tickLocation = innerPadding + tickSize
@@ -54,7 +55,10 @@ export default function LineChart(props) {
             context.moveTo(tickLocation,canvas.height - innerPadding-8)
             context.lineTo(tickLocation, canvas.height - innerPadding+8)
             context.stroke()
+            context.textAlign="center"
+            context.fillText(itemNum, tickLocation, canvas.height)
             tickLocation += tickSize
+
         })
     }
 
