@@ -5,8 +5,8 @@ const gColors = globals.globalColors
 
 export default function LineChart(props) {
     const canvasRef = useRef(null);
-
-    const innerPadding = 5
+    const data = props.data
+    const innerPadding = 15
     const textSize = 30
 
     const [canvasWidth, setCanvasWidth] = useState(0)
@@ -20,7 +20,7 @@ export default function LineChart(props) {
 
     useEffect(()=>{
         fullRender()
-    },[canvasWidth])
+    },[data.length])
 
 
     function fullRender(){
@@ -36,9 +36,27 @@ export default function LineChart(props) {
         //draw axes
         drawAxes(canvas, context)
 
-        //draw lines
+        drawAxisTicks(canvas, context)
+
+        //draw data lines
         drawLines(canvas, context)
-  }
+    }
+
+    function drawAxisTicks(canvas, context){
+        
+        context.strokeStyle = "#8b8ba7"
+        const numTicks = data.length
+        const tickSize = (canvas.width - innerPadding*2 - 20) / (numTicks)
+        let tickLocation = innerPadding + tickSize
+        data.forEach((_,index)=>{
+            const itemNum = index+1
+            context.beginPath()
+            context.moveTo(tickLocation,canvas.height - innerPadding-8)
+            context.lineTo(tickLocation, canvas.height - innerPadding+8)
+            context.stroke()
+            tickLocation += tickSize
+        })
+    }
 
     function drawAxes(canvas, context){
         
@@ -47,9 +65,9 @@ export default function LineChart(props) {
         context.fillStyle="#ceced4"
         
         context.beginPath()
-        context.moveTo(0,0)
-        context.lineTo(0, canvas.height)
-        context.lineTo(canvas.width, canvas.height)
+        context.moveTo(innerPadding,0)
+        context.lineTo(innerPadding, canvas.height-innerPadding)
+        context.lineTo(canvas.width-innerPadding, canvas.height-innerPadding)
         context.stroke()
         
     }

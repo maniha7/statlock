@@ -48,7 +48,6 @@ export default function ItemDescPopup(props){
 
         //if box extends above top of window, move it down
         if(pos.y-baseYOffset<0){
-            console.log(pos.y-baseYOffset)
             let extraOffset = Math.abs(pos.y-baseYOffset) + 30
             res-=extraOffset
         }
