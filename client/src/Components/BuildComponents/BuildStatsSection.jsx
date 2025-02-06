@@ -9,6 +9,8 @@ export default function BuildStats(props) {
     const chartContainerRef = useRef(null)
     const chartYAxisRef = useRef(null)
 
+    const build = props.build
+    const buildData = build.itemOrder
     const buildChartType = props.chartType
     
     function renderChartXAxis(){
@@ -42,7 +44,7 @@ export default function BuildStats(props) {
                     </span>
                     <div className='flex flex-1 flex-col items-center p-5' style={{ width:'100%'}}>
                         <div ref={chartContainerRef} style={{width:"100%"}} >
-                            <LineChart style={{width:chartContainerRef.current?.clientWidth, height:500}}/>
+                            <LineChart data={buildData} style={{width:chartContainerRef.current?.clientWidth, height:500}}/>
                         </div>
                         <span style={{color:"#fff", fontSize:19, fontStyle:"italic", fontWeight:700}}>{renderChartXAxis()}</span>
                     </div>
