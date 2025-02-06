@@ -48,7 +48,7 @@ const globals = {
             darkPlus:"#203500",
             veryDark:"#172801",
             t4gradient:"bg-gradient-to-br from-[#709c34] to-[#c7ee8e]",
-            basetw:"#00FF9A"
+            basetw:"bg-[#74b01c]"
 
         },
         spirit:{
