@@ -1,14 +1,11 @@
 
 
 
-
-
 const Rankings = () => {
-    return(
+    
+
+    return (
         <>
-        
-        
-        
         </>
     )
 }
