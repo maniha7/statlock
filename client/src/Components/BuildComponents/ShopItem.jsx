@@ -63,7 +63,6 @@ export default function ShopItem(props){
         )
         
     }
-    if(scale!=1){console.log(scale)}
     return(
         <button>
             <div ref={itemRef} onClick={()=>props.click(item)} onMouseEnter={()=>openPopup()} onMouseLeave={()=>closePopup()} className={`flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)] ${props.transition?`opacityAppear`:``}`}  >
@@ -91,7 +90,7 @@ export default function ShopItem(props){
                         }
                     </div>
                     {/* Item Label*/}
-                    <div className={`relative px-[2px] pt-2 pb-1 flex flex-1 justify-center ${scale==1?"min-h-10":"min-h-0"}`} style={{backgroundColor:gColors.itemLabelBackground, borderBottomRightRadius:8, borderBottomLeftRadius:8, width:'100%',}}>
+                    <div className={`relative px-[2px] pt-2 pb-1 flex flex-1 justify-center ${scale==1?"min-h-11":"min-h-0"}`} style={{backgroundColor:gColors.itemLabelBackground, borderBottomRightRadius:8, borderBottomLeftRadius:8, width:'100%',}}>
                         {/* Active Tag */}
                         {isActive && scale==1 &&
                             <div ref={tagRef} className="py-[.5px] px-[8px]" style={{backgroundColor:gColors.itemLabelBlack, borderRadius:3, position:'absolute', top:-tagHeight, zIndex:1}}>

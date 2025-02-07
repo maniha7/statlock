@@ -57,8 +57,11 @@ export async function getHeroAbilities(id : number): Promise<Object>{
         }
     })
     const abilityData = await apiRes.json()
-    console.log(abilityData)
     const res = {};
+    abilityData.forEach((ability)=>{
+        res[ability.class_name] = ability
+    })
+    
     return res
 }
 

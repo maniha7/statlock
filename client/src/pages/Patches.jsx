@@ -68,7 +68,7 @@ export default function Patches() {
 
                         {/* Collapsible Content */}
                         {openPatch === index && (
-                            <div className="p-4 border-l-4 border-stone-600 bg-stone-800 rounded-lg">
+                            <div className="p-4 border-l-4 border-b-2 border-stone-600 bg-stone-800 rounded-lg">
                                 <a href={patch.url} target="_blank" rel="noopener noreferrer" className="hover:underline text-indigo-400 text-md forevs2">
                                     Deadlock Forums Link
                                 </a>
@@ -88,7 +88,7 @@ export default function Patches() {
                                                         {Object.entries(characterUpdates).map(([character, updates]) => (
                                                             <div key={character} className="mt-3">
                                                                 <h5 className="text-xl font-bold text-stone-200 forevs2 underline">{character}</h5>
-                                                                <ul className="ml-6 space-y-1 text-lg text-stone-300 list-disc">
+                                                                <ul className="ml-6 space-y-0.5 text-lg text-stone-300 list-disc">
                                                                     {updates.map((update, idx) => (
                                                                         <li className="ml-2" key={idx}>{update}</li>
                                                                     ))}

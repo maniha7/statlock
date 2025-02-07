@@ -32,6 +32,7 @@ const globals = {
         itemLabelBlack:"#070d0d",
         itemNegativePropertyRed:"#FF6B6B",
         itemCost:"#9affd6",
+        abilityBackground:"#C6C2C7",
         deadLockDark:"#231f20",
         deadLockLight:"#f0dfbf",
         LineChartBackground:"#181830",
