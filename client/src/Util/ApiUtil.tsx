@@ -49,6 +49,18 @@ export async function getItems() : Promise<Object>{
     return res
 }
 
+export async function getHeroAbilities(id : number): Promise<Object>{
+    const apiRes = await fetch(assetsAPI+globals.Deadlock_Assets_Hero_Abilities_Endpoint +`/${id}`,{
+        method:"get",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    const abilityData = await apiRes.json()
+    console.log(abilityData)
+    const res = {};
+    return res
+}
 
 export async function getPatchNotes(): Promise<Object> {
     const apiRes = await fetch(dataAPI + globals.Deadlock_Data_PatchNotes_Endpoint, {
@@ -68,8 +80,6 @@ export async function getPatchNotes(): Promise<Object> {
     data.forEach((note, index) => {
         res[index] = { ...note };
     });
-
-    console.log(res)
 
     return res;
 }

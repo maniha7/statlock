@@ -8,11 +8,11 @@ const Contact = () => {
     return(
         <>
         
-        <div className="flex justify-center mb-50 mt-20 forevs2" style={{width:'100%'}}>
+        <div className="flex justify-center mb-50 mt-20 forevs2 mx-5" style={{width:'100%'}}>
             <div className={`flex border-b-4 border-l-2 border-r-1 rounded-lg self-center p-4 mb-15 ${gColors.stoneBackgroundGradient}`}> 
                 <div className="p-2 text-center" >
                     <h1 className="text-3xl underline font-bold border-stone-200 text-stone-200">ᴄᴏɴᴛᴀᴄᴛ ᴜꜱ</h1> 
-              <form action="#" method="POST" className="mt-6 grid grid-cols-1 gap-y-10 sm:grid-cols-2 sm:gap-x-8 ">
+              <form action="#" method="POST" className="mt-6 grid grid-cols-1 gap-y-10 sm:grid-cols-2 sm:gap-x-8">
                   <div className="relative">
                     <input
                       type="text"
@@ -47,7 +47,7 @@ const Contact = () => {
                       name="subject"
                       placeholder="subject"
                       id="subject"
-                      className="peer bg-inherit w-full border-b py-1 px-4 border-stone-200 placeholder-transparent  shadow-sm focus:border-b-2 focus:outline-none focus:ring-0"
+                      className="peer bg-inherit w-full border-b text-white py-1 px-4 border-stone-200 placeholder-transparent  shadow-sm focus:border-b-2 focus:outline-none focus:ring-0"
                     />
                     <label htmlFor="subject" className="absolute  left-0 -top-3.5 text-white text-md transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-white peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
                     Subject

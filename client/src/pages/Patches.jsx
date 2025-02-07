@@ -49,14 +49,14 @@ export default function Patches() {
     return (
         <>
             <div className={`flex-1 flex flex-col mt-2 mb- ml-5 mr-10 p-2 border-b-4 border-l-2 border-r-1 border-stone-600 rounded-lg min-h-200 w-400 ${gColors.stoneBackgroundGradient3}`}>
-                <h1 className="text-5xl font-bold mt-10 text-stone-200 forevs2 underline text-center">Patch Notes</h1>
+                <h1 className="text-5xl font-bold mt-5 text-stone-200 forevs2 underline text-center flex justify-center">Patch Notes</h1>
                 <div className="grid grid-cols-1 justify-center ml-5 mr-5 mb-5">
-                    {patches.map((patch, index) => (
+                    {patches.map((patch, index) => (    
                         <div key={index} className="mt-5 space-y-1">
                             {/* Collapsible Patch Header */}
                         <button 
                             onClick={() => togglePatch(index)}
-                            className="w-full text-left bg-stone-700 hover:bg-stone-700 p-3 rounded-md transition-all transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-100"
+                            className="w-full text-left bg-stone-700 hover:bg-stone-700 p-3 rounded-md transition-all transition duration-200 ease-in-out hover:-translate-y-0.5 hover:scale-100"
                         >
                             <h3 className="text-stone-400 text-2xl forevs2">
                                 {patch.title}
@@ -90,7 +90,7 @@ export default function Patches() {
                                                                 <h5 className="text-xl font-bold text-stone-200 forevs2 underline">{character}</h5>
                                                                 <ul className="ml-6 space-y-1 text-lg text-stone-300 list-disc">
                                                                     {updates.map((update, idx) => (
-                                                                        <li key={idx}>{update}</li>
+                                                                        <li className="ml-2" key={idx}>{update}</li>
                                                                     ))}
                                                                 </ul>
                                                             </div>
@@ -98,10 +98,10 @@ export default function Patches() {
 
                                                         {/* Display General Updates (non-character related) */}
                                                         {generalUpdates.length > 0 && (
-                                                            <div className="mt-3">
+                                                            <div className="">
                                                                 <ul className="ml-2 space-y-1 text-lg text-stone-300 list-disc">
                                                                     {generalUpdates.map((update, idx) => (
-                                                                        <div key={idx}>{update}</div>
+                                                                        <div className="ml-2 my-1" key={idx}>{update}</div>
                                                                     ))}
                                                                 </ul>
                                                             </div>

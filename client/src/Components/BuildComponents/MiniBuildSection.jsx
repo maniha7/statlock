@@ -8,7 +8,8 @@ import {
     rectSwappingStrategy,
     rectSortingStrategy
   } from '@dnd-kit/sortable';
-import { getHeroes } from '../../Util/ApiUtil.tsx';
+  import { TailSpin } from 'react-loader-spinner'
+import { getHeroes, getHeroAbilities } from '../../Util/ApiUtil.tsx';
 import globals from '../../globals';
 import ShopItem from './ShopItem';
 import { DraggableShopItem } from './DraggableShopItem';
@@ -20,6 +21,9 @@ export default function MiniBuild(props) {
     const build = props.build
 
     const [heroes, setHeroes] = useState([])
+    const [heroAbilityImgs, setHeroAbilityImgs] = useState([])
+    const [heroSelectorOpen, setHeroSelectorOpen] = useState(false)
+    const [abilitySelectorOpen, setAbilitySelectorOpen] = useState(false)
 
     useEffect(()=>{
         getAPIData()
@@ -50,6 +54,22 @@ export default function MiniBuild(props) {
           })
         
       );
+
+      async function setHeroAbilities(){
+        if(build.hero){
+            const abils = await getHeroAbilities(build.hero.id)
+            console.log(abils)
+        }
+        
+      }
+
+      function setHero(hero){
+        build.hero = hero
+        setHeroAbilities()
+        props.setBuild(build)
+        setHeroSelectorOpen(false)
+        console.log(hero)
+      }
 
       function removeItemFromBuild(item){
         Object.keys(build.categories).forEach((cat)=>{
@@ -118,19 +138,67 @@ export default function MiniBuild(props) {
         )
     }
 
-    function renderHeroSelect(){
+    function renderCurrentHero(){
         const hero = build.hero
         if(!hero){return null}
         return(
-            <div className="flex flex-1 flex-row justify-end" style={{borderWidth:2}}>
-                <div className="flex flex-col mr-10" style={{borderWidth:2}}>
-                    <div className="text-white">Select Hero</div>
-                    <img style={{width:"auto", height:"auto"}} src={hero.images["icon_image_small_webp"]}/>
-                    <div>{hero.name}</div>
+            <div className="flex flex-1 flex-row justify-end ">
+                <div className="flex flex-col mr-10 items-center">
+                    <div className="text-white select-none" style={{fontSize:22, fontWeight:700}}>Select Hero</div>
+                    <img onClick={()=>setHeroSelectorOpen(true)} style={{width:140, height:"auto", borderColor:"#444",borderWidth:1, cursor:'pointer', userSelect:'none', borderRadius:500,}} src={hero.images["icon_image_small_webp"]}/>
+                    <div className="mt-2 text-white forevs2" style={{fontSize:18, fontWeight:700}}>{hero.name}</div>
+                    <div onClick={()=>setAbilitySelectorOpen(true)} className="text-white select-none p-2 hover:opacity-80 cursor-pointer" style={{backgroundColor:gColors.greyBackground, fontSize:16, fontWeight:700, borderRadius:5}}>
+                        Choose Ability Order
+                    </div>
                 </div>
             </div>
         )
     }
+
+    function renderHeroSelector(){
+        return(
+            <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setHeroSelectorOpen(false)}} className="flex fixed top-0 left-0 items-center justify-center select-none" style={{width:'100vw', height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.6)"}}>
+                <div className="flex p-3" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", borderWidth:3}}>
+                    <div className="flex flex-row flex-wrap justify-center">
+                        {
+                        heroes.length==0?
+                        <TailSpin
+                        visible={true}
+                        height="80"
+                        width="80"
+                        color="#fff"
+                        ariaLabel="tail-spin-loading"
+                        radius="1"
+                        />
+                        :
+                            heroes.map((hero)=>{
+                                return(
+                                    <div onClick={()=>setHero(hero)} className="mr-2 mb-2 border-2 border-stone-600 bg-stone-700 rounded-md" key={hero.id} style={{maxWidth:70, cursor:"pointer"}}>
+                                        <div>
+                                            <img style={{width:"auto", height:"auto"}} src={hero.images["icon_image_small_webp"]}/>
+                                        </div>
+                                    </div> 
+                                )
+                            })
+                        }
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    function renderAbilitySelector(){
+        return(
+            <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setAbilitySelectorOpen(false)}} className="flex fixed top-0 left-0 items-center justify-center select-none" style={{width:'100vw', height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.6)"}}>
+                <div className="flex p-3" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", borderWidth:3}}>
+                    <div className="flex flex-row flex-wrap justify-center">
+                        
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     
     return(
             <div className='flex flex-col'>
@@ -149,14 +217,20 @@ export default function MiniBuild(props) {
                                 
                             })
                         }
-                        {renderHeroSelect()}
+                        {renderCurrentHero()}
                     </div>
                     {/* buy order */}
                     {renderBuyOrder()}
 
                 </div>
-
-               
+                {/* Ability Selector Popup */}
+                {abilitySelectorOpen&&
+                    renderAbilitySelector()
+                }
+                {/* Hero Selector Popup */}
+                {heroSelectorOpen&&
+                    renderHeroSelector()
+                }
             </div>
     )
 }

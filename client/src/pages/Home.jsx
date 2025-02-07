@@ -4,22 +4,25 @@ import patchData from '../assets/patch_notes.json';
 
 const gColors = globals.globalColors
 
+const categoryColors = {
+    "Character Patches": "text-[#f0dfbf]",      
+    "Weapon Item Patches": "text-[#d08d3e]", 
+    "Vitality Item Patches": "text-[#74b01c]", 
+    "Spirit Item Patches": "text-[#c288f0]",
+    "General Updates": "text-[#f0dfbf]",         
+};
+
 import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const Home = () => {
     const [latestPatch, setLatestPatch] = useState(null);
-    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         const latest = patchData.find(patch => patch.latest);
         setLatestPatch(latest);
     }, []);
-
-    const togglePatch = () => {
-        setIsOpen(!isOpen); 
-    };
 
 
     return (
@@ -27,7 +30,7 @@ const Home = () => {
         <div className={`flex-1 flex flex-col mt-2 mb-2 ml-5 mr-10 p-2 border-b-4 border-l-1 border-r-2 border-stone-600 rounded-lg  min-h-200 w-400 ${gColors.stoneBackgroundGradient}`} style={{}}> 
             <div className="flex justify-center mt-1 mb-5"><img className="object-center w-40 transition spin-slow duration-1 ease-in-out hover:-translate-y-0.5 hover:scale-110" src={logo} /></div>
             {/*Main*/}
-            <div className="mb-10 border-b-4 border-x-2 border-t-2 mx-5 bg-stone-900 rounded-lg w-[80%] self-center text-stone-500">
+            <div className="mb-10 border-b-4 border-x-2 border-t-2 bg-stone-900 rounded-lg w-[80%] self-center text-stone-500">
 
                 {/*Steam Profile Search Bar*/}
                 <div className="flex flex-row">
@@ -44,55 +47,41 @@ const Home = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 ml-5 mr-5 gap-y-10 gap-x-2"> 
                 
                 {/* Most Recent Patch Notes */}
-                <div className="w-flex min-h-50 self-center justify-center rounded-lg text-stone-500 bg-stone-800 p-4">
-                    <h2 className="h-[50%] text-2xl text-stone-200 underline font-bold text-center">ʀᴇᴄᴇɴᴛ ᴘᴀᴛᴄʜ</h2>
-                    
-                    {/* Collapsible Latest Patch */}
+                <div className="w-flex self-center justify-center rounded-lg text-stone-500 bg-stone-800 p-4 border-1 border-stone-900">
+                    <h2 className="h-[50%] text-2xl text-stone-200 underline font-bold text-center mb-5">ʟᴀᴛᴇꜱᴛ ᴘᴀᴛᴄʜ ᴘʀᴇᴠɪᴇᴡ</h2>
                     {latestPatch ? (
                         <div className="text-stone-200 mt-2">
-                            {/* Collapsible Header */}
-                            <button 
-                                onClick={togglePatch}
-                                className="w-full text-left bg-stone-700 hover:bg-stone-600 p-3 rounded-md transition-all"
-                            >
-                                <h3 className="text-xl font-bold">{latestPatch.title}</h3>
-                                <span className="text-indigo-400 text-sm">
-                                    {isOpen ? "▲ Collapse" : "▼ Expand"}
-                                </span>
-                            </button>
-
-                            {/* Collapsible Content */}
-                            {isOpen && (
-                                <div className="p-4 border-l-4 border-stone-600 bg-stone-800 rounded-lg mt-2">
-                                    <Link to="./patchnotes" className="text-indigo-400 hover:underline font-bold">
-                                        View Full Patch Notes
-                                    </Link>
+                            <h3 className="text-2xl font-bold mx-2 forevs2">{latestPatch.title}</h3>
+                                <Link to="./patchnotes" className="text-indigo-400 underline font-bold text-sm flex mx-2 mb-3 hover:opacity-80">
+                                    View Full Patch Notes
+                                </Link>
+                                    
+                                <div className="border-t-4 border-b-2 border-stone-600 bg-stone-800 py-3">
                                     
                                     {/* Display Preview: First 3 Updates */}
                                     {Object.entries(latestPatch.categories).map(([category, lines]) => (
                                         lines.length > 0 && (
                                             <div key={category} className="mt-3">
-                                                <h4 className="text-lg font-bold text-stone-300">{category}</h4>
-                                                <ul className="list-disc ml-5 text-stone-400 text-sm">
+                                                <h4 className={`text-xl font-bold forevs2 ${categoryColors[category] || "text-white"}`}>{category}:</h4>
+                                                <ul className="ml-2 text-stone-300 text-sm">
                                                     {lines.slice(0, 2).map((line, idx) => (
-                                                        <li key={idx}>{line}</li>
+                                                        <li key={idx}>{line}...</li>
                                                     ))}
                                                 </ul>
                                             </div>
                                         )
                                     ))}
                                 </div>
-                            )}
                         </div>
                     ) : (
-                        <div className="text-stone-400">Loading latest patch...</div>
+                        <div className="text-stone-400">error</div>
                     )}
                 </div>
 
-                {/*Undecided*/}
-                <div className="w-flex min-h-50 self-center text-center grid grid-rows-2 justify-center rounded-lg text-stone-500">
-                    <h2 className="h-[50%] text-2xl text-stone-200 underline font-bold">ᴛɪᴛʟᴇ</h2>
-                        <div className="text-stone-200"></div>
+                {/*Item Builder*/}
+                <div className="w-flex justify-center rounded-lg text-stone-500 bg-stone-800 p-4 border-1 border-stone-900">
+                    <h2 className="text-2xl text-stone-200 underline font-bold text-center mb-5">ɪᴛᴇᴍ ʙᴜɪʟᴅᴇʀ</h2>
+                        <div className="text-stone-200 mt-5 text-center forevs text-lg"></div>
                 </div>
 
                 {/*Undecided*/}

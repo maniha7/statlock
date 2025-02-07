@@ -8,6 +8,7 @@ const globals = {
     Deadlock_Assets_API_Address: "https://assets.deadlock-api.com",
     Deadlock_Assets_Heroes_Endpoint: "/v2/heroes",
     Deadlock_Assets_Items_Endpoint: "/v2/items/by-type/upgrade",
+    Deadlock_Assets_Hero_Abilities_Endpoint: "/v2/items/by-hero-id",
 
     //DATA API
     Deadlock_Data_API_Address: "https://data.deadlock-api.com",
@@ -98,7 +99,7 @@ const globals = {
         weapon:{
             "500":6,
             "1250":10,
-            "3000":12,
+            "3000":14,
             "6000":18
         },
         vitality:{
