@@ -29,6 +29,8 @@ export default function MiniBuild(props) {
     const [imbueChooserOpen, setImbueChooserOpen] = useState(false)
     const [imbueChangerOpen, setImbueChangerOpen] = useState(false)
 
+    const [buildUpdate, setBuildUpdate] = useState(0)
+
     const sensors = useSensors(
         useSensor(MouseSensor, {
           activationConstraint: {
@@ -72,8 +74,7 @@ export default function MiniBuild(props) {
             build.hero.melee = abils["weapon_melee"]
             build.hero.weaponPrimary = abils["weapon_primary"]
             build.hero.weaponSecondary = abils["weapon_secondary"]??null
-            console.log(build.hero)
-            props.setBuild(build)
+            setBuild(build)
         }
         
       }
@@ -81,8 +82,13 @@ export default function MiniBuild(props) {
       function setHero(hero){
         build.hero = hero
         setHeroBaseAbilities()
-        props.setBuild(build)
+        setBuild(build)
         setHeroSelectorOpen(false)
+      }
+
+      function setBuild(build){
+        props.setBuild(build)
+        setBuildUpdate(buildUpdate+1)
       }
 
       function removeItemFromBuild(item){
@@ -91,7 +97,7 @@ export default function MiniBuild(props) {
         })
         build.itemOrder = build.itemOrder.filter((item2)=>item2.id!=item.id)
         delete build.allItems[item.id]
-        props.setBuild(build)
+        setBuild(build)
       }
 
       function onDragEnd(e){
@@ -101,7 +107,7 @@ export default function MiniBuild(props) {
             
             const swapItem = build.itemOrder.splice(active.id,1)[0]
             build.itemOrder.splice(over.id,0,swapItem)
-            props.setBuild(build)
+            setBuild(build)
         }
       }
 
