@@ -58,7 +58,7 @@ export default function Patches() {
                         <div key={index} className="mt-5 space-y-1">
                             <button 
                                 onClick={() => togglePatch(index)}
-                                className="w-full text-left bg-stone-700 hover:bg-stone-700 p-3 rounded-md transition duration-200 ease-in-out hover:-translate-y-0.5 hover:scale-100"
+                                className="w-full text-left bg-stone-700 hover:bg-stone-700 p-3 rounded-md transition duration-200 ease-in-out hover:-translate-y-0.5 hover:scale-100 hover:cursor-pointer"
                             >
                                 <h3 className="text-stone-400 text-2xl forevs2">
                                     {patch.title}

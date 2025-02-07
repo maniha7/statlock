@@ -166,8 +166,8 @@ export default function MiniBuild(props) {
         return(
             <div className="flex flex-1 flex-row justify-end ">
                 <div className="flex flex-col mr-10 items-center">
-                    <div className="text-white select-none" style={{fontSize:20, fontWeight:700}}>Select Hero</div>
-                    <img className="select-none" onClick={()=>setHeroSelectorOpen(true)} style={{width:80, aspectRatio:1, borderColor:"#444",borderWidth:1, cursor:'pointer', borderRadius:10,}} src={hero.images["icon_image_small_webp"]}/>
+                    <div className="text-white select-none" style={{fontSize:20, fontWeight:700}}>ꜱᴇʟᴇᴄᴛ ʜᴇʀᴏ</div>
+                    <img className="select-none bg-stone-700" onClick={()=>setHeroSelectorOpen(true)} style={{width:80, aspectRatio:1, borderColor:"#444",borderWidth:1, cursor:'pointer', borderRadius:10,}} src={hero.images["icon_image_small_webp"]}/>
                     <div className="mt-2 text-white forevs2" style={{fontSize:18, fontWeight:700}}>{hero.name}</div>
                     <div onClick={()=>setAbilitySelectorOpen(true)} className="text-white select-none p-2 hover:opacity-80 cursor-pointer" style={{backgroundColor:gColors.greyBackground, fontSize:16, fontWeight:700, borderRadius:5}}>
                         Choose Ability Order
