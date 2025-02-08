@@ -19,7 +19,7 @@ import ShopItem from './ShopItem';
 import { HeroPortrait } from '../MiscComponents/HeroPortrait.jsx';
 import { SortableShopItem, DraggableShopItem, DroppableItemSection } from './DraggableShopItem.jsx';
 import { HeroAbility } from './HeroAbility.jsx';
-
+import { getItemByID } from '../../Util/ItemUtil';
 
 const gColors = globals.globalColors
 
@@ -113,27 +113,86 @@ export default function MiniBuild(props) {
       function setBuild(build){
         props.setBuild(build)
         setBuildUpdate(buildUpdate+1)
-        console.log(build)
+        //console.log(build)
       }
 
       function removeItemFromBuild(item){
-        Object.keys(build.categories).forEach((cat)=>{
-            build.categories[cat] = build.categories[cat].filter((item2)=>item2.id!=item.id)
-        })
-        build.itemOrder = build.itemOrder.filter((item2)=>item2.id!=item.id)
-        delete build.allItems[item.id]
-        delete build.imbueItems[item.id]
-        setBuild(build)
-        closePopup()
+        props.removeItem(item)
       }
 
-      function onDragEnd(e){
+      function onBuyOrderDragEnd(e){
         const {active, over} = e;
-        
-        if(active.id !== over.id){
-            
-            const swapItem = build.itemOrder.splice(active.id,1)[0]
-            build.itemOrder.splice(over.id,0,swapItem)
+        const dragItemIndex = active.id
+        const dropItemIndex = over.id
+        if(dragItemIndex !== dropItemIndex){
+            const draggedItem = build.itemOrder.splice(dragItemIndex,1)[0]
+            build.itemOrder.splice(dropItemIndex,0,draggedItem)
+
+            //force appropriate ordering of existing component items
+            if(draggedItem.upgradesFrom){
+                const component1 = getItemByID(draggedItem.upgradesFrom)
+                let component2 = null
+                let filters = [component1.id]
+                let comp1Index = -1
+                build.itemOrder.forEach((item,index)=>{
+                    if(item.id===component1.id){comp1Index=index}
+                })
+                let comp2Index = -1
+                let replacingComp2 = false
+                if(component1.upgradesFrom){
+                    component2 = getItemByID(component1.upgradesFrom)
+                    build.itemOrder.forEach((item,index)=>{
+                        if(item.id===component2.id){comp2Index=index}
+                    })
+                    if(dropItemIndex<comp2Index){
+                        replacingComp2 = true
+                        filters.push(component2.id)
+                    }
+                }
+                //if item was placed before one of its components, reorder them
+                if(dropItemIndex<comp1Index){
+                    build.itemOrder = build.itemOrder.filter((item)=>!filters.includes(item.id))
+                    
+                    build.itemOrder.splice(dropItemIndex,0,component1)
+                    if(component2 && replacingComp2){
+                        build.itemOrder.splice(dropItemIndex,0,component2)
+                    }
+                    
+                }
+            }
+            if(draggedItem.upgradesTo){
+                const upgrade1 = getItemByID(draggedItem.upgradesTo)
+                let upgrade2 = null
+                let filters = [upgrade1.id, draggedItem.id]
+                let upgrade1Index = -1
+                build.itemOrder.forEach((item,index)=>{
+                    if(item.id===upgrade1.id){upgrade1Index=index}
+                })
+                let upgrade2Index = -1
+                let replacingUpgrade2 = false
+                if(upgrade1.upgradesTo){
+                    upgrade2 = getItemByID(upgrade1.upgradesTo)
+                    build.itemOrder.forEach((item,index)=>{
+                        if(item.id===upgrade2.id){upgrade2Index=index}
+                    })
+                    if(upgrade2Index!==-1&&dropItemIndex>=upgrade2Index){
+                        replacingUpgrade2 = true
+                        filters.push(upgrade2.id)
+                    }
+                }
+                //if item was placed ahead of its upgrades, reorder them
+                if(upgrade1Index!==-1&&dropItemIndex>=upgrade1Index){
+                    
+                    build.itemOrder = build.itemOrder.filter((item)=>!filters.includes(item.id))
+                    
+                    
+                    if(upgrade2 && replacingUpgrade2){
+                        build.itemOrder.splice(dropItemIndex,0,upgrade2)
+                    } 
+                    build.itemOrder.splice(dropItemIndex,0,draggedItem)
+                    build.itemOrder.splice(dropItemIndex,0,upgrade1)
+                }
+            }
             setBuild(build)
         }
       }
@@ -186,7 +245,7 @@ export default function MiniBuild(props) {
         if(build.itemOrder.length==0){return null}
         const list = build.itemOrder.map((item, index)=>{return(index)})
         return(
-            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onBuyOrderDragEnd}>
                 <div className="text-white pl-2 pt-2 forevs2 text-[18px]" style={{borderTopWidth:1, borderColor:gColors.greyBackground}}>Buy Order</div>
                 <div className="flex flex-row flex-wrap">
                 <SortableContext items={list} strategy={rectSortingStrategy} className="flex flex-row flex-wrap">
@@ -295,8 +354,8 @@ export default function MiniBuild(props) {
         return(
             <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setImbueChangerOpen(false)}} className="flex fixed top-0 left-0 items-start justify-center select-none" style={{width:'100vw',  height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.7)"}}>
                 
-                <div className="flex flex-col p-4 mt-[100px] items-end" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", minHeight:0,borderWidth:3}}>
-                    
+                <div className="flex flex-col p-4 pt-0 mt-[100px] items-end" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", minHeight:0,borderWidth:3}}>
+                    <div className="flex text-white text-center self-center py-2" style={{fontSize:20, fontWeight:700}}>Change Item Imbues</div>
                     <DndContext modifiers={[restrictToFirstScrollableAncestor]} sensors={sensors} collisionDetection={closestCenter} onDragEnd={swapImbues}>
                         <div className="flex flex-1 flex-row flex-wrap space-x-3 justify-center " style={{maxHeight:"80vh", overflowY:"auto", overflowX:"hidden"}}>
                             {build.hero?.abilities&&

@@ -151,7 +151,7 @@ export function Shop(props) {
                     <div className='flex flex-row flex-wrap'>
                         {tierItems.map((item)=>{
                             return(
-                                <ShopItem item={item} key={item.id} hover={props.openItemPopup} unhover={props.closeItemPopup} click={props.addItemToBuild} bought={itemIsInBuild(item.id)}/>
+                                <ShopItem item={item} key={item.id} hover={props.openItemPopup} unhover={props.closeItemPopup} click={itemIsInBuild(item.id)?props.removeItemFromBuild:props.addItemToBuild} bought={itemIsInBuild(item.id)}/>
                             )
                         })}
                     </div>
