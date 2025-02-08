@@ -19,6 +19,7 @@ const globals = {
 
     globalColors:{
         greyBackground: "#333333",
+        mediumGrey:"#262626",
         darkGrey:"#0d0d0d",
         stone800Background: '#292524',
         stoneBackgroundGradient: "bg-gradient-to-br from-stone-800 via-stone-700 to-stone-900",

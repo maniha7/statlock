@@ -12,7 +12,8 @@ import {
 import { getHeroes, getHeroAbilities } from '../../Util/ApiUtil.tsx';
 import globals from '../../globals';
 import ShopItem from './ShopItem';
-import { DraggableShopItem } from './DraggableShopItem';
+import { HeroPortrait } from '../MiscComponents/HeroPortrait.jsx';
+import { SortableShopItem, DraggableShopItem, DroppableItemSection } from './DraggableShopItem.jsx';
 import { HeroAbility } from './HeroAbility.jsx';
 
 
@@ -30,6 +31,24 @@ export default function MiniBuild(props) {
     const [imbueChangerOpen, setImbueChangerOpen] = useState(false)
 
     const [buildUpdate, setBuildUpdate] = useState(0)
+    
+    const openPopup = props.popupHandlers[0]
+    const closePopup = props.popupHandlers[1]
+    const imbueItem = props.imbueHandler[0]
+    const imbueSetter = props.imbueHandler[1]
+
+    useEffect(()=>{
+        if(imbueItem){
+            setImbueChooserOpen(true)
+        }
+        else{
+            Object.values(build.imbueItems).forEach((item)=>{
+                if(!item.imbuedAbility){
+                    removeItemFromBuild(item)
+                }
+            })
+        }
+    },[props.imbueHandler[0]])
 
     const sensors = useSensors(
         useSensor(MouseSensor, {
@@ -75,6 +94,7 @@ export default function MiniBuild(props) {
             build.hero.weaponPrimary = abils["weapon_primary"]
             build.hero.weaponSecondary = abils["weapon_secondary"]??null
             setBuild(build)
+            
         }
         
       }
@@ -89,6 +109,7 @@ export default function MiniBuild(props) {
       function setBuild(build){
         props.setBuild(build)
         setBuildUpdate(buildUpdate+1)
+        console.log(build)
       }
 
       function removeItemFromBuild(item){
@@ -97,7 +118,9 @@ export default function MiniBuild(props) {
         })
         build.itemOrder = build.itemOrder.filter((item2)=>item2.id!=item.id)
         delete build.allItems[item.id]
+        delete build.imbueItems[item.id]
         setBuild(build)
+        closePopup()
       }
 
       function onDragEnd(e){
@@ -110,6 +133,23 @@ export default function MiniBuild(props) {
             setBuild(build)
         }
       }
+
+    function imbueAbilityWithItem(ability){
+        build.imbueItems[imbueItem.id].imbuedAbility = ability.id
+        setBuild(build)
+        imbueSetter(null)
+    }
+
+    function swapImbues(event){
+        const {active, over} = event
+        if(over && active.data.current.item){
+            const newAbility = over.id
+            const item = active.data.current.item
+            build.imbueItems[item.id].imbuedAbility = newAbility
+            setBuild(build)
+
+        }
+    }
 
 
     /******************** RENDERING FUNCTIONS ********************/
@@ -127,7 +167,7 @@ export default function MiniBuild(props) {
                             
                             const item = category[index]??null
                             return(
-                                <ShopItem item={item} key={index} hover={props.openPopup} unhover={props.closePopup} click={removeItemFromBuild} widthOverride={83} heightOverride={90} transition renderRight removable/>
+                                <ShopItem item={item} key={index} hover={openPopup} unhover={closePopup} click={removeItemFromBuild} widthOverride={83} heightOverride={90} transition renderRight removable/>
                             )
                             
                             
@@ -149,7 +189,7 @@ export default function MiniBuild(props) {
                     {list.map((id,index)=>{
                         const item = build.itemOrder[index]
                         return(
-                            <DraggableShopItem key={id} id={id} item={item}/>
+                            <SortableShopItem key={id} id={id} item={item} sortable/>
                         )
                     })}
                 </SortableContext >
@@ -167,7 +207,7 @@ export default function MiniBuild(props) {
             <div className="flex flex-1 flex-row justify-end ">
                 <div className="flex flex-col mr-10 items-center">
                     <div className="text-white select-none" style={{fontSize:20, fontWeight:700}}>ꜱᴇʟᴇᴄᴛ ʜᴇʀᴏ</div>
-                    <img className="select-none bg-stone-700" onClick={()=>setHeroSelectorOpen(true)} style={{width:80, aspectRatio:1, borderColor:"#444",borderWidth:1, cursor:'pointer', borderRadius:10,}} src={hero.images["icon_image_small_webp"]}/>
+                    <img className="select-none bg-stone-700 hover:opacity-85" onClick={()=>setHeroSelectorOpen(true)} style={{width:80, aspectRatio:1, borderColor:"#444",borderWidth:1, cursor:'pointer', borderRadius:10,}} src={hero.images["icon_image_small_webp"]}/>
                     <div className="mt-2 text-white forevs2" style={{fontSize:18, fontWeight:700}}>{hero.name}</div>
                     <div onClick={()=>setAbilitySelectorOpen(true)} className="text-white select-none p-2 hover:opacity-80 cursor-pointer" style={{backgroundColor:gColors.greyBackground, fontSize:16, fontWeight:700, borderRadius:5}}>
                         Choose Ability Order
@@ -182,7 +222,7 @@ export default function MiniBuild(props) {
 
     function renderHeroSelector(){
         return(
-            <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setHeroSelectorOpen(false)}} className="flex fixed top-0 left-0 items-center justify-center select-none" style={{width:'100vw', height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.6)"}}>
+            <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setHeroSelectorOpen(false)}} className="flex fixed top-0 left-0 items-center justify-center select-none" style={{width:'100vw', height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.7)"}}>
                 <div className="flex p-3" style={{backgroundColor:gColors.darkGrey, borderRadius:8,  maxWidth:"35%", borderWidth:3}}>
                     <div className="flex flex-row flex-wrap justify-center">
                         {
@@ -198,11 +238,7 @@ export default function MiniBuild(props) {
                         :
                             heroes.map((hero)=>{
                                 return(
-                                    <div onClick={()=>setHero(hero)} className="flex  mr-2 mb-2 border-2 border-stone-600 bg-stone-700 rounded-md" key={hero.id} style={{maxWidth:70, cursor:"pointer"}}>
-                                        <div>
-                                            <img style={{width:"auto", height:"auto"}} src={hero.images["icon_image_small_webp"]}/>
-                                        </div>
-                                    </div> 
+                                    <HeroPortrait key={hero.id} hero={hero} onClick={setHero}/>
                                 )
                             })
                         }
@@ -214,7 +250,7 @@ export default function MiniBuild(props) {
 
     function renderAbilitySelector(){
         return(
-            <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setAbilitySelectorOpen(false)}} className="flex fixed top-0 left-0 items-center justify-center select-none" style={{width:'100vw', height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.6)"}}>
+            <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setAbilitySelectorOpen(false)}} className="flex fixed top-0 left-0 items-center justify-center select-none" style={{width:'100vw', height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.7)"}}>
                 <div className="flex p-3" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", borderWidth:3}}>
                     <div className="flex flex-row flex-wrap justify-center">
                         
@@ -227,16 +263,24 @@ export default function MiniBuild(props) {
     function renderImbueChooser(){
 
         return(
-            <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setImbueChangerOpen(false)}} className="flex fixed top-0 left-0 items-start justify-center select-none" style={{width:'100vw',  height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.6)"}}>
-                <div className="p-3 mt-[100px]" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", borderWidth:3}}>
-                    <div className="flex  flex-row flex-wrap space-x-7 justify-center">
+            <div onClick={(e)=>{if (e.currentTarget !== e.target){return};imbueSetter(null)}} className="flex fixed top-0 left-0 items-start justify-center select-none" style={{width:'100vw',  height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.7)"}}>
+                <div className="flex flex-col items-center p-3 mt-[100px]" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", borderWidth:3}}>
+                    
+                    <div className="text-white mb-4" style={{fontSize:16}}>Choose ability to imbue with <span style={{fontWeight:700, color:globals.itemColors.spirit.base}}>{imbueItem.name}</span></div>
+                    
+                    <div className="flex flex-row flex-wrap space-x-7 justify-center">
                         {build.hero?.abilities&&
                             build.hero.abilities.map((ability)=>{
                                 return(
-                                    <HeroAbility ability={ability}/>
+                                    <div key={ability.id}>
+                                        <HeroAbility onClick={imbueAbilityWithItem} ability={ability} clickable/>
+                                    </div>
                                 )
                             })
                         }
+                    </div>
+                    <div onClick={()=>imbueSetter(null)} className="py-2 px-5 mt-5 text-white hover:opacity-80" style={{backgroundColor:gColors.greyBackground, borderRadius:5, fontWeight:600}}>
+                        Cancel
                     </div>
                 </div>
             </div>
@@ -245,17 +289,35 @@ export default function MiniBuild(props) {
 
     function renderImbueChanger(){
         return(
-            <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setImbueChangerOpen(false)}} className="flex fixed top-0 left-0 items-start justify-center select-none" style={{width:'100vw',  height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.6)"}}>
-                <div className="p-3 mt-[100px]" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", borderWidth:3}}>
-                    <div className="flex  flex-row flex-wrap space-x-7 justify-center">
-                        {build.hero?.abilities&&
-                            build.hero.abilities.map((ability)=>{
-                                return(
-                                    <HeroAbility ability={ability}/>
-                                )
-                            })
-                        }
-                    </div>
+            <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setImbueChangerOpen(false)}} className="flex fixed top-0 left-0 items-start justify-center select-none" style={{width:'100vw',  height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.7)"}}>
+                <div className="mt-[100px]" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", borderWidth:3}}>
+                    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={swapImbues}>
+                        <div className="flex flex-1 p-4 flex-row flex-wrap space-x-3 justify-center">
+                            {build.hero?.abilities&&
+                                build.hero.abilities.map((ability,index)=>{
+                                    return(
+                                        <DroppableItemSection style={{borderRadius:8,}} key={ability.id} id={ability.id}>
+                                            <div className="px-2 py-3 flex-1" key={ability.id} style={{ borderRadius:5,height:'100%'}}>
+                                                
+                                                <HeroAbility ability={ability}/>
+                                                <div style={{}}>
+                                                    {
+                                                        Object.values(build.imbueItems).map((item)=>{
+                                                            if(item.imbuedAbility!=ability.id){return null}
+                                                            return(
+                                                                <DraggableShopItem key={item.id} id={item.id} item={build.allItems[item.id]}/>
+                                                            )
+                                                        })
+                                                    }
+                                                </div>
+                                                
+                                            </div>
+                                        </DroppableItemSection>
+                                    )
+                                })
+                            }
+                        </div>
+                    </DndContext>
                 </div>
             </div>
         )
@@ -289,7 +351,7 @@ export default function MiniBuild(props) {
                 {abilitySelectorOpen&&
                     renderAbilitySelector()
                 }
-                {imbueChooserOpen&&
+                {imbueItem&&
                     renderImbueChooser()
                 }
                 {imbueChangerOpen&&

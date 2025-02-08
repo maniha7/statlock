@@ -1,13 +1,10 @@
 import React, { useEffect, useState, useRef} from 'react';
-import {useDraggable} from '@dnd-kit/core';
-import {useSortable} from '@dnd-kit/sortable';
-import {CSS} from '@dnd-kit/utilities';
-import { v4 as uuidv4 } from 'uuid';
 import globals from '../../globals';
 import { getItemByID } from '../../Util/ItemUtil';
 
+const gColors = globals.globalColors
+
 export default function ShopItem(props){
-    const gColors = globals.globalColors
     const item = props.item
     const scale = props.widthOverride?
                         props.widthOverride/globals.shopItemMaxWidth
@@ -63,9 +60,16 @@ export default function ShopItem(props){
         )
         
     }
+
+    function onClick(){
+        if(props.click){
+            props.click(item)
+        }
+    }
+
     return(
         <button>
-            <div ref={itemRef} onClick={()=>props.click(item)} onMouseEnter={()=>openPopup()} onMouseLeave={()=>closePopup()} className={`flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)] ${props.transition?`opacityAppear`:``}`}  >
+            <div ref={itemRef} onClick={()=>onClick()} onMouseEnter={()=>openPopup()} onMouseLeave={()=>closePopup()} className={`flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)] ${props.transition?`opacityAppear`:``}`}  >
                 
                 <div className={`flex flex-1 flex-col items-center items-center hover:opacity-80 hover:cursor-pointer transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  ${bgColor}`} style={{borderRadius:8, maxWidth:props.widthOverride??globals.shopItemMaxWidth, maxHeight:props.heightOverride, width:props.widthOverride, height:props.heightOverride}}>
                     

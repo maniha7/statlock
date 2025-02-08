@@ -25,6 +25,7 @@ const Builds = () => {
         },
         itemOrder:[],
         allItems:{},
+        imbueItems:{},
         hero:null
     }
     const baseBuild = {
@@ -43,6 +44,8 @@ const Builds = () => {
     const [buildUpdate, setBuildUpdate] = useState(0)
     const [curCategory, setCurCategory] = useState(initID)
     const [buildChartType, setBuildChartType] = useState("DmgVsResistances")
+
+    const [imbueItem, setImbueItem] = useState(null)
 
     const [popupOpen, setPopupOpen] = useState(false)
     const [popupItem, setPopupItem] = useState(null)
@@ -70,18 +73,24 @@ const Builds = () => {
             //if item is already in build, don't add it
             if(newMini.allItems[item.id]){return}
 
+            function addToCategory(categoryName){
+                newMini.allItems[item.id]=item
+                newMini.categories[categoryName].push(item)
+                newMini.itemOrder.push(item)
+                if(item.imbue){
+                    setImbueItem(item)
+                    newMini.imbueItems[item.id] = {id:item.id, imbuedAbility:null}
+                }
+            }
+
             //if item can fit in its own category, put it there
             if (newMini.categories[category].length<4){
-                newMini.allItems[item.id]=true
-                newMini.categories[category].push(item)
-                newMini.itemOrder.push(item)
+                addToCategory(category)
             }
 
             //if item's own category is full, put it in flex slot if available
             else if(newMini.categories['flex'].length<4){
-                newMini.allItems[item.id]=true
-                newMini.categories['flex'].push(item)
-                newMini.itemOrder.push(item)
+                addToCategory('flex')
             }
             updateMiniBuild(newMini)
         }
@@ -95,7 +104,6 @@ const Builds = () => {
             }
             updateBuild(newBuild)
         }
-        
     }
 
     function openItemPopup(item, position){
@@ -114,12 +122,14 @@ const Builds = () => {
         setPopupPosition(position)
         setPopupOpen(false)
     }
-    
+
+    const popupHandlers = [openItemPopup, closeItemPopup]
+    const imbueState = [imbueItem, setImbueItem]
     function renderBuildContent(){
         return(
             <div className={`flex flex-col flex-1 mr-2 py-2 px-4 border-b-4 border-l-2 border-r-1  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
                 {false&&<CurrentBuild build={build} setBuild={updateBuild} openPopup={openItemPopup} closePopup={closeItemPopup} curCategory={curCategory} setCategory={setCurCategory}/>}
-                <MiniBuild build={miniBuild} setBuild={updateMiniBuild} openPopup={openItemPopup} closePopup={closeItemPopup}/>              
+                <MiniBuild build={miniBuild} setBuild={updateMiniBuild} popupHandlers={popupHandlers} imbueHandler={imbueState}/>              
                 <BuildStats build={miniBuild} chartType={buildChartType}/>
                 
             </div>
