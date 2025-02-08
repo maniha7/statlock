@@ -8,6 +8,10 @@ import {
     rectSwappingStrategy,
     rectSortingStrategy
   } from '@dnd-kit/sortable';
+  import {
+    restrictToWindowEdges,
+    restrictToFirstScrollableAncestor
+  } from '@dnd-kit/modifiers';
   import { TailSpin } from 'react-loader-spinner'
 import { getHeroes, getHeroAbilities } from '../../Util/ApiUtil.tsx';
 import globals from '../../globals';
@@ -290,14 +294,16 @@ export default function MiniBuild(props) {
     function renderImbueChanger(){
         return(
             <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setImbueChangerOpen(false)}} className="flex fixed top-0 left-0 items-start justify-center select-none" style={{width:'100vw',  height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.7)"}}>
-                <div className="mt-[100px]" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", borderWidth:3}}>
-                    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={swapImbues}>
-                        <div className="flex flex-1 p-4 flex-row flex-wrap space-x-3 justify-center">
+                
+                <div className="flex flex-col p-4 mt-[100px] items-end" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", minHeight:0,borderWidth:3}}>
+                    
+                    <DndContext modifiers={[restrictToFirstScrollableAncestor]} sensors={sensors} collisionDetection={closestCenter} onDragEnd={swapImbues}>
+                        <div className="flex flex-1 flex-row flex-wrap space-x-3 justify-center " style={{maxHeight:"80vh", overflowY:"auto", overflowX:"hidden"}}>
                             {build.hero?.abilities&&
                                 build.hero.abilities.map((ability,index)=>{
                                     return(
-                                        <DroppableItemSection style={{borderRadius:8,}} key={ability.id} id={ability.id}>
-                                            <div className="px-2 py-3 flex-1" key={ability.id} style={{ borderRadius:5,height:'100%'}}>
+                                        <DroppableItemSection modifiers={[restrictToFirstScrollableAncestor]} style={{borderRadius:8,}} key={ability.id} id={ability.id}>
+                                            <div className="px-2 py-3 flex-1 " key={ability.id} style={{minHeight:0, borderRadius:5, }}>
                                                 
                                                 <HeroAbility ability={ability}/>
                                                 <div style={{}}>
@@ -318,6 +324,8 @@ export default function MiniBuild(props) {
                             }
                         </div>
                     </DndContext>
+                    {Object.keys(build.imbueItems).length===0&&
+                    <div className="text-white my-2 self-center" style={{fontSize:16, fontWeight:500}}>No Items To Imbue</div>}
                 </div>
             </div>
         )
