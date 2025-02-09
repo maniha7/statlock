@@ -194,7 +194,7 @@ export function Shop(props) {
                 </div>
 
                 {/* Item List*/}
-                <div className={`flex flex-1 px-2 overflow-auto rounded-lg border-l-2 border-r-1 border-b-4  ${gColors.stoneBackgroundGradient}`}>
+                <div className={`flex flex-1 px-2 overflow-auto rounded-lg border-b-4 border-l-2 border-r-1 border-stone-600  ${gColors.stoneBackgroundGradient}`}>
                     
                     {renderItemData()}
                     

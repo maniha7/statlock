@@ -131,7 +131,7 @@ export default function Patches() {
 
     
             {/* AdSpace */}
-            <div className={`mt-2 mb-2 border-b-4 border-r-1 rounded-lg mr-5 w-[15%] ${gColors.stoneBackgroundGradient2}`}>
+            <div className={`mt-2 mb-2 border-b-4 border-l-2 border-r-1 border-stone-600 rounded-lg mr-5 w-[15%] ${gColors.stoneBackgroundGradient2}`}>
                 AdSpace
             </div>
         </>

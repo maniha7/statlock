@@ -218,7 +218,7 @@ const Builds = () => {
     const imbueState = [imbueItem, setImbueItem]
     function renderBuildContent(){
         return(
-            <div className={`flex flex-col flex-1 mr-2 py-2 px-4 border-b-4 border-l-2 border-r-1  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
+            <div className={`flex flex-col flex-1 mr-2 py-2 px-4 border-b-4 border-l-2 border-r-1 border-stone-600  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
                 {false&&<CurrentBuild build={build} setBuild={updateBuild} openPopup={openItemPopup} closePopup={closeItemPopup} curCategory={curCategory} setCategory={setCurCategory}/>}
                 <MiniBuild build={miniBuild} setBuild={updateMiniBuild} removeItem={removeItemFromMini} popupHandlers={popupHandlers} imbueHandler={imbueState}/>              
                 <BuildStats build={miniBuild} chartType={buildChartType}/>

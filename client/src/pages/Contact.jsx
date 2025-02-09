@@ -9,7 +9,7 @@ const Contact = () => {
         <>
         
         <div className="flex justify-center mb-50 mt-20 forevs2 mx-5" style={{width:'100%'}}>
-            <div className={`flex border-b-4 border-l-2 border-r-1 rounded-lg self-center p-4 mb-15 ${gColors.stoneBackgroundGradient}`}> 
+            <div className={`flex border-b-4 border-l-2 border-r-1 border-stone-600 rounded-lg self-center p-4 mb-15 ${gColors.stoneBackgroundGradient}`}> 
                 <div className="p-2 text-center" >
                     <h1 className="text-3xl underline font-bold border-stone-200 text-stone-200">ᴄᴏɴᴛᴀᴄᴛ ᴜꜱ</h1> 
               <form action="#" method="POST" className="mt-6 grid grid-cols-1 gap-y-10 sm:grid-cols-2 sm:gap-x-8">
@@ -20,9 +20,9 @@ const Contact = () => {
                       id="name"
                       autoComplete="given-name"
                       placeholder="name"
-                      className="peer bg-inherit w-full border-b py-1 px-4 text-white placeholder-transparent border-stone-200 shadow-sm focus:border-b-2 focus:outline-none focus:ring-0"
+                      className="peer bg-inherit w-full border-b py-1 px-4 text-stone-300 placeholder-transparent border-stone-200 shadow-sm focus:border-b-2 focus:outline-none focus:ring-0"
                     />
-                    <label htmlFor="name" className="absolute left-0 -top-3.5 text-white text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-white peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
+                    <label htmlFor="name" className="absolute left-0 -top-3.5 text-stone-200 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-white peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
                     Name
                   </label>
                   </div>
@@ -34,9 +34,9 @@ const Contact = () => {
                       type="text"
                       autoComplete="email"
                       placeholder="email"
-                      className="peer bg-inherit w-full border-b py-1 px-4 text-white border-stone-200 placeholder-transparent shadow-sm focus:border-b-2 focus:outline-none focus:ring-0"
+                      className="peer bg-inherit w-full border-b py-1 px-4 text-stone-300 border-stone-200 placeholder-transparent shadow-sm focus:border-b-2 focus:outline-none focus:ring-0"
                     />
-                    <label for="email" className="absolute left-0 -top-3.5 text-white text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-white peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
+                    <label for="email" className="absolute left-0 -top-3.5 text-stone-200 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-white peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
                     Email
                   </label>
                   </div>
@@ -47,15 +47,15 @@ const Contact = () => {
                       name="subject"
                       placeholder="subject"
                       id="subject"
-                      className="peer bg-inherit w-full border-b text-white py-1 px-4 border-stone-200 placeholder-transparent  shadow-sm focus:border-b-2 focus:outline-none focus:ring-0"
+                      className="peer bg-inherit w-full border-b text-stone-300 py-1 px-4 border-stone-200 placeholder-transparent  shadow-sm focus:border-b-2 focus:outline-none focus:ring-0"
                     />
-                    <label htmlFor="subject" className="absolute  left-0 -top-3.5 text-white text-md transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-white peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
+                    <label htmlFor="subject" className="absolute  left-0 -top-3.5 text-stone-200 text-md transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-white peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-white peer-focus:text-sm">
                     Subject
                   </label>
                   </div>
                 <div className="sm:col-span-2">
                   <div className="flex justify-between">
-                    <label htmlFor="message" className="block bold text-md text-white">
+                    <label htmlFor="message" className="block bold text-md text-stone-200">
                      Message
                     </label>
                   </div>
@@ -64,7 +64,7 @@ const Contact = () => {
                       id="message"
                       name="message"
                       rows={4}
-                      className={`bg-inherit text-sm block w-full h-flex border-white py-3 px-4 text-white shadow-sm focus:outline-none focus:ring-0 border-b-2 border-l-1`}
+                      className={`bg-inherit text-sm block w-full h-flex border-white py-3 px-4 text-stone-300 shadow-sm focus:outline-none focus:ring-0 border-b-2 border-l-1`}
                       aria-describedby="message-max"
                       defaultValue={''}
                       style={{}}

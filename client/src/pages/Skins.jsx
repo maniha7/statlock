@@ -15,7 +15,7 @@ const Skins = () => {
 
     return (
         <>
-            <section className={`self-center border-l-2 border-b-4 border-r-1 border-t-1 rounded-lg mx-10 min-h-210 ${gColors.stoneBackgroundGradient}`} style={{ width: "100%" }}>
+            <section className={`self-center border-b-4 border-l-2 border-r-1 border-stone-600 rounded-lg mx-10 min-h-210 ${gColors.stoneBackgroundGradient}`} style={{ width: "100%" }}>
                 <div className="flex justify-center items-center p-5">
                     <button className="text-indigo-400 font-bold py-2 px-4 border-x-2 border-y-4 bg-stone-800 rounded-lg border-black hover:cursor-pointer hover:opacity-80">
                         <Link to="/modupload">
