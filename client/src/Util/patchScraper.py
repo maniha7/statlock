@@ -92,7 +92,7 @@ for url in PATCH_URLS:
     for img in content_div.find_all("img"):
         img.decompose()
     for a in content_div.find_all("a"):
-        a.unwrap()
+        a.unwrap() # Considering changing to decompose, some links still show in patches with steam link (ex. first hero additions update)
 
     # Process and categorize content
     content_lines = content_div.get_text("\n", strip=True).split("\n")

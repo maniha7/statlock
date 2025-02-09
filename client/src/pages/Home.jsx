@@ -65,7 +65,7 @@ const Home = () => {
                                                 <h4 className={`text-xl font-bold forevs2 ${categoryColors[category] || "text-white"}`}>{category}:</h4>
                                                 <ul className="ml-2 text-stone-300 text-sm">
                                                     {lines.slice(0, 2).map((line, idx) => (
-                                                        <li key={idx}>{line}...</li>
+                                                        <li key={idx}>{line}</li>
                                                     ))}
                                                 </ul>
                                             </div>
@@ -81,7 +81,13 @@ const Home = () => {
                 {/*Item Builder*/}
                 <div className="w-flex justify-center rounded-lg text-stone-500 bg-stone-800 p-4 border-1 border-stone-900">
                     <h2 className="text-2xl text-stone-200 underline font-bold text-center mb-5">ɪᴛᴇᴍ ʙᴜɪʟᴅᴇʀ</h2>
-                        <div className="text-stone-200 mt-5 text-center forevs text-lg"></div>
+                        <h3 className="text-indigo-400 mt-5 text-center forevs2 text-lg hover:underline hover:opacity-80"><Link to="/builds">→Try our Item Builder !←</Link></h3>
+                            <div className="border-2 mx-5 min-h-80 mt-5">
+                                <img className="" src={[]} /> {/* Insert Preview Image of Finished Item Builder Here */}
+                            </div>
+                                <p className="mx-5 text-lg forevs text-stone-200 mt-5">
+                                    Gives access to detailed statistics not shown within the game on your custom or uploaded build.
+                                </p>
                 </div>
 
                 {/*Undecided*/}
