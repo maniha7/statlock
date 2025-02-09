@@ -45,17 +45,19 @@ export default function Nav(){
             {/*Steam Login*/}
             <div className={`ml-3 mt-2 mr-5 mb-2 rounded-lg flex flex-col-2 space-x-5 border-b-4 border-r-2 h-12 sm:h-flex px-4 border-stone-600  ${gColors.stoneBackgroundGradient}`}>
                 {/* Profile Button */}
-                <div className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80 hover:cursor-pointer w-22 h-7 mt-2 rounded-sm  flex flex-row" style={{backgroundColor:gColors.deadLockLight}}>
-                    <Link><UserIcon className="w-5.5 h-flex text-stone-700 mt-0.5" /></Link>
-                    <h3 className="font-bold text-lg font-display hover:underline">ᴘʀᴏꜰɪʟᴇ</h3>
+                <Link to="/profile">
+                <div className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80 hover:cursor-pointer w-22 h-7 mt-2 rounded-sm  flex flex-row space-x-1" style={{backgroundColor:gColors.deadLockLight}}>
+                    <UserIcon className="w-5 h-flex text-stone-800 mt-1" />
+                    <h3 className="font-bold text-md font-display hover:underline">ᴘʀᴏꜰɪʟᴇ</h3>
                 </div>
+                </Link>
 
                 {/* Steam Login Button */}
                 <a href="https://store.steampowered.com/" className="mt-2">
                 <button className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80 hover:cursor-pointer">
                     <div className={`rounded-sm h-7 w-22 flex flex-wrap`} style={{backgroundColor:gColors.deadLockLight}}>
                         <img className={`h-flex w-6 mt-0.5`} src={steam} />
-                <h1 className="font-display font-bold text-lg mr-1 ml-1 hover:underline" style={{textDecorationColor:gColors.stoneBackgroundGradient}}>ʟᴏɢɪɴ</h1>
+                <h1 className="font-display font-bold text-md mr-1 ml-1 hover:underline" style={{textDecorationColor:gColors.stoneBackgroundGradient}}>ʟᴏɢɪɴ</h1>
             </div>
                 </button>
                 </a>
