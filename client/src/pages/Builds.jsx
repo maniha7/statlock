@@ -70,7 +70,7 @@ const Builds = () => {
 
     //**************************************************************/
     //**************ADD ITEM TO BUILD MEGA FUNCTION ****************/
-    function addItemToBuild(item){
+    function addItemToBuild(item, imbueAbility=null){
         if(buildType=="mini"){
             const category =  item.item_slot_type
             const newMini = {...miniBuild}
@@ -109,12 +109,13 @@ const Builds = () => {
                 newMini.allItems[addItem.id]=addItem
                 newMini.itemOrder.push(addItem)
                 if(addItem.imbue){
-                    setImbueItem(addItem)
-                    newMini.imbueItems[addItem.id] = {id:addItem.id, imbuedAbility:null}
+                    
+                    newMini.imbueItems[addItem.id] = {id:addItem.id, imbuedAbility:imbueAbility}
+                    setImbueItem(null)
                 }
             }
 
-
+            //handle upgrading from owned component items, if necessary, otherwise add individual item as usual
             if(item.upgradesFrom){
                 const component1 = getItemByID(item.upgradesFrom)
 
@@ -122,7 +123,9 @@ const Builds = () => {
                 if(newMini.allItems[component1.id]){
                     upgradeItemInBuild(component1,item)
                 }
+                
                 else{
+                    //otherwise check if 2nd level component is in build
                     if(component1.upgradesFrom){
                         const component2 = getItemByID(component1.upgradesFrom)
                         //if 2nd level component is in build, replace it with this upgrade
@@ -138,6 +141,9 @@ const Builds = () => {
                             addItemToSlot()
                         }
                     }
+                    else{
+                        addItemToSlot()
+                    }
                     //then add first level component
                     addItemToMetaData(component1)
                 }
@@ -148,7 +154,6 @@ const Builds = () => {
                 addItemToMetaData(item)
                 addItemToSlot()
             }
-
             updateMiniBuild(newMini)
         }
 
@@ -167,20 +172,68 @@ const Builds = () => {
 
     function removeItemFromMini(item){
         const newMini = {...miniBuild}
+
+        function removeMetaData(item){
+            newMini.itemOrder = newMini.itemOrder.filter((item2)=>item2.id!=item.id)
+            delete newMini.allItems[item.id]
+            delete newMini.imbueItems[item.id]
+        }
+
+
+        //when selling an item, also sell its upgrades if you have bought them
+        let soldUpgradeCat = null
+        let soldUpgradeInd = null
+        function removeBoughtUpgrades(item){
+            if(item.upgradesTo){
+                const upgrade = getItemByID(item.upgradesTo)
+                if(newMini.allItems[upgrade.id]){
+                    removeMetaData(upgrade)
+                    Object.keys(newMini.categories).forEach((cat)=>{
+                        newMini.categories[cat].forEach((slotItem,index)=>{
+                            if(slotItem.id === upgrade.id){
+                                soldUpgradeCat = cat
+                                soldUpgradeInd = index
+                            }
+                        })
+                    })
+                    
+                    if(soldUpgradeInd!=null){
+                        newMini.categories[soldUpgradeCat].splice(soldUpgradeInd,1)
+                    }
+                }
+                removeBoughtUpgrades(upgrade)
+                
+            }
+        }
+
+        removeBoughtUpgrades(item)
+
+        //if item is has a component, replace sold item with component in item slot
         if(item.upgradesFrom){
             const componentItem = getItemByID(item.upgradesFrom)
-            let resCat = null
-            let resInd = null
+            let replaceCat = null
+            let replaceInd = null
+
+            let itemCat = null
+            let itemInd = null
             Object.keys(newMini.categories).forEach((cat)=>{
                 newMini.categories[cat].forEach((slotItem,index)=>{
                     if(slotItem.id===item.id){
-                        resCat=cat
-                        resInd=index
+                        itemCat=cat
+                        itemInd=index
                     }
                 })
             })
-            if(resCat!=null&&resInd!=null){
-                newMini.categories[resCat][resInd]=componentItem
+            replaceCat = itemCat
+            replaceInd = itemInd
+            //if we sold an item for which we own both a component and upgrade, the upgrade will have the item slot, so we replace that instead
+            if(soldUpgradeInd!=null){
+                replaceCat = soldUpgradeCat
+                replaceInd = soldUpgradeInd
+            }
+
+            if(replaceCat!=null&&replaceInd!=null){
+                newMini.categories[replaceCat][replaceInd]=componentItem
             }
         }
         else{
@@ -189,9 +242,8 @@ const Builds = () => {
             })
         }
         
-        newMini.itemOrder = newMini.itemOrder.filter((item2)=>item2.id!=item.id)
-        delete newMini.allItems[item.id]
-        delete newMini.imbueItems[item.id]
+        removeMetaData(item)
+
         updateMiniBuild(newMini)
         closeItemPopup()
     }
@@ -220,7 +272,7 @@ const Builds = () => {
         return(
             <div className={`flex flex-col flex-1 mr-2 py-2 px-4 border-b-4 border-l-2 border-r-1 border-stone-600  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
                 {false&&<CurrentBuild build={build} setBuild={updateBuild} openPopup={openItemPopup} closePopup={closeItemPopup} curCategory={curCategory} setCategory={setCurCategory}/>}
-                <MiniBuild build={miniBuild} setBuild={updateMiniBuild} removeItem={removeItemFromMini} popupHandlers={popupHandlers} imbueHandler={imbueState}/>              
+                <MiniBuild build={miniBuild} setBuild={updateMiniBuild} addItem={addItemToBuild} removeItem={removeItemFromMini} popupHandlers={popupHandlers} imbueHandler={imbueState}/>              
                 <BuildStats build={miniBuild} chartType={buildChartType}/>
                 
             </div>
@@ -235,7 +287,7 @@ const Builds = () => {
                 {renderBuildContent()}
 
                 {/* Render Shop*/}
-                <Shop openItemPopup={openItemPopup} closeItemPopup={closeItemPopup} addItemToBuild={addItemToBuild} removeItemFromBuild={removeItemFromMini} boughtItems={buildType=="mini"?miniBuild.allItems:build.items}/>
+                <Shop popupHandlers={[openItemPopup,closeItemPopup]} buyHandlers={[addItemToBuild, removeItemFromMini]} setImbue={setImbueItem} boughtItems={buildType=="mini"?miniBuild.allItems:build.items}/>
             </div>
 
             {popupOpen && (popupPosition.x+popupPosition.y>0)&&<ItemDescPopup item={popupItem} isOpen={popupOpen} pos={popupPosition} buildType={buildType}/>}

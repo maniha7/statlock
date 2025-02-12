@@ -198,7 +198,7 @@ export default function MiniBuild(props) {
       }
 
     function imbueAbilityWithItem(ability){
-        build.imbueItems[imbueItem.id].imbuedAbility = ability.id
+        build.imbueItems[imbueItem.id] = {id:imbueItem.id, imbuedAbility:ability.id}
         setBuild(build)
         imbueSetter(null)
     }
@@ -336,7 +336,7 @@ export default function MiniBuild(props) {
                             build.hero.abilities.map((ability)=>{
                                 return(
                                     <div key={ability.id}>
-                                        <HeroAbility onClick={imbueAbilityWithItem} ability={ability} clickable/>
+                                        <HeroAbility onClick={()=>props.addItem(imbueItem,ability.id)} ability={ability} clickable/>
                                     </div>
                                 )
                             })

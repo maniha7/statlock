@@ -12152,7 +12152,7 @@
         }
       },
       {
-        "value": "20",
+        "value": "18",
         "tooltip_section": "passive",
         "tooltip_is_important": false,
         "propName": "MaxStacks",
@@ -12174,19 +12174,6 @@
         "units": {
           "sign": "+",
           "units": "%"
-        }
-      },
-      {
-        "value": "40",
-        "provided_property_type": "MODIFIER_VALUE_HEALTH_MAX",
-        "css_class": "health",
-        "tooltip_section": "innate",
-        "tooltip_is_important": false,
-        "propName": "BonusHealth",
-        "title": "Bonus Health",
-        "units": {
-          "sign": "+",
-          "units": ""
         }
       }
     ],
@@ -35860,19 +35847,6 @@
     "passiveUnimportantProperties": [],
     "innateProperties": [
       {
-        "value": "3",
-        "provided_property_type": "MODIFIER_VALUE_BASEATTACK_DAMAGE_PERCENT",
-        "css_class": "bullet_damage",
-        "tooltip_section": "innate",
-        "tooltip_is_important": false,
-        "propName": "BaseAttackDamagePercent",
-        "title": "Weapon Damage",
-        "units": {
-          "sign": "+",
-          "units": "%"
-        }
-      },
-      {
         "value": "100",
         "provided_property_type": "MODIFIER_VALUE_BULLET_SHIELD_HEALTH_MAX",
         "css_class": "bullet_armor_up",
@@ -37757,18 +37731,6 @@
     "passiveImportantProperties": [],
     "passiveUnimportantProperties": [],
     "innateProperties": [
-      {
-        "value": "4",
-        "provided_property_type": "MODIFIER_VALUE_FIRE_RATE",
-        "tooltip_section": "innate",
-        "tooltip_is_important": false,
-        "propName": "BonusFireRate",
-        "title": "Fire Rate",
-        "units": {
-          "sign": "+",
-          "units": "%"
-        }
-      },
       {
         "value": "35",
         "provided_property_type": "MODIFIER_VALUE_HEALTH_MAX",

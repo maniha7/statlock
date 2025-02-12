@@ -20,6 +20,11 @@ export function Shop(props) {
     const [vitalityItems, setVitalityItems] = useState([])
     const [spiritItems, setSpiritItems] = useState([])
 
+    const openPopup = props.popupHandlers[0]
+    const closePopup = props.popupHandlers[1]
+    const addItemToBuild = props.buyHandlers[0]
+    const removeItemFromBuild = props.buyHandlers[1]
+
     useEffect(()=>{
             getItemData()
         },[])
@@ -151,7 +156,7 @@ export function Shop(props) {
                     <div className='flex flex-row flex-wrap'>
                         {tierItems.map((item)=>{
                             return(
-                                <ShopItem item={item} key={item.id} hover={props.openItemPopup} unhover={props.closeItemPopup} click={itemIsInBuild(item.id)?props.removeItemFromBuild:props.addItemToBuild} bought={itemIsInBuild(item.id)}/>
+                                <ShopItem item={item} key={item.id} hover={openPopup} unhover={closePopup} click={itemIsInBuild(item.id)?removeItemFromBuild:item.imbue?props.setImbue:addItemToBuild} bought={itemIsInBuild(item.id)}/>
                             )
                         })}
                     </div>
