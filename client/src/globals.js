@@ -22,6 +22,7 @@ const globals = {
         mediumGrey:"#262626",
         darkGrey:"#0d0d0d",
         stone800Background: '#292524',
+        stone900: 'bg-stone-900',
         stoneBackgroundGradient: "bg-gradient-to-br from-stone-800 via-stone-700 to-stone-900",
         stoneBackgroundGradient2: "bg-gradient-to-r from-stone-800 via-transparent to-stone-900",
         stoneBackgroundGradient3: "bg-gradient-to-r from-stone-800 via-stone-900 to-stone-900",
@@ -37,6 +38,7 @@ const globals = {
         deadLockDark:"#231f20",
         deadLockLight:"#f0dfbf",
         LineChartBackground:"#181830",
+        errorRed:"#b82e2e"
     },
 
     itemColors: {

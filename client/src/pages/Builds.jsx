@@ -48,6 +48,8 @@ const Builds = () => {
 
     const [imbueItem, setImbueItem] = useState(null)
 
+    const [noSlotsErrorOpen, setNoSlotsErrorOpen] = useState(false)
+
     const [popupOpen, setPopupOpen] = useState(false)
     const [popupItem, setPopupItem] = useState(null)
     const [popupPosition, setPopupPosition] = useState(null)
@@ -74,6 +76,7 @@ const Builds = () => {
         if(buildType=="mini"){
             const category =  item.item_slot_type
             const newMini = {...miniBuild}
+            let itemAddedSuccessfully = false
             
             if(newMini.allItems[item.id]){return} //if item is already in build, don't add it
 
@@ -92,24 +95,28 @@ const Builds = () => {
                         }
                     })
                 })
-                if(resCat!==null&&resInd!==null){
+                if(resCat!==null&&resInd!==null){   
                     newMini.categories[resCat][resInd] = newItem
+                    return true
                 }
+                return false
             }
 
             function addItemToSlot(){
                 //if item can fit in its own category, put it there
-                if (newMini.categories[category].length<4) {addToCategory(category)}
+                if (newMini.categories[category].length<4) {addToCategory(category); return true}
                 
                 //if item's own category is full, put it in flex slot if available
-                else if(newMini.categories['flex'].length<4) {addToCategory('flex')}
+                else if(newMini.categories['flex'].length<4) {addToCategory('flex'); return true}
+
+                return false
             }
 
             function addItemToMetaData(addItem){
                 newMini.allItems[addItem.id]=addItem
                 newMini.itemOrder.push(addItem)
+                //if item was set to imbue an ability
                 if(addItem.imbue){
-                    
                     newMini.imbueItems[addItem.id] = {id:addItem.id, imbuedAbility:imbueAbility}
                     setImbueItem(null)
                 }
@@ -121,7 +128,7 @@ const Builds = () => {
 
                 //if first level component is in build, replace it with upgrade
                 if(newMini.allItems[component1.id]){
-                    upgradeItemInBuild(component1,item)
+                    itemAddedSuccessfully = upgradeItemInBuild(component1,item)
                 }
                 
                 else{
@@ -130,31 +137,46 @@ const Builds = () => {
                         const component2 = getItemByID(component1.upgradesFrom)
                         //if 2nd level component is in build, replace it with this upgrade
                         if(newMini.allItems[component2.id]){
-                            upgradeItemInBuild(component2,item)
+                            itemAddedSuccessfully = upgradeItemInBuild(component2,item)
                             
                         }
                         //else add 2nd level component to build
                         else{
-                            addItemToMetaData(component2)
-
                             //no components were in build so add main item as usual
-                            addItemToSlot()
+                            itemAddedSuccessfully = addItemToSlot()
+                            if(itemAddedSuccessfully){
+                                addItemToMetaData(component2)
+                            }
                         }
                     }
                     else{
-                        addItemToSlot()
+                        itemAddedSuccessfully = addItemToSlot()
                     }
                     //then add first level component
-                    addItemToMetaData(component1)
+                    if(itemAddedSuccessfully){
+                        addItemToMetaData(component1)
+                    }
                 }
                 //then add this item
-                addItemToMetaData(item)
+                if(itemAddedSuccessfully){
+                    addItemToMetaData(item)
+                }
             }
             else{ //if not an upgrade item, add as usual
-                addItemToMetaData(item)
-                addItemToSlot()
+                itemAddedSuccessfully = addItemToSlot()
+                if(itemAddedSuccessfully){
+                    addItemToMetaData(item)
+                }
+                
+                
             }
+
             updateMiniBuild(newMini)
+            //if there was no space for item, render alert text
+            if(!itemAddedSuccessfully){
+                setNoSlotsErrorOpen(true)
+                setTimeout(()=>{setNoSlotsErrorOpen(false)},1500)
+            }
         }
 
         else if(buildType=="full"){
@@ -268,11 +290,13 @@ const Builds = () => {
 
     const popupHandlers = [openItemPopup, closeItemPopup]
     const imbueState = [imbueItem, setImbueItem]
+    const noSlotsHandlers = [noSlotsErrorOpen, setNoSlotsErrorOpen]
+
     function renderBuildContent(){
         return(
-            <div className={`flex flex-col flex-1 mr-2 py-2 px-4 border-b-4 border-l-2 border-r-1 border-stone-600  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
+            <div className={`flex flex-col flex-1 mr-2 py-3 px-4 border-b-4 border-l-2 border-r-1 border-stone-600  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
                 {false&&<CurrentBuild build={build} setBuild={updateBuild} openPopup={openItemPopup} closePopup={closeItemPopup} curCategory={curCategory} setCategory={setCurCategory}/>}
-                <MiniBuild build={miniBuild} setBuild={updateMiniBuild} addItem={addItemToBuild} removeItem={removeItemFromMini} popupHandlers={popupHandlers} imbueHandler={imbueState}/>              
+                <MiniBuild build={miniBuild} setBuild={updateMiniBuild} addItem={addItemToBuild} removeItem={removeItemFromMini} noSlotsHandlers={noSlotsHandlers} popupHandlers={popupHandlers} imbueHandler={imbueState}/>              
                 <BuildStats build={miniBuild} chartType={buildChartType}/>
                 
             </div>

@@ -296,7 +296,7 @@ export default function ItemDescPopup(props){
         &&
 
         <div ref={itemRef} className="flex flex-col select-none pt-1 drop-shadow-[0_8px_8px_rgba(0,0,0,0.65)] opacityAppear" 
-        style={{position:'absolute', minWidth:globals.itemPopupWidth,maxWidth:globals.itemPopupWidth, borderRadius:8, backgroundColor:itemColorPallet.medium, top:yOffset==0?0:pos.y-yOffset, left:yOffset==0?0:pos.x-xOffset, opacity:initted?undefined:0}}
+        style={{position:'absolute', zIndex:3, minWidth:globals.itemPopupWidth,maxWidth:globals.itemPopupWidth, borderRadius:8, backgroundColor:itemColorPallet.medium, top:yOffset==0?0:pos.y-yOffset, left:yOffset==0?0:pos.x-xOffset, opacity:initted?undefined:0}}
         >
             
             <div className="flex flex-row px-4 py-2 width-full" >

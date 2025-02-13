@@ -81,7 +81,7 @@ const Home = () => {
                 {/*Item Builder*/}
                 <div className="w-flex justify-center rounded-lg text-stone-500 bg-stone-800 p-4 border-1 border-stone-900">
                     <h2 className="text-2xl text-stone-200 underline font-bold text-center mb-5">ɪᴛᴇᴍ ʙᴜɪʟᴅᴇʀ</h2>
-                        <h3 className="text-indigo-400 mt-5 text-center forevs2 text-lg">→<Link to="/builds" className="hover:underline hover:opacity-80">Try our Item Builder !</Link>←</h3>
+                        <h3 className="text-indigo-400 mt-5 text-center forevs2 text-lg transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">→<Link to="/builds" className="hover:underline hover:opacity-80">Try our Item Builder !</Link>←</h3>
                             <div className="border-2 mx-5 min-h-80 mt-5">
                                 <img className="" src={[]} /> {/* Insert Preview Image of Finished Item Builder Here */}
                             </div>

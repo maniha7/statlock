@@ -40,6 +40,7 @@ export default function MiniBuild(props) {
     const closePopup = props.popupHandlers[1]
     const imbueItem = props.imbueHandler[0]
     const imbueSetter = props.imbueHandler[1]
+    const shouldRenderError = props.noSlotsHandlers[0]
 
     useEffect(()=>{
         if(imbueItem){
@@ -53,6 +54,7 @@ export default function MiniBuild(props) {
             })
         }
     },[props.imbueHandler[0]])
+
 
     const sensors = useSensors(
         useSensor(MouseSensor, {
@@ -120,6 +122,8 @@ export default function MiniBuild(props) {
         props.removeItem(item)
       }
 
+
+      //handle sorti and reordering of items in buy order
       function onBuyOrderDragEnd(e){
         const {active, over} = e;
         const dragItemIndex = active.id
@@ -163,7 +167,7 @@ export default function MiniBuild(props) {
             if(draggedItem.upgradesTo){
                 const upgrade1 = getItemByID(draggedItem.upgradesTo)
                 let upgrade2 = null
-                let filters = [upgrade1.id, draggedItem.id]
+                let filters = [upgrade1.id]
                 let upgrade1Index = -1
                 build.itemOrder.forEach((item,index)=>{
                     if(item.id===upgrade1.id){upgrade1Index=index}
@@ -181,16 +185,25 @@ export default function MiniBuild(props) {
                     }
                 }
                 //if item was placed ahead of its upgrades, reorder them
-                if(upgrade1Index!==-1&&dropItemIndex>=upgrade1Index){
+                if(upgrade1Index!==-1&&dropItemIndex>upgrade1Index){
                     
-                    build.itemOrder = build.itemOrder.filter((item)=>!filters.includes(item.id))
-                    
-                    
+                    const filtered = []
+                    let newDroppedItemIndex = -1
+                    build.itemOrder = build.itemOrder.forEach((item)=>{
+                        if(!filters.includes(item.id)){
+                            filtered.push(item)
+                        }
+                        if(item.id == draggedItem.id){
+                            newDroppedItemIndex = filtered.length-1
+                        }
+                    })
+                    build.itemOrder = filtered
+
+                    build.itemOrder.splice(newDroppedItemIndex+1,0,upgrade1)
                     if(upgrade2 && replacingUpgrade2){
-                        build.itemOrder.splice(dropItemIndex,0,upgrade2)
+                        build.itemOrder.splice(newDroppedItemIndex+2,0,upgrade2)
                     } 
-                    build.itemOrder.splice(dropItemIndex,0,draggedItem)
-                    build.itemOrder.splice(dropItemIndex,0,upgrade1)
+                    
                 }
             }
             setBuild(build)
@@ -206,9 +219,15 @@ export default function MiniBuild(props) {
     function swapImbues(event){
         const {active, over} = event
         if(over && active.data.current.item){
-            const newAbility = over.id
+            let swapIndex = -1
+            build.hero.abilities.forEach((ability,abilityIndex)=>{
+                if(ability.id===over.id){
+                    swapIndex = abilityIndex
+                }
+            })
+
             const item = active.data.current.item
-            build.imbueItems[item.id].imbuedAbility = newAbility
+            build.imbueItems[item.id].imbuedAbility = swapIndex
             setBuild(build)
 
         }
@@ -245,20 +264,23 @@ export default function MiniBuild(props) {
         if(build.itemOrder.length==0){return null}
         const list = build.itemOrder.map((item, index)=>{return(index)})
         return(
-            <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onBuyOrderDragEnd}>
-                <div className="text-white pl-2 pt-2 forevs2 text-[18px]" style={{borderTopWidth:1, borderColor:gColors.greyBackground}}>Buy Order</div>
-                <div className="flex flex-row flex-wrap">
-                <SortableContext items={list} strategy={rectSortingStrategy} className="flex flex-row flex-wrap">
-                    {list.map((id,index)=>{
-                        const item = build.itemOrder[index]
-                        return(
-                            <SortableShopItem key={id} id={id} item={item} sortable/>
-                        )
-                    })}
-                </SortableContext >
-                </div>
-                
-            </DndContext>
+            <div style={{borderTopWidth:1, borderColor:gColors.greyBackground}}>
+                <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onBuyOrderDragEnd} >
+                    <div className="text-white pl-2 text-[13px] text-center transition-opacity duration-90 ease-in-out select-none" style={{color:gColors.errorRed, fontWeight:'bold', opacity:shouldRenderError?1:0}}>No Space For Item</div>
+                    <div className="text-white pl-2 forevs2 text-[18px]" >Buy Order</div>
+                    <div className="flex flex-row flex-wrap">
+                    <SortableContext items={list} strategy={rectSortingStrategy} className="flex flex-row flex-wrap">
+                        {list.map((id,index)=>{
+                            const item = build.itemOrder[index]
+                            return(
+                                <SortableShopItem key={id} id={id} item={item} sortable/>
+                            )
+                        })}
+                    </SortableContext >
+                    </div>
+                    
+                </DndContext>
+            </div>
             
         )
     }
@@ -286,7 +308,12 @@ export default function MiniBuild(props) {
     function renderHeroSelector(){
         return(
             <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setHeroSelectorOpen(false)}} className="flex fixed top-0 left-0 items-center justify-center select-none" style={{width:'100vw', height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.7)"}}>
-                <div className="flex p-3" style={{backgroundColor:gColors.darkGrey, borderRadius:8,  maxWidth:"35%", borderWidth:3}}>
+                <div className="flex flex-col p-3" style={{backgroundColor:gColors.darkGrey, borderRadius:8,  maxWidth:"35%", borderWidth:3}}>
+                    {Object.keys(build.imbueItems).length>0&&
+                        <div className="text-center py-1" style={{color:gColors.errorRed, fontWeight:600}}>
+                            Imbued items will stay imbued on the same ability number when changing heroes
+                        </div>
+                    }
                     <div className="flex flex-row flex-wrap justify-center">
                         {
                         heroes.length==0?
@@ -333,10 +360,10 @@ export default function MiniBuild(props) {
                     
                     <div className="flex flex-row flex-wrap space-x-7 justify-center">
                         {build.hero?.abilities&&
-                            build.hero.abilities.map((ability)=>{
+                            build.hero.abilities.map((ability, abilityIndex)=>{
                                 return(
                                     <div key={ability.id}>
-                                        <HeroAbility onClick={()=>props.addItem(imbueItem,ability.id)} ability={ability} clickable/>
+                                        <HeroAbility onClick={()=>{props.addItem(imbueItem,abilityIndex); console.log(abilityIndex)}} ability={ability} clickable/>
                                     </div>
                                 )
                             })
@@ -359,7 +386,7 @@ export default function MiniBuild(props) {
                     <DndContext modifiers={[restrictToFirstScrollableAncestor]} sensors={sensors} collisionDetection={closestCenter} onDragEnd={swapImbues}>
                         <div className="flex flex-1 flex-row flex-wrap space-x-3 justify-center " style={{maxHeight:"80vh", overflowY:"auto", overflowX:"hidden"}}>
                             {build.hero?.abilities&&
-                                build.hero.abilities.map((ability,index)=>{
+                                build.hero.abilities.map((ability,abilityIndex)=>{
                                     return(
                                         <DroppableItemSection modifiers={[restrictToFirstScrollableAncestor]} style={{borderRadius:8,}} key={ability.id} id={ability.id}>
                                             <div className="px-2 py-3 flex-1 " key={ability.id} style={{minHeight:0, borderRadius:5, }}>
@@ -368,7 +395,7 @@ export default function MiniBuild(props) {
                                                 <div style={{}}>
                                                     {
                                                         Object.values(build.imbueItems).map((item)=>{
-                                                            if(item.imbuedAbility!=ability.id){return null}
+                                                            if(item.imbuedAbility!=abilityIndex){return null}
                                                             return(
                                                                 <DraggableShopItem key={item.id} id={item.id} item={build.allItems[item.id]}/>
                                                             )
@@ -393,10 +420,6 @@ export default function MiniBuild(props) {
     /******************** MAIN RENDER ********************/
     return(
             <div className='flex flex-col'>
-                <div className="flex flex-row items-center" style={{width:"100%"}}>
-                    <div className="flex flex-1 text-white mb-2 forevs2 text-2xl mt-1 justify-center" style={{fontWeight:'bold'}}>ʙᴜɪʟᴅ</div>
-                </div>
-                
                 <div className='flex flex-col p-2 ' style={{backgroundColor:gColors.darkGrey, borderRadius:5,}}>
                     <div className="flex flex-1 flex-wrap flex-row items-center pb-3" style={{width:'100%'}}>
                         {
