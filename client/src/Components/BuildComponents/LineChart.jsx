@@ -5,6 +5,8 @@ import globals from '../../globals';
 
 const gColors = globals.globalColors
 
+let lastItemSelected = null
+
 export default function LineChart(props) {
     const canvasRef = useRef(null);
     const build = props.build
@@ -13,6 +15,10 @@ export default function LineChart(props) {
     const numTicks = build.itemOrder.length
 
     const [canvasWidth, setCanvasWidth] = useState(0)
+    const [tickSizeX, setTickSizeX] = useState(0)
+    const [dataPoints, setDataPoints] = useState([])
+    const [dataPointYLocations, setDataPointYLocations] = useState([])
+
 
     //update width changes
     useEffect(() => {
@@ -46,16 +52,13 @@ export default function LineChart(props) {
         drawLines(canvas, context)
     }
 
-    function getTickSizeX(canvas){
-        return (canvas.width - innerPaddingX*2 - 20) / (numTicks)
-    }
 
     function drawXAxisTicks(canvas, context){
         
         context.strokeStyle = "#8b8ba7"
         context.fillStyle="#b6b6c8"
-        
-        const tickSize = getTickSizeX(canvas)
+        let tickSize = (canvas.width - innerPaddingX*2 - 20) / (numTicks)
+        setTickSizeX(tickSize)
         let tickLocation = innerPaddingX
         context.textAlign="center"
         context.fillText(0, tickLocation, canvas.height)
@@ -63,8 +66,8 @@ export default function LineChart(props) {
         build.itemOrder.forEach((_,index)=>{
             const itemNum = index+1
             context.beginPath()
-            context.moveTo(tickLocation,canvas.height - innerPaddingY-8)
-            context.lineTo(tickLocation, canvas.height - innerPaddingY+8)
+            context.moveTo(tickLocation,canvas.height - innerPaddingY)
+            context.lineTo(tickLocation, canvas.height - innerPaddingY+10)
             context.stroke()
             
             context.fillText(itemNum, tickLocation, canvas.height)
@@ -138,10 +141,18 @@ export default function LineChart(props) {
         return (canvas.height - innerPaddingY) / maxY
     }
 
+    function drawDataPointDot(context, location, dotColor){
+        context.fillStyle = dotColor
+        context.beginPath()
+        context.arc(...location, 5, 0, 2 * Math.PI)
+        context.closePath()
+        context.fill()
+    }
+
     function drawDmgVsItemsLines(canvas, context){
         if(!build || !build.hero){return}
         const dmgData = getDamageData(build)
-
+        setDataPoints(dmgData)
         
 
         //get highest value in graph, to predetermine chart Y limit
@@ -149,7 +160,6 @@ export default function LineChart(props) {
 
 
         //graph datapoints
-        const tickSize = getTickSizeX(canvas)
         let canvasFloor = canvas.height-innerPaddingY
 
         const initPoint = dmgData.splice(0,1)[0]
@@ -157,12 +167,16 @@ export default function LineChart(props) {
         const initSpiritY = initPoint.spiritDmg * heightRescale
         let weaponPtLocation = [innerPaddingX, canvasFloor-initWeaponY]
         let spiritPtLocation = [innerPaddingX, canvasFloor-initSpiritY]
+
+        let dataPointsY = []
         
         dmgData.forEach((dataPoint)=>{
             const weaponDmgY = dataPoint.weaponDmg * heightRescale
             const spiritDmgY = dataPoint.spiritDmg * heightRescale
-            const newWeaponPt = [weaponPtLocation[0] + tickSize, canvasFloor-weaponDmgY]
-            const newSpiritPt = [spiritPtLocation[0] + tickSize, canvasFloor-spiritDmgY]
+            const newWeaponPt = [weaponPtLocation[0] + tickSizeX, canvasFloor-weaponDmgY]
+            const newSpiritPt = [spiritPtLocation[0] + tickSizeX, canvasFloor-spiritDmgY]
+            
+            dataPointsY.push({weaponDmg: canvasFloor-weaponDmgY, spiritDmg: canvasFloor-spiritDmgY})
 
             //draw weapon line
             context.strokeStyle = globals.itemColors.weapon.base
@@ -171,6 +185,9 @@ export default function LineChart(props) {
             context.lineTo(...newWeaponPt)
             context.stroke()
             weaponPtLocation = newWeaponPt
+            //draw the circle for this datapoint
+            let dotColor = globals.itemColors.weapon.base
+            drawDataPointDot(context, newWeaponPt, dotColor)
 
             //draw spirit line
             context.strokeStyle = globals.itemColors.spirit.base
@@ -179,9 +196,89 @@ export default function LineChart(props) {
             context.lineTo(...newSpiritPt)
             context.stroke()
             spiritPtLocation = newSpiritPt
+            //draw the circle for this datapoint
+            dotColor = globals.itemColors.spirit.base
+            drawDataPointDot(context, newSpiritPt, dotColor)
+
+            
+            
 
         })
+
+        setDataPointYLocations(dataPointsY)
     }
 
-    return <canvas style={{...props.style}} ref={canvasRef} width={props.style.width}  height={props.style.height} />;
+    function undrawLastHighlightedSection(){
+        if(!lastItemSelected){return}
+        const canvas = canvasRef.current
+        const context = canvas.getContext('2d');
+        const highlightX = innerPaddingX+Math.round(tickSizeX*lastItemSelected)
+        const dataPts = dataPointYLocations[lastItemSelected]
+        //don't undraw the y axis
+        if(lastItemSelected!=0){
+            //undraw line
+            context.fillStyle = gColors.LineChartBackground
+            context.beginPath()
+            context.rect(highlightX-1, 0, 2, canvas.height - innerPaddingY -2)
+            context.closePath()
+            context.fill()
+            //redraw datapoint dots
+            if(dataPts){
+                Object.keys(dataPts).forEach((type)=>{
+                    let dotColor = globals.itemColors.weapon.base
+                    switch(type){
+                        case "spiritDmg":
+                            dotColor = globals.itemColors.spirit.base
+                        default:
+                            dotColor = globals.itemColors.weapon.base
+                    }
+                    //draw the circle for this datapoint
+                    context.fillStyle = dotColor
+                    context.beginPath()
+                    context.arc(highlightX, dataPts[type], 5, 0, 2 * Math.PI)
+                    context.closePath()
+                    context.fill()
+
+                })
+            }
+        }
+        lastItemSelected = null
+    }
+
+    function handleMouse(event){
+        const canvas = canvasRef.current
+        const context = canvas.getContext('2d');
+        const rect = canvas.getBoundingClientRect()
+        const mouseX = event.clientX - rect.left
+        const itemNum = Math.round(mouseX / tickSizeX) - 1
+        if(itemNum<0 || itemNum > build.itemOrder.length){
+            undrawLastHighlightedSection()
+            return
+        }
+        const dataValY = dataPoints[itemNum]
+        
+        const highlightX = innerPaddingX+Math.round(tickSizeX*itemNum)
+        
+
+        if(lastItemSelected){
+            //if mouse is in same region, change nothing
+            if(lastItemSelected==itemNum){
+                return
+            }
+            //otherwise undraw last region (redraw line with background color, then replace datapoint dot)
+            undrawLastHighlightedSection()
+        }
+
+        //draw newly selected region
+        context.fillStyle = "#8b8ba7"
+        context.beginPath()
+        context.rect(highlightX-1, 0, 2, canvas.height - innerPaddingY -2)
+        
+        context.closePath()
+        context.fill()
+
+        lastItemSelected = itemNum
+    }
+
+    return <canvas style={{...props.style}} ref={canvasRef} width={props.style.width}  height={props.style.height} onMouseLeave={()=>undrawLastHighlightedSection()} onMouseMove={(event)=>handleMouse(event)}/>;
 }
