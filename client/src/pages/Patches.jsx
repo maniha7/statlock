@@ -38,12 +38,13 @@ const groupUpdates = (lines) => {
 
 export default function Patches() {
     const [patches] = useState(patchData);
-    const [openPatch, setOpenPatch] = useState(null);
+    const latestPatchIndex = patches.findIndex(patch => patch.latest);
+    const [openPatch, setOpenPatch] = useState(latestPatchIndex !== -1 ? latestPatchIndex : null);
     const [visibleCount, setVisibleCount] = useState(5);
 
     const togglePatch = (index) => {
         setOpenPatch(openPatch === index ? null : index);
-    }
+    };
 
     const loadMorePatches = () => {
         setVisibleCount(prevCount => prevCount + 5);

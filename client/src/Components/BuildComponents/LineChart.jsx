@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
+
+import {getDamageData} from "../../Util/StatChartUtil.jsx"
 import globals from '../../globals';
 
 const gColors = globals.globalColors
 
 export default function LineChart(props) {
     const canvasRef = useRef(null);
-    const data = props.data
-    const innerPadding = 24
+    const build = props.build
+    const innerPaddingX = 54
+    const innerPaddingY = 24
+    const numTicks = build.itemOrder.length
 
     const [canvasWidth, setCanvasWidth] = useState(0)
 
@@ -19,7 +23,7 @@ export default function LineChart(props) {
 
     useEffect(()=>{
         fullRender()
-    },[data.length,canvasWidth])
+    },[build.itemOrder.length,canvasWidth])
 
 
 
@@ -36,26 +40,33 @@ export default function LineChart(props) {
         //draw axes
         drawAxes(canvas, context)
 
-        drawAxisTicks(canvas, context)
+        drawXAxisTicks(canvas, context)
 
         //draw data lines
         drawLines(canvas, context)
     }
 
-    function drawAxisTicks(canvas, context){
+    function getTickSizeX(canvas){
+        return (canvas.width - innerPaddingX*2 - 20) / (numTicks)
+    }
+
+    function drawXAxisTicks(canvas, context){
         
         context.strokeStyle = "#8b8ba7"
         context.fillStyle="#b6b6c8"
-        const numTicks = data.length
-        const tickSize = (canvas.width - innerPadding*2 - 20) / (numTicks)
-        let tickLocation = innerPadding + tickSize
-        data.forEach((_,index)=>{
+        
+        const tickSize = getTickSizeX(canvas)
+        let tickLocation = innerPaddingX
+        context.textAlign="center"
+        context.fillText(0, tickLocation, canvas.height)
+        tickLocation += tickSize
+        build.itemOrder.forEach((_,index)=>{
             const itemNum = index+1
             context.beginPath()
-            context.moveTo(tickLocation,canvas.height - innerPadding-8)
-            context.lineTo(tickLocation, canvas.height - innerPadding+8)
+            context.moveTo(tickLocation,canvas.height - innerPaddingY-8)
+            context.lineTo(tickLocation, canvas.height - innerPaddingY+8)
             context.stroke()
-            context.textAlign="center"
+            
             context.fillText(itemNum, tickLocation, canvas.height)
             tickLocation += tickSize
 
@@ -69,17 +80,17 @@ export default function LineChart(props) {
         context.fillStyle="#ceced4"
         
         context.beginPath()
-        context.moveTo(innerPadding,0)
-        context.lineTo(innerPadding, canvas.height-innerPadding)
-        context.lineTo(canvas.width-innerPadding, canvas.height-innerPadding)
+        context.moveTo(innerPaddingX,0)
+        context.lineTo(innerPaddingX, canvas.height-innerPaddingY)
+        context.lineTo(canvas.width-innerPaddingX, canvas.height-innerPaddingY)
         context.stroke()
         
     }
 
     function drawLines(canvas, context){
         switch(props.chartStyle){
-            case "dmgVsResistances":
-                drawDmgVsResistancesLines()
+            case "dmgVsItems":
+                drawDmgVsItemsLines(canvas, context)
                 break;
 
             default:
@@ -88,8 +99,88 @@ export default function LineChart(props) {
         }
     }
 
-    function drawDmgVsResistancesLines(){
+    function drawYAxisTicks(yLimit, canvas, context){
+        context.strokeStyle = "#8b8ba7"
+        context.fillStyle="#b6b6c8"
+        context.textAlign="center"
+        const numTicks = 10
+        const tickSize = (canvas.height - innerPaddingY - 20) / numTicks
+        let tickLabel = 0
+        const tickLabelIncrease = Math.floor(yLimit / numTicks)
+        let tickLocation = canvas.height - innerPaddingY
 
+        context.fillText(tickLabel, innerPaddingX/2, tickLocation)
+        tickLocation -= tickSize
+        tickLabel+=tickLabelIncrease
+        for(let i =1; i<numTicks-1; i++){
+            context.beginPath()
+            context.moveTo(innerPaddingX-8,tickLocation)
+            context.lineTo(innerPaddingX+8, tickLocation)
+            context.stroke()
+            
+            context.fillText(tickLabel, innerPaddingX/2, tickLocation+5)
+            tickLocation -= tickSize
+            tickLabel+=tickLabelIncrease
+        }
+    }
+
+    function getChartYLimit(dataPoints, canvas, context){
+        let maxY = 0
+        dataPoints.forEach((dataPoint)=>{
+            Object.values(dataPoint).forEach((val)=>{
+                if(val>maxY){
+                    maxY = val
+                }
+            })
+        })
+        maxY+=20
+        drawYAxisTicks(maxY, canvas, context)
+        return (canvas.height - innerPaddingY) / maxY
+    }
+
+    function drawDmgVsItemsLines(canvas, context){
+        if(!build || !build.hero){return}
+        const dmgData = getDamageData(build)
+
+        
+
+        //get highest value in graph, to predetermine chart Y limit
+        const heightRescale = getChartYLimit(dmgData, canvas, context)
+
+
+        //graph datapoints
+        const tickSize = getTickSizeX(canvas)
+        let canvasFloor = canvas.height-innerPaddingY
+
+        const initPoint = dmgData.splice(0,1)[0]
+        const initWeaponY = initPoint.weaponDmg * heightRescale
+        const initSpiritY = initPoint.spiritDmg * heightRescale
+        let weaponPtLocation = [innerPaddingX, canvasFloor-initWeaponY]
+        let spiritPtLocation = [innerPaddingX, canvasFloor-initSpiritY]
+        
+        dmgData.forEach((dataPoint)=>{
+            const weaponDmgY = dataPoint.weaponDmg * heightRescale
+            const spiritDmgY = dataPoint.spiritDmg * heightRescale
+            const newWeaponPt = [weaponPtLocation[0] + tickSize, canvasFloor-weaponDmgY]
+            const newSpiritPt = [spiritPtLocation[0] + tickSize, canvasFloor-spiritDmgY]
+
+            //draw weapon line
+            context.strokeStyle = globals.itemColors.weapon.base
+            context.beginPath()
+            context.moveTo(...weaponPtLocation)
+            context.lineTo(...newWeaponPt)
+            context.stroke()
+            weaponPtLocation = newWeaponPt
+
+            //draw spirit line
+            context.strokeStyle = globals.itemColors.spirit.base
+            context.beginPath()
+            context.moveTo(...spiritPtLocation)
+            context.lineTo(...newSpiritPt)
+            context.stroke()
+            spiritPtLocation = newSpiritPt
+
+        })
     }
 
     return <canvas style={{...props.style}} ref={canvasRef} width={props.style.width}  height={props.style.height} />;
