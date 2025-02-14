@@ -104,7 +104,9 @@ export default function MiniBuild(props) {
             if(secondaryName){
                 build.hero.weaponSecondary = abils[secondaryName]
             }
+            console.log('abils set')
             setBuild(build)
+            
         }
         
       }
@@ -112,14 +114,16 @@ export default function MiniBuild(props) {
       function setHero(hero){
         build.hero = hero
         setHeroBaseAbilities()
+        console.log('hero set')
         setBuild(build)
         setHeroSelectorOpen(false)
+        
       }
 
       function setBuild(build){
         props.setBuild(build)
         setBuildUpdate(buildUpdate+1)
-        //console.log(build)
+        console.log("updating build")
       }
 
       function removeItemFromBuild(item){
@@ -367,7 +371,7 @@ export default function MiniBuild(props) {
                             build.hero.abilities.map((ability, abilityIndex)=>{
                                 return(
                                     <div key={ability.id}>
-                                        <HeroAbility onClick={()=>{props.addItem(imbueItem,abilityIndex); console.log(abilityIndex)}} ability={ability} clickable/>
+                                        <HeroAbility onClick={()=>{props.addItem(imbueItem,abilityIndex)}} ability={ability} clickable/>
                                     </div>
                                 )
                             })

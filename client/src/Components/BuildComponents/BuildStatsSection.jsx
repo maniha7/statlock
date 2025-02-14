@@ -43,7 +43,7 @@ export default function BuildStats(props) {
                     </span>
                     <div className='flex flex-1 flex-col items-center p-5' style={{ width:'100%'}}>
                         <div ref={chartContainerRef} style={{width:"100%"}} >
-                            <LineChart build={build} chartStyle={"dmgVsItems"} style={{width:chartContainerRef.current?.clientWidth, height:500}}/>
+                            <LineChart build={build} updated={props.updated} chartStyle={"dmgVsItems"} style={{width:chartContainerRef.current?.clientWidth, height:500}}/>
                         </div>
                         <span style={{color:"#fff", fontSize:19, fontStyle:"italic", fontWeight:700}}>{renderChartXAxis()}</span>
                     </div>

@@ -8,6 +8,7 @@ const gColors = globals.globalColors
 let lastItemSelected = null
 let tickSizeX = 0
 
+
 export default function LineChart(props) {
     const canvasRef = useRef(null);
     const build = props.build
@@ -18,6 +19,7 @@ export default function LineChart(props) {
     const [canvasWidth, setCanvasWidth] = useState(0)
     const [dataPoints, setDataPoints] = useState([])
     const [dataPointYLocations, setDataPointYLocations] = useState([])
+    const [statsPopup, setStatsPopup] = useState(null)
 
 
     //update width changes
@@ -28,8 +30,10 @@ export default function LineChart(props) {
     });
 
     useEffect(()=>{
+        if(!build.hero){return}
+        console.log("updated!")
         fullRender()
-    },[build.itemOrder.length,canvasWidth])
+    },[build.itemOrder.length,canvasWidth, props.updated])
 
 
 
@@ -107,21 +111,21 @@ export default function LineChart(props) {
         context.fillStyle="#b6b6c8"
         context.textAlign="center"
         const numTicks = 10
-        const tickSize = (canvas.height - innerPaddingY - 20) / numTicks
+        const tickSize = (canvas.height - innerPaddingY) / numTicks
         let tickLabel = 0
-        const tickLabelIncrease = Math.floor(yLimit / numTicks)
+        const tickLabelIncrease = yLimit / numTicks
         let tickLocation = canvas.height - innerPaddingY
 
         context.fillText(tickLabel, innerPaddingX/2, tickLocation)
         tickLocation -= tickSize
         tickLabel+=tickLabelIncrease
-        for(let i =1; i<numTicks-1; i++){
+        for(let i =1; i<numTicks; i++){
             context.beginPath()
             context.moveTo(innerPaddingX-8,tickLocation)
-            context.lineTo(innerPaddingX+8, tickLocation)
+            context.lineTo(innerPaddingX, tickLocation)
             context.stroke()
             
-            context.fillText(tickLabel, innerPaddingX/2, tickLocation+5)
+            context.fillText(tickLabel.toFixed(1), innerPaddingX/2, tickLocation+5)
             tickLocation -= tickSize
             tickLabel+=tickLabelIncrease
         }
@@ -136,7 +140,7 @@ export default function LineChart(props) {
                 }
             })
         })
-        maxY+=20
+        
         drawYAxisTicks(maxY, canvas, context)
         return (canvas.height - innerPaddingY) / maxY
     }
@@ -144,7 +148,7 @@ export default function LineChart(props) {
     function drawDataPointDot(context, location, dotColor){
         context.fillStyle = dotColor
         context.beginPath()
-        context.arc(...location, 5, 0, 2 * Math.PI)
+        context.arc(...location, 3, 0, 2 * Math.PI)
         context.closePath()
         context.fill()
     }
@@ -199,10 +203,6 @@ export default function LineChart(props) {
             //draw the circle for this datapoint
             dotColor = globals.itemColors.spirit.base
             drawDataPointDot(context, newSpiritPt, dotColor)
-
-            
-            
-
         })
 
         setDataPointYLocations(dataPointsY)
@@ -236,12 +236,8 @@ export default function LineChart(props) {
                             break;
                     }
                     //draw the circle for this datapoint
+                    drawDataPointDot(context, [highlightX, dataPts[type]], dotColor)
                     
-                    context.fillStyle = dotColor
-                    context.beginPath()
-                    context.arc(highlightX, dataPts[type], 5, 0, 2 * Math.PI)
-                    context.closePath()
-                    context.fill()
 
                 })
             }
@@ -254,24 +250,32 @@ export default function LineChart(props) {
         const context = canvas.getContext('2d');
         const rect = canvas.getBoundingClientRect()
         const mouseX = event.clientX - rect.left - innerPaddingX
+        const mouseY = event.clientY -rect.top - innerPaddingY
         const itemNum = Math.round((mouseX ) / tickSizeX)
         if(itemNum<0 || itemNum > build.itemOrder.length){
             undrawLastHighlightedSection()
             return
         }
-        const dataValY = dataPoints[itemNum]
+        const dataValY = dataPoints[itemNum] 
         
         const highlightX = innerPaddingX+Math.round(tickSizeX*itemNum)
-        
+
+        //set stats popup item
+        setStatsPopup({
+            xPos: highlightX+rect.left,
+            yPos: mouseY,
+            values: dataValY
+        })
 
         if(lastItemSelected){
             //if mouse is in same region, change nothing
             if(lastItemSelected==itemNum){
+                
                 return
             }
             //otherwise undraw last region (redraw line with background color, then replace datapoint dot)
             undrawLastHighlightedSection()
-        }
+        }        
 
         //draw newly selected region
         context.fillStyle = "#8b8ba7"
@@ -284,5 +288,31 @@ export default function LineChart(props) {
         lastItemSelected = itemNum
     }
 
-    return <canvas style={{...props.style}} ref={canvasRef} width={props.style.width}  height={props.style.height} onMouseLeave={()=>undrawLastHighlightedSection()} onMouseMove={(event)=>handleMouse(event)}/>;
+    function renderStatsPopup(){
+        
+        if(!statsPopup.values || statsPopup.values.length == 0){return null}
+        return(
+            <div className="absolute flex flex-col p-2 text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)]" style={{backgroundColor:gColors.greyBackground, borderRadius:5, left:statsPopup.xPos??0, top:(statsPopup.yPos??0)+60}}>
+                {Object.keys(statsPopup.values).map((key)=>{
+                    const val = statsPopup.values[key]
+                    return(
+                        <div key={key} style={{fontSize:15}}>
+                            {"Damage: " + val.toFixed(0)}
+                        </div>
+                    )
+                })}
+            </div>
+        )
+    }
+
+    
+    return (
+        <div>
+            <canvas style={{...props.style}} ref={canvasRef} width={props.style.width}  height={props.style.height} onMouseLeave={()=>{undrawLastHighlightedSection();setStatsPopup(null);}} onMouseMove={(event)=>handleMouse(event)}/>
+            {
+                statsPopup&&
+                renderStatsPopup()
+            }
+        </div>
+    )
 }

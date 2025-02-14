@@ -1,6 +1,7 @@
 
 
 export function getDamageData(build){
+    
     const items = build.itemOrder
     const hero = build.hero
     const baseStats = hero.starting_stats
@@ -12,6 +13,14 @@ export function getDamageData(build){
     const weaponSecondary = hero.weaponSecondary
     const weaponMelee = hero.melee
     const signatures = hero.abilities
+
+    //handle unfinished loading of hero data
+    if(!weaponPrimary){
+        return [{
+            weaponDmg: 0,
+            spiritDmg: 0,
+        }]
+    }
 
 
     //BASE STATS 
