@@ -17,7 +17,7 @@ export default function Nav(){
     <section className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
         
         {/*Navbar*/}
-        <div className={`w-30 md:w-175 lg:w-185 h-flex p-2 ml-5 mt-2 border-b-4 border-r-2 rounded-lg ${gColors.stoneBackgroundGradient} border-stone-600 mb-5`}>
+        <div className={`w-40 md:w-175 lg:w-185 h-flex p-2 ml-5 mt-2 border-b-4 border-r-2 rounded-lg ${gColors.stoneBackgroundGradient} border-stone-600 mb-5`}>
             <div className="flex flex-col items-center md:flex-row lg:flex-row xl:flex-row md:space-x-10 lg:space-x-9">
 
                 <Link to='/'><div className="flex hover:underline hover:opacity-80 text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-stone-500 text-xl items-center"><img src={logo} className="h-8 ml-1 w-flex mr-0.5"  />STATLOCK</div></Link>
@@ -43,7 +43,7 @@ export default function Nav(){
         <div className="flex justify-end xs:justify-start">
         
             {/*Steam Login*/}
-            <div className={`ml-3 mt-2 mr-5 mb-2 rounded-lg flex flex-col-2 space-x-5 border-b-4 border-r-2 h-12 sm:h-flex px-4 border-stone-600  ${gColors.stoneBackgroundGradient}`}>
+            <div className={`ml-3 mt-2 mr-5 mb-2 rounded-lg flex flex-col-2 space-x-5 border-b-4 border-r-2 h-12 sm:h-flex px-4 border-stone-600 ${gColors.stoneBackgroundGradient}`}>
                 {/* Profile Button */}
                 <Link to="/profile">
                 <div className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80 hover:cursor-pointer w-22 h-7 mt-2 rounded-sm  flex flex-row space-x-1" style={{backgroundColor:gColors.deadLockLight}}>

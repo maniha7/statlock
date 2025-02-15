@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import {getDamageData} from "../../Util/StatChartUtil.jsx"
+import ShopItem from './ShopItem';
 import souls from "../../assets/souls.png"
 import globals from '../../globals';
 
@@ -142,7 +143,11 @@ export default function LineChart(props) {
             })
         })
 
-        maxY = 550
+        if(maxY<500){maxY=500}
+        else if(maxY<1000){maxY=1000}
+        else if(maxY<1500){maxY=1500}
+        else if(maxY<2000){maxY=2000}
+        else{maxY+=100}
         
         drawYAxisTicks(maxY, canvas, context)
         return (canvas.height - innerPaddingY) / maxY
@@ -303,8 +308,8 @@ export default function LineChart(props) {
         let purchasedItem = null
         let lastWeaponDps = null
         let lastSpiritDps = null
-        const currentWeaponDps = statsPopup.values.weaponDmg.toFixed(2)
-        const currentSpiritDps = statsPopup.values.spiritDmg.toFixed(2)
+        const currentWeaponDps = statsPopup.values.weaponDmg.toFixed(0)
+        const currentSpiritDps = statsPopup.values.spiritDmg.toFixed(0)
         let weaponDpsChange = null
         let spiritDpsChange = null
         if(statsPopup.index>=0){
@@ -312,26 +317,26 @@ export default function LineChart(props) {
             const lastStats = dataPoints[statsPopup.index]
             lastWeaponDps = lastStats.weaponDmg
             lastSpiritDps = lastStats.spiritDmg
-            weaponDpsChange = (currentWeaponDps - lastWeaponDps).toFixed(2)
-            spiritDpsChange = (currentSpiritDps - lastSpiritDps).toFixed(2)
+            weaponDpsChange = (currentWeaponDps - lastWeaponDps).toFixed(0)
+            spiritDpsChange = (currentSpiritDps - lastSpiritDps).toFixed(0)
         }
-
-        
-
-        
-
         return(
-            <div className="absolute flex flex-col p-2 text-white text-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)]" style={{backgroundColor:gColors.greyBackground, minWidth:250, zIndex:2, borderRadius:5, left:statsPopup.xPos??0, top:(statsPopup.yPos??0)+60}}>
+            <div className="absolute flex flex-col p-2 text-white text-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)] select-none" style={{backgroundColor:gColors.greyBackground, minWidth:250, zIndex:2, borderRadius:5, left:statsPopup.xPos??0, top:(statsPopup.yPos??0)+60}}>
                 <div className="flex flex-col p-2 text-center items-center mb-2" style={{backgroundColor:gColors.mediumGrey, borderRadius:5}}>
                     {purchasedItem&&
-                        <div className="mb-2 text-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
-                            {"Purchased Item: "}
-                            <div style={{color: globals.itemColors[purchasedItem.item_slot_type].base}}>{purchasedItem.name}</div>
+                        <div className="flex flex-row mb-2 text-center items-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
+
+                            <div className="flex flex-0 mr-2" style={{textAlign:"right"}}>
+                                Item:
+                            </div>
+                            <ShopItem item={purchasedItem} hover={()=>null} unhover={()=>null} click={()=>null} widthOverride={68} heightOverride={75}/>
+
+                            
                         </div>
                     }
-                    <div className="mb-1 text-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
+                    <div className="flex flex-row mb-1 text-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
                         {"Build Cost: "}
-                        <div className="flex flex-row items-center justify-center">
+                        <div className="flex flex-row ml-2 items-center justify-center">
                             <img className="mr-1" style={{height:14, width:'auto'}} src={souls}/>
                             <div style={{color: gColors.itemCost}}>{statsPopup.values.totalCost.toFixed(0)}</div>
                         </div>

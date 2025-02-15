@@ -114,7 +114,7 @@ export default function ShopItem(props){
                                 
                             </div>
                         }
-                        <div className="flex self-center forevs2" style={{textAlign:'center', fontSize:scale==1?14.5:12, maxWidth:90*scale, lineHeight:1.2,}}>
+                        <div className="flex self-center forevs2" style={{textAlign:'center', fontSize:scale==1?14.5:12, color:"#000", maxWidth:90*scale, lineHeight:1.2,}}>
                             {item["name"]}
                         </div>
                     </div>
