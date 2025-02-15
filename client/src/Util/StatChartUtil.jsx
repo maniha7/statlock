@@ -132,6 +132,7 @@ export function getDamageData(build){
         weaponDmg: initWeaponDmg,
         spiritDmg: 0,
     }]
+    
 
     /********************* MAIN CALCULATION ***********************/
     items.forEach((item)=>{
@@ -150,7 +151,7 @@ export function getDamageData(build){
 
 
     })
-
+    
     return dataPoints
 }
 

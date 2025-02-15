@@ -31,7 +31,6 @@ export default function LineChart(props) {
 
     useEffect(()=>{
         if(!build.hero){return}
-        console.log("updated!")
         fullRender()
     },[build.itemOrder.length,canvasWidth, props.updated])
 
@@ -156,24 +155,26 @@ export default function LineChart(props) {
     function drawDmgVsItemsLines(canvas, context){
         if(!build || !build.hero){return}
         const dmgData = getDamageData(build)
-        setDataPoints(dmgData)
-        
+        setDataPoints([...dmgData])
 
         //get highest value in graph, to predetermine chart Y limit
         const heightRescale = getChartYLimit(dmgData, canvas, context)
 
 
-        //graph datapoints
+        //set initial point
         let canvasFloor = canvas.height-innerPaddingY
-
         const initPoint = dmgData.splice(0,1)[0]
         const initWeaponY = initPoint.weaponDmg * heightRescale
         const initSpiritY = initPoint.spiritDmg * heightRescale
         let weaponPtLocation = [innerPaddingX, canvasFloor-initWeaponY]
         let spiritPtLocation = [innerPaddingX, canvasFloor-initSpiritY]
 
-        let dataPointsY = []
+        //draw initial point
+        let dataPointsY = [{weaponDmg: canvasFloor-initWeaponY, spiritDmg: canvasFloor-initSpiritY}]
+        drawDataPointDot(context, weaponPtLocation, globals.itemColors.weapon.base)
+        drawDataPointDot(context, spiritPtLocation, globals.itemColors.spirit.base)
         
+        //connect all following points
         dmgData.forEach((dataPoint)=>{
             const weaponDmgY = Math.round(dataPoint.weaponDmg * heightRescale)
             const spiritDmgY = Math.round(dataPoint.spiritDmg * heightRescale)
@@ -181,7 +182,7 @@ export default function LineChart(props) {
             const newSpiritPt = [spiritPtLocation[0] + tickSizeX, canvasFloor-spiritDmgY]
             
             dataPointsY.push({weaponDmg: canvasFloor-weaponDmgY, spiritDmg: canvasFloor-spiritDmgY})
-
+            
             //draw weapon line
             context.strokeStyle = globals.itemColors.weapon.base
             context.beginPath()
@@ -203,8 +204,10 @@ export default function LineChart(props) {
             //draw the circle for this datapoint
             dotColor = globals.itemColors.spirit.base
             drawDataPointDot(context, newSpiritPt, dotColor)
-        })
 
+            
+        })
+        
         setDataPointYLocations(dataPointsY)
     }
 
@@ -213,9 +216,9 @@ export default function LineChart(props) {
         const canvas = canvasRef.current
         const context = canvas.getContext('2d');
         const highlightX = innerPaddingX+Math.round(tickSizeX*(lastItemSelected))
-        const dataPts = dataPointYLocations[lastItemSelected-1]
+        const dataPts = dataPointYLocations[lastItemSelected]
         //don't undraw the y axis
-        if(lastItemSelected!=0){
+        if(highlightX!=innerPaddingX){
             //undraw line
             context.fillStyle = gColors.LineChartBackground
             context.beginPath()
@@ -252,19 +255,23 @@ export default function LineChart(props) {
         const mouseX = event.clientX - rect.left - innerPaddingX
         const mouseY = event.clientY -rect.top - innerPaddingY
         const itemNum = Math.round((mouseX ) / tickSizeX)
-        if(itemNum<0 || itemNum > build.itemOrder.length){
+        if(itemNum<0 || itemNum > build.itemOrder.length+1){
             undrawLastHighlightedSection()
             return
         }
+
+        console.log(dataPoints.length)
+
         const dataValY = dataPoints[itemNum] 
         
-        const highlightX = innerPaddingX+Math.round(tickSizeX*itemNum)
+        const highlightX = innerPaddingX+Math.round(tickSizeX*(itemNum))
 
         //set stats popup item
         setStatsPopup({
             xPos: highlightX+rect.left,
             yPos: mouseY,
-            values: dataValY
+            values: dataValY,
+            index: itemNum-1,
         })
 
         if(lastItemSelected){
@@ -289,15 +296,28 @@ export default function LineChart(props) {
     }
 
     function renderStatsPopup(){
-        
         if(!statsPopup.values || statsPopup.values.length == 0){return null}
+        let purchasedItem = null
+        if(statsPopup.index>=0){
+            purchasedItem = build.itemOrder[statsPopup.index]
+        }
         return(
-            <div className="absolute flex flex-col p-2 text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)]" style={{backgroundColor:gColors.greyBackground, borderRadius:5, left:statsPopup.xPos??0, top:(statsPopup.yPos??0)+60}}>
+            <div className="absolute flex flex-col p-2 text-white text-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)]" style={{backgroundColor:gColors.greyBackground, minWidth:150, zIndex:2, borderRadius:5, left:statsPopup.xPos??0, top:(statsPopup.yPos??0)+60}}>
+                {purchasedItem?
+                    <div className="mb-2 text-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
+                        {"Purchased item: "}
+                        <div style={{color: globals.itemColors[purchasedItem.item_slot_type].base}}>{purchasedItem.name}</div>
+                    </div>
+                    :
+                    <div className="mb-1 text-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
+                        {"Base Stats: "}
+                    </div>
+                }
                 {Object.keys(statsPopup.values).map((key)=>{
                     const val = statsPopup.values[key]
                     return(
                         <div key={key} style={{fontSize:15}}>
-                            {"Damage: " + val.toFixed(0)}
+                            {"Damage: " + val.toFixed(2)}
                         </div>
                     )
                 })}

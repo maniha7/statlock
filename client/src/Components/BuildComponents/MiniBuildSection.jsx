@@ -30,9 +30,8 @@ export default function MiniBuild(props) {
     const [heroes, setHeroes] = useState([])
     const [heroSelectorOpen, setHeroSelectorOpen] = useState(false)
     const [abilitySelectorOpen, setAbilitySelectorOpen] = useState(false)
-    const [imbuingItem, setImbuingItem] = useState(null)
-    const [imbueChooserOpen, setImbueChooserOpen] = useState(false)
     const [imbueChangerOpen, setImbueChangerOpen] = useState(false)
+    const [loadingHero, setLoadingHero] = useState(false)
 
     const [buildUpdate, setBuildUpdate] = useState(0)
     
@@ -42,17 +41,14 @@ export default function MiniBuild(props) {
     const imbueSetter = props.imbueHandler[1]
     const shouldRenderError = props.noSlotsHandlers[0]
 
+    //handle incoming event from imbued item chooser -- if imbue was not applied to an ability, count the imbue as cancelled and remove item from build
     useEffect(()=>{
-        if(imbueItem){
-            setImbueChooserOpen(true)
-        }
-        else{
             Object.values(build.imbueItems).forEach((item)=>{
                 if(!item.imbuedAbility){
                     removeItemFromBuild(item)
                 }
             })
-        }
+        
     },[props.imbueHandler[0]])
 
 
@@ -83,13 +79,15 @@ export default function MiniBuild(props) {
         const heroRes = await getHeroes()
         const filteredHeroes = heroRes.filter((h)=>!h.disabled)
         setHeroes(filteredHeroes)
-        build.hero = filteredHeroes[0]
-        setHeroBaseAbilities()
+        setHero(filteredHeroes[0])
     }
 
     
-
-      async function setHeroBaseAbilities(){
+      async function setHero(hero){
+        setLoadingHero(true)
+        build.hero = hero
+        
+        //set hero base abilities
         if(build.hero){
             const mainSlots = ["signature1","signature2","signature3","signature4",]
             const abils = await getHeroAbilities(build.hero.id)
@@ -104,26 +102,17 @@ export default function MiniBuild(props) {
             if(secondaryName){
                 build.hero.weaponSecondary = abils[secondaryName]
             }
-            console.log('abils set')
-            setBuild(build)
-            
         }
         
-      }
-
-      function setHero(hero){
-        build.hero = hero
-        setHeroBaseAbilities()
-        console.log('hero set')
         setBuild(build)
         setHeroSelectorOpen(false)
+        setLoadingHero(false)
         
       }
 
       function setBuild(build){
         props.setBuild(build)
         setBuildUpdate(buildUpdate+1)
-        console.log("updating build")
       }
 
       function removeItemFromBuild(item){
@@ -316,7 +305,8 @@ export default function MiniBuild(props) {
     function renderHeroSelector(){
         return(
             <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setHeroSelectorOpen(false)}} className="flex fixed top-0 left-0 items-center justify-center select-none" style={{width:'100vw', height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.7)"}}>
-                <div className="flex flex-col p-3" style={{backgroundColor:gColors.darkGrey, borderRadius:8,  maxWidth:"35%", borderWidth:3}}>
+                <div className="relative flex flex-col p-3" style={{backgroundColor:gColors.darkGrey, borderRadius:8,  width:"35%", borderWidth:3}}>
+                    
                     {Object.keys(build.imbueItems).length>0&&
                         <div className="text-center py-1" style={{color:gColors.errorRed, fontWeight:600}}>
                             Imbued items will stay imbued on the same ability number when changing heroes
@@ -341,6 +331,20 @@ export default function MiniBuild(props) {
                             })
                         }
                     </div>
+
+                    {loadingHero&&
+                        <div className='absolute flex flex-1 items-center justify-center top-0 left-0 ' style={{width:'100%', height:"100%", backgroundColor:"rgba(0,0,0,0.6)"}}>
+                            <TailSpin
+                            visible={true}
+                            height="80"
+                            width="80"
+                            color="#fff"
+                            ariaLabel="tail-spin-loading"
+                            radius="1"
+                            />
+                        </div>
+                    }       
+                    
                 </div>
             </div>
         )
