@@ -38,7 +38,8 @@ const globals = {
         deadLockDark:"#231f20",
         deadLockLight:"#f0dfbf",
         LineChartBackground:"#181830",
-        errorRed:"#b82e2e"
+        errorRed:"#b82e2e",
+        successGreen:"#009900",
     },
 
     itemColors: {

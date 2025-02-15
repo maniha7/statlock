@@ -1,4 +1,4 @@
-
+import globals from '../globals';
 
 export function getDamageData(build){
     
@@ -49,12 +49,7 @@ export function getDamageData(build){
     let spiritDamage = 0
 
     //item bonuses
-    let itemBonuses = {
-        fireRatePercent:0,
-        clipSizePercent:0,
-        clipSize:0,
-        MODIFIER_VALUE_BASEATTACK_DAMAGE_PERCENT:0,
-    }
+    
     let totalSouls = 0
     let boonLevel = 0
     let abilityUnlocks = 0
@@ -100,13 +95,22 @@ export function getDamageData(build){
         }
     }
 
+    let itemScalings = {
+        fireRatePercent:0,
+        clipSizePercent:0,
+        clipSizeBonus:0,
+        weaponDamagePercent:0,
+        reloadSpeedPercentDecrease:0,
+    }
+
     function getBulletDPS(){
+        
         // FinalWeaponDamage = (BaseBulletDmg * WeaponDmg% * DmgBonus% + FlatWeaponDmg) * dmgFalloff * (BulletResist - BulletResistReduction%) * IncreasedBulletDmg% * CritMultiplier
         const baseBulletDmg = weaponPrimary.weapon_info.bullet_damage
 
         const bulletIncreasePerBoon = levelMods.MODIFIER_VALUE_BASE_BULLET_DAMAGE_FROM_LEVEL??0
 
-        let clipSize = weaponPrimary.weapon_info.clip_size
+        let baseClipSize = weaponPrimary.weapon_info.clip_size
 
         //handle per-hero special scaling
             let specialWeaponScaling = 0
@@ -117,21 +121,87 @@ export function getDamageData(build){
             if(hero.scaling_stats.EClipSize){
                 const scaleValue = getScaledStatValue(hero.scaling_stats.EClipSize)
                 specialWeaponScaling = scaleValue
-                clipSize = Math.floor(clipSize+scaleValue)
+                baseClipSize = Math.floor(baseClipSize+scaleValue)
             }
-        
-        let leveledBaseBulletDamage = baseBulletDmg + (boonLevel * bulletIncreasePerBoon) + specialWeaponScaling
 
-        return leveledBaseBulletDamage
+        //base damage per bullet (after applying current boon level)
+        const leveledBaseBulletDamage = baseBulletDmg + (boonLevel * bulletIncreasePerBoon) + specialWeaponScaling
+        
+        //total damage per bullet after item buffs
+        const scaledDamagePerBullet = leveledBaseBulletDamage * (1 + itemScalings.weaponDamagePercent)
+        
+        //damage per shot (for guns with multiple bullets per shot)
+        const bulletsPerShot = weaponPrimary.weapon_info.bullets
+        const damagePerShot = scaledDamagePerBullet * bulletsPerShot
+
+        //damage per clip
+        const clipSize = (baseClipSize + itemScalings.clipSizeBonus) * (1 + itemScalings.clipSizePercent)
+        const accuracy = 1
+        const damagePerClip = damagePerShot * Math.round(clipSize * accuracy)
+
+        //clips per second
+        const timePerBulletSeconds = weaponPrimary.weapon_info.cycle_time
+        const scaledTimePerBulletSeconds = timePerBulletSeconds / (1 + itemScalings.fireRatePercent)
+        const secondsPerClip = (clipSize * scaledTimePerBulletSeconds) + weaponPrimary.weapon_info.reload_duration
+
+        const damagePerSecond = damagePerClip / secondsPerClip
+
+        return damagePerSecond
+    }
+
 
     
+
+    function addItemScaling(scalings, item){
+
+        //add base bonus
+        const baseBonus = globals.itemBaseBonuses[item.item_slot_type][item.cost]
+        const baseBonusType = globals.itemBaseBonusTypes[item.item_slot_type]
+        
+        switch(baseBonusType){
+            case "Weapon Damage":
+                scalings.weaponDamagePercent += (baseBonus/100)
+                break;
+        }
+
+        //add innate scalings
+        item.innateProperties.forEach((prop)=>{
+            switch(prop.provided_property_type){
+                case "MODIFIER_VALUE_BASEATTACK_DAMAGE_PERCENT":
+                    scalings.weaponDamagePercent += (prop.value/100)
+                    break;
+                case "MODIFIER_VALUE_AMMO_CLIP_SIZE_PERCENT":
+                    scalings.clipSizePercent += (prop.value/100)
+                    break;
+                case "MODIFIER_VALUE_FIRE_RATE":
+                    scalings.fireRatePercent += (prop.value/100)
+                    break;
+                case "MODIFIER_VALUE_AMMO_CLIP_SIZE":
+                    scalings.clipSizeBonus += prop.value
+                    break;
+                case "MODIFIER_VALUE_RELOAD_SPEED":
+                    scalings.reloadSpeedPercentDecrease += (prop.value/100)
+                    break;
+                case "MODIFIER_VALUE_FIRE_RATE_SLOW":
+                    scalings.fireRatePercent -= (prop.value/100)
+                    break;
+            }
+        })
+
+        
+        return scalings
     }
+
+
 
     const initWeaponDmg = getBulletDPS()
     const dataPoints = [{
+        totalCost: 0,
         weaponDmg: initWeaponDmg,
         spiritDmg: 0,
     }]
+
+    
     
 
     /********************* MAIN CALCULATION ***********************/
@@ -139,11 +209,13 @@ export function getDamageData(build){
         //add item cost to total and increase boons if possible
         totalSouls += item.cost
         getBoonLevel()
+        itemScalings = addItemScaling(itemScalings, item)
 
         const weaponDmg = getBulletDPS()
 
         dataPoints.push(
             {
+                totalCost: totalSouls,
                 weaponDmg: weaponDmg,
                 spiritDmg: 0,
             }
@@ -154,4 +226,6 @@ export function getDamageData(build){
     
     return dataPoints
 }
+
+
 

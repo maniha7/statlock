@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import {getDamageData} from "../../Util/StatChartUtil.jsx"
+import souls from "../../assets/souls.png"
 import globals from '../../globals';
 
 const gColors = globals.globalColors
@@ -133,12 +134,15 @@ export default function LineChart(props) {
     function getChartYLimit(dataPoints, canvas, context){
         let maxY = 0
         dataPoints.forEach((dataPoint)=>{
-            Object.values(dataPoint).forEach((val)=>{
-                if(val>maxY){
+            Object.keys(dataPoint).forEach((key)=>{
+                const val = dataPoint[key]
+                if(key!="totalCost" && val>maxY){
                     maxY = val
                 }
             })
         })
+
+        maxY = maxY *1.5
         
         drawYAxisTicks(maxY, canvas, context)
         return (canvas.height - innerPaddingY) / maxY
@@ -147,7 +151,7 @@ export default function LineChart(props) {
     function drawDataPointDot(context, location, dotColor){
         context.fillStyle = dotColor
         context.beginPath()
-        context.arc(...location, 3, 0, 2 * Math.PI)
+        context.arc(Math.round(location[0]), Math.round(location[1]), 3, 0, 2 * Math.PI)
         context.closePath()
         context.fill()
     }
@@ -170,7 +174,7 @@ export default function LineChart(props) {
         let spiritPtLocation = [innerPaddingX, canvasFloor-initSpiritY]
 
         //draw initial point
-        let dataPointsY = [{weaponDmg: canvasFloor-initWeaponY, spiritDmg: canvasFloor-initSpiritY}]
+        let dataPointsY = [{weaponDmg: canvasFloor-initWeaponY, spiritDmg: canvasFloor-initSpiritY, totalCost:0}]
         drawDataPointDot(context, weaponPtLocation, globals.itemColors.weapon.base)
         drawDataPointDot(context, spiritPtLocation, globals.itemColors.spirit.base)
         
@@ -181,7 +185,7 @@ export default function LineChart(props) {
             const newWeaponPt = [weaponPtLocation[0] + tickSizeX, canvasFloor-weaponDmgY]
             const newSpiritPt = [spiritPtLocation[0] + tickSizeX, canvasFloor-spiritDmgY]
             
-            dataPointsY.push({weaponDmg: canvasFloor-weaponDmgY, spiritDmg: canvasFloor-spiritDmgY})
+            dataPointsY.push({weaponDmg: canvasFloor-weaponDmgY, spiritDmg: canvasFloor-spiritDmgY, totalCost: dataPoint.totalCost})
             
             //draw weapon line
             context.strokeStyle = globals.itemColors.weapon.base
@@ -239,6 +243,7 @@ export default function LineChart(props) {
                             break;
                     }
                     //draw the circle for this datapoint
+                    drawDataPointDot(context, [highlightX, dataPts[type]], gColors.LineChartBackground)
                     drawDataPointDot(context, [highlightX, dataPts[type]], dotColor)
                     
 
@@ -259,8 +264,6 @@ export default function LineChart(props) {
             undrawLastHighlightedSection()
             return
         }
-
-        console.log(dataPoints.length)
 
         const dataValY = dataPoints[itemNum] 
         
@@ -298,29 +301,71 @@ export default function LineChart(props) {
     function renderStatsPopup(){
         if(!statsPopup.values || statsPopup.values.length == 0){return null}
         let purchasedItem = null
+        let lastWeaponDps = null
+        let lastSpiritDps = null
+        const currentWeaponDps = statsPopup.values.weaponDmg.toFixed(2)
+        const currentSpiritDps = statsPopup.values.spiritDmg.toFixed(2)
+        let weaponDpsChange = null
+        let spiritDpsChange = null
         if(statsPopup.index>=0){
             purchasedItem = build.itemOrder[statsPopup.index]
+            const lastStats = dataPoints[statsPopup.index]
+            lastWeaponDps = lastStats.weaponDmg
+            lastSpiritDps = lastStats.spiritDmg
+            weaponDpsChange = (currentWeaponDps - lastWeaponDps).toFixed(2)
+            spiritDpsChange = (currentSpiritDps - lastSpiritDps).toFixed(2)
         }
+
+        
+
+        
+
         return(
-            <div className="absolute flex flex-col p-2 text-white text-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)]" style={{backgroundColor:gColors.greyBackground, minWidth:150, zIndex:2, borderRadius:5, left:statsPopup.xPos??0, top:(statsPopup.yPos??0)+60}}>
-                {purchasedItem?
-                    <div className="mb-2 text-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
-                        {"Purchased item: "}
-                        <div style={{color: globals.itemColors[purchasedItem.item_slot_type].base}}>{purchasedItem.name}</div>
-                    </div>
-                    :
-                    <div className="mb-1 text-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
-                        {"Base Stats: "}
-                    </div>
-                }
-                {Object.keys(statsPopup.values).map((key)=>{
-                    const val = statsPopup.values[key]
-                    return(
-                        <div key={key} style={{fontSize:15}}>
-                            {"Damage: " + val.toFixed(2)}
+            <div className="absolute flex flex-col p-2 text-white text-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)]" style={{backgroundColor:gColors.greyBackground, minWidth:250, zIndex:2, borderRadius:5, left:statsPopup.xPos??0, top:(statsPopup.yPos??0)+60}}>
+                <div className="flex flex-col p-2 text-center items-center mb-2" style={{backgroundColor:gColors.mediumGrey, borderRadius:5}}>
+                    {purchasedItem&&
+                        <div className="mb-2 text-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
+                            {"Purchased Item: "}
+                            <div style={{color: globals.itemColors[purchasedItem.item_slot_type].base}}>{purchasedItem.name}</div>
                         </div>
-                    )
-                })}
+                    }
+                    <div className="mb-1 text-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
+                        {"Build Cost: "}
+                        <div className="flex flex-row items-center justify-center">
+                            <img className="mr-1" style={{height:14, width:'auto'}} src={souls}/>
+                            <div style={{color: gColors.itemCost}}>{statsPopup.values.totalCost.toFixed(0)}</div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div className="mb-1 text-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
+                    {purchasedItem?"DPS After Purchase:":"Base Stats:"}
+                </div>
+                
+                {/* WEAPON DPS */}
+                <div style={{fontSize:15}}>
+                    <span>
+                        <span style={{color:globals.itemColors.weapon.base, fontWeight:700}}>Weapon: </span>
+                        {currentWeaponDps}
+                        <span style={{fontWeight:600}}> DPS</span>
+                        {weaponDpsChange&&
+                            <span style={{color:weaponDpsChange>=0?gColors.successGreen:gColors.errorRed}}> {"("}{weaponDpsChange>=0&&"+"}{weaponDpsChange+")"}</span>
+                        }
+                    </span>
+                </div>
+
+                {/* SPIRIT DPS */}
+                <div style={{fontSize:15}}>
+                    <span>
+                        <span style={{color:globals.itemColors.spirit.base, fontWeight:700}}>Spirit: </span>
+                        {currentSpiritDps}
+                        <span style={{fontWeight:600}}> DPS</span>
+                        {spiritDpsChange&&
+                            <span style={{color:spiritDpsChange>=0?gColors.successGreen:gColors.errorRed}}> {"("}{spiritDpsChange>=0&&"+"}{spiritDpsChange+")"}</span>
+                        }
+                    </span>
+                </div>
             </div>
         )
     }
