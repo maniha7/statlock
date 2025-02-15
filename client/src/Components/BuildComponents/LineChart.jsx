@@ -142,7 +142,7 @@ export default function LineChart(props) {
             })
         })
 
-        maxY = maxY *1.5
+        maxY = 550
         
         drawYAxisTicks(maxY, canvas, context)
         return (canvas.height - innerPaddingY) / maxY
@@ -339,16 +339,17 @@ export default function LineChart(props) {
                     </div>
                 </div>
 
-                <div className="mb-1 text-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
-                    {purchasedItem?"DPS After Purchase:":"Base Stats:"}
-                </div>
+                {!purchasedItem&&
+                    <div className="mb-1 text-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
+                        Base Stats:
+                    </div>
+                }
                 
                 {/* WEAPON DPS */}
                 <div style={{fontSize:15}}>
                     <span>
-                        <span style={{color:globals.itemColors.weapon.base, fontWeight:700}}>Weapon: </span>
+                        <span style={{color:globals.itemColors.weapon.base, fontWeight:700}}>Weapon DPS: </span>
                         {currentWeaponDps}
-                        <span style={{fontWeight:600}}> DPS</span>
                         {weaponDpsChange&&
                             <span style={{color:weaponDpsChange>=0?gColors.successGreen:gColors.errorRed}}> {"("}{weaponDpsChange>=0&&"+"}{weaponDpsChange+")"}</span>
                         }
@@ -358,9 +359,8 @@ export default function LineChart(props) {
                 {/* SPIRIT DPS */}
                 <div style={{fontSize:15}}>
                     <span>
-                        <span style={{color:globals.itemColors.spirit.base, fontWeight:700}}>Spirit: </span>
+                        <span style={{color:globals.itemColors.spirit.base, fontWeight:700}}>Spirit DPS: </span>
                         {currentSpiritDps}
-                        <span style={{fontWeight:600}}> DPS</span>
                         {spiritDpsChange&&
                             <span style={{color:spiritDpsChange>=0?gColors.successGreen:gColors.errorRed}}> {"("}{spiritDpsChange>=0&&"+"}{spiritDpsChange+")"}</span>
                         }
