@@ -6,6 +6,7 @@ import ShopItem from '../Components/BuildComponents/ShopItem';
 import ItemDescPopup from '../Components/BuildComponents/ItemDescPopup';
 import CurrentBuild from '../Components/BuildComponents/CurrentBuildSection';
 import MiniBuild from '../Components/BuildComponents/MiniBuildSection';
+import { BuyOrder } from '../Components/BuildComponents/BuyOrder';
 import BuildStats from '../Components/BuildComponents/BuildStatsSection';
 import globals from '../globals';
 import dlItems from "../assets/dlItems.json"
@@ -41,7 +42,7 @@ const Builds = () => {
 
     const [buildType, setBuildType] = useState("mini")
     const [build, setBuild] = useState(baseBuild)
-    const [miniBuild, setMiniBuild] = useState(baseMiniBuild)
+    const [miniBuild, setMiniBuild] = useState({...baseMiniBuild})
     const [buildUpdate, setBuildUpdate] = useState(0)
     const [curCategory, setCurCategory] = useState(initID)
     const [buildChartType, setBuildChartType] = useState("DmgVsResistances")
@@ -296,8 +297,9 @@ const Builds = () => {
         return(
             <div className={`flex flex-col flex-1 mr-2 py-3 px-4 border-b-4 border-l-2 border-r-1 border-stone-600 ml-2  ${gColors.stoneBackgroundGradient}`} style={{borderRadius:8}}>
                 {false&&<CurrentBuild build={build} setBuild={updateBuild} openPopup={openItemPopup} closePopup={closeItemPopup} curCategory={curCategory} setCategory={setCurCategory}/>}
-                <MiniBuild build={miniBuild} setBuild={updateMiniBuild} addItem={addItemToBuild} removeItem={removeItemFromMini} noSlotsHandlers={noSlotsHandlers} popupHandlers={popupHandlers} imbueHandler={imbueState}/>              
+                <MiniBuild build={miniBuild} base={baseMiniBuild} setBuild={updateMiniBuild} addItem={addItemToBuild} removeItem={removeItemFromMini} noSlotsHandlers={noSlotsHandlers} popupHandlers={popupHandlers} imbueHandler={imbueState}/>              
                 <BuildStats build={miniBuild} updated={buildUpdate} chartType={buildChartType}/>
+                <BuyOrder build={miniBuild} setBuild={updateMiniBuild}  />
                 
             </div>
         )

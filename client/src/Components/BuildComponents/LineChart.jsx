@@ -265,8 +265,10 @@ export default function LineChart(props) {
         const mouseX = event.clientX - rect.left - innerPaddingX
         const mouseY = event.clientY -rect.top - innerPaddingY
         const itemNum = Math.round((mouseX ) / tickSizeX)
-        if(itemNum<0 || itemNum > build.itemOrder.length+1){
+        const isInRange = tickSizeX*.28 >15? Math.abs(itemNum*tickSizeX - mouseX) < tickSizeX*.28 : true
+        if(itemNum<0 || itemNum > build.itemOrder.length+1 || !isInRange){
             undrawLastHighlightedSection()
+            if(!isInRange){setStatsPopup(null)}
             return
         }
 
@@ -321,30 +323,30 @@ export default function LineChart(props) {
             spiritDpsChange = (currentSpiritDps - lastSpiritDps).toFixed(0)
         }
         return(
-            <div className="absolute flex flex-col p-2 text-white text-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)] select-none" style={{backgroundColor:gColors.greyBackground, minWidth:250, zIndex:2, borderRadius:5, left:statsPopup.xPos??0, top:(statsPopup.yPos??0)+60}}>
-                <div className="flex flex-col p-2 text-center items-center mb-2" style={{backgroundColor:gColors.mediumGrey, borderRadius:5}}>
-                    {purchasedItem&&
-                        <div className="flex flex-row mb-2 text-center items-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
-
-                            <div className="flex flex-0 mr-2" style={{textAlign:"right"}}>
-                                Item:
+            <div className="absolute flex flex-col p-2 text-white text-center drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)] select-none opacityAppear" style={{backgroundColor:gColors.greyBackground, minWidth:250, zIndex:2, borderRadius:5, left:statsPopup.xPos??0, top:(statsPopup.yPos??0)+60}}>
+                {purchasedItem?
+                    <div className="flex flex-col p-2 text-center items-center mb-2" style={{backgroundColor:gColors.mediumGrey, borderRadius:5}}>
+                        
+                            <div className="flex flex-row mb-2 text-center items-center" style={{fontSize:16, fontWeight:600, lineHeight:1, width:"100%"}}>
+                                <div className="flex flex-0">
+                                    <ShopItem item={purchasedItem} hover={()=>null} unhover={()=>null} click={()=>null} widthOverride={72} heightOverride={80}/>
+                                </div>
+                                
+                                <div className="flex flex-1 flex-col mb-1 text-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
+                                    {"Build Cost: "}
+                                    <div className="flex flex-row items-center justify-center">
+                                        <img className="mr-1" style={{height:14, width:'auto'}} src={souls}/>
+                                        <div style={{color: gColors.itemCost}}>{statsPopup.values.totalCost.toFixed(0)}</div>
+                                    </div>
+                                    
+                                </div>
+                                
                             </div>
-                            <ShopItem item={purchasedItem} hover={()=>null} unhover={()=>null} click={()=>null} widthOverride={68} heightOverride={75}/>
-
-                            
-                        </div>
-                    }
-                    <div className="flex flex-row mb-1 text-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
-                        {"Build Cost: "}
-                        <div className="flex flex-row ml-2 items-center justify-center">
-                            <img className="mr-1" style={{height:14, width:'auto'}} src={souls}/>
-                            <div style={{color: gColors.itemCost}}>{statsPopup.values.totalCost.toFixed(0)}</div>
-                        </div>
+                    
                         
                     </div>
-                </div>
-
-                {!purchasedItem&&
+                    
+                    :
                     <div className="mb-1 text-center" style={{fontSize:16, fontWeight:600, lineHeight:1}}>
                         Base Stats:
                     </div>

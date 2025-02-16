@@ -69,9 +69,9 @@ export default function ShopItem(props){
 
     return(
         <button>
-            <div ref={itemRef} onClick={()=>onClick()} onMouseEnter={()=>openPopup()} onMouseLeave={()=>closePopup()} className={`flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)] ${props.transition?`opacityAppear`:``}`}  >
+            <div ref={itemRef} onClick={()=>onClick()} onMouseEnter={()=>openPopup()} onMouseLeave={()=>closePopup()} className={`flex select-none my-[6px] mx-[6px] drop-shadow-[0_4px_4px_rgba(0,0,0,0.65)] ${props.transition&&`opacityAppear`}`}  >
                 
-                <div className={`flex flex-1 flex-col items-center items-center hover:opacity-80 hover:cursor-pointer transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110  ${bgColor}`} style={{borderRadius:8, maxWidth:props.widthOverride??globals.shopItemMaxWidth, maxHeight:props.heightOverride, width:props.widthOverride, height:props.heightOverride}}>
+                <div className={`flex flex-1 flex-col items-center items-center hover:opacity-80 hover:cursor-pointer duration-300 transition ease-in-out hover:-translate-y-1 hover:scale-110  ${bgColor}`} style={{borderRadius:8, maxWidth:props.widthOverride??globals.shopItemMaxWidth, maxHeight:props.heightOverride, width:props.widthOverride, height:props.heightOverride}}>
                     
                     <div style={{position:'relative', padding:0}}>
                         {/* Item Image*/}

@@ -18,6 +18,7 @@ export function SortableShopItem(props) {
         setNodeRef,
         transform,
         transition,
+        isDragging
     } = useSortable({id: props.id, animateLayoutChanges: () => false, transition: undefined});
     
     let style = {
@@ -27,7 +28,7 @@ export function SortableShopItem(props) {
 
     return (
         <div key={props.id} id={props.id} className='relative select-none' ref={setNodeRef} style={{...style, zIndex:2}} {...attributes} {...listeners}>
-            <ShopItem item={item} widthOverride={90} heightOverride={100} noPopup/>
+            <ShopItem item={item} widthOverride={90} heightOverride={100} noPopup />
         </div>
     );
 }

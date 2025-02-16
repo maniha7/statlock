@@ -1,23 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
-import {DndContext,KeyboardSensor,MouseSensor,TouchSensor,useSensor,useSensors,closestCenter} from '@dnd-kit/core';
-import {
-    arrayMove,
-    SortableContext,
-    sortableKeyboardCoordinates,
-    horizontalListSortingStrategy,
-    rectSwappingStrategy,
-    rectSortingStrategy
-  } from '@dnd-kit/sortable';
-  import {
-    restrictToWindowEdges,
-    restrictToFirstScrollableAncestor
-  } from '@dnd-kit/modifiers';
-  import { TailSpin } from 'react-loader-spinner'
+import React, { useState, useEffect} from 'react';
+import {DndContext, KeyboardSensor, MouseSensor, TouchSensor, useSensor, useSensors, closestCenter} from '@dnd-kit/core';
+import {sortableKeyboardCoordinates,} from '@dnd-kit/sortable';
+import {restrictToWindowEdges, restrictToFirstScrollableAncestor} from '@dnd-kit/modifiers';
+import { TailSpin } from 'react-loader-spinner'
 import { getHeroes, getHeroAbilities } from '../../Util/ApiUtil.tsx';
 import globals from '../../globals';
 import ShopItem from './ShopItem';
 import { HeroPortrait } from '../MiscComponents/HeroPortrait.jsx';
-import { SortableShopItem, DraggableShopItem, DroppableItemSection } from './DraggableShopItem.jsx';
+import { DraggableShopItem, DroppableItemSection } from './DraggableShopItem.jsx';
 import { HeroAbility } from './HeroAbility.jsx';
 import { getItemByID } from '../../Util/ItemUtil';
 
@@ -26,12 +16,14 @@ const gColors = globals.globalColors
 export default function MiniBuild(props) {
 
     const build = props.build
+    const shouldRenderError = props.noSlotsHandlers[0]
 
     const [heroes, setHeroes] = useState([])
     const [heroSelectorOpen, setHeroSelectorOpen] = useState(false)
     const [abilitySelectorOpen, setAbilitySelectorOpen] = useState(false)
     const [imbueChangerOpen, setImbueChangerOpen] = useState(false)
     const [loadingHero, setLoadingHero] = useState(false)
+    const [confirmingClear, setConfirmingClear] = useState(false)
 
     const [buildUpdate, setBuildUpdate] = useState(0)
     
@@ -39,7 +31,7 @@ export default function MiniBuild(props) {
     const closePopup = props.popupHandlers[1]
     const imbueItem = props.imbueHandler[0]
     const imbueSetter = props.imbueHandler[1]
-    const shouldRenderError = props.noSlotsHandlers[0]
+    
 
     //handle incoming event from imbued item chooser -- if imbue was not applied to an ability, count the imbue as cancelled and remove item from build
     useEffect(()=>{
@@ -82,6 +74,11 @@ export default function MiniBuild(props) {
         setHero(filteredHeroes[0])
     }
 
+    function clearBuild(){
+        setBuild({...props.base, hero:build.hero})
+        setConfirmingClear(false)
+    }
+
     
       async function setHero(hero){
         setLoadingHero(true)
@@ -117,94 +114,6 @@ export default function MiniBuild(props) {
 
       function removeItemFromBuild(item){
         props.removeItem(item)
-      }
-
-
-      //handle sorti and reordering of items in buy order
-      function onBuyOrderDragEnd(e){
-        const {active, over} = e;
-        const dragItemIndex = active.id
-        const dropItemIndex = over.id
-        if(dragItemIndex !== dropItemIndex){
-            const draggedItem = build.itemOrder.splice(dragItemIndex,1)[0]
-            build.itemOrder.splice(dropItemIndex,0,draggedItem)
-
-            //force appropriate ordering of existing component items
-            if(draggedItem.upgradesFrom){
-                const component1 = getItemByID(draggedItem.upgradesFrom)
-                let component2 = null
-                let filters = [component1.id]
-                let comp1Index = -1
-                build.itemOrder.forEach((item,index)=>{
-                    if(item.id===component1.id){comp1Index=index}
-                })
-                let comp2Index = -1
-                let replacingComp2 = false
-                if(component1.upgradesFrom){
-                    component2 = getItemByID(component1.upgradesFrom)
-                    build.itemOrder.forEach((item,index)=>{
-                        if(item.id===component2.id){comp2Index=index}
-                    })
-                    if(dropItemIndex<comp2Index){
-                        replacingComp2 = true
-                        filters.push(component2.id)
-                    }
-                }
-                //if item was placed before one of its components, reorder them
-                if(dropItemIndex<comp1Index){
-                    build.itemOrder = build.itemOrder.filter((item)=>!filters.includes(item.id))
-                    
-                    build.itemOrder.splice(dropItemIndex,0,component1)
-                    if(component2 && replacingComp2){
-                        build.itemOrder.splice(dropItemIndex,0,component2)
-                    }
-                    
-                }
-            }
-            if(draggedItem.upgradesTo){
-                const upgrade1 = getItemByID(draggedItem.upgradesTo)
-                let upgrade2 = null
-                let filters = [upgrade1.id]
-                let upgrade1Index = -1
-                build.itemOrder.forEach((item,index)=>{
-                    if(item.id===upgrade1.id){upgrade1Index=index}
-                })
-                let upgrade2Index = -1
-                let replacingUpgrade2 = false
-                if(upgrade1.upgradesTo){
-                    upgrade2 = getItemByID(upgrade1.upgradesTo)
-                    build.itemOrder.forEach((item,index)=>{
-                        if(item.id===upgrade2.id){upgrade2Index=index}
-                    })
-                    if(upgrade2Index!==-1&&dropItemIndex>=upgrade2Index){
-                        replacingUpgrade2 = true
-                        filters.push(upgrade2.id)
-                    }
-                }
-                //if item was placed ahead of its upgrades, reorder them
-                if(upgrade1Index!==-1&&dropItemIndex>upgrade1Index){
-                    
-                    const filtered = []
-                    let newDroppedItemIndex = -1
-                    build.itemOrder = build.itemOrder.forEach((item)=>{
-                        if(!filters.includes(item.id)){
-                            filtered.push(item)
-                        }
-                        if(item.id == draggedItem.id){
-                            newDroppedItemIndex = filtered.length-1
-                        }
-                    })
-                    build.itemOrder = filtered
-
-                    build.itemOrder.splice(newDroppedItemIndex+1,0,upgrade1)
-                    if(upgrade2 && replacingUpgrade2){
-                        build.itemOrder.splice(newDroppedItemIndex+2,0,upgrade2)
-                    } 
-                    
-                }
-            }
-            setBuild(build)
-        }
       }
 
     function imbueAbilityWithItem(ability){
@@ -246,7 +155,7 @@ export default function MiniBuild(props) {
                             
                             const item = category[index]??null
                             return(
-                                <ShopItem item={item} key={index} hover={openPopup} unhover={closePopup} click={removeItemFromBuild} widthOverride={83} heightOverride={90} transition renderRight removable/>
+                                <ShopItem item={item} key={index} hover={openPopup} unhover={closePopup} click={removeItemFromBuild} widthOverride={83} heightOverride={90} transition renderRight removable hoverable/>
                             )
                             
                             
@@ -254,31 +163,6 @@ export default function MiniBuild(props) {
                     }
                 </div>               
             </div>
-        )
-    }
-
-    function renderBuyOrder(){
-        if(build.itemOrder.length==0){return null}
-        const list = build.itemOrder.map((item, index)=>{return(index)})
-        return(
-            <div style={{borderTopWidth:1, borderColor:gColors.greyBackground}}>
-                <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onBuyOrderDragEnd} >
-                    <div className="text-white pl-2 text-[13px] text-center transition-opacity duration-90 ease-in-out select-none" style={{color:gColors.errorRed, fontWeight:'bold', opacity:shouldRenderError?1:0}}>No Space For Item</div>
-                    <div className="text-white pl-2 forevs2 text-[18px]" >Buy Order</div>
-                    <div className="flex flex-row flex-wrap">
-                    <SortableContext items={list} strategy={rectSortingStrategy} className="flex flex-row flex-wrap">
-                        {list.map((id,index)=>{
-                            const item = build.itemOrder[index]
-                            return(
-                                <SortableShopItem key={id} id={id} item={item} sortable/>
-                            )
-                        })}
-                    </SortableContext >
-                    </div>
-                    
-                </DndContext>
-            </div>
-            
         )
     }
 
@@ -429,10 +313,43 @@ export default function MiniBuild(props) {
         )
     }
 
+    function renderClearBuildConfirmation(){
+        return(
+            <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setConfirmingClear(false)}} className="flex fixed top-0 left-0 items-start justify-center select-none" style={{width:'100vw',  height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.7)"}}>
+                <div className="flex flex-col p-4 pt-0 mt-[100px] items-center" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", minHeight:0,borderWidth:3}}>
+                    <div style={{fontSize:22, fontWeight:700, color:gColors.errorRed}}>
+                        Clearing Build
+                    </div>
+                    <div className="mt-2 text-white" style={{fontSize:16}}>
+                        Are you sure you want to remove all items and reset this build?
+                    </div>
+                    <div className="flex flex-row mt-4" style={{width:"100%"}}>
+                        <div onClick={()=>setConfirmingClear(false)} className="flex flex-1 p-2 text-white justify-center mr-5 hover:opacity-80" style={{backgroundColor:gColors.greyBackground, borderRadius:5, cursor:'pointer'}}>
+                            Cancel
+                        </div>
+                        <div onClick={()=>clearBuild()} className="flex flex-1 p-2 text-white justify-center hover:opacity-80" style={{backgroundColor:gColors.errorRed, borderRadius:5, cursor:'pointer'}}>
+                            Clear
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        )
+    }
+
     /******************** MAIN RENDER ********************/
     return(
             <div className='flex flex-col'>
-                <div className='flex flex-col p-2 ' style={{backgroundColor:gColors.darkGrey, borderRadius:5,}}>
+                <div className="flex flex-row">
+                    <div className="flex flex-1">
+
+                    </div>
+                    <div className="p-2 opacity-80 hover:opacity-100" onClick={()=>{setConfirmingClear(true)}} style={{backgroundColor:"#590d0d", color:"#fce9e9", cursor:'pointer', fontWeight:600, borderTopLeftRadius:5, borderTopRightRadius:5}}>
+                        Clear Build
+                    </div>
+                </div>
+                
+                <div className='flex flex-col p-2 ' style={{backgroundColor:gColors.darkGrey, borderRadius:5, borderTopRightRadius:0}}>
                     <div className="flex flex-1 flex-wrap flex-row items-center pb-3" style={{width:'100%'}}>
                         {
                             //main equipment slots
@@ -445,8 +362,8 @@ export default function MiniBuild(props) {
                         }
                         {renderCurrentHero()}
                     </div>
-                    {/* buy order */}
-                    {renderBuyOrder()}
+                    <div className="text-white pl-2 text-[13px] text-center transition-opacity duration-90 ease-in-out select-none" style={{color:gColors.errorRed, fontWeight:'bold', opacity:shouldRenderError?1:0}}>No Space For Item</div>
+
 
                 </div>
                 {/* Ability Selector Popup */}
@@ -462,6 +379,9 @@ export default function MiniBuild(props) {
                 {/* Hero Selector Popup */}
                 {heroSelectorOpen&&
                     renderHeroSelector()
+                }
+                {confirmingClear&&
+                    renderClearBuildConfirmation()
                 }
             </div>
     )
