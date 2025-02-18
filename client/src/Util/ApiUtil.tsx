@@ -87,5 +87,54 @@ export async function getPatchNotes(): Promise<Object> {
     return res;
 }
 
+export async function getLeaderboard(region: string, start: number, limit: number = 1000): Promise<Object> {
+    const apiUrl = `https://analytics.deadlock-api.com/v2/leaderboard/${region}?start=${start}&limit=${limit}`;
+    
+    console.log(`Fetching leaderboard for region: ${region}`);
 
+    try {
+        const apiRes = await fetch(apiUrl, {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+            }
+        });
+
+        if (!apiRes.ok) {
+            console.error(`API Error: ${apiRes.status} - ${apiRes.statusText}`);
+            return {};
+        }
+
+        const data = await apiRes.json();
+
+        if (!data || data.length === 0) {
+            console.warn(`No data received for region: ${region}`);
+            return {};
+        }
+
+        console.log(`Fetched ${data.length} entries for ${region}`);
+
+        const res = {};
+        data.forEach((player, index) => {
+            res[index] = {
+                account_id: player.account_id,
+                region_mode: player.region_mode,
+                leaderboard_rank: player.leaderboard_rank,
+                matches_played: player.matches_played,
+                wins: player.wins,
+                kills: player.kills,
+                deaths: player.deaths,
+                assists: player.assists,
+                ranked_badge_level: player.ranked_badge_level,
+                ranked_rank: player.ranked_rank,
+                ranked_subrank: player.ranked_subrank
+            };
+        });
+
+        return res;
+    } catch (error) {
+        console.error("Error fetching leaderboard:", error);
+        return {};
+    }
+}
 

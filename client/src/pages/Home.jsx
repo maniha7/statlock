@@ -2,6 +2,7 @@ import globals from '../globals';
 import logo from '../assets/statlock_logo2.png'
 import patchData from '../assets/patch_notes.json';
 
+
 const gColors = globals.globalColors
 
 const categoryColors = {
@@ -27,7 +28,7 @@ const Home = () => {
 
     return (
     <>
-        <div className={`flex-1 flex flex-col mt-2 mb-2 ml-5 mr-10 p-2 border-b-4 border-l-1 border-r-1 border-stone-600 rounded-lg  min-h-200 w-400 ${gColors.stoneBackgroundGradient}`} style={{}}> 
+        <div className={`flex-1 flex flex-col mt-2 mb-2 ml-5 mr-10 p-2 border-b-4 border-x-2 border-t-1 border-stone-600 rounded-lg  min-h-200 w-400 ${gColors.stoneBackgroundGradient}`} style={{}}> 
             <div className="flex justify-center mt-1 mb-5"><img className="object-center w-40 transition spin-slow duration-1 ease-in-out hover:-translate-y-0.5 hover:scale-110" style={{}} src={logo} /></div>
             {/*Main*/}
             <div className="mb-10 border-b-4 border-x-2 border-t-2 bg-stone-900 rounded-lg w-[80%] self-center text-stone-500">
@@ -48,7 +49,7 @@ const Home = () => {
                 
                 {/* Most Recent Patch Notes */}
                 <div className="w-flex self-center justify-center rounded-lg text-stone-500 bg-stone-800 p-4 border-1 border-stone-900">
-                    <h2 className="min-h-15 text-2xl text-stone-200 underline font-bold text-center">ʟᴀᴛᴇꜱᴛ ᴘᴀᴛᴄʜ ᴘʀᴇᴠɪᴇᴡ</h2>
+                    <h2 className="min-h-flex text-2xl text-stone-200 underline font-bold text-center">ʟᴀᴛᴇꜱᴛ ᴘᴀᴛᴄʜ ᴘʀᴇᴠɪᴇᴡ</h2>
                     {latestPatch ? (
                         <div className="text-stone-200 mt-2">
                             <h3 className="text-2xl font-bold mx-2 forevs2">{latestPatch.title}</h3>
@@ -67,6 +68,9 @@ const Home = () => {
                                                     {lines.slice(0, 2).map((line, idx) => (
                                                         <li key={idx}>{line}</li>
                                                     ))}
+                                                    <Link to="./patchnotes" className="text-indigo-400 underline font-bold text-sm flex mb-3 hover:opacity-80">
+                                                    <li className="ml-2">...and more</li>
+                                                    </Link>
                                                 </ul>
                                             </div>
                                         )
@@ -83,7 +87,7 @@ const Home = () => {
                     <h2 className="text-2xl text-stone-200 underline font-bold text-center mb-5">ɪᴛᴇᴍ ʙᴜɪʟᴅᴇʀ</h2>
                         <h3 className="text-indigo-400 mt-5 text-center forevs2 text-lg transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">→<Link to="/builds" className="hover:underline hover:opacity-80">Try our Item Builder !</Link>←</h3>
                             <div className="border-2 mx-5 min-h-80 mt-5 rounded-sm">
-                                <img className="" src={[]} /> {/* Insert Preview Image of Finished Item Builder Here */}
+                                <img className="w-120" src={[]} /> {/* Insert Preview Image of Finished Item Builder Here */}
                             </div>
                 </div>
 

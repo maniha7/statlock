@@ -7,22 +7,16 @@ import dlItems from "../assets/dlItems.json"
 
 
 export async function filterItems(setres){
-    const res = dlItems
-    Object.keys(res).forEach((itemName)=>{
-
-        delete res[itemName]["upgradesFrom"]
-        if(res[itemName].component_items && res[itemName].component_items.length>0){
-            let component = res[itemName].component_items[0]
-            res[itemName]["upgradesFrom"] = component
-            if(res[component]){
-                res[component].upgradesTo = itemName
-            }
-            
+    const allItems = dlItems
+    Object.keys(allItems).forEach((itemName)=>{
+        if(allItems[itemName].activeCooldown || allItems[itemName].activeCooldown){
+            allItems[itemName].cooldownBuffDuration = allItems[itemName].properties.AbilityDuration.value
         }
         
         
+        
     })
-    const jsonres = JSON.stringify(res)
+    const jsonres = JSON.stringify(allItems)
     setres(jsonres)
 }
 

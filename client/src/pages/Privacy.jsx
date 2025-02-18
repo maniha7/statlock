@@ -8,7 +8,7 @@ const Privacy = () => {
     return(
 
         <div className="flex flex-col flex-1 justify-center font-display" >
-            <div className="flex flex-1 border-b-4 border-l-2 border-r-1 border-stone-600 rounded-lg self-center" style={{height:"100%"}}>
+            <div className="flex flex-1 border-b-4 border-x-2 border-t-1 border-stone-600 rounded-lg self-center" style={{height:"100%"}}>
                 <div className={`flex flex-1 rounded-lg  ${gColors.stoneBackgroundGradient}  `} style={{height:'100%'}}>
                     <div className="m-2 p-4">
                         <h1 className="text-white text-3xl underline mb-5 text-center font-bold">Privacy Policy</h1>

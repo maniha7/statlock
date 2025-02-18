@@ -551,7 +551,7 @@
         "tooltip_is_important": true,
         "propName": "FireRateBonus",
         "title": "Fire Rate Bonus",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -1686,7 +1686,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "0"
   },
   "upgrade_weapon_instant_reload": {
     "id": 315518818,
@@ -2240,7 +2241,7 @@
         "tooltip_is_important": true,
         "propName": "FervorBulletResist",
         "title": "Bullet Resist",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -2254,7 +2255,7 @@
         "tooltip_is_important": true,
         "propName": "FervorFireRate",
         "title": "Fire Rate",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -2268,7 +2269,7 @@
         "tooltip_is_important": true,
         "propName": "FervorMovespeed",
         "title": "Move Speed",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "m/s"
@@ -2550,7 +2551,7 @@
         "tooltip_is_important": true,
         "propName": "WeaponPowerPerKill",
         "title": "Weapon Damage Per Kill",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -2606,7 +2607,7 @@
         "tooltip_is_important": false,
         "propName": "MaxHealthLossPercent",
         "title": "Max Health",
-        "isBad":true,
+        "isBad": true,
         "units": {
           "sign": "-",
           "units": "%"
@@ -2987,7 +2988,7 @@
         "tooltip_is_important": true,
         "propName": "BonusFireRate",
         "title": "Fire Rate",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -3001,7 +3002,7 @@
         "tooltip_is_important": true,
         "propName": "BulletLifestealPercent",
         "title": "Bullet Lifesteal",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -3330,7 +3331,8 @@
       }
     ],
     "innateProperties": [],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "6"
   },
   "upgrade_weapon_eater": {
     "id": 389243496,
@@ -3613,7 +3615,7 @@
         "tooltip_is_important": true,
         "propName": "SlowPercent",
         "title": "Movement Slow",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -4237,7 +4239,7 @@
         "tooltip_is_important": true,
         "propName": "TechArmorDamageReduction",
         "title": "Spirit Resist On Spirit Damage",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "-",
           "units": "%"
@@ -4461,7 +4463,8 @@
     "passiveImportantProperties": [],
     "passiveUnimportantProperties": [],
     "innateProperties": [],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "4"
   },
   "upgrade_mod_disruptor": {
     "id": 481022061,
@@ -4696,7 +4699,8 @@
     "passiveImportantProperties": [],
     "passiveUnimportantProperties": [],
     "innateProperties": [],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "5"
   },
   "upgrade_aoe_silence": {
     "id": 486220748,
@@ -4900,7 +4904,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "0.25"
   },
   "upgrade_vampire": {
     "id": 499683006,
@@ -5466,7 +5471,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "0"
   },
   "upgrade_weapon_overdrive_clip": {
     "id": 607292868,
@@ -5810,7 +5816,7 @@
         "tooltip_is_important": true,
         "propName": "StatusSilence",
         "title": "",
-        "type":"Status Effect",
+        "type": "Status Effect",
         "units": {
           "sign": "",
           "units": ""
@@ -5889,7 +5895,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "3.0"
   },
   "upgrade_ability_power_shard": {
     "id": 630839635,
@@ -6064,7 +6071,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "0"
   },
   "upgrade_rapid_rounds": {
     "id": 668299740,
@@ -6376,7 +6384,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "0"
   },
   "upgrade_magic_reach": {
     "id": 754480263,
@@ -7590,7 +7599,7 @@
         "tooltip_is_important": true,
         "propName": "HealAmpReceivePenaltyPercent",
         "title": "Healing Reduction",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "-",
           "units": "%"
@@ -7880,7 +7889,7 @@
         "tooltip_is_important": true,
         "propName": "StatusInvis",
         "title": "",
-        "type":"Status Effect",
+        "type": "Status Effect",
         "units": {
           "sign": "",
           "units": ""
@@ -7896,7 +7905,7 @@
         "tooltip_is_important": true,
         "propName": "BonusMoveSpeed",
         "title": "Move Speed",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "m/s"
@@ -8154,7 +8163,7 @@
         "tooltip_is_important": true,
         "propName": "MovementSpeedSlow",
         "title": "Movement Slow",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -8168,7 +8177,7 @@
         "tooltip_is_important": true,
         "propName": "TechDamagePercent",
         "title": "Damage",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -8611,7 +8620,8 @@
     "passiveImportantProperties": [],
     "passiveUnimportantProperties": [],
     "innateProperties": [],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "25"
   },
   "upgrade_improved_spirit": {
     "id": 968099481,
@@ -9742,7 +9752,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "4.5"
   },
   "upgrade_nearby_enemy_boost": {
     "id": 1100809516,
@@ -10144,7 +10155,7 @@
         "tooltip_is_important": true,
         "propName": "FireRateSlow",
         "title": "Fire Rate Slow",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -10158,7 +10169,7 @@
         "tooltip_is_important": true,
         "propName": "MovementSpeedSlow",
         "title": "Movement Slow",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -10548,7 +10559,7 @@
         "tooltip_is_important": false,
         "propName": "SilenceStatusEffect",
         "title": "",
-        "type":"Status Effect",
+        "type": "Status Effect",
         "units": {
           "sign": "",
           "units": ""
@@ -10793,7 +10804,7 @@
         "tooltip_is_important": true,
         "propName": "AbilityLifestealPercentHero",
         "title": "Spirit Lifesteal",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -10806,7 +10817,7 @@
         "tooltip_is_important": true,
         "propName": "ShreddersTechAmp",
         "title": "Spirit Amp",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -11041,7 +11052,7 @@
         "tooltip_is_important": true,
         "propName": "TechRangeMultiplier",
         "title": "Ability Range",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -11055,7 +11066,7 @@
         "tooltip_is_important": true,
         "propName": "BonusAbilityDurationPercent",
         "title": "Ability Duration",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -11069,7 +11080,7 @@
         "tooltip_is_important": true,
         "propName": "SpiritPower",
         "title": "Spirit Power",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": ""
@@ -11376,7 +11387,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "0"
   },
   "upgrade_tech_range": {
     "id": 1193964439,
@@ -12116,7 +12128,7 @@
         "tooltip_is_important": true,
         "propName": "SpiritPowerPerSoul",
         "title": "Spirit Power Per Soul",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": ""
@@ -12356,7 +12368,7 @@
         "tooltip_is_important": true,
         "propName": "SlowPercent",
         "title": "Movement Slow",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -12585,7 +12597,7 @@
         "tooltip_is_important": true,
         "propName": "StatusStun",
         "title": "",
-        "type":"Status Effect",
+        "type": "Status Effect",
         "units": {
           "sign": "",
           "units": ""
@@ -12664,7 +12676,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "0"
   },
   "upgrade_siphon_bullets": {
     "id": 1282141666,
@@ -13208,7 +13221,7 @@
         "tooltip_is_important": true,
         "propName": "BonusMoveSpeed",
         "title": "Move Speed",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "m/s"
@@ -13222,7 +13235,7 @@
         "tooltip_is_important": true,
         "propName": "FireRateBonus",
         "title": "Fire Rate Bonus",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -13625,7 +13638,8 @@
       }
     ],
     "innateProperties": [],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "15"
   },
   "upgrade_belt_fed_magazine": {
     "id": 1326137213,
@@ -13935,7 +13949,7 @@
         "tooltip_is_important": true,
         "propName": "CloseRangeBonusWeaponPower",
         "title": "Weapon Damage",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -14159,7 +14173,7 @@
         "tooltip_is_important": true,
         "propName": "SlowPercent",
         "title": "Movement Slow",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -14213,7 +14227,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "0"
   },
   "upgrade_metal_skin": {
     "id": 1378931225,
@@ -14383,7 +14398,7 @@
         "css_class": "move_speed",
         "tooltip_section": "active",
         "tooltip_is_important": false,
-        "isBad":true,
+        "isBad": true,
         "propName": "ActiveMoveSpeedPenalty",
         "title": "Active Movespeed Penalty",
         "units": {
@@ -14449,7 +14464,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "4.0"
   },
   "upgrade_critshot": {
     "id": 1396247347,
@@ -14624,7 +14640,7 @@
         "tooltip_is_important": true,
         "propName": "SlowPercent",
         "title": "Movement Slow",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -16010,7 +16026,8 @@
     "passiveImportantProperties": [],
     "passiveUnimportantProperties": [],
     "innateProperties": [],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "4.5"
   },
   "upgrade_vex_barrier": {
     "id": 1644605047,
@@ -16406,7 +16423,7 @@
         "tooltip_is_important": true,
         "propName": "BonusSprintSpeed",
         "title": "Sprint Speed",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "m/s"
@@ -16484,7 +16501,8 @@
         }
       }
     ],
-    "upgradesTo": "upgrade_health_nova"
+    "upgradesTo": "upgrade_health_nova",
+    "cooldownBuffDuration": "0"
   },
   "upgrade_slow_immunity": {
     "id": 1711193274,
@@ -16751,7 +16769,7 @@
         "tooltip_is_important": true,
         "propName": "AbilityLifestealPercentHero",
         "title": "Spirit Lifesteal",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -16765,7 +16783,7 @@
         "tooltip_is_important": true,
         "propName": "BonusSpirit",
         "title": "Spirit Power",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": ""
@@ -16817,7 +16835,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "8"
   },
   "upgrade_cloaking_device_active": {
     "id": 1798666702,
@@ -17095,7 +17114,7 @@
         "tooltip_is_important": true,
         "propName": "AmbushBonusFireRate",
         "title": "Ambush Fire Rate",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -17108,7 +17127,7 @@
         "tooltip_is_important": true,
         "propName": "AmbushBonusTechPower",
         "title": "Ambush Spirit Power",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": ""
@@ -17129,7 +17148,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "8"
   },
   "upgrade_rescue_beam": {
     "id": 1804594021,
@@ -17404,7 +17424,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "0"
   },
   "upgrade_containment": {
     "id": 1813726886,
@@ -17585,7 +17606,7 @@
         "tooltip_is_important": true,
         "propName": "GroundDashReductionPercent",
         "title": "Dash Distance",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "-",
           "units": "%"
@@ -17599,7 +17620,7 @@
         "tooltip_is_important": true,
         "propName": "SlowPercent",
         "title": "Movement Slow",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -17682,7 +17703,8 @@
       }
     ],
     "upgradesTo": null,
-    "upgradesFrom": "upgrade_resilience"
+    "upgradesFrom": "upgrade_resilience",
+    "cooldownBuffDuration": "3.0"
   },
   "upgrade_high_impact_armor": {
     "id": 1825391146,
@@ -18097,7 +18119,7 @@
         "tooltip_is_important": true,
         "propName": "FireRateSlow",
         "title": "Fire Rate Slow",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -18345,7 +18367,7 @@
         "tooltip_is_important": true,
         "propName": "BonusBaseWeaponDamageTaken",
         "title": "Weapon Damage",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -18462,7 +18484,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "5"
   },
   "upgrade_tech_defender": {
     "id": 1947620709,
@@ -18638,7 +18661,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "6"
   },
   "upgrade_imbued_ability": {
     "id": 1959600032,
@@ -19180,7 +19204,7 @@
         "tooltip_is_important": true,
         "propName": "SlowPercent",
         "title": "Movement Slow",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -19231,7 +19255,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "3.0"
   },
   "upgrade_long_range_slowing_tech": {
     "id": 1993213427,
@@ -19935,7 +19960,7 @@
         "tooltip_is_important": true,
         "propName": "OutgoingDamagePenaltyPercent",
         "title": "Damage Penalty",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -19949,7 +19974,7 @@
         "tooltip_is_important": true,
         "propName": "SlowPercent",
         "title": "Movement Slow",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -20416,7 +20441,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "0"
   },
   "upgrade_pristine_emblem": {
     "id": 2064029594,
@@ -20581,7 +20607,7 @@
         "tooltip_is_important": true,
         "propName": "BaseAttackDamagePercentBonus",
         "title": "Weapon Damage",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -20783,7 +20809,7 @@
         "tooltip_is_important": true,
         "propName": "TechArmorDamageReduction",
         "title": "Spirit Resist On Spirit Damage",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "-",
           "units": "%"
@@ -20994,7 +21020,7 @@
         "tooltip_is_important": true,
         "propName": "CloseRangeBonusWeaponPower",
         "title": "Weapon Damage",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -21008,7 +21034,7 @@
         "tooltip_is_important": true,
         "propName": "SlowPercent",
         "title": "Movement Slow",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -21262,7 +21288,7 @@
         "tooltip_is_important": true,
         "propName": "ActiveBonusMoveSpeed",
         "title": "Move Speed",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "m/s"
@@ -21276,7 +21302,7 @@
         "tooltip_is_important": true,
         "propName": "BonusFireRate",
         "title": "Fire Rate",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -21319,7 +21345,7 @@
         "tooltip_is_important": true,
         "propName": "BonusFireRatePlayerUnit",
         "title": "Minions Fire Rate",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -21379,7 +21405,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "6"
   },
   "upgrade_magic_shock": {
     "id": 2121044373,
@@ -21535,7 +21562,7 @@
         "tooltip_is_important": true,
         "propName": "MaxHealthDamage",
         "title": "Max Health Bonus Damage",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -21769,7 +21796,7 @@
         "tooltip_is_important": true,
         "propName": "LongRangeBonusWeaponPower",
         "title": "Weapon Damage",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -21862,7 +21889,7 @@
         "provided_property_type": "MODIFIER_VALUE_FIRE_RATE_SLOW",
         "tooltip_section": "innate",
         "tooltip_is_important": false,
-        "isBad":true,
+        "isBad": true,
         "propName": "FireRateSlow",
         "title": "Fire Rate Slow",
         "units": {
@@ -21876,7 +21903,7 @@
         "css_class": "move_speed",
         "tooltip_section": "innate",
         "tooltip_is_important": false,
-        "isBad":true,
+        "isBad": true,
         "propName": "BonusMoveSpeed",
         "title": "Move Speed",
         "units": {
@@ -22211,7 +22238,7 @@
         "tooltip_is_important": true,
         "propName": "BonusFireRate",
         "title": "Fire Rate",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -22225,7 +22252,7 @@
         "tooltip_is_important": true,
         "propName": "BonusSpirit",
         "title": "Spirit Power",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": ""
@@ -22996,7 +23023,7 @@
         "tooltip_is_important": true,
         "propName": "BaseAttackDamagePercentAtMaxDuration",
         "title": "Max Weapon Damage",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -23230,7 +23257,7 @@
         "tooltip_is_important": true,
         "propName": "BulletResist",
         "title": "Bullet Resist",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -23244,7 +23271,7 @@
         "tooltip_is_important": true,
         "propName": "SlowPercent",
         "title": "Bullet Slow Proc",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -23258,7 +23285,7 @@
         "tooltip_is_important": true,
         "propName": "TechResist",
         "title": "Spirit Resist",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -23336,7 +23363,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "7"
   },
   "upgrade_discord": {
     "id": 2417568017,
@@ -23552,7 +23580,8 @@
     "passiveImportantProperties": [],
     "passiveUnimportantProperties": [],
     "innateProperties": [],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "10"
   },
   "upgrade_cardio_calibrator": {
     "id": 2447176615,
@@ -24352,7 +24381,7 @@
         "tooltip_is_important": true,
         "propName": "BulletArmorReduction",
         "title": "Bullet Resist",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "-",
           "units": "%"
@@ -24365,7 +24394,7 @@
         "tooltip_is_important": true,
         "propName": "FireRateSlow",
         "title": "Fire Rate Slow",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -24652,7 +24681,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "3.5"
   },
   "upgrade_cloaking_device": {
     "id": 2560018361,
@@ -25490,7 +25520,7 @@
         "tooltip_is_important": true,
         "propName": "StatusSilence",
         "title": "",
-        "type":"Status Effect",
+        "type": "Status Effect",
         "units": {
           "sign": "",
           "units": ""
@@ -25558,7 +25588,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "3.25"
   },
   "upgrade_disarm": {
     "id": 2645639421,
@@ -25770,7 +25801,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "6"
   },
   "upgrade_stabilizing_tripod": {
     "id": 2672389724,
@@ -26125,7 +26157,7 @@
         "tooltip_is_important": true,
         "propName": "BaseAttackDamagePercent",
         "title": "Weapon Damage",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -26754,7 +26786,7 @@
         "tooltip_is_important": true,
         "propName": "ActivatedFireRate",
         "title": "Fire Rate",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -26767,7 +26799,7 @@
         "tooltip_is_important": true,
         "propName": "BonusMoveSpeed",
         "title": "Move Speed",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "m/s"
@@ -27168,7 +27200,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "8"
   },
   "upgrade_diviners_kevlar": {
     "id": 2820116164,
@@ -28131,7 +28164,7 @@
         "tooltip_is_important": true,
         "propName": "FireRateSlow",
         "title": "Fire Rate Slow",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -28145,7 +28178,7 @@
         "tooltip_is_important": true,
         "propName": "BulletArmorReduction",
         "title": "Bullet Resist",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "-",
           "units": "%"
@@ -28225,7 +28258,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "5"
   },
   "upgrade_arcane_extension": {
     "id": 2951612397,
@@ -28667,7 +28701,8 @@
       }
     ],
     "upgradesTo": null,
-    "upgradesFrom": "upgrade_health_stimpak"
+    "upgradesFrom": "upgrade_health_stimpak",
+    "cooldownBuffDuration": "0"
   },
   "upgrade_bullet_resist_shredder": {
     "id": 2971868509,
@@ -28811,7 +28846,7 @@
         "tooltip_is_important": true,
         "propName": "BulletArmorReduction",
         "title": "Bullet Resist",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "-",
           "units": "%"
@@ -29953,7 +29988,6 @@
     ],
     "upgradesTo": "upgrade_pristine_emblem"
   },
-
   "upgrade_improved_bullet_armor": {
     "id": 3140772621,
     "class_name": "upgrade_improved_bullet_armor",
@@ -30282,7 +30316,7 @@
         "tooltip_is_important": true,
         "propName": "HealAmpReceivePenaltyPercent",
         "title": "Healing Reduction",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "-",
           "units": "%"
@@ -30364,7 +30398,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "10"
   },
   "upgrade_savior": {
     "id": 3147316197,
@@ -30632,7 +30667,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "0"
   },
   "upgrade_spirit_snatch": {
     "id": 3190916303,
@@ -30842,7 +30878,7 @@
         "tooltip_is_important": true,
         "propName": "TechArmorGain",
         "title": "Spirit Resist Steal",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": ""
@@ -30857,7 +30893,7 @@
         "tooltip_is_important": true,
         "propName": "TechPowerGain",
         "title": "Spirit Power Steal",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": ""
@@ -31320,7 +31356,7 @@
         "tooltip_is_important": true,
         "propName": "BulletResist",
         "title": "Bullet Resist",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -31374,7 +31410,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "5"
   },
   "upgrade_reload_speed": {
     "id": 3276909180,
@@ -32123,7 +32160,7 @@
         "tooltip_is_important": true,
         "propName": "LongRangeBonusWeaponPower",
         "title": "Weapon Damage",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -32405,7 +32442,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "6"
   },
   "upgrade_return_fire": {
     "id": 3361075077,
@@ -32665,7 +32703,8 @@
       }
     ],
     "upgradesTo": null,
-    "upgradesFrom": "upgrade_endurance"
+    "upgradesFrom": "upgrade_endurance",
+    "cooldownBuffDuration": "6"
   },
   "upgrade_cheat_death": {
     "id": 3361811174,
@@ -33263,7 +33302,7 @@
         "tooltip_is_important": true,
         "propName": "ActiveBonusMoveSpeed",
         "title": "Move Speed",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "m/s"
@@ -33277,7 +33316,7 @@
         "tooltip_is_important": true,
         "propName": "BonusClipSizePercent",
         "title": "Ammo",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -33330,7 +33369,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "4"
   },
   "upgrade_clip_size_3": {
     "id": 3449296332,
@@ -33888,7 +33928,7 @@
         "tooltip_is_important": true,
         "propName": "BaseAttackDamagePercent",
         "title": "Weapon Damage",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -33902,7 +33942,7 @@
         "tooltip_is_important": true,
         "propName": "BonusMoveSpeed",
         "title": "Move Speed",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "m/s"
@@ -34640,7 +34680,7 @@
         "tooltip_is_important": true,
         "propName": "HealAmpReceivePenaltyPercent",
         "title": "Healing Reduction",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "-",
           "units": "%"
@@ -35061,7 +35101,8 @@
       }
     ],
     "upgradesTo": null,
-    "upgradesFrom": "upgrade_debuff_reducer"
+    "upgradesFrom": "upgrade_debuff_reducer",
+    "cooldownBuffDuration": "0"
   },
   "upgrade_extra_charge": {
     "id": 3776945997,
@@ -35669,7 +35710,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "0"
   },
   "upgrade_medic_bullets": {
     "id": 3862866912,
@@ -36433,7 +36475,7 @@
         "tooltip_is_important": true,
         "propName": "BonusClipSize",
         "title": "Temporary Ammo",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": ""
@@ -36447,7 +36489,7 @@
         "tooltip_is_important": true,
         "propName": "BonusFireRate",
         "title": "Fire Rate",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -36855,7 +36897,7 @@
         "tooltip_is_important": true,
         "propName": "BonusMoveSpeed",
         "title": "Move Speed",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "m/s"
@@ -37137,7 +37179,8 @@
         }
       }
     ],
-    "upgradesTo": null
+    "upgradesTo": null,
+    "cooldownBuffDuration": "0"
   },
   "upgrade_spellslinger_headshots": {
     "id": 4075861416,
@@ -37318,7 +37361,7 @@
         "tooltip_is_important": true,
         "propName": "AbilityLifestealPercentHero",
         "title": "Spirit Lifesteal Proc",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -37331,7 +37374,7 @@
         "tooltip_is_important": true,
         "propName": "BonusAmpPerHeadshot",
         "title": "Spirit Amp Per Headshot",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "+",
           "units": "%"
@@ -37344,7 +37387,7 @@
         "tooltip_is_important": true,
         "propName": "ShreddersTechAmp",
         "title": "Spirit Amp",
-        "type":"Conditional",
+        "type": "Conditional",
         "units": {
           "sign": "",
           "units": "%"
@@ -37581,7 +37624,7 @@
         "css_class": "bullet_armor_down",
         "tooltip_section": "innate",
         "tooltip_is_important": false,
-        "isBad":true,
+        "isBad": true,
         "propName": "LocalBulletArmorReduction",
         "title": "Bullet Resist",
         "units": {

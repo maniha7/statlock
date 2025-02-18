@@ -105,6 +105,8 @@ export function getDamageData(build){
 
     }
 
+    let cooldownScalings = []
+
     function getBulletDPS(){
         
         // FinalWeaponDamage = (BaseBulletDmg * WeaponDmg% * DmgBonus% + FlatWeaponDmg) * dmgFalloff * (BulletResist - BulletResistReduction%) * IncreasedBulletDmg% * CritMultiplier
@@ -160,7 +162,7 @@ export function getDamageData(build){
 
     
 
-    function addItemScaling(scalings, item){
+    function addItemScaling(scalings, cdScalings, item){
 
         //add base bonus
         const baseBonus = globals.itemBaseBonuses[item.item_slot_type][item.cost]
@@ -172,8 +174,7 @@ export function getDamageData(build){
                 break;
         }
 
-        //add innate scalings
-        item.innateProperties.forEach((prop)=>{
+        function addConstantScalings(prop){
             switch(prop.provided_property_type){
                 case "MODIFIER_VALUE_BASEATTACK_DAMAGE_PERCENT":
                     scalings.weaponDamagePercent += (prop.value/100)
@@ -194,7 +195,7 @@ export function getDamageData(build){
                     scalings.fireRatePercent -= (prop.value/100)
                     break;
             }
-        })
+        }
 
         
         function addConditionalScalings(resObject, prop){
@@ -215,44 +216,56 @@ export function getDamageData(build){
             }
         }
 
-        let hasCooldown = false
+        //add innate scalings
+        item.innateProperties.forEach((prop)=>{
+            addConstantScalings(prop)
+        })
 
         //add passive scalings
         const passiveProps = {
             bonuses:{}
         };
 
-        item.passiveImportantProperties.forEach((prop)=>{
-            addConditionalScalings(passiveProps, prop)
-        })
-
         if(item.passiveCooldown){
+            item.passiveImportantProperties.forEach((prop)=>{
+                addConditionalScalings(passiveProps, prop)
+            })
             passiveProps.cooldown = item.passiveCooldown
-            passiveProps.duration = item.properties.AbilityDuration.value
-            hasCooldown = true
+            passiveProps.duration = item.cooldownBuffDuration??0
+        }
+        else{
+            item.passiveImportantProperties.forEach((prop)=>{
+                addConstantScalings(prop)
+            })
         }
 
         //add active scalings
         const activeProps = {
             bonuses:{}
         };
-        item.activeImportantProperties.forEach((prop)=>{
-            addConditionalScalings(activeProps, prop)
-        })
+        
         if(item.activeCooldown){
+            item.activeImportantProperties.forEach((prop)=>{
+                addConditionalScalings(activeProps, prop)
+            })
             activeProps.cooldown = item.activeCooldown
-            activeProps.duration = item.properties.AbilityDuration.value
-            hasCooldown = true
+            activeProps.duration = item.cooldownBuffDuration??0
+        }
+        else{
+            item.activeImportantProperties.forEach((prop)=>{
+                addConstantScalings(activeProps, prop)
+            })
         }
 
         if(Object.keys(passiveProps.bonuses).length>0){
-            if(hasCooldown){
-                
-            }
+            cdScalings.push(passiveProps)
+        }
+        if(Object.keys(activeProps.bonuses).length>0){
+            cdScalings.push(activeProps)
         }
 
         
-        return scalings
+        return [scalings, cdScalings]
     }
 
 
@@ -272,7 +285,7 @@ export function getDamageData(build){
         //add item cost to total and increase boons if possible
         totalSouls += item.cost
         getBoonLevel()
-        itemScalings = addItemScaling(itemScalings, item)
+        [itemScalings, cooldownScalings] = addItemScaling(itemScalings, cooldownScalings, item)
 
         const weaponDmg = getBulletDPS()
 

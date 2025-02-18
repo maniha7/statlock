@@ -172,14 +172,27 @@ export default function MiniBuild(props) {
         return(
             <div className="flex flex-1 flex-row justify-end ">
                 <div className="flex flex-col mr-10 items-center">
-                    <div className="text-white select-none" style={{fontSize:20, fontWeight:700}}>ꜱᴇʟᴇᴄᴛ ʜᴇʀᴏ</div>
-                    <img className="select-none bg-stone-700 hover:opacity-85" onClick={()=>setHeroSelectorOpen(true)} style={{width:80, aspectRatio:1, borderColor:"#444",borderWidth:1, cursor:'pointer', borderRadius:10,}} src={hero.images["icon_image_small_webp"]}/>
-                    <div className="mt-2 text-white forevs2" style={{fontSize:18, fontWeight:700}}>{hero.name}</div>
-                    <div onClick={()=>setAbilitySelectorOpen(true)} className="text-white select-none p-2 hover:opacity-80 cursor-pointer" style={{backgroundColor:gColors.greyBackground, fontSize:16, fontWeight:700, borderRadius:5}}>
-                        Choose Ability Order
-                    </div>
-                    <div onClick={()=>setImbueChangerOpen(true)} className="text-white select-none mt-2 p-2 hover:opacity-80 cursor-pointer" style={{backgroundColor:gColors.greyBackground, fontSize:16, fontWeight:700, borderRadius:5}}>
+                    <div className="text-stone-200 select-none mb-2 underline" style={{fontSize:20, fontWeight:700}}>ꜱᴇʟᴇᴄᴛ ʜᴇʀᴏ</div>
+                    <img 
+                    className="select-none bg-stone-700 border-stone-600 hover:opacity-85 border-x-2 border-b-4 border-t-1
+                    transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110" 
+                    onClick={()=>setHeroSelectorOpen(true)} 
+                    style={{width:80, aspectRatio:1, cursor:'pointer', borderRadius:10,}} src={hero.images["icon_image_small_webp"]}
+                    />
+                    <div className="mt-2 text-stone-100 font-bold forevs2 text-xl" style={{}}>{hero.name}</div>
+                    <div onClick={()=>setImbueChangerOpen(true)} 
+                    className="text-stone-200 select-none p-2 hover:opacity-80 cursor-pointer border-x-2 border-b-4 border-t-1 border-stone-600 my-1
+                    transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-105" 
+                    style={{backgroundColor:gColors.greyBackground, fontSize:16, fontWeight:700, borderRadius:5}}
+                    >
                         Change Item Imbues
+                    </div>
+                    <div onClick={()=>setAbilitySelectorOpen(true)} 
+                    className="text-stone-200 select-none p-2 hover:opacity-80 cursor-pointer border-x-2 border-b-4 border-t-1 border-stone-600 my-1
+                    transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-105" 
+                    style={{backgroundColor:gColors.greyBackground, fontSize:16, fontWeight:700, borderRadius:5}}
+                    >
+                        Choose Ability Order
                     </div>
                 </div>
             </div>
@@ -189,7 +202,7 @@ export default function MiniBuild(props) {
     function renderHeroSelector(){
         return(
             <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setHeroSelectorOpen(false)}} className="flex fixed top-0 left-0 items-center justify-center select-none" style={{width:'100vw', height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.7)"}}>
-                <div className="relative flex flex-col p-3" style={{backgroundColor:gColors.darkGrey, borderRadius:8,  width:"35%", borderWidth:3}}>
+                <div className="relative flex flex-col p-3 " style={{backgroundColor:gColors.darkGrey, borderRadius:8,  width:"35%", borderWidth:3}}>
                     
                     {Object.keys(build.imbueItems).length>0&&
                         <div className="text-center py-1" style={{color:gColors.errorRed, fontWeight:600}}>
@@ -316,18 +329,18 @@ export default function MiniBuild(props) {
     function renderClearBuildConfirmation(){
         return(
             <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setConfirmingClear(false)}} className="flex fixed top-0 left-0 items-start justify-center select-none" style={{width:'100vw',  height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.7)"}}>
-                <div className="flex flex-col p-4 pt-0 mt-[100px] items-center" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", minHeight:0,borderWidth:3}}>
-                    <div style={{fontSize:22, fontWeight:700, color:gColors.errorRed}}>
+                <div className="flex flex-col p-4 pt-2 pt-0 mt-[100px] items-center" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", minHeight:0,borderWidth:3}}>
+                    <div className="underline" style={{fontSize:22, fontWeight:700, color:gColors.errorRed}}>
                         Clearing Build
                     </div>
                     <div className="mt-2 text-white" style={{fontSize:16}}>
                         Are you sure you want to remove all items and reset this build?
                     </div>
                     <div className="flex flex-row mt-4" style={{width:"100%"}}>
-                        <div onClick={()=>setConfirmingClear(false)} className="flex flex-1 p-2 text-white justify-center mr-5 hover:opacity-80" style={{backgroundColor:gColors.greyBackground, borderRadius:5, cursor:'pointer'}}>
+                        <div onClick={()=>setConfirmingClear(false)} className="flex flex-1 p-2 text-white justify-center mr-5 hover:opacity-80 hover:underline" style={{backgroundColor:gColors.greyBackground, borderRadius:5, cursor:'pointer'}}>
                             Cancel
                         </div>
-                        <div onClick={()=>clearBuild()} className="flex flex-1 p-2 text-white justify-center hover:opacity-80" style={{backgroundColor:gColors.errorRed, borderRadius:5, cursor:'pointer'}}>
+                        <div onClick={()=>clearBuild()} className="flex flex-1 p-2 text-white justify-center hover:opacity-80 hover:underline" style={{backgroundColor:gColors.errorRed, borderRadius:5, cursor:'pointer'}}>
                             Clear
                         </div>
                     </div>
@@ -339,17 +352,21 @@ export default function MiniBuild(props) {
 
     /******************** MAIN RENDER ********************/
     return(
-            <div className='flex flex-col'>
+            <div className='flex flex-col '>
                 <div className="flex flex-row">
                     <div className="flex flex-1">
 
                     </div>
-                    <div className="p-2 opacity-80 hover:opacity-100" onClick={()=>{setConfirmingClear(true)}} style={{backgroundColor:"#590d0d", color:"#fce9e9", cursor:'pointer', fontWeight:600, borderTopLeftRadius:5, borderTopRightRadius:5}}>
+                    <div 
+                    className="p-2 opacity-80 hover:opacity-100 text-stone-200 border-stone-500 border-x-2 border-t-1
+                    hover:underline" 
+                    onClick={()=>{setConfirmingClear(true)}} style={{backgroundColor:"#590d0d", cursor:'pointer', fontWeight:600, borderTopLeftRadius:5, borderTopRightRadius:5}}
+                    >
                         Clear Build
                     </div>
                 </div>
                 
-                <div className='flex flex-col p-2 ' style={{backgroundColor:gColors.darkGrey, borderRadius:5, borderTopRightRadius:0}}>
+                <div className='flex flex-col p-2 border-x-2 border-b-4 border-stone-600' style={{backgroundColor:gColors.darkGrey, borderRadius:5, borderTopRightRadius:0}}>
                     <div className="flex flex-1 flex-wrap flex-row items-center pb-3" style={{width:'100%'}}>
                         {
                             //main equipment slots

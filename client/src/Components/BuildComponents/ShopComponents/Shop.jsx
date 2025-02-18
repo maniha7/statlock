@@ -1,9 +1,9 @@
 import React,{ useEffect, useState, } from 'react';
 
-import souls from "../../assets/souls.png"
+import souls from "../../../assets/souls.png"
 import ShopItem from './ShopItem';
-import globals from '../../globals';
-import dlItems from "../../assets/dlItems.json"
+import globals from '../../../globals';
+import dlItems from "../../../assets/dlItems.json"
 
 const gColors = globals.globalColors
 

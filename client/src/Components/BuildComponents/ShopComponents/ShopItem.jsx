@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef} from 'react';
-import globals from '../../globals';
-import { getItemByID } from '../../Util/ItemUtil';
+import globals from '../../../globals';
+import { getItemByID } from '../../../Util/ItemUtil';
 
 const gColors = globals.globalColors
 

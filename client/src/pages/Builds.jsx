@@ -2,17 +2,15 @@ import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Shop } from '../Components/BuildComponents/Shop';
-import ShopItem from '../Components/BuildComponents/ShopItem';
 import ItemDescPopup from '../Components/BuildComponents/ItemDescPopup';
 import CurrentBuild from '../Components/BuildComponents/CurrentBuildSection';
 import MiniBuild from '../Components/BuildComponents/MiniBuildSection';
 import { BuyOrder } from '../Components/BuildComponents/BuyOrder';
 import BuildStats from '../Components/BuildComponents/BuildStatsSection';
 import globals from '../globals';
-import dlItems from "../assets/dlItems.json"
 import { getItemByID } from '../Util/ItemUtil';
 
-import souls from "../assets/souls.png"
+import {filterItems} from "../Util/generateItems.jsx"
 
 const gColors = globals.globalColors
 
@@ -54,6 +52,8 @@ const Builds = () => {
     const [popupOpen, setPopupOpen] = useState(false)
     const [popupItem, setPopupItem] = useState(null)
     const [popupPosition, setPopupPosition] = useState(null)
+
+    const [ires, setIres] = useState("")
 
     const contentWindowRef = useRef(null)
 
@@ -301,6 +301,9 @@ const Builds = () => {
                 <MiniBuild build={miniBuild} base={baseMiniBuild} setBuild={updateMiniBuild} addItem={addItemToBuild} removeItem={removeItemFromMini} noSlotsHandlers={noSlotsHandlers} popupHandlers={popupHandlers} imbueHandler={imbueState}/>              
                 <BuildStats build={miniBuild} updated={buildUpdate} chartType={buildChartType}/>
                 <BuyOrder build={miniBuild} setBuild={updateMiniBuild}  />
+
+                {ires}
+                <div onClick={()=>filterItems(setIres)}>click</div>
                 
             </div>
         )

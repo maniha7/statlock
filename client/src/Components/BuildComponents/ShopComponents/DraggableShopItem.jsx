@@ -3,7 +3,7 @@ import {useSortable} from '@dnd-kit/sortable';
 import {useDraggable, useDroppable} from '@dnd-kit/core';
 import {CSS} from '@dnd-kit/utilities';
 import ShopItem from './ShopItem';
-import globals from '../../globals';
+import globals from '../../../globals';
 
 const gColors = globals.globalColors
 
