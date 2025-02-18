@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import globals from '../../globals';
-import ShopItem from './ShopItem';
+import ShopItem from './ShopComponents/ShopItem';
 import EditableText from '../MiscComponents/editableText';
 
 const gColors = globals.globalColors

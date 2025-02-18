@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef} from 'react';
 
-import globals from '../../globals';
-import souls from "../../assets/souls.png"
-import timer from "../../assets/time_icon.png"
-import { getItemByID } from '../../Util/ItemUtil';
+import globals from '../../../globals';
+import souls from "../../../assets/souls.png"
+import timer from "../../../assets/time_icon.png"
+import { getItemByID } from '../../../Util/ItemUtil';
 
 
 

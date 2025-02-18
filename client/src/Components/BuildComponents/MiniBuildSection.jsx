@@ -5,9 +5,9 @@ import {restrictToWindowEdges, restrictToFirstScrollableAncestor} from '@dnd-kit
 import { TailSpin } from 'react-loader-spinner'
 import { getHeroes, getHeroAbilities } from '../../Util/ApiUtil.tsx';
 import globals from '../../globals';
-import ShopItem from './ShopItem';
+import ShopItem from './ShopComponents/ShopItem';
 import { HeroPortrait } from '../MiscComponents/HeroPortrait.jsx';
-import { DraggableShopItem, DroppableItemSection } from './DraggableShopItem.jsx';
+import { DraggableShopItem, DroppableItemSection } from './ShopComponents/DraggableShopItem.jsx';
 import { HeroAbility } from './HeroAbility.jsx';
 import { getItemByID } from '../../Util/ItemUtil';
 

@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import { Shop } from '../Components/BuildComponents/Shop';
-import ItemDescPopup from '../Components/BuildComponents/ItemDescPopup';
+import { Shop } from '../Components/BuildComponents/ShopComponents/Shop';
+import ItemDescPopup from '../Components/BuildComponents/ShopComponents/ItemDescPopup';
 import CurrentBuild from '../Components/BuildComponents/CurrentBuildSection';
 import MiniBuild from '../Components/BuildComponents/MiniBuildSection';
 import { BuyOrder } from '../Components/BuildComponents/BuyOrder';
-import BuildStats from '../Components/BuildComponents/BuildStatsSection';
+import BuildStats from '../Components/BuildComponents/StatsComponents/BuildStatsSection.jsx';
 import globals from '../globals';
 import { getItemByID } from '../Util/ItemUtil';
 

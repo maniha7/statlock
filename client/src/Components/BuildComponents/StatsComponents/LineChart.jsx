@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import {getDamageData} from "../../Util/StatChartUtil.jsx"
-import ShopItem from './ShopItem';
-import souls from "../../assets/souls.png"
-import globals from '../../globals';
+import {getDamageData} from "../../../Util/StatChartUtil.jsx"
+import ShopItem from '../ShopComponents/ShopItem.jsx';
+import souls from "../../../assets/souls.png"
+import globals from '../../../globals.js';
 
 const gColors = globals.globalColors
 

@@ -18,21 +18,29 @@ const regionMap = {
 const Rankings = () => {
     const [region, setRegion] = useState("Row"); // Default to all regions
     const [leaderboard, setLeaderboard] = useState([]);
+    const [page, setPage] = useState(1); // Start on page 1
+    const [hasNextPage, setHasNextPage] = useState(true); // Track if more pages exist
+    const limit = 50; // Number of players per page
 
     useEffect(() => {
         async function loadLeaderboard() {
-            console.log(`Loading leaderboard for region: ${region}`);
+            console.log(`Loading leaderboard for region: ${region}, Page: ${page}`);
             try {
-                const data = await getLeaderboard(region, 1, 1000);
-                setLeaderboard(Object.values(data)); // Convert object to array for display
-                console.log(`Leaderboard updated for ${region}, entries: ${Object.keys(data).length}`);
+                const data = await getLeaderboard(region, page, limit);
+                const entries = Object.values(data);
+                setLeaderboard(entries); 
+
+                // If we get fewer than the limit, there are no more pages
+                setHasNextPage(entries.length === limit);
+
+                console.log(`Leaderboard updated for ${region}, Page: ${page}, Entries: ${entries.length}`);
             } catch (error) {
-                console.error(`Error loading rankings for ${region}:`, error);
+                console.error(`Error loading rankings for ${region}, Page: ${page}:`, error);
             }
         }
 
         loadLeaderboard();
-    }, [region]); // Runs when region changes
+    }, [region, page]); // Runs when region or page changes
 
     return (
         <div className="flex justify-center mb-50 mt-20 mx-5" style={{ width: "100%" }}>
@@ -51,6 +59,7 @@ const Rankings = () => {
                                 onClick={() => {
                                     console.log(`Switching to region: ${apiValue}`);
                                     setRegion(apiValue);
+                                    setPage(1); // Reset to first page when switching region
                                 }}
                             >
                                 {label}
@@ -93,6 +102,25 @@ const Rankings = () => {
                             )}
                         </tbody>
                     </table>
+
+                    {/* Pagination Controls */}
+                    <div className="flex justify-between mt-5">
+                        <button 
+                            className={`text-indigo-400 hover:underline ${page === 1 ? "opacity-50 cursor-not-allowed" : ""}`} 
+                            onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+                            disabled={page === 1}
+                        >
+                            Previous
+                        </button>
+                        <span className="text-white">Page {page}</span>
+                        <button 
+                            className={`text-indigo-400 hover:underline ${!hasNextPage ? "opacity-50 cursor-not-allowed" : ""}`} 
+                            onClick={() => setPage((prev) => prev + 1)}
+                            disabled={!hasNextPage}
+                        >
+                            Next
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

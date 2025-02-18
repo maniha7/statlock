@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import {DndContext, KeyboardSensor, MouseSensor, TouchSensor, useSensor, useSensors, closestCenter} from '@dnd-kit/core';
 import {SortableContext,rectSortingStrategy, sortableKeyboardCoordinates} from '@dnd-kit/sortable';
 
-import { SortableShopItem} from './DraggableShopItem.jsx';
+import { SortableShopItem} from './ShopComponents/DraggableShopItem.jsx';
 import globals from '../../globals';
 
 const gColors = globals.globalColors

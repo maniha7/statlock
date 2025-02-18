@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import LineChart from './LineChart';
-import globals from '../../globals';
+import globals from '../../../globals';
 
 const gColors = globals.globalColors
 
