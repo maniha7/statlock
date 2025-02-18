@@ -74,6 +74,7 @@ const Builds = () => {
     //**************************************************************/
     //**************ADD ITEM TO BUILD MEGA FUNCTION ****************/
     function addItemToBuild(item, imbueAbility=null){
+        console.log(item)
         if(buildType=="mini"){
             const category =  item.item_slot_type
             const newMini = {...miniBuild}

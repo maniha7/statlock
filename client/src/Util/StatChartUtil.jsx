@@ -101,6 +101,8 @@ export function getDamageData(build){
         clipSizeBonus:0,
         weaponDamagePercent:0,
         reloadSpeedPercentDecrease:0,
+
+
     }
 
     function getBulletDPS(){
@@ -134,15 +136,21 @@ export function getDamageData(build){
         const bulletsPerShot = weaponPrimary.weapon_info.bullets
         const damagePerShot = scaledDamagePerBullet * bulletsPerShot
 
-        //damage per clip
+        //clip size
         const clipSize = (baseClipSize + itemScalings.clipSizeBonus) * (1 + itemScalings.clipSizePercent)
+        
+        //fire rate
+        const secondsPerBullet = weaponPrimary.weapon_info.cycle_time
+        const scaledSecondsPerBullet = secondsPerBullet / (1 + itemScalings.fireRatePercent)
+
+
+
+
         const accuracy = 1
         const damagePerClip = damagePerShot * Math.round(clipSize * accuracy)
 
-        //clips per second
-        const timePerBulletSeconds = weaponPrimary.weapon_info.cycle_time
-        const scaledTimePerBulletSeconds = timePerBulletSeconds / (1 + itemScalings.fireRatePercent)
-        const secondsPerClip = (clipSize * scaledTimePerBulletSeconds) + weaponPrimary.weapon_info.reload_duration
+        // #seconds to fire a full clip and reload
+        const secondsPerClip = (clipSize * scaledSecondsPerBullet) + weaponPrimary.weapon_info.reload_duration
 
         const damagePerSecond = damagePerClip / secondsPerClip
 
@@ -187,6 +195,61 @@ export function getDamageData(build){
                     break;
             }
         })
+
+        
+        function addConditionalScalings(resObject, prop){
+            switch(prop.provided_property_type){
+                case "MODIFIER_VALUE_BASEATTACK_DAMAGE_PERCENT":
+                case "MODIFIER_VALUE_BASE_WEAPON_DAMAGE_TAKEN_PERCENT":
+                    resObject.bonuses.weaponDamagePercent = prop.value/100
+                    break;
+                case "MODIFIER_VALUE_AMMO_CLIP_SIZE_PERCENT":
+                    resObject.bonuses.clipSizePercent = prop.value/100
+                    break;
+                case "MODIFIER_VALUE_AMMO_CLIP_SIZE":
+                    resObject.bonuses.clipSizeBonus = prop.value
+                    break;
+                case "MODIFIER_VALUE_FIRE_RATE":
+                    resObject.bonuses.fireRatePercent = prop.value/100
+                    break;
+            }
+        }
+
+        let hasCooldown = false
+
+        //add passive scalings
+        const passiveProps = {
+            bonuses:{}
+        };
+
+        item.passiveImportantProperties.forEach((prop)=>{
+            addConditionalScalings(passiveProps, prop)
+        })
+
+        if(item.passiveCooldown){
+            passiveProps.cooldown = item.passiveCooldown
+            passiveProps.duration = item.properties.AbilityDuration.value
+            hasCooldown = true
+        }
+
+        //add active scalings
+        const activeProps = {
+            bonuses:{}
+        };
+        item.activeImportantProperties.forEach((prop)=>{
+            addConditionalScalings(activeProps, prop)
+        })
+        if(item.activeCooldown){
+            activeProps.cooldown = item.activeCooldown
+            activeProps.duration = item.properties.AbilityDuration.value
+            hasCooldown = true
+        }
+
+        if(Object.keys(passiveProps.bonuses).length>0){
+            if(hasCooldown){
+                
+            }
+        }
 
         
         return scalings
