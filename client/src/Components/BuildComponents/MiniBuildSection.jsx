@@ -9,6 +9,7 @@ import ShopItem from './ShopComponents/ShopItem';
 import { HeroPortrait } from '../MiscComponents/HeroPortrait.jsx';
 import { DraggableShopItem, DroppableItemSection } from './ShopComponents/DraggableShopItem.jsx';
 import { HeroAbility } from './HeroAbility.jsx';
+import { AbilityOrderChooser } from './AbilityOrderChooser.jsx';
 import { getItemByID } from '../../Util/ItemUtil';
 
 const gColors = globals.globalColors
@@ -249,11 +250,9 @@ export default function MiniBuild(props) {
 
     function renderAbilitySelector(){
         return(
-            <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setAbilitySelectorOpen(false)}} className="flex fixed top-0 left-0 items-center justify-center select-none" style={{width:'100vw', height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.7)"}}>
-                <div className="flex p-3" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", borderWidth:3}}>
-                    <div className="flex flex-row flex-wrap justify-center">
-                        
-                    </div>
+            <div onClick={(e)=>{if (e.currentTarget !== e.target){return};setAbilitySelectorOpen(false)}} className="flex fixed top-0 left-0 items-start justify-center select-none" style={{width:'100vw', height:"100vh", zIndex:5, backgroundColor:"rgba(0,0,0,0.7)"}}>
+                <div className="flex p-3 mt-[100px]" style={{backgroundColor:gColors.darkGrey, borderRadius:8, zIndex:6, maxWidth:"35%", borderWidth:3}}>
+                    <AbilityOrderChooser build={build} setBuild={setBuild}/>
                 </div>
             </div>
         )
@@ -272,7 +271,7 @@ export default function MiniBuild(props) {
                             build.hero.abilities.map((ability, abilityIndex)=>{
                                 return(
                                     <div key={ability.id}>
-                                        <HeroAbility onClick={()=>{props.addItem(imbueItem,abilityIndex)}} ability={ability} clickable/>
+                                        <HeroAbility onClick={()=>{props.addItem(imbueItem,abilityIndex)}} ability={ability} hoverable/>
                                     </div>
                                 )
                             })
@@ -349,7 +348,7 @@ export default function MiniBuild(props) {
             </div>
         )
     }
-
+    console.log(build.hero)
     /******************** MAIN RENDER ********************/
     return(
             <div className='flex flex-col '>
