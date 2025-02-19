@@ -76,19 +76,31 @@ const Profile = () => {
                 
 
                 {/* Content Section */}
-                <section className={`m-10 text-stone-300 border-b-4 border-x-2 border-t-1 rounded-md border-stone-700 ${gColors.stoneBackgroundGradient}`} style={{width: "100%"}}>
+                <section className={`m-10 text-stone-300 border-b-4 border-x-2 border-t-1 rounded-md border-stone-700 ${gColors.stoneBackgroundGradient2}`} style={{width: "100%"}}>
 
                     {/* Profile Section */}
                     {activeSection === 'PROFILE' &&  
-                    <section className="flex flex-cols">
+                    <section className="">
                         <div className="m-5">
-                            Profile
+                            
+
+                                {/* Recent Matches */}
+                                <div className="flex flex-col">
+                                    <h1 className="">Matches</h1>
+                                    <div className="border-stone-500 border-x-2 border-b-4 border-t-1 w-80 h-20 rounded-md">
+
+                                    </div>
+                                </div>
+
+                                <div>
+                                    test
+                                </div>
+                            
                         </div>
                     </section>}
 
                     {/* Showcase Section */}
                     {activeSection === 'SHOWCASE' && 
-                    
                     <section>
                         Showcase Content Here
                     </section>
@@ -96,7 +108,6 @@ const Profile = () => {
 
                     {/* Stats Section */}
                     {activeSection === 'STATS' && 
-                    
                     <section>
                         Stats Content Here
                     </section>
@@ -104,7 +115,6 @@ const Profile = () => {
 
                     {/* Settings Section */}
                     {activeSection === 'SETTINGS' && 
-                    
                     <section>
                         Settings Content Here
                     </section>

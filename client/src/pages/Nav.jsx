@@ -7,10 +7,25 @@ import youtube from '../assets/youtube_logo.png'
 import { UserIcon } from "@heroicons/react/24/solid";
 
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const gColors = globals.globalColors
 
 export default function Nav(){
+    const [user, setUser] = useState(null);
+
+    // Fetch logged-in user data from the backend
+    useEffect(() => {
+        fetch("http://localhost:5000/auth/user", { credentials: "include" })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data && data.steamid) {
+                    setUser(data);
+                }
+            })
+            .catch((error) => console.error("Error fetching user:", error));
+    }, []);
+
     return(
     <>
     {/*Full Page Container*/}
@@ -39,43 +54,59 @@ export default function Nav(){
 
         
         
-        {/*Right Side Steam Login and Socials*/}
+        {/* Right Side Steam Login and Socials */}
         <div className="flex justify-end xs:justify-start">
-        
-            {/*Steam Login*/}
-            <div className={`ml-3 mt-2 mr-5 mb-2 rounded-lg flex flex-col-2 space-x-5 border-b-4 border-r-2 h-12 sm:h-flex px-4 border-stone-600 ${gColors.stoneBackgroundGradient}`}>
-                {/* Profile Button */}
-                <Link to="/profile">
-                <div className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80 hover:cursor-pointer w-22 h-7 mt-2 rounded-sm  flex flex-row space-x-1" style={{backgroundColor:gColors.deadLockLight}}>
-                    <UserIcon className="w-5 h-flex text-stone-800 mt-1" />
-                    <h3 className="font-bold text-md font-display hover:underline">ᴘʀᴏꜰɪʟᴇ</h3>
-                </div>
-                </Link>
+                
+                {/* Steam Login/Profile Section */}
+                <div className={`ml-3 mt-2 mr-5 mb-2 rounded-lg flex flex-col-2 space-x-5 border-b-4 border-r-2 h-12 sm:h-flex px-4 border-stone-600 ${gColors.stoneBackgroundGradient}`}>
 
-                {/* Steam Login Button */}
-                <a href="https://store.steampowered.com/" className="mt-2">
-                <button className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80 hover:cursor-pointer">
-                    <div className={`rounded-sm h-7 w-22 flex flex-wrap`} style={{backgroundColor:gColors.deadLockLight}}>
-                        <img className={`h-flex w-6 mt-0.5`} src={steam} />
-                <h1 className="font-display font-bold text-md mr-1 ml-1 hover:underline" style={{textDecorationColor:gColors.stoneBackgroundGradient}}>ʟᴏɢɪɴ</h1>
-            </div>
-                </button>
-                </a>
+                    {/* Profile Button (Only if logged in) */}
+                    {user ? (
+                        <Link to="/profile">
+                            <div className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80 hover:cursor-pointer w-22 h-7 mt-2 rounded-sm flex flex-row space-x-1" style={{ backgroundColor: gColors.deadLockLight }}>
+                                <img src={user.photos[0].value} alt="Profile Pic" className="w-6 h-6 rounded-full border border-stone-500" />
+                                <h3 className="font-bold text-md font-display hover:underline text-white">{user.displayName}</h3>
+                            </div>
+                        </Link>
+                    ) : (
+                        /* Steam Login Button */
+                        <a href="http://localhost:5000/auth/steam" className="mt-2">
+                            <button className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80 hover:cursor-pointer">
+                                <div className={`rounded-sm h-7 w-22 flex flex-wrap`} style={{ backgroundColor: gColors.deadLockLight }}>
+                                    <img className="h-flex w-6 mt-0.5" src={steam} alt="Steam Logo" />
+                                    <h1 className="font-display font-bold text-md mr-1 ml-1 hover:underline text-stone-900">
+                                        ʟᴏɢɪɴ
+                                    </h1>
+                                </div>
+                            </button>
+                        </a>
+                    )}
 
-                {/*Discord*/}
-                <div className="mr-2 flex flex-row space-x-3 mt-2">
-                   <a href="https://discord.gg/rUYKVZeCYt"><img src={discord} className="w-7 h-flex transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80" /></a>
-                </div>
-                {/*Youtube*/}
-                <div className="mr-2 ml-2 mt-3">
-                   <a href=""><img src={youtube} className="w-7 h-flex transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80" /></a>
+                    {/* Logout Button (Only if logged in) */}
+                    {user && (
+                        <a href="http://localhost:5000/auth/logout" className="mt-2">
+                            <button className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80 hover:cursor-pointer bg-red-600 text-stone-900 px-2 py-1 rounded-md">
+                                ʟᴏɢᴏᴜᴛ
+                            </button>
+                        </a>
+                    )}
+
+                    {/* Discord */}
+                    <div className="mr-2 flex flex-row space-x-3 mt-2">
+                        <a href="https://discord.gg/rUYKVZeCYt">
+                            <img src={discord} className="w-7 h-flex transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80" alt="Discord Logo" />
+                        </a>
+                    </div>
+
+                    {/* YouTube */}
+                    <div className="mr-2 ml-2 mt-3">
+                        <a href="">
+                            <img src={youtube} className="w-7 h-flex transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80" alt="YouTube Logo" />
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    
-    </section>        
+        </section>        
     </>
-    )
+);
 }
-
-
