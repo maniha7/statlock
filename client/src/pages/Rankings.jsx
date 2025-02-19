@@ -4,7 +4,7 @@ import globals from '../globals';
 
 const gColors = globals.globalColors;
 
-// Mapping for user-friendly button names to API region names
+
 const regionMap = {
     "North America": "NAmerica",
     "Europe": "Europe",
@@ -16,11 +16,11 @@ const regionMap = {
 };
 
 const Rankings = () => {
-    const [region, setRegion] = useState("Row"); // Default to all regions
+    const [region, setRegion] = useState("Row"); 
     const [leaderboard, setLeaderboard] = useState([]);
-    const [page, setPage] = useState(1); // Start on page 1
-    const [hasNextPage, setHasNextPage] = useState(true); // Track if more pages exist
-    const limit = 50; // Number of players per page
+    const [page, setPage] = useState(1); 
+    const [hasNextPage, setHasNextPage] = useState(true); 
+    const limit = 50; 
 
     useEffect(() => {
         async function loadLeaderboard() {
@@ -40,7 +40,7 @@ const Rankings = () => {
         }
 
         loadLeaderboard();
-    }, [region, page]); // Runs when region or page changes
+    }, [region, page]); 
 
     return (
         <div className="flex justify-center mb-50 mt-20 mx-5" style={{ width: "100%" }}>
@@ -59,7 +59,7 @@ const Rankings = () => {
                                 onClick={() => {
                                     console.log(`Switching to region: ${apiValue}`);
                                     setRegion(apiValue);
-                                    setPage(1); // Reset to first page when switching region
+                                    setPage(1); 
                                 }}
                             >
                                 {label}
