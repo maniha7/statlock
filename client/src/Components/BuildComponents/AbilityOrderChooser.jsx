@@ -88,13 +88,15 @@ export function AbilityOrderChooser(props) {
                             return(
                                 <div className="flex flex-1 flex-col justify-end" >
                                     <HeroAbility ability={ability} sizeOverride={77} hoverable inverted/>
-                                    <div className="mt-1">
+                                    <div className="mt-1 mx-2">
                                         {
+                                            
                                             [0,1,2].map((level)=>{
                                                 const upgradeNum = build.hero.abilityUpgrades[abilityIndex][level]
+                                                console.log(upgradeNum)
                                                 return(
-                                                    <div style={{backgroundColor:upgradeNum?globals.itemColors.spirit.base:globals.itemColors.spirit.dark}}>
-                                                        <div className="text-white">{upgradeNum??0}</div>
+                                                    <div className="my-2 text-center" style={{backgroundColor:upgradeNum?globals.itemColors.spirit.base:globals.itemColors.spirit.dark, borderRadius:8}}>
+                                                        <div className="text-white" style={{opacity:upgradeNum?1:0, fontSize:12}}>{upgradeNum??0}</div>
                                                     </div>
                                                 )
                                             })

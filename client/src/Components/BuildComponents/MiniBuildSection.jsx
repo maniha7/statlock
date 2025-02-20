@@ -93,7 +93,7 @@ export default function MiniBuild(props) {
             const abilityObjects = abilityNames.map((name)=>{return(abils[name])})
             build.hero.abilities = abilityObjects
             build.hero.abilityUnlockOrder = abilityObjects.slice(0,3)
-            build.hero.abilityUpgrade
+            build.hero.abilityUpgrades = abilityObjects.map(()=>{return([null,null,null])})
             const meleeName=build.hero.items["weapon_melee"]
             build.hero.melee = abils[meleeName]
             const primaryName=build.hero.items["weapon_primary"]
@@ -350,7 +350,7 @@ export default function MiniBuild(props) {
             </div>
         )
     }
-    console.log(build.hero)
+
     /******************** MAIN RENDER ********************/
     return(
             <div className='flex flex-col '>

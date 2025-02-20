@@ -104,9 +104,11 @@ const Rankings = () => {
                         <tbody>
                             {leaderboard.length > 0 ? (
                                 leaderboard.map((player, index) => {
-                                    const steamProfile = steamProfiles[player.account_id] || {};
+                                    const bigID = BigInt(player.account_id)
+                                    const steam64id = (bigID + 76561197960265728n).toString()
+                                    const steamProfile = steamProfiles[steam64id] || {};
                                     
-                                     // console.log("Steam Profiles State:", steamProfiles); // Shows all Steam Profiles
+                                     console.log("Steam Profiles State:",steamProfile); // Shows all Steam Profiles
 
                                     return (
                                         <tr key={index} className="border-b border-stone-600">
@@ -114,9 +116,9 @@ const Rankings = () => {
                                             <td className="px-4 py-2 flex items-center">
                                                 <img 
                                                     src={steamProfile.avatar || steamDefault} 
-                                                    className="w-8 h-8 rounded-full mr-2"
+                                                    className="w-8 h-8 rounded-md border-x-1 border-b-2 border-t-1 border-stone-700 mr-2"
                                                 />
-                                                <div>{steamProfile.name || "Private Profile"}</div>
+                                                <div className="forevs text-lg text-stone-200">{steamProfile.name || "Private Profile"}</div>
                                             </td>
                                             <td className="px-4 py-2">{player.matches_played}</td>
                                             <td className="px-4 py-2">{player.wins}</td>
