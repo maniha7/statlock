@@ -11,6 +11,7 @@ import globals from '../../globals';
 export function SortableHeroAbility(props) {
 
     const ability = props.ability
+    const sizeOverride=props.sizeOverride
 
     const {
         attributes,
@@ -28,7 +29,7 @@ export function SortableHeroAbility(props) {
 
     return (
         <div key={props.id} id={props.id} className='relative select-none' ref={setNodeRef} style={{...style, zIndex:2}} {...attributes} {...listeners}>
-            <HeroAbility ability={ability} onClick={()=>null} hoverableFull/>
+            <HeroAbility ability={ability} onClick={()=>null} hoverableFull sizeOverride={sizeOverride}/>
         </div>
     )
 }

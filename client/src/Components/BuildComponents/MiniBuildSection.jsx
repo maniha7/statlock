@@ -92,6 +92,8 @@ export default function MiniBuild(props) {
             const abilityNames = mainSlots.map((slotName)=>{return(build.hero.items[slotName])})
             const abilityObjects = abilityNames.map((name)=>{return(abils[name])})
             build.hero.abilities = abilityObjects
+            build.hero.abilityUnlockOrder = abilityObjects.slice(0,3)
+            build.hero.abilityUpgrade
             const meleeName=build.hero.items["weapon_melee"]
             build.hero.melee = abils[meleeName]
             const primaryName=build.hero.items["weapon_primary"]

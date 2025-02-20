@@ -39,6 +39,8 @@ export function AbilityOrderChooser(props) {
         const dropItemIndex = over.id
 
         if(dragItemIndex !== dropItemIndex){
+            const draggedItem = build.hero.abilityUnlockOrder.splice(dragItemIndex,1)[0]
+            build.hero.abilityUnlockOrder.splice(dropItemIndex,0,draggedItem)
             
             props.setBuild(build)
         }
@@ -55,13 +57,13 @@ export function AbilityOrderChooser(props) {
                     <div className="flex flex-row flex-wrap mt-2 mb-4 items-start">
                         <SortableContext items={list} strategy={rectSortingStrategy} className="flex flex-row flex-wrap">
                             {list.map((itemIndex)=>{
-                                const ability = build.hero.abilities[itemIndex]
+                                const ability = build.hero.abilityUnlockOrder[itemIndex]
                                 return(
                                     <div className="flex flex-col justify-center ">
                                         <h3 style={{fontSize:20}} className="text-center text-white forevs2 mb-3">
-                                            {itemIndex}
+                                            {itemIndex+1}
                                         </h3>
-                                        <SortableHeroAbility key={itemIndex} id={itemIndex} ability={ability} sortable/>
+                                        <SortableHeroAbility key={itemIndex} id={itemIndex} ability={ability} sizeOverride={77} sortable/>
                                     </div>
                                     
                                 )
@@ -71,7 +73,7 @@ export function AbilityOrderChooser(props) {
                             <h3 style={{fontSize:20}} className="text-center text-white forevs2 mb-3">
                                 4
                             </h3>
-                            <HeroAbility ability={build.hero.abilities[3]}/>
+                            <HeroAbility ability={build.hero.abilities[3]} sizeOverride={77}/>
                         </div>
                         
                     </div>
@@ -80,6 +82,30 @@ export function AbilityOrderChooser(props) {
             </div>
             <div className="mt-2">
                 <div className="text-white pl-2 forevs2 text-[20px]" >Upgrade Order</div>
+                <div className="flex flex-1 flex-row flex-wrap mt-2 mb-4 ">
+                    {
+                        build.hero.abilities.map((ability, abilityIndex)=>{
+                            return(
+                                <div className="flex flex-1 flex-col justify-end" >
+                                    <HeroAbility ability={ability} sizeOverride={77} hoverable inverted/>
+                                    <div className="mt-1">
+                                        {
+                                            [0,1,2].map((level)=>{
+                                                const upgradeNum = build.hero.abilityUpgrades[abilityIndex][level]
+                                                return(
+                                                    <div style={{backgroundColor:upgradeNum?globals.itemColors.spirit.base:globals.itemColors.spirit.dark}}>
+                                                        <div className="text-white">{upgradeNum??0}</div>
+                                                    </div>
+                                                )
+                                            })
+                                            
+                                        }
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </div>
         </div>
     )

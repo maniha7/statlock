@@ -20,8 +20,8 @@ const Profile = () => {
                         {['PROFILE', 'SHOWCASE', 'STATS', 'SETTINGS'].map((section) => (
                             <button
                                 key={section}
-                                className={`border-t-2 border-x-1 rounded-t-lg px-1.5 border-stone-700 forevs2 transition duration-200 ease-in-out hover:-translate-y-0.5 hover:scale-100 hover:cursor-pointer 
-                                    ${activeSection === section ? 'bg-stone-700 text-stone-200' : 'bg-stone-500 text-stone-900'}`}
+                                className={`border-t-2 border-x-1 rounded-t-lg px-1.5  forevs2 transition duration-200 ease-in-out hover:-translate-y-0.5 hover:scale-100 hover:cursor-pointer 
+                                    ${activeSection === section ? 'bg-stone-700 text-stone-200 border-stone-900' : 'bg-stone-500 text-stone-800 border-stone-700'}`}
                                 onClick={() => setActiveSection(section)}
                             >
                                 {section}
@@ -46,7 +46,7 @@ const Profile = () => {
                                     Row1
                                 </div>
 
-                                <div>
+                                <div>   
                                     Row2
                                 </div>
 
@@ -76,7 +76,7 @@ const Profile = () => {
                 
 
                 {/* Content Section */}
-                <section className={`m-10 text-stone-300 border-b-4 border-x-2 border-t-1 rounded-md border-stone-700 ${gColors.stoneBackgroundGradient2}`} style={{width: "100%"}}>
+                <section className={`m-10 text-stone-300 border-b-4 border-x-2 border-t-1 rounded-md border-stone-700 bg-stone-800`} style={{width: "100%"}}>
 
                     {/* Profile Section */}
                     {activeSection === 'PROFILE' &&  
