@@ -11,6 +11,7 @@ function isValidResponse(data) : boolean{
     return true
 }
 
+{/* Heros */}
 export async function getHeroes() : Promise<Array<Object>>{
     const apiRes = await fetch(assetsAPI+globals.Deadlock_Assets_Heroes_Endpoint,{
         method:"get",
@@ -29,6 +30,7 @@ export async function getHeroes() : Promise<Array<Object>>{
 }
 
 
+{/* Shop Items */}
 export async function getItems() : Promise<Object>{
 
     const apiRes = await fetch(assetsAPI+globals.Deadlock_Assets_Items_Endpoint,{
@@ -49,6 +51,7 @@ export async function getItems() : Promise<Object>{
     return res
 }
 
+{/* Hero Abilities */}
 export async function getHeroAbilities(id : number): Promise<Object>{
     const apiRes = await fetch(assetsAPI+globals.Deadlock_Assets_Hero_Abilities_Endpoint +`/${id}`,{
         method:"get",
@@ -87,6 +90,7 @@ export async function getPatchNotes(): Promise<Object> {
     return res;
 }
 
+{/* Global Rankings */}
 export async function getLeaderboard(region: string, start: number, limit: number = 1000): Promise<Object> {
     const apiUrl = `https://analytics.deadlock-api.com/v2/leaderboard/${region}?start=${start}&limit=${limit}`;
     
@@ -135,6 +139,31 @@ export async function getLeaderboard(region: string, start: number, limit: numbe
     } catch (error) {
         console.error("Error fetching leaderboard:", error);
         return {};
+    }
+}
+
+{/* Player Match History */}
+export async function getMatchHistory(accountId: string) {
+    const apiUrl = `https://data.deadlock-api.com/v2/players/${accountId}/match_history`;
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+            }
+        });
+
+        if (!response.ok) {
+            console.error(`Error fetching match history: ${response.statusText}`);
+            return null;
+        }
+
+        const data = await response.json();
+        return data.matches || [];
+    } catch (error) {
+        console.error("Failed to fetch match history:", error);
+        return null;
     }
 }
 

@@ -80,14 +80,14 @@ const Rankings = () => {
         <div className="flex justify-center mb-50 mt-10 mx-5" style={{ width: "100%" }}>
             <div className={`flex border-x-2 border-b-4 border-t-1 border-stone-600 rounded-lg self-center p-4 mb-15 ${gColors.stoneBackgroundGradient}`}>
                 <div className={`p-2 text-center min-w-100 min-h-150`}>
-                    <h1 className="text-3xl underline font-bold border-stone-200 text-stone-200 forevs2">ʀᴀɴᴋɪɴɢꜱ</h1>
+                   {/*<h1 className="text-3xl underline font-bold border-stone-200 text-stone-200 forevs2">ʀᴀɴᴋɪɴɢꜱ</h1>*/} 
 
                     {/* Region Selector */}
-                    <div className={`flex justify-center space-x-4 mt-5`}>
+                    <div className={`flex justify-center space-x-4 `}>
                         {Object.entries(regionMap).map(([label, apiValue]) => (
                             <button 
                                 key={apiValue} 
-                                className={`border-x-1 border-t-2 rounded-t-lg px-2  text-stone-200 forevs2 pt-1 text-xl 
+                                className={`border-x-1 border-t-2 rounded-t-lg px-2 text-stone-200 forevs2 pt-1 text-xl 
                                     transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-105 hover:cursor-pointer 
                                     ${region === apiValue ? "bg-stone-700 border-stone-400 text-white" : "bg-stone-800 border-stone-500"}`}
                                         onClick={() => {
@@ -102,7 +102,7 @@ const Rankings = () => {
                     </div>
 
                     {/* Leaderboard Table */}
-                    <section className="p-4 bg-stone-900 border-x-2 border-b-4 border-t-1 border-stone-600 rounded-b-lg rounded-t-sm">
+                    <section className="p-4 bg-stone-900 border-x-2 border-b-4 border-t-1 border-stone-600 rounded-b-lg rounded-t-md">
                     <table className="min-w-full border border-stone-600 text-stone-200 bg-stone-800 border-2">
                         <thead>
                             <tr className={`bg-stone-700`}>
@@ -133,13 +133,13 @@ const Rankings = () => {
                                                     />
                                             </td>
                                             <td 
-                                            className={`px-4 py-2 m-1 mr-2 flex items-center rounded-lg border-stone-600 border-t-stone-500 border-r-stone-500 border-b-4 border-x-2 border-t-1 ${gColors.stoneBackgroundGradient3}`}
+                                            className={`px-4 py-2 m-2 mr-2 flex items-center rounded-lg border-stone-600 border-t-stone-500 border-r-stone-500 border-b-4 border-x-2 border-t-1 ${gColors.stoneBackgroundGradient3}`}
                                             >
                                                 <img 
                                                     src={steamProfile.avatar || steamDefault} 
                                                     className="w-8 h-8 rounded-md border-x-1 border-b-2 border-t-1 border-stone-700 mr-2"
                                                 />
-                                                <div className="forevs text-lg mt-1 text-stone-200">{steamProfile.name || "Private Profile"}</div>
+                                                <div className="forevs text-lg text-stone-200">{steamProfile.name || "Private Profile"}</div>
                                             </td>
                                             <td className="px-4 py-2 forevs2 border-r-2 rounded-full border-stone-700 text-lg">{player.matches_played}</td>
                                             <td className="px-4 py-2 forevs2 text-lg">{player.wins}</td>
@@ -167,15 +167,15 @@ const Rankings = () => {
                             onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
                             disabled={page === 1}
                         >
-                            Previous
+                            PREVIOUS
                         </button>
-                        <span className="text-stone-200 forevs2">Page {page}</span>
+                        <span className="text-stone-200 forevs2 underline">PAGE {page}</span>
                         <button 
                             className={`text-indigo-400 hover:underline forevs2 ${!hasNextPage ? "opacity-50 cursor-not-allowed" : "hover:cursor-pointer"}`} 
                             onClick={() => setPage((prev) => prev + 1)}
                             disabled={!hasNextPage}
                         >
-                            Next
+                            NEXT
                         </button>
                     </div>
                 </div>

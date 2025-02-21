@@ -35,19 +35,26 @@ export default function Nav(){
         <div className={`w-40 md:w-175 lg:w-185 h-flex p-2 ml-5 mt-2 border-b-4 border-r-2 rounded-lg ${gColors.stoneBackgroundGradient} border-stone-600 mb-5`}>
             <div className="flex flex-col items-center md:flex-row lg:flex-row xl:flex-row md:space-x-10 lg:space-x-9">
 
-                <Link to='/'><div className="flex hover:underline hover:opacity-80 text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-stone-500 text-xl items-center"><img src={logo} className="h-8 ml-1 w-flex mr-0.5"  />STATLOCK</div></Link>
+                <div className="">
+                    <Link to='/'>
+                        <div className="flex items-center forevs2">
+                            <img src={logo} className="h-8 ml-1 w-flex mr-0.5 hover:opacity-80"  />
+                                <h1 className="mt-1 ml-0.5 hover:opacity-80 text-xl hover:underline text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-stone-500 ">STATLOCK</h1>
+                        </div>
+                    </Link>
+                </div>
 
-                <Link to='/stats'><div className="hover:underline hover:opacity-80 text-white hover:text-stone-200 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ꜱᴛᴀᴛꜱ</div></Link>
+                <Link to='/stats'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ꜱᴛᴀᴛꜱ</div></Link>
                 
-                <Link to='/builds'><div className="hover:underline hover:opacity-80 text-white hover:text-stone-200 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ʙᴜɪʟᴅꜱ</div></Link>
+                <Link to='/builds'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ʙᴜɪʟᴅꜱ</div></Link>
 
-                <Link to='/matches'><div className="hover:underline hover:opacity-80 text-white hover:text-stone-200 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ᴍᴀᴛᴄʜᴇꜱ</div></Link>
+                <Link to='/matches'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ᴍᴀᴛᴄʜᴇꜱ</div></Link>
 
-                <Link to='/rankings'><div className="hover:underline hover:opacity-80 text-white hover:text-stone-200 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ʀᴀɴᴋɪɴɢꜱ</div></Link>
+                <Link to='/rankings'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ʀᴀɴᴋɪɴɢꜱ</div></Link>
 
-                <Link to='/patchnotes'><div className="hover:underline hover:opacity-80 text-white hover:text-stone-200 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ᴘᴀᴛᴄʜ ɴᴏᴛᴇꜱ</div></Link>
+                <Link to='/patchnotes'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ᴘᴀᴛᴄʜ ɴᴏᴛᴇꜱ</div></Link>
 
-                <Link to='/skins'><div className="hover:underline hover:opacity-80 text-white hover:text-stone-200 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ꜱᴋɪɴꜱ</div></Link>
+                <Link to='/skins'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ꜱᴋɪɴꜱ</div></Link>
 
             </div>    
         </div>
