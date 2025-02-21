@@ -2,19 +2,20 @@ import { useEffect, useState } from "react";
 import { getLeaderboard } from "../Util/ApiUtil";
 import globals from '../globals';
 import steamDefault from '../assets/steamDefault.png'
+import rankData from '../assets/rankings.json';
 
 const gColors = globals.globalColors;
+
 
 const BACKEND_URL = "http://localhost:5000"; // Update if backend is hosted remotely
 
 const regionMap = {
-    "North America": "NAmerica",
+    "North America": "Row",
     "Europe": "Europe",
     "Southeast Asia": "SEAsia",
     "South America": "SAmerica",
     "Russia": "Russia",
-    "Oceania": "Oceania",
-    "All Regions": "Row"
+    "Oceania": "Oceania"
 };
 
 const Rankings = () => {
@@ -50,6 +51,7 @@ const Rankings = () => {
         loadLeaderboard();
     }, [region, page]);
 
+    {/* Steam Profile Data */}
     async function fetchSteamProfiles(steamIds) {
         try {
             const response = await fetch(`${BACKEND_URL}/api/steam-profiles?steamIds=${steamIds}`);
@@ -61,6 +63,19 @@ const Rankings = () => {
         }
     }
 
+    {/* Rank Images */}
+    function getRankImage(rankedRank, rankedSubrank) {
+        const rank = rankData.find(r => r.tier === rankedRank);
+        if (!rank) return null; // If unranked
+    
+        // Subrank 
+        if (rankedSubrank > 0) {
+            return rank.images[`large_subrank${rankedSubrank}`] || rank.images.large;
+        }
+    
+        return rank.images.large;
+    }
+
     return (
         <div className="flex justify-center mb-50 mt-10 mx-5" style={{ width: "100%" }}>
             <div className={`flex border-x-2 border-b-4 border-t-1 border-stone-600 rounded-lg self-center p-4 mb-15 ${gColors.stoneBackgroundGradient}`}>
@@ -68,37 +83,36 @@ const Rankings = () => {
                     <h1 className="text-3xl underline font-bold border-stone-200 text-stone-200 forevs2">ʀᴀɴᴋɪɴɢꜱ</h1>
 
                     {/* Region Selector */}
-                    <div className={`flex justify-center space-x-5 my-4`}>
+                    <div className={`flex justify-center space-x-4 mt-5`}>
                         {Object.entries(regionMap).map(([label, apiValue]) => (
                             <button 
                                 key={apiValue} 
-                                className={`border-x-2 border-b-4 border-t-1 border-stone-500 rounded-b-md rounded-t-lg px-2 bg-stone-800 text-stone-200 forevs2 pt-1 
-                                    transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-105 hover:cursor-pointer ${
-                                    region === apiValue ? "bg-stone-700 text-stone-200" : ""
-                                }`}
-                                onClick={() => {
-                                    console.log(`Switching to region: ${apiValue}`);
-                                    setRegion(apiValue);
-                                    setPage(1); 
-                                }}
-                            >
-                                {label}
+                                className={`border-x-1 border-t-2 rounded-t-lg px-2  text-stone-200 forevs2 pt-1 text-xl 
+                                    transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-105 hover:cursor-pointer 
+                                    ${region === apiValue ? "bg-stone-700 border-stone-400 text-white" : "bg-stone-800 border-stone-500"}`}
+                                        onClick={() => {
+                                            console.log(`Switching to region: ${apiValue}`);
+                                            setRegion(apiValue);
+                                            setPage(1); 
+                                        }}
+                                    >
+                                        {label}
                             </button>
                         ))}
                     </div>
 
                     {/* Leaderboard Table */}
                     <section className="p-4 bg-stone-900 border-x-2 border-b-4 border-t-1 border-stone-600 rounded-b-lg rounded-t-sm">
-                    <table className="min-w-full border border-stone-600 text-stone-200 bg-stone-800">
+                    <table className="min-w-full border border-stone-600 text-stone-200 bg-stone-800 border-2">
                         <thead>
-                            <tr className="bg-stone-700">
-                                <th className="px-4 py-1.5 forevs2 text-md underline">Rank</th>
-                                <th className="px-4 py-1.5 forevs2 text-md underline">Player</th>
-                                <th className="px-4 py-1.5 forevs2 text-md underline">Matches Played</th>
-                                <th className="px-4 py-1.5 forevs2 text-md underline">Wins</th>
-                                <th className="px-4 py-1.5 forevs2 text-md underline">Kills</th>
-                                <th className="px-4 py-1.5 forevs2 text-md underline">Deaths</th>
-                                <th className="px-4 py-1.5 forevs2 text-md underline">Assists</th>
+                            <tr className={`bg-stone-700`}>
+                                <th className="px-4 py-1.5 forevs2 text-lg underline">Rank</th>
+                                <th className="px-4 py-1.5 forevs2 text-lg underline">Player</th>
+                                <th className="px-4 py-1.5 forevs2 text-lg underline">Matches Played</th>
+                                <th className="px-4 py-1.5 forevs2 text-lg underline">Wins</th>
+                                <th className="px-4 py-1.5 forevs2 text-lg underline">Kills</th>
+                                <th className="px-4 py-1.5 forevs2 text-lg underline">Deaths</th>
+                                <th className="px-4 py-1.5 forevs2 text-lg underline">Assists</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -111,20 +125,27 @@ const Rankings = () => {
                                      console.log("Steam Profiles State:",steamProfile); // Shows all Steam Profiles
 
                                     return (
-                                        <tr key={index} className="border-b border-stone-600">
-                                            <td className="px-4 py-2">{player.leaderboard_rank}</td>
-                                            <td className="px-4 py-2 flex items-center">
+                                        <tr key={index} className={`border-b border-stone-600 ${gColors.stoneBackgroundGradient2}`}>
+                                            <td className="px-4 py-2 underline forevs2 text-lg">
+                                                <img src={getRankImage(player.ranked_rank, player.ranked_subrank)} 
+                                                    alt="Rank Badge" 
+                                                    className={`w-flex h-12 bg-stone-900 rounded-lg p-0.5 border-b-2 border-t-1 border-x-1 border-stone-600 ${gColors.stoneBackgroundGradient}`} 
+                                                    />
+                                            </td>
+                                            <td 
+                                            className={`px-4 py-2 m-1 mr-2 flex items-center rounded-lg border-stone-600 border-t-stone-500 border-r-stone-500 border-b-4 border-x-2 border-t-1 ${gColors.stoneBackgroundGradient3}`}
+                                            >
                                                 <img 
                                                     src={steamProfile.avatar || steamDefault} 
                                                     className="w-8 h-8 rounded-md border-x-1 border-b-2 border-t-1 border-stone-700 mr-2"
                                                 />
-                                                <div className="forevs text-lg text-stone-200">{steamProfile.name || "Private Profile"}</div>
+                                                <div className="forevs text-lg mt-1 text-stone-200">{steamProfile.name || "Private Profile"}</div>
                                             </td>
-                                            <td className="px-4 py-2">{player.matches_played}</td>
-                                            <td className="px-4 py-2">{player.wins}</td>
-                                            <td className="px-4 py-2">{player.kills}</td>
-                                            <td className="px-4 py-2">{player.deaths}</td>
-                                            <td className="px-4 py-2">{player.assists}</td>
+                                            <td className="px-4 py-2 forevs2 border-r-2 rounded-full border-stone-700 text-lg">{player.matches_played}</td>
+                                            <td className="px-4 py-2 forevs2 text-lg">{player.wins}</td>
+                                            <td className="px-4 py-2 forevs2 border-x-2 rounded-full border-stone-700 text-lg">{player.kills}</td>
+                                            <td className="px-4 py-2 forevs2 text-lg">{player.deaths}</td>
+                                            <td className="px-4 py-2 forevs2 border-l-2 rounded-full border-stone-700 text-lg">{player.assists}</td>
                                         </tr>
                                     );
                                 })
@@ -140,7 +161,7 @@ const Rankings = () => {
                     </section>
 
                     {/* Pagination Controls */}
-                    <div className="flex justify-between mt-5">
+                    <div className="flex justify-center space-x-5 mt-5">
                         <button 
                             className={`text-indigo-400 hover:underline forevs2 ${page === 1 ? "opacity-50 cursor-not-allowed" : "hover:cursor-pointer"}`} 
                             onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
