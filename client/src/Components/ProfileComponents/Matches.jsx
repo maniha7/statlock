@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { getMatchHistory } from "../Util/ApiUtil";
-import { getHeroMap } from "../Util/ProfileUtil";
+import { getMatchHistory } from "../../Util/ApiUtil";
+import { getHeroMap } from "../../Util/ProfileUtil";
 
-import globals from '../globals';
-import statlockLogo from '../assets/statlock_logo2.png'; // Ensure correct import path
+import globals from '../../globals';
+import statlockLogo from '../../assets/statlock_logo2.png'; // Ensure correct import path
 const gColors = globals.globalColors;
 
 const Matches = ({ accountId }) => {
@@ -48,7 +48,7 @@ const Matches = ({ accountId }) => {
                                     <div className="flex flex-row">
                                         <p className="text-sm bg-stone-900 border-stone-500 w-flex p-1 border-x-2 border-t-1 text-center rounded-t-md forevs2">{match.match_id}</p>
                                     </div>
-                                    <li className={`p-2 border-b-4 border-x-2 border-t-1 rounded-b-md rounded-r-md text-stone-200 border-stone-500 flex space-x-3 bg-stone-900 flex-col`}>
+                                    <div className={`p-2 border-b-4 border-x-2 border-t-1 rounded-b-md rounded-r-md text-stone-200 border-stone-500 flex space-x-3 bg-stone-900 flex-wrap`}>
                                         
                                         {/* Hero Image */}
                                         <img
@@ -60,10 +60,10 @@ const Matches = ({ accountId }) => {
 
                                         {/* Hero Name & Match Details */}
                                         <div className="">
-                                            <p className="text-lg font-bold">{hero.name}</p>
-                                            <p>KDA: {match.kills}/{match.deaths}/{match.assists}</p>
+                                            <h2 className="forevs2 underline">{match.game_mode} </h2>
+                                            <p className="forevs text-sm">KDA: {match.player_kills}/{match.player_deaths}/{match.player_assists}</p>
                                         </div>
-                                    </li>
+                                    </div>
                                 </div>
                             </section>
                         );

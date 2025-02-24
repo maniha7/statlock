@@ -3,7 +3,7 @@ import testPFP from '../assets/luffy.jpg'
 import { useState } from 'react';
 
 const gColors = globals.globalColors
-import Matches from "./Matches";
+import Matches from "../Components/ProfileComponents/Matches";
 
 
 
@@ -85,7 +85,7 @@ const Profile = () => {
                         width: "100%",
                         maxHeight: "700px", 
                         overflowY: "auto", // Enables vertical scrolling
-                        padding: "1rem" 
+                        padding: "0.5rem" 
                     }}
                 >
                     {/* Profile Section */}

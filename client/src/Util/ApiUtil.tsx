@@ -56,7 +56,7 @@ export async function getHeroAbilities(id : number): Promise<Object>{
     const apiRes = await fetch(assetsAPI+globals.Deadlock_Assets_Hero_Abilities_Endpoint +`/${id}`,{
         method:"get",
         headers:{
-            "Content-Type":"application/json"
+            "Accept":"application/json"
         }
     })
     const abilityData = await apiRes.json()
