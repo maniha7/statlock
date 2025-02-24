@@ -107,7 +107,7 @@ export default function Nav(){
 
                     {/* YouTube */}
                     <div className="mr-2 ml-2 mt-3">
-                        <a href="">
+                        <a href="https://www.youtube.com/channel/UCmUlYzzgwxbAQEB63XNBwrg">
                             <img src={youtube} className="w-7 h-flex transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80" alt="YouTube Logo" />
                         </a>
                     </div>

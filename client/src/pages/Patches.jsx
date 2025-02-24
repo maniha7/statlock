@@ -78,7 +78,7 @@ export default function Patches() {
                                     {Object.entries(patch.categories).map(([category, lines]) => (
                                         lines.length > 0 && (
                                             <div key={category} className="mt-4">
-                                                <h4 className={`text-2xl font-bold underline forevs2 ${categoryColors[category] || "text-white"}`}>{category}:</h4>
+                                                <h4 className={`text-2xl font-bold underline forevs2 ${categoryColors[category] || ""}`}>{category}:</h4>
 
                                                 {(() => {
                                                     const { characterUpdates, generalUpdates } = groupUpdates(lines);
@@ -87,8 +87,8 @@ export default function Patches() {
                                                         <>
                                                             {Object.entries(characterUpdates).map(([character, updates]) => (
                                                                 <div key={character} className="mt-3">
-                                                                    <h5 className="text-xl font-bold text-stone-200 forevs2 underline">{character}</h5>
-                                                                    <ul className="ml-6 space-y-0.5 text-lg text-stone-300 list-disc">
+                                                                    <h5 className="text-xl font-bold text-stone-300 forevs2 underline">{character}:</h5>
+                                                                    <ul className="ml-6 space-y-0.5 text-lg text-stone-100 list-disc">
                                                                         {updates.map((update, idx) => (
                                                                             <li className="ml-2" key={idx}>{update}</li>
                                                                         ))}
@@ -98,7 +98,7 @@ export default function Patches() {
 
                                                             {generalUpdates.length > 0 && (
                                                                 <div>
-                                                                    <ul className="ml-2 space-y-1 text-lg text-stone-300 list-disc">
+                                                                    <ul className="ml-2 space-y-0.5 text-lg text-stone-100 list-disc">
                                                                         {generalUpdates.map((update, idx) => (
                                                                             <div className="ml-2 my-1" key={idx}>{update}</div>
                                                                         ))}

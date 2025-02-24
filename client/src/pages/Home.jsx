@@ -28,12 +28,17 @@ const Home = () => {
 
     return (
     <>
+    {/* Left Side AdSpace */}
+    <div className={`mt-2 mb-2 border-b-4 border-l-2 border-r-1 border-stone-600 rounded-lg mx-5 w-[15%] ${gColors.stoneBackgroundGradient2}`}>
+            AdSpace
+         </div>
+
         <div className={`flex-1 flex flex-col mt-2 mb-2 ml-5 mr-10 p-2 border-b-4 border-x-2 border-t-1 border-stone-600 rounded-lg  min-h-200 w-400 ${gColors.stoneBackgroundGradient}`} style={{}}> 
             <div className="flex justify-center mt-1 mb-5"><img className="object-center w-40 transition spin-slow duration-1 ease-in-out hover:-translate-y-0.5 hover:scale-110" style={{}} src={logo} /></div>
-            {/*Main*/}
+            {/* Main */}
             <div className="mb-10 border-b-4 border-x-2 border-t-2 bg-stone-900 rounded-lg w-[80%] self-center text-stone-500">
 
-                {/*Steam Profile Search Bar*/}
+                {/* Steam Profile Search Bar */}
                 <div className="flex flex-row">
                     <MagnifyingGlassCircleIcon class="h-8 w-8 text-stone-400 mx-2 my-0.5" />
                     <input 
@@ -44,7 +49,7 @@ const Home = () => {
                 </div>
             </div>
 
-            {/*Preview of Site Functionality*/}
+            {/*Preview of Site Functionality */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 ml-5 mr-5 gap-y-10 gap-x-2"> 
                 
                 {/* Most Recent Patch Notes */}
@@ -82,7 +87,7 @@ const Home = () => {
                     )}
                 </div>
 
-                {/*Item Builder*/}
+                {/* Item Builder */}
                 <div className="w-flex justify-center rounded-lg text-stone-500 bg-stone-800 p-4 border-1 border-stone-900 min-h-15">
                     <h2 className="text-2xl text-stone-200 underline font-bold text-center mb-5">ɪᴛᴇᴍ ʙᴜɪʟᴅᴇʀ</h2>
                         <h3 className="text-indigo-400 mt-5 text-center forevs2 text-lg transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">→<Link to="/builds" className="hover:underline hover:opacity-80">Try our Item Builder !</Link>←</h3>
@@ -91,13 +96,13 @@ const Home = () => {
                             </div>
                 </div>
 
-                {/*Undecided*/}
+                {/* Undecided */}
                 <div className="w-flex min-h-50 self-center text-center grid grid-rows-2 justify-center rounded-lg text-stone-500">
                     <h2 className="h-[50%] text-2xl text-stone-200 underline font-bold">ᴛɪᴛʟᴇ</h2>
                         <div className="text-stone-200"></div>
                 </div>
 
-                {/*Undecided*/}
+                {/* Undecided */}
                 <div className="w-flex min-h-50 self-center text-center grid grid-rows-2 justify-center rounded-lg text-stone-500">
                     <h2 className="h-[50%] text-2xl text-stone-200 underline font-bold">ᴛɪᴛʟᴇ</h2>
                         <div className="text-stone-200"></div>

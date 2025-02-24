@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { getLeaderboard } from "../Util/ApiUtil";
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
+import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 import globals from '../globals';
 import steamDefault from '../assets/steamDefault.png'
 import rankData from '../assets/rankings.json';
@@ -77,7 +79,8 @@ const Rankings = () => {
     }
 
     return (
-        <div className="flex justify-center mb-50 mt-10 mx-5" style={{ width: "100%" }}>
+        <div className="flex flex-col justify-center mb-50 mt-5 mx-5" style={{ width: "100%" }}>
+            <h1 className="text-6xl underline font-bold border-stone-200 text-stone-200 forevs2 text-center mb-5">Rankings</h1>
             <div className={`flex border-x-2 border-b-4 border-t-1 border-stone-600 rounded-lg self-center p-4 mb-15 ${gColors.stoneBackgroundGradient}`}>
                 <div className={`p-2 text-center min-w-100 min-h-150`}>
                    {/*<h1 className="text-3xl underline font-bold border-stone-200 text-stone-200 forevs2">ʀᴀɴᴋɪɴɢꜱ</h1>*/} 
@@ -87,9 +90,9 @@ const Rankings = () => {
                         {Object.entries(regionMap).map(([label, apiValue]) => (
                             <button 
                                 key={apiValue} 
-                                className={`border-x-1 border-t-2 rounded-t-lg px-2 text-stone-200 forevs2 pt-1 text-xl 
+                                className={`border-x-2 border-t-2 rounded-t-lg px-2 text-stone-200 forevs2 pt-1 text-xl 
                                     transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-105 hover:cursor-pointer 
-                                    ${region === apiValue ? "bg-stone-700 border-stone-400 text-white" : "bg-stone-800 border-stone-500"}`}
+                                    ${region === apiValue ? "bg-stone-700 border-stone-400 text-stone-200" : "bg-stone-800 border-stone-500"}`}
                                         onClick={() => {
                                             console.log(`Switching to region: ${apiValue}`);
                                             setRegion(apiValue);
@@ -129,17 +132,17 @@ const Rankings = () => {
                                             <td className="px-4 py-2 underline forevs2 text-lg">
                                                 <img src={getRankImage(player.ranked_rank, player.ranked_subrank)} 
                                                     alt="Rank Badge" 
-                                                    className={`w-flex h-12 bg-stone-900 rounded-lg p-0.5 border-b-2 border-t-1 border-x-1 border-stone-600 ${gColors.stoneBackgroundGradient}`} 
-                                                    />
+                                                    className={`w-flex h-12 `} 
+                                                    /> {/* bg-stone-900 rounded-lg p-0.5 border-b-2 border-t-1 border-x-1 border-stone-600 ${gColors.stoneBackgroundGradient} */}
                                             </td>
                                             <td 
-                                            className={`px-4 py-2 m-2 mr-2 flex items-center rounded-lg border-stone-600 border-t-stone-500 border-r-stone-500 border-b-4 border-x-2 border-t-1 ${gColors.stoneBackgroundGradient3}`}
+                                            className={`px-4 py-2 m-2 mr-2 flex items-center rounded-lg border-stone-600 border-t-stone-500 border-r-stone-500 border-b-4 border-x-2 border-t-1 ${gColors.stoneBackgroundGradient2}`}
                                             >
                                                 <img 
                                                     src={steamProfile.avatar || steamDefault} 
-                                                    className="w-8 h-8 rounded-md border-x-1 border-b-2 border-t-1 border-stone-700 mr-2"
+                                                    className="w-8 h-flex rounded-md border-x-1 border-b-2 border-t-1 border-stone-700 mr-2"
                                                 />
-                                                <div className="forevs text-lg text-stone-200">{steamProfile.name || "Private Profile"}</div>
+                                                <div className="forevs text-lg text-stone-200 ">{steamProfile.name || "Private Profile"}</div>
                                             </td>
                                             <td className="px-4 py-2 forevs2 border-r-2 rounded-full border-stone-700 text-lg">{player.matches_played}</td>
                                             <td className="px-4 py-2 forevs2 text-lg">{player.wins}</td>
@@ -167,7 +170,7 @@ const Rankings = () => {
                             onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
                             disabled={page === 1}
                         >
-                            PREVIOUS
+                            <ChevronLeftIcon class="h-6 w-6 text-stone-200 hover:opacity-80 hover:text-stone-400" />
                         </button>
                         <span className="text-stone-200 forevs2 underline">PAGE {page}</span>
                         <button 
@@ -175,7 +178,7 @@ const Rankings = () => {
                             onClick={() => setPage((prev) => prev + 1)}
                             disabled={!hasNextPage}
                         >
-                            NEXT
+                            <ChevronRightIcon class="h-6 w-6 text-stone-200 hover:opacity-80 hover:text-stone-400" />
                         </button>
                     </div>
                 </div>

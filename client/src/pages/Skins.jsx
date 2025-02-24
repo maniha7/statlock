@@ -15,15 +15,34 @@ const Skins = () => {
 
     return (
         <>
-            <section className={`self-center border-b-4 border-l-2 border-r-1 border-stone-600 rounded-lg mx-10 min-h-210 ${gColors.stoneBackgroundGradient}`} style={{ width: "100%" }}>
-                <div className="flex justify-center items-center p-5">
-                    <button className="text-indigo-400 font-bold py-2 px-4 border-x-2 border-y-4 bg-stone-800 rounded-lg border-black hover:cursor-pointer hover:opacity-80">
-                        <Link to="/modupload">
-                            ᴜᴘʟᴏᴀᴅ ᴀ ꜱᴋɪɴ
-                        </Link>
-                    </button>
+            <section className={`self-center border-b-4 border-l-2 border-r-1 border-stone-600 rounded-lg md:mx-10 lg:mx-20 xl:mx-20 min-h-210  ${gColors.stoneBackgroundGradient}`} style={{ width: "100%" }}>
+                <div className="flex justify-center items-center p-5 border-b-2 mx-10 border-stone-600 mb-5">
+                    <div className="flex flex-row space-x-5">
+                    {/* Link to Upload Guidelines */}
+                    <Link><h1 
+                        className="text-center mt-3 forevs2 text-lg text-stone-300
+                        transition duration-200 ease-in-out hover:-translate-y-0.5 hover:scale-100 hover:underline"
+                        >Upload Guidelines</h1></Link>
+                        {/* Upload Functionality */}
+                        <button 
+                        className={`forevs2 text-stone-200 bg-stone-800 p-2 rounded-lg border-y-2 border-x-1 border-stone-300
+                        transition duration-200 ease-in-out hover:-translate-y-0.5 hover:scale-100 hover:underline ${gColors.stoneBackgroundGradient}`}
+                        >
+                            <Link to="/modupload">
+                                ᴜᴘʟᴏᴀᴅ ᴀ ꜱᴋɪɴ
+                            </Link>
+                        </button>
+                        {/* Link to Installation Guide */}
+                        <Link to="/modinstall"><h1 
+                        className="text-center mt-3 forevs2 text-lg text-stone-300
+                        transition duration-200 ease-in-out hover:-translate-y-0.5 hover:scale-100 hover:underline"
+                        >Installation Guide</h1></Link>
+                        <p className="text-center"></p>
+
+                    </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-10">
+                {/* Mod Display Start */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-10 bg-stone-800 mx-10 rounded-lg border-1">
                     {mods.length > 0 ? mods.map((mod, index) => (
                         <div key={index} className={`border-4 rounded-lg border-black text-center p-4 ${gColors.stoneBackgroundGradient2}`}>
                             <div className="h-40 bg-stone-500 rounded mb-4">

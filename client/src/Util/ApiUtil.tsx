@@ -13,10 +13,10 @@ function isValidResponse(data) : boolean{
 
 {/* Heros */}
 export async function getHeroes() : Promise<Array<Object>>{
-    const apiRes = await fetch(assetsAPI+globals.Deadlock_Assets_Heroes_Endpoint,{
+    const apiRes = await fetch('https://assets.deadlock-api.com/v2/heroes',{
         method:"get",
         headers:{
-            "Content-Type":"application/json"
+            "Accept":"application/json"
         }
     })
     const data = await apiRes.json()
@@ -143,10 +143,12 @@ export async function getLeaderboard(region: string, start: number, limit: numbe
 }
 
 {/* Player Match History */}
-export async function getMatchHistory(accountId: string) {
-    const apiUrl = `https://data.deadlock-api.com/v2/players/${accountId}/match_history`;
+export async function getMatchHistory() {
+    const accountId = "76561198305208874"; // Replace with your account ID
+    const apiUrl = `https://analytics.deadlock-api.com/v2/players/${accountId}/match-history?has_metadata=true&match_mode=Unranked&without_avg_badge=false`;
 
     try {
+        console.log(`Fetching match history for account ID: ${accountId}`);
         const response = await fetch(apiUrl, {
             method: "GET",
             headers: {
@@ -156,14 +158,23 @@ export async function getMatchHistory(accountId: string) {
 
         if (!response.ok) {
             console.error(`Error fetching match history: ${response.statusText}`);
-            return null;
+            return [];
         }
 
         const data = await response.json();
-        return data.matches || [];
+        console.log("Match History Data:", data); // Debugging log
+
+        // Ensure we return the correct format
+        if (Array.isArray(data)) {
+            return data; // If the response itself is an array
+        } else if (data.matches && Array.isArray(data.matches)) {
+            return data.matches; // If matches are nested inside
+        } else {
+            console.error("Unexpected data format:", data);
+            return [];
+        }
     } catch (error) {
         console.error("Failed to fetch match history:", error);
-        return null;
+        return [];
     }
 }
-

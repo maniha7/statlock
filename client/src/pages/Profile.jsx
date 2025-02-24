@@ -3,12 +3,15 @@ import testPFP from '../assets/luffy.jpg'
 import { useState } from 'react';
 
 const gColors = globals.globalColors
+import Matches from "./Matches";
+
 
 
 
 
 const Profile = () => {
     const [activeSection, setActiveSection] = useState('PROFILE');
+    const accountId = "76561198305208874"
 
     return (
         <section className={`border-b-4 border-x-2 border-t-1 border-stone-700 rounded-lg mx-5 my-10 min-h-200 flex flex-col md:flex-row lg:flex-row xl:flex-row overflow-hidden ${gColors.stoneBackgroundGradient2}`} style={{width: "100%"}}>
@@ -21,7 +24,7 @@ const Profile = () => {
                             <button
                                 key={section}
                                 className={`border-t-2 border-x-1 rounded-t-lg px-1.5  forevs2 transition duration-200 ease-in-out hover:-translate-y-0.5 hover:scale-100 hover:cursor-pointer 
-                                    ${activeSection === section ? 'bg-stone-700 text-stone-200 border-stone-900' : 'bg-stone-500 text-stone-800 border-stone-700'}`}
+                                    ${activeSection === section ? 'bg-stone-600 text-stone-200 border-stone-400' : 'bg-stone-700 text-stone-300 border-stone-500'}`}
                                 onClick={() => setActiveSection(section)}
                             >
                                 {section}
@@ -76,25 +79,24 @@ const Profile = () => {
                 
 
                 {/* Content Section */}
-                <section className={`m-10 text-stone-300 border-b-4 border-x-2 border-t-1 rounded-md border-stone-700 bg-stone-800`} style={{width: "100%"}}>
-
+                <section 
+                    className={`m-10 text-stone-300 border-b-4 border-x-2 border-t-1 rounded-md border-stone-700 bg-stone-800`}
+                    style={{
+                        width: "100%",
+                        maxHeight: "700px", 
+                        overflowY: "auto", // Enables vertical scrolling
+                        padding: "1rem" 
+                    }}
+                >
                     {/* Profile Section */}
                     {activeSection === 'PROFILE' &&  
-                    <section className="">
+                    <section>
                         <div className="m-5">
-                            
-
-                                {/* Recent Matches */}
-                                <div className="flex flex-col">
-                                    <h1 className="">Matches</h1>
-                                    <div className="border-stone-500 border-x-2 border-b-4 border-t-1 w-80 h-20 rounded-md">
-
-                                    </div>
-                                </div>
-
-                                <div>
-                                    test
-                                </div>
+                        
+                        {/* Recent Matches */}
+                        <section>
+                            <Matches accountId={accountId} />
+                        </section>          
                             
                         </div>
                     </section>}
@@ -119,8 +121,6 @@ const Profile = () => {
                         Settings Content Here
                     </section>
                     }
-
-
                 </section>
         </section>
     );
