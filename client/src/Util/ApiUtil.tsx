@@ -68,28 +68,6 @@ export async function getHeroAbilities(id : number): Promise<Object>{
     return res
 }
 
-export async function getPatchNotes(): Promise<Object> {
-    const apiRes = await fetch(dataAPI + globals.Deadlock_Data_PatchNotes_Endpoint, {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        }
-    });
-
-    const data = await apiRes.json();
-    const res = {};
-
-    if (!isValidResponse(data)) {
-        return res;
-    }
-
-    data.forEach((note, index) => {
-        res[index] = { ...note };
-    });
-
-    return res;
-}
-
 {/* Global Rankings */}
 export async function getLeaderboard(region: string, start: number, limit: number = 1000): Promise<Object> {
     const apiUrl = `https://analytics.deadlock-api.com/v2/leaderboard/${region}?start=${start}&limit=${limit}`;
@@ -143,8 +121,12 @@ export async function getLeaderboard(region: string, start: number, limit: numbe
 }
 
 {/* Player Match History */}
-export async function getMatchHistory() {
-    const accountId = "76561198305208874"; // Replace with your account ID
+export async function getMatchHistory(accountId) {
+    if (!accountId) {
+        console.error("No account ID provided for match history.");
+        return [];
+    }
+
     const apiUrl = `https://analytics.deadlock-api.com/v2/players/${accountId}/match-history?has_metadata=true&match_mode=Unranked&without_avg_badge=false`;
 
     try {
@@ -162,13 +144,12 @@ export async function getMatchHistory() {
         }
 
         const data = await response.json();
-        console.log("Match History Data:", data); // Debugging log
+        console.log("Match History Data:", data);
 
-        // Ensure we return the correct format
         if (Array.isArray(data)) {
-            return data; // If the response itself is an array
+            return data; 
         } else if (data.matches && Array.isArray(data.matches)) {
-            return data.matches; // If matches are nested inside
+            return data.matches; 
         } else {
             console.error("Unexpected data format:", data);
             return [];
