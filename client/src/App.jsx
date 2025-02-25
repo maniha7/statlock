@@ -2,7 +2,7 @@ import { Route, Routes, Outlet } from "react-router-dom";
 import './App.css'
 import './index.css'
 
-import { Home, Layout, StatsPage, Builds, Patches, Matches, Rankings, Skins, Privacy, Support, About, Contact, Upload, Profile, Install } from "./pages"
+import { Home, Layout, Wiki, Builds, Patches, Matches, Rankings, Skins, Privacy, Support, About, Contact, Upload, Profile, Install } from "./pages"
 
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Layout><Home /></Layout>} />
       <Route path="/profile" element={<Layout><Profile /></Layout>} />
-      <Route path="/stats" element={<Layout><StatsPage /></Layout>} />
+      <Route path="/wiki" element={<Layout><Wiki /></Layout>} />
       <Route path="/patchnotes" element={<Layout><Patches /></Layout>} />
       <Route path="/builds" element={<Layout><Builds /></Layout>} />
       <Route path="/matches" element={<Layout><Matches /></Layout>} />

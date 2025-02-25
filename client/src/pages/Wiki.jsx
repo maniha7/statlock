@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { getHeroes } from '../Util/ApiUtil';
 
 
-export default function StatsPage(){
+export default function Wiki(){
 
     const [heroes, setHeroes] = useState([])
 
     useEffect(()=>{
-        getAPIData()
+        getAPIData() 
     },[])
 
     async function getAPIData(){
