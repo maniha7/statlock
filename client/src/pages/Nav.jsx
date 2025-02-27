@@ -48,17 +48,19 @@ export default function Nav(){
                     </Link>
                 </div>
 
-                <Link to='/wiki'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ᴡɪᴋɪ</div></Link>
+                <Link to='/wiki'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">ᴡɪᴋɪ</div></Link>
                 
-                <Link to='/builds'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ʙᴜɪʟᴅꜱ</div></Link>
+                <Link to='/builds'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">ʙᴜɪʟᴅꜱ</div></Link>
 
-                <Link to='/matches'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">nothin</div></Link>
+                <Link to='/rankings'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">ʀᴀɴᴋɪɴɢꜱ</div></Link>
 
-                <Link to='/rankings'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ʀᴀɴᴋɪɴɢꜱ</div></Link>
+                <Link to='/skins'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">ꜱᴋɪɴꜱ</div></Link>
 
-                <Link to='/patchnotes'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ᴘᴀᴛᴄʜ ɴᴏᴛᴇꜱ</div></Link>
+                <Link to='/matches'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">nothin</div></Link>
 
-                <Link to='/skins'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110">ꜱᴋɪɴꜱ</div></Link>
+                <Link to='/patchnotes'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">ᴘᴀᴛᴄʜ ɴᴏᴛᴇꜱ</div></Link>
+
+                
 
             </div>    
         </div>
@@ -88,7 +90,7 @@ export default function Nav(){
                         </Link>
                     ) : ( 
                         /* Steam Login Button */
-                        <a href="http://localhost:5000/auth/steam" className="mt-2">
+                        <a href="http://localhost:5000/auth/steam" className="mt-2 ml-1">
                             <button className="transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80 hover:cursor-pointer">
                                 <div className={`rounded-sm h-7 w-22 flex flex-wrap`} style={{ backgroundColor: gColors.deadLockLight }}>
                                     <img className="h-flex w-6 mt-0.5" src={steam} alt="Steam Logo" />

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getMatchHistory } from "../../Util/ApiUtil";
 import { getHeroMap } from "../../Util/ProfileUtil";
 import rankData from '../../assets/rankings.json';
+import souls from '../../assets/souls.png'
 
 import globals from '../../globals';
 import statlockLogo from '../../assets/statlock_logo2.png';
@@ -57,12 +58,19 @@ const Matches = ({ accountId }) => {
                     {matches.slice(0, visibleMatches).map((match, index) => {
                         const hero = heroes[match.hero_id] || { name: "Unknown Hero", image: "" };
                         const rankImage = getRankFromBadge(match.average_match_badge);
+                        const kills = match.player_kills || 0;
+                        const deaths = match.player_deaths || 0;
+                        const assists = match.player_assists || 0;
+                        const kda = deaths === 0 ? "Perfect" : ((kills + assists) / deaths).toFixed(2);
+
+                        const matchDuration = Math.floor(match.match_duration_s / 60); 
                         
                         return (
                             <section key={index} className="flex">
                                 <div className="">
-                                    <div className="flex flex-row">
+                                    <div className="flex flex-row space-x-1">
                                         <p className="text-sm bg-stone-900 border-stone-500 w-flex p-1 border-x-2 border-t-1 text-center rounded-t-md forevs2">{match.match_id}</p>
+
                                     </div>
                                     <div className={`p-2 border-b-4 border-x-2 border-t-1 rounded-b-md rounded-r-md text-stone-200 flex space-x-3 bg-stone-900 flex-wrap border-stone-500`}>
                                         <div className="flex flex-col">
@@ -85,20 +93,30 @@ const Matches = ({ accountId }) => {
                                             )}
 
                                         </div>
-                                        <div className="">
+                                        <div className="flex flex-col border-r-1 pr-2 border-stone-500">
                                             <h2 
                                             style={{ color: match.match_result === 1 ? "green" : "red" }}
                                             className="forevs2 underline">{match.game_mode}</h2>
                                             <p className="forevs text-sm flex">
-                                                <div className="font-bold">
+                                                <div className="font-bold text-center">
                                                     {match.player_kills} / {match.player_deaths} / {match.player_assists}
+                                                    <p className="text-xs border-t-1 text-center pt-0.5">{kda} KDA</p>
                                                 </div>
                                             </p>
                                         </div>
 
-                                        <div className="flex justify-end">
-                                            test
-                                        </div>
+                                        <section className="flex justify-end mt-0.5">
+                                            <div className="flex flex-col">
+                                                <div className="flex flex-row">
+                                                    <img src={souls} className="mr-0.5" />
+                                                    <p className="text-sm text-center forevs2 flex">{match.net_worth} </p>
+                                                </div>
+                                                
+                                                <p className="text-sm text-center forevs2"></p>
+                                                <p className="text-sm text-center forevs2">{matchDuration} mins</p>
+
+                                            </div>
+                                        </section>
                                     </div>
                                 </div>
                             </section>

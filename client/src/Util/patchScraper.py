@@ -117,7 +117,7 @@ for url in PATCH_URLS:
     }
 
     if not any(existing["url"] == patch_data["url"] for existing in patch_notes):
-        new_patches.append(patch_data)
+                new_patches.append(patch_data)
 
 # Update existing patches to remove "latest" flag
 for patch in patch_notes:
