@@ -64,14 +64,17 @@ const Matches = ({ accountId }) => {
                         const kda = deaths === 0 ? "Perfect" : ((kills + assists) / deaths).toFixed(2);
 
                         const matchDuration = Math.floor(match.match_duration_s / 60); 
+                        const soulsPer10Min = matchDuration > 0 ? ((match.net_worth / matchDuration) * 1).toFixed(0) : "N/A";
                         
                         return (
                             <section key={index} className="flex">
                                 <div className="">
                                     <div className="flex flex-row space-x-1">
-                                        <p className="text-sm bg-stone-900 border-stone-500 w-flex p-1 border-x-2 border-t-1 text-center rounded-t-md forevs2">{match.match_id}</p>
-
+                                        <p className="text-sm bg-stone-900 border-stone-500 w-flex p-1 border-x-2 border-t-1 text-center rounded-t-md forevs2">
+                                            {match.match_id}
+                                        </p>
                                     </div>
+
                                     <div className={`p-2 border-b-4 border-x-2 border-t-1 rounded-b-md rounded-r-md text-stone-200 flex space-x-3 bg-stone-900 flex-wrap border-stone-500`}>
                                         <div className="flex flex-col">
                                             {/* Hero Image */}
@@ -88,33 +91,109 @@ const Matches = ({ accountId }) => {
                                                 <img
                                                     src={rankImage}
                                                     alt="Rank Badge"
-                                                    className={`w-flex h-8 rounded-lg mt-2`} 
+                                                    className={`w-flex h-8 rounded-lg mt-3`} 
                                                 />
                                             )}
 
                                         </div>
-                                        <div className="flex flex-col border-r-1 pr-2 border-stone-500">
+
+                                        {/* Mode & KDA */}
+                                        <div className="flex flex-col border-r-1 pr-3 border-stone-500 gap-y-0.5">
                                             <h2 
                                             style={{ color: match.match_result === 1 ? "green" : "red" }}
                                             className="forevs2 underline">{match.game_mode}</h2>
                                             <p className="forevs text-sm flex">
                                                 <div className="font-bold text-center">
                                                     {match.player_kills} / {match.player_deaths} / {match.player_assists}
-                                                    <p className="text-xs border-t-1 text-center pt-0.5">{kda} KDA</p>
+                                                    <div className="text-xs border-t-1 border-stone-500 text-center pt-0.5">{kda} KDA</div>
+                                                    
                                                 </div>
                                             </p>
                                         </div>
-
-                                        <section className="flex justify-end mt-0.5">
+                                        
+                                        {/* Match Stats */}
+                                        <section className="flex justify-center mt-3 border-stone-500">
                                             <div className="flex flex-col">
-                                                <div className="flex flex-row">
-                                                    <img src={souls} className="mr-0.5" />
+                                                <div className="flex flex-row gap-x-1">
+                                                    <img src={souls} className="ml-1" />
                                                     <p className="text-sm text-center forevs2 flex">{match.net_worth} </p>
                                                 </div>
                                                 
-                                                <p className="text-sm text-center forevs2"></p>
-                                                <p className="text-sm text-center forevs2">{matchDuration} mins</p>
+                                                <div className="text-sm text-center forevs2 mt-1 my-1 pt-1 border-t-1 border-stone-500">
+                                                        {soulsPer10Min}
+                                                        <div className="text-green-300">avg. souls / m</div>
+                                                    </div>
+                                                <p className="text-sm text-center forevs2 pt-1 border-t-1 border-stone-500">{matchDuration} mins</p>
+                                            </div>
+                                        </section>
 
+                                        {/* Build / Items */}
+                                        <section className="flex justify-end border-l-1 border-stone-500">
+                                            <div className="flex flex-row mt-2 space-x-10 mx-5 my-2">
+
+                                                {/* Weapon Items */}
+                                                <div className="grid grid-cols-2 items-center text-center gap-2">
+                                                    <div className="border-1 border-orange-400 w-12 h-12 rounded-md">
+                                                        box
+                                                    </div>
+                                                    <div className="border-1 border-orange-400 w-12 h-12 rounded-md">
+                                                        vox
+                                                    </div>
+                                                    <div className="border-1 border-orange-400 w-12 h-12 rounded-md">
+                                                        vox
+                                                    </div>
+                                                    <div className="border-1 border-orange-400 w-12 h-12 rounded-md">
+                                                        vox
+                                                    </div>
+                                                </div>
+
+                                                {/* Vitality Items */}
+                                                <div className="grid grid-cols-2 items-center text-center gap-2">
+                                                    <div className="border-1 border-green-700 w-12 h-12 rounded-md">
+                                                        box
+                                                    </div>
+                                                    <div className="border-1 border-green-700 w-12 h-12 rounded-md">
+                                                        vox
+                                                    </div>
+                                                    <div className="border-1 border-green-700 w-12 h-12 rounded-md">
+                                                        vox
+                                                    </div>
+                                                    <div className="border-1 border-green-700 w-12 h-12 rounded-md">
+                                                        vox
+                                                    </div>
+                                                </div>
+
+                                                {/* Spirit Items */}
+                                                <div className="grid grid-cols-2 items-center text-center gap-2">
+                                                    <div className="border-1 border-purple-400 w-12 h-12 rounded-md">
+                                                        box
+                                                    </div>
+                                                    <div className="border-1 border-purple-400 w-12 h-12 rounded-md">
+                                                        vox
+                                                    </div>
+                                                    <div className="border-1 border-purple-400 w-12 h-12 rounded-md">
+                                                        vox
+                                                    </div>
+                                                    <div className="border-1 border-purple-400 w-12 h-12 rounded-md">
+                                                        vox
+                                                    </div>
+                                                </div>
+                                                
+                                                {/* Flex Items */}
+                                                <div className="grid grid-cols-2 items-center text-center gap-2">
+                                                    <div className="border-1 border-stone-500 w-12 h-12 rounded-md">
+                                                        box
+                                                    </div>
+                                                    <div className="border-1 border-stone-500 w-12 h-12 rounded-md">
+                                                        vox
+                                                    </div>
+                                                    <div className="border-1 border-stone-500 w-12 h-12 rounded-md">
+                                                        vox
+                                                    </div>
+                                                    <div className="border-1 border-stone-500 w-12 h-12 rounded-md">
+                                                        vox
+                                                    </div>
+                                                </div>
                                             </div>
                                         </section>
                                     </div>
