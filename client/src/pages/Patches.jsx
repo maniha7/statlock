@@ -1,18 +1,16 @@
-import { useState } from "react"
-import patchData from '../assets/patch_notes.json'
+import { useState, useRef } from "react";
+import patchData from '../assets/patch_notes.json';
 import globals from '../globals';
-const gColors = globals.globalColors
 
-
+const gColors = globals.globalColors;
 
 const categoryColors = {
-    "Character Patches": "text-[#f0dfbf]",      
-    "Weapon Item Patches": "text-[#d08d3e]", 
-    "Vitality Item Patches": "text-[#74b01c]", 
+    "Character Patches": "text-[#f0dfbf]",
+    "Weapon Item Patches": "text-[#d08d3e]",
+    "Vitality Item Patches": "text-[#74b01c]",
     "Spirit Item Patches": "text-[#c288f0]",
-    "General Updates": "text-[#f0dfbf]",         
+    "General Updates": "text-[#f0dfbf]",
 };
-
 
 const groupUpdates = (lines) => {
     const characterUpdates = {};
@@ -41,6 +39,7 @@ export default function Patches() {
     const latestPatchIndex = patches.findIndex(patch => patch.latest);
     const [openPatch, setOpenPatch] = useState(latestPatchIndex !== -1 ? latestPatchIndex : null);
     const [visibleCount, setVisibleCount] = useState(5);
+    const topRef = useRef(null);
 
     const togglePatch = (index) => {
         setOpenPatch(openPatch === index ? null : index);
@@ -48,16 +47,22 @@ export default function Patches() {
 
     const loadMorePatches = () => {
         setVisibleCount(prevCount => prevCount + 5);
-    }
+    };
+
+    const scrollToTop = () => {
+        if (topRef.current) {
+            topRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+    };
 
     return (
         <>
             <div className={`flex-1 flex flex-col mt-2 ml-5 mr-10 p-2 border-b-4 border-l-2 border-r-1 border-stone-600 rounded-lg min-h-170 w-400 ${gColors.stoneBackgroundGradient3}`}>
-                <h1 className="text-5xl font-bold mt-5 text-stone-200 forevs2 underline text-center">Patch Notes</h1>
+                <h1 ref={topRef} className="text-5xl font-bold mt-5 text-stone-200 forevs2 underline text-center">Patch Notes</h1>
                 <div className="grid grid-cols-1 justify-center ml-5 mr-5 mb-5">
-                    {patches.slice(0, visibleCount).map((patch, index) => (    
+                    {patches.slice(0, visibleCount).map((patch, index) => (
                         <div key={index} className="mt-5 space-y-1">
-                            <button 
+                            <button
                                 onClick={() => togglePatch(index)}
                                 className="w-full text-left bg-stone-700 hover:bg-stone-700 p-3 rounded-md transition duration-200 ease-in-out hover:-translate-y-0.5 hover:scale-100 hover:cursor-pointer"
                             >
@@ -111,6 +116,13 @@ export default function Patches() {
                                             </div>
                                         )
                                     ))}
+
+                                    <button
+                                        onClick={scrollToTop}
+                                        className="ml-2 mt-5 text-indigo-400 forevs2 text-lg underline transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:cursor-pointer"
+                                    >
+                                        ↑ Back to Top ↑
+                                    </button>
                                 </div>
                             )}
                             <br />
@@ -118,23 +130,21 @@ export default function Patches() {
                     ))}
                 </div>
                 <div className="flex justify-center mb-2">
-                {visibleCount < patches.length && (
-                    <button 
-                        onClick={loadMorePatches}
-                        className="m-2 text-indigo-400 forevs2 text-xl hover:underline transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:cursor-pointer"
-                    >
-                        Load More
-                    </button>
-                )}
+                    {visibleCount < patches.length && (
+                        <button
+                            onClick={loadMorePatches}
+                            className="m-2 text-indigo-400 forevs2 text-xl hover:underline transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:cursor-pointer"
+                        >
+                            Load More
+                        </button>
+                    )}
                 </div>
             </div>
 
-
-    
             {/* AdSpace */}
             <div className={`mt-2 mb-2 border-b-4 border-l-2 border-r-1 border-stone-600 rounded-lg mr-5 w-[15%] ${gColors.stoneBackgroundGradient2}`}>
                 AdSpace
             </div>
         </>
-        );
-    }
+    );
+}
