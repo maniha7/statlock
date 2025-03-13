@@ -1,8 +1,47 @@
 [
     {
+        "title": "03-13-2025 Update",
+        "url": "https://forums.playdeadlock.com/threads/03-13-2025-update.58592/",
+        "latest": true,
+        "categories": {
+            "Character Patches": [
+                "- Holliday: Powder Keg T2 decreased from +120 to +100",
+                "- Holliday: Bounce Pad cooldown increased from 37s to 41s",
+                "- Holliday: Bounce Pad T1 is now T2",
+                "- Holliday: Bounce Pad New T1 is -10s cooldown",
+                "- Holliday: Bounce Pad T2 is now T3. Removed T3 Stun",
+                "- Haze: Bullet Dance bonus damage is now weapon damage instead of spirit",
+                "- Sinclair: Assistant damage now follows his gun's falloff range",
+                "- Sinclair: Assistant base damage reduced from 30 to 20"
+            ],
+            "Weapon Item Patches": [],
+            "Vitality Item Patches": [],
+            "Spirit Item Patches": [
+                "- Cold Front: No longer does double damage to creeps"
+            ],
+            "General Updates": [
+                "- Increased horizontal soul orb movement a bit",
+                "- Soul Orb spawn delay increased a bit and added some variability",
+                "- Neutrals soul values reduced by 15%  (including Sinner's Sacrifice)",
+                "- Sinner's Sacrifice spawn/respawn time increased from 8/4 minutes to 10/5",
+                "- Mid Neutral Camp respawn time increased from 5 minutes to 6 minutes",
+                "- Golden Statue Buffs adjustments",
+                "- Level 1 Ammo reduced from 4% to 3%",
+                "- Level 2 Ammo reduced from 6% to 5%",
+                "- Level 3 Ammo reduced from 8% to 7%",
+                "- Level 1 HP reduced from 20 to 15",
+                "- Level 2 HP reduced from 30 to 25",
+                "- Level 3 HP reduced from 40 to 35",
+                "- Level 3 Weapon Power reduced from 7% to 6%",
+                "- Level 3 Spirit reduced from 5 to 4",
+                "- Minor respawn curve adjustments"
+            ]
+        }
+    },
+    {
         "title": "02-25-2025 Map Rework Update",
         "url": "https://store.steampowered.com/news/app/1422450/view/530965072572320687",
-        "latest": true,
+        "latest": false,
         "categories": {
             "Character Patches": [
                 "- Abrams: Updated playable model with latest art, animation, and vfx content.",
@@ -157,7 +196,7 @@
                 "Gameplay: The map has been redesigned around being 3 lanes rather than 4. This has a large range of accompanying map-wide changes regarding visuals, building layouts, pathways, neutral camps, air vents, breakables, powerup buffs, juke spots, mid boss, etc.",
                 "Gameplay: The map has been redesigned around being 3 lanes rather than 4. This has a large range of accompanying map-wide changes regarding visuals, building layouts, pathways, neutral camps, air vents, breakables, powerup buffs, juke spots, mid boss, etc.",
                 "- Item Slots: 1st flex slot changed from 3 Guardians down to 2 Guardians.",
-                "- Item Slots: 2nd flex slot changed from 2 Walkers down to 1 Walker.", 
+                "- Item Slots: 2nd flex slot changed from 2 Walkers down to 1 Walker.",
                 "- Item Slots: The last 2 flex slots are unchanged.",
                 "- Objectives: Side Walkers HP increased from 5,175 to 7,000.",
                 "- Objectives: Mid Walkers HP increased from 8,000 to 9,000.",

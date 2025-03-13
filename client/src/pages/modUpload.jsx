@@ -10,27 +10,26 @@ const Upload = () => {
     const [file, setFile] = useState(null);
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         const formData = new FormData();
         formData.append('title', title);
         formData.append('description', description);
         formData.append('file', file);
-
-        fetch('/assets/mods/upload', {
-            method: 'POST',
-            body: formData,
-        })
-        .then(response => response.json())
-        .then(data => {
+    
+        try {
+            const response = await fetch('http://localhost:5000/upload', {
+                method: 'POST',
+                body: formData,
+            });
+    
+            const data = await response.json();
             console.log('Success:', data);
-            saveModInfo(data);
             navigate('/skins');
-        })
-        .catch(error => {
+        } catch (error) {
             console.error('Error:', error);
-        });
+        }
     };
 
     // Saves Form Response as Mod Data

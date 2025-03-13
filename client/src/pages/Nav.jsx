@@ -48,17 +48,53 @@ export default function Nav(){
                     </Link>
                 </div>
 
-                <Link to='/wiki'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">ᴡɪᴋɪ</div></Link>
+                <Link to='/wiki'>
+                    <div 
+                    className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 text-md font-bold 
+                    transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">
+                        ᴡɪᴋɪ
+                    </div>
+                </Link>
                 
-                <Link to='/builds'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">ʙᴜɪʟᴅꜱ</div></Link>
+                <Link to='/builds'>
+                    <div 
+                    className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 text-md font-bold 
+                    transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">
+                        ʙᴜɪʟᴅꜱ
+                    </div>
+                </Link>
 
-                <Link to='/rankings'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">ʀᴀɴᴋɪɴɢꜱ</div></Link>
+                <Link to='/rankings'>
+                    <div 
+                    className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 text-md font-bold 
+                    transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">
+                        ʀᴀɴᴋɪɴɢꜱ
+                    </div>
+                </Link>
 
-                <Link to='/skins'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">ꜱᴋɪɴꜱ</div></Link>
+                <Link to='/skins'>
+                    <div 
+                    className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 text-md font-bold 
+                    transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">
+                        ꜱᴋɪɴꜱ 
+                    </div>
+                </Link>
 
-                <Link to='/matches'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">nothin</div></Link>
+                <Link to='/patchnotes'>
+                    <div 
+                    className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 text-md font-bold 
+                    transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">
+                        ᴘᴀᴛᴄʜ ɴᴏᴛᴇꜱ
+                    </div>
+                </Link>
 
-                <Link to='/patchnotes'><div className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">ᴘᴀᴛᴄʜ ɴᴏᴛᴇꜱ</div></Link>
+                <Link to='/matches'>
+                    <div 
+                    className="hover:underline hover:opacity-80 text-stone-200 hover:text-stone-300 font-display text-md font-bold 
+                    transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 forevs2">
+                        nothin
+                    </div>
+                </Link>
 
                 
 

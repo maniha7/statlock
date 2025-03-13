@@ -81,7 +81,7 @@ const Matches = ({ accountId }) => {
                                             <img
                                                 src={hero.image}
                                                 alt={hero.name}
-                                                className={`w-12 h-12 rounded-lg border-y-2 border-x-1 ${gColors.stoneBackgroundGradient}`} 
+                                                className={`w-14 h-14 rounded-lg border-y-2 border-x-1 mt-1 ${gColors.stoneBackgroundGradient}`} 
                                                 style={{ borderColor: match.match_result === 1 ? "green" : "red" }}
                                                 onError={(e) => e.currentTarget.style.display = 'none'}
                                             />
@@ -91,7 +91,7 @@ const Matches = ({ accountId }) => {
                                                 <img
                                                     src={rankImage}
                                                     alt="Rank Badge"
-                                                    className={`w-flex h-8 rounded-lg mt-3`} 
+                                                    className={`w-flex h-10 rounded-lg mt-3 flex self-center`} 
                                                 />
                                             )}
 
