@@ -1,8 +1,27 @@
 [
     {
+        "title": "03-16-2025 Update",
+        "url": "https://forums.playdeadlock.com/threads/03-16-2025-update.58880/",
+        "latest": true,
+        "categories": {
+            "Character Patches": [],
+            "Weapon Item Patches": [],
+            "Vitality Item Patches": [
+                "- Restorative Locket: No longer grants +10% Spirit Resist",
+                "- Divine Barrier: Shields reduced from 260 to 230"
+            ],
+            "Spirit Item Patches": [],
+            "General Updates": [
+                "- Neutral bounty increased by 5%",
+                "- Sinner's Sacrifice initial spawn time reduced from 10 min to 8 min (respawn rate is still 5 min)",
+                "- Fixed a bug with Neutral bounty later in the game being reduced by more than the initial intended -15% (this fix was released yesterday)"
+            ]
+        }
+    },
+    {
         "title": "03-13-2025 Update",
         "url": "https://forums.playdeadlock.com/threads/03-13-2025-update.58592/",
-        "latest": true,
+        "latest": false,
         "categories": {
             "Character Patches": [
                 "- Holliday: Powder Keg T2 decreased from +120 to +100",
