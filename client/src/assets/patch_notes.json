@@ -1,8 +1,22 @@
 [
     {
+        "title": "03-19-2025 Update",
+        "url": "https://forums.playdeadlock.com/threads/03-19-2025-update.59098/#post-114659",
+        "latest": true,
+        "categories": {
+            "Character Patches": [],
+            "Weapon Item Patches": [],
+            "Vitality Item Patches": [],
+            "Spirit Item Patches": [],
+            "General Updates": [
+                "- Sprint increased by +0.5 for all heroes"
+            ]
+        }
+    },
+    {
         "title": "03-16-2025 Update",
         "url": "https://forums.playdeadlock.com/threads/03-16-2025-update.58880/",
-        "latest": true,
+        "latest": false,
         "categories": {
             "Character Patches": [],
             "Weapon Item Patches": [],

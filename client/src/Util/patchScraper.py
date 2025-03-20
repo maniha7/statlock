@@ -9,6 +9,7 @@ JSON_FILE = "../assets/patch_notes.json"
 # List of patch note URLs 
 # New Patches are put as the TOP Url !!!
 PATCH_URLS = [
+    "https://forums.playdeadlock.com/threads/03-19-2025-update.59098/#post-114659",
     "https://forums.playdeadlock.com/threads/03-16-2025-update.58880/",
     "https://forums.playdeadlock.com/threads/03-13-2025-update.58592/",
     "https://forums.playdeadlock.com/threads/02-11-2025-update.55677/",
