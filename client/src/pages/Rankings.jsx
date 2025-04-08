@@ -12,46 +12,79 @@ const gColors = globals.globalColors;
 const BACKEND_URL = "http://localhost:5000"; // Update if backend is hosted remotely
 
 const regionMap = {
-    "North America": "Row",
+    "North America": "NAmerica",
     "Europe": "Europe",
-    "Southeast Asia": "SEAsia",
+    "Asia": "Asia",
     "South America": "SAmerica",
-    "Russia": "Russia",
     "Oceania": "Oceania"
 };
 
 const Rankings = () => {
-    const [region, setRegion] = useState("Row"); 
+    const [region, setRegion] = useState("NAmerica");
     const [leaderboard, setLeaderboard] = useState([]);
-    const [page, setPage] = useState(1); 
-    const [hasNextPage, setHasNextPage] = useState(true); 
+    const [page, setPage] = useState(1);
+    const [hasNextPage, setHasNextPage] = useState(true);
     const [steamProfiles, setSteamProfiles] = useState({});
-    const limit = 25; 
+    const [allEntries, setAllEntries] = useState([]);
+    const limit = 25;
 
     useEffect(() => {
         async function loadLeaderboard() {
-            console.log(`Loading leaderboard for region: ${region}, Page: ${page}`);
+            console.log(`Loading leaderboard for region: ${region}`);
             try {
-                const data = await getLeaderboard(region, (page - 1) * limit + 1, limit);
-                const entries = Object.values(data);
-                setLeaderboard(entries); 
+                const data = await getLeaderboard(region);
+                // Extract entries from the response
+                const entries = data.entries || [];
+                setAllEntries(entries);
 
-                setHasNextPage(entries.length === limit);
+                // Calculate pagination
+                const startIndex = (page - 1) * limit;
+                const endIndex = startIndex + limit;
+                const paginatedEntries = entries.slice(startIndex, endIndex);
+                
+                setLeaderboard(paginatedEntries);
+                setHasNextPage(endIndex < entries.length);
 
-                // Extract Deadlock `account_id` and fetch Steam profiles
-                const steamIds = entries.map(player => player.account_id).join(",");
+                // Extract account names for Steam profiles
+                const steamIds = paginatedEntries
+                    .filter(player => player.account_name)
+                    .map(player => player.account_name)
+                    .join(",");
                 if (steamIds) {
                     fetchSteamProfiles(steamIds);
                 }
 
-                console.log(`Leaderboard updated for ${region}, Page: ${page}, Entries: ${entries.length}`);
+                console.log(`Leaderboard updated for ${region}, Page: ${page}, Entries: ${paginatedEntries.length}`);
             } catch (error) {
                 console.error(`Error loading rankings for ${region}, Page: ${page}:`, error);
             }
         }
 
         loadLeaderboard();
-    }, [region, page]);
+    }, [region]);
+
+    // Handle page changes
+    useEffect(() => {
+        if (allEntries.length > 0) {
+            const startIndex = (page - 1) * limit;
+            const endIndex = startIndex + limit;
+            const paginatedEntries = allEntries.slice(startIndex, endIndex);
+            
+            setLeaderboard(paginatedEntries);
+            setHasNextPage(endIndex < allEntries.length);
+
+            // Fetch Steam profiles for the new page
+            const steamIds = paginatedEntries.map(player => player.account_name).join(",");
+            if (steamIds) {
+                fetchSteamProfiles(steamIds);
+            }
+        }
+    }, [page, allEntries]);
+
+    // Reset page when region changes
+    useEffect(() => {
+        setPage(1);
+    }, [region]);
 
     {/* Steam Profile Data */}
     async function fetchSteamProfiles(steamIds) {
@@ -111,50 +144,40 @@ const Rankings = () => {
                             <tr className={`bg-stone-700`}>
                                 <th className="px-4 py-1.5 forevs2 text-lg underline">Rank</th>
                                 <th className="px-4 py-1.5 forevs2 text-lg underline">Player</th>
-                                <th className="px-4 py-1.5 forevs2 text-lg underline">Matches Played</th>
-                                <th className="px-4 py-1.5 forevs2 text-lg underline">Wins</th>
-                                <th className="px-4 py-1.5 forevs2 text-lg underline">Kills</th>
-                                <th className="px-4 py-1.5 forevs2 text-lg underline">Deaths</th>
-                                <th className="px-4 py-1.5 forevs2 text-lg underline">Assists</th>
+                                <th className="px-4 py-1.5 forevs2 text-lg underline">Badge Level</th>
+                                <th className="px-4 py-1.5 forevs2 text-lg underline">Ranked Rank</th>
+                                <th className="px-4 py-1.5 forevs2 text-lg underline">Ranked Subrank</th>
                             </tr>
                         </thead>
                         <tbody>
                             {leaderboard.length > 0 ? (
                                 leaderboard.map((player, index) => {
-                                    const bigID = BigInt(player.account_id)
-                                    const steam64id = (bigID + 76561197960265728n).toString()
-                                    const steamProfile = steamProfiles[steam64id] || {};
+                                    const steamProfile = steamProfiles[player.account_name] || {};
                                     
-                                     console.log("Steam Profiles State:",steamProfile); // Shows all Steam Profiles
-
                                     return (
                                         <tr key={index} className={`border-b border-stone-600 ${gColors.stoneBackgroundGradient2}`}>
                                             <td className="px-4 py-2 underline forevs2 text-lg">
-                                                <img src={getRankImage(player.ranked_rank, player.ranked_subrank)} 
-                                                    alt="Rank Badge" 
-                                                    className={`w-flex h-12 `} 
-                                                    /> {/* bg-stone-900 rounded-lg p-0.5 border-b-2 border-t-1 border-x-1 border-stone-600 ${gColors.stoneBackgroundGradient} */}
+                                                {player.rank || 'N/A'}
                                             </td>
-                                            <td 
-                                            className={`px-4 py-2 m-2 mr-2 flex items-center rounded-lg border-stone-600 border-t-stone-500 border-r-stone-500 border-b-4 border-x-2 border-t-1 ${gColors.stoneBackgroundGradient2}`}
-                                            >
+                                            <td className={`px-4 py-2 m-2 mr-2 flex items-center rounded-lg border-stone-600 border-t-stone-500 border-r-stone-500 border-b-4 border-x-2 border-t-1 ${gColors.stoneBackgroundGradient2}`}>
                                                 <img 
                                                     src={steamProfile.avatar || steamDefault} 
                                                     className="w-8 h-flex rounded-md border-x-1 border-b-2 border-t-1 border-stone-700 mr-2"
+                                                    alt="Player Avatar"
                                                 />
-                                                <div className="forevs text-lg text-stone-200 ">{steamProfile.name || "Private Profile"}</div>
+                                                <div className="forevs text-lg text-stone-200 ">
+                                                    {player.account_name || "Unknown Player"}
+                                                </div>
                                             </td>
-                                            <td className="px-4 py-2 forevs2 border-r-2 rounded-full border-stone-700 text-lg">{player.matches_played}</td>
-                                            <td className="px-4 py-2 forevs2 text-lg">{player.wins}</td>
-                                            <td className="px-4 py-2 forevs2 border-x-2 rounded-full border-stone-700 text-lg">{player.kills}</td>
-                                            <td className="px-4 py-2 forevs2 text-lg">{player.deaths}</td>
-                                            <td className="px-4 py-2 forevs2 border-l-2 rounded-full border-stone-700 text-lg">{player.assists}</td>
+                                            <td className="px-4 py-2 forevs2 text-lg">{player.badge_level || 'N/A'}</td>
+                                            <td className="px-4 py-2 forevs2 text-lg">{player.ranked_rank || 'N/A'}</td>
+                                            <td className="px-4 py-2 forevs2 text-lg">{player.ranked_subrank || 'N/A'}</td>
                                         </tr>
                                     );
                                 })
                             ) : (
                                 <tr>
-                                    <td colSpan="7" className="px-4 py-2 text-center text-stone-400">
+                                    <td colSpan="5" className="px-4 py-2 text-center text-stone-400">
                                         No data available for this region.
                                     </td>
                                 </tr>

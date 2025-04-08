@@ -69,8 +69,8 @@ export async function getHeroAbilities(id : number): Promise<Object>{
 }
 
 {/* Global Rankings */}
-export async function getLeaderboard(region: string, start: number, limit: number = 1000): Promise<Object> {
-    const apiUrl = `https://analytics.deadlock-api.com/v2/leaderboard/${region}?start=${start}&limit=${limit}`;
+export async function getLeaderboard(region: string): Promise<Object> {
+    const apiUrl = `https://api.deadlock-api.com/v1/leaderboard/${region}`;
     
     console.log(`Fetching leaderboard for region: ${region}`);
 
@@ -78,45 +78,41 @@ export async function getLeaderboard(region: string, start: number, limit: numbe
         const apiRes = await fetch(apiUrl, {
             method: "GET",
             headers: {
-                "Accept": "application/json",
+                "Accept": "application/json"
             }
         });
 
+        console.log('API Response Status:', apiRes.status, apiRes.statusText);
+        
         if (!apiRes.ok) {
             console.error(`API Error: ${apiRes.status} - ${apiRes.statusText}`);
-            return {};
+            return { entries: [] };
         }
 
         const data = await apiRes.json();
+        console.log('Raw API Response:', data);
 
-        if (!data || data.length === 0) {
-            console.warn(`No data received for region: ${region}`);
-            return {};
+        if (!data) {
+            console.warn('API returned null or undefined data');
+            return { entries: [] };
         }
 
-        console.log(`Fetched ${data.length} entries for ${region}`);
+        if (!data.entries || !Array.isArray(data.entries)) {
+            console.warn('API response missing entries array:', data);
+            return { entries: [] };
+        }
 
-        const res = {};
-        data.forEach((player, index) => {
-            res[index] = {
-                account_id: player.account_id,
-                region_mode: player.region_mode,
-                leaderboard_rank: player.leaderboard_rank,
-                matches_played: player.matches_played,
-                wins: player.wins,
-                kills: player.kills,
-                deaths: player.deaths,
-                assists: player.assists,
-                ranked_badge_level: player.ranked_badge_level,
-                ranked_rank: player.ranked_rank,
-                ranked_subrank: player.ranked_subrank
-            };
-        });
-
-        return res;
+        console.log(`Fetched ${data.entries.length} entries for ${region}`);
+        
+        // Return the raw data
+        return data;
     } catch (error) {
         console.error("Error fetching leaderboard:", error);
-        return {};
+        console.error("Error details:", {
+            message: error.message,
+            stack: error.stack
+        });
+        return { entries: [] };
     }
 }
 
