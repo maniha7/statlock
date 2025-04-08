@@ -4,7 +4,7 @@ const assetsAPI = globals.Deadlock_Assets_API_Address
 const dataAPI = globals.Deadlock_Data_API_Address
 
 
-function isValidResponse(data) : boolean{
+export function isValidResponse(data) : boolean{
     if(data.detail){
         return false
     }
@@ -127,7 +127,7 @@ export async function getMatchHistory(accountId) {
         return [];
     }
 
-    const apiUrl = `https://analytics.deadlock-api.com/v2/players/${accountId}/match-history?has_metadata=true&match_mode=Unranked&without_avg_badge=false`;
+    const apiUrl = `https://api.deadlock-api.com/v1/players/${accountId}/match-history`;
 
     try {
         console.log(`Fetching match history for account ID: ${accountId}`);

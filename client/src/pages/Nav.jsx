@@ -2,9 +2,7 @@ import logo from '../assets/statlock_logo2.png'
 import globals from '../globals';
 import discord from '../assets/discordlogo2.png'
 import steam from '../assets/steam_logo.png'
-import insta from '../assets/instagram_logo.png'
 import youtube from '../assets/youtube_logo.png'
-import { UserIcon } from "@heroicons/react/24/solid";
 
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -152,14 +150,14 @@ export default function Nav(){
                     {/* YouTube */}
                     <div className="mr-4 mt-3">
                         <a href="https://www.youtube.com/channel/UCmUlYzzgwxbAQEB63XNBwrg">
-                            <img src={youtube} className="w-7 h-flex transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80" alt="YouTube Logo" />
+                            <img src={youtube} className="w-7 h-flex transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80" />
                         </a>
                     </div>
 
                     {/* Discord */}
                     <div className="flex flex-row space-x-3 mt-2 mr-3">
                         <a href="https://discord.gg/rUYKVZeCYt">
-                            <img src={discord} className="w-7 h-flex transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80" alt="Discord Logo" />
+                            <img src={discord} className="w-7 h-flex transition duration-300 ease-in-out hover:-translate-y-0.5 hover:scale-110 hover:opacity-80" />
                         </a>
                     </div>
 

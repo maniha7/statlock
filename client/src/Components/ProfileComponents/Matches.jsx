@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import PropTypes from 'prop-types';
 import { getMatchHistory } from "../../Util/ApiUtil";
-import { getHeroMap } from "../../Util/ProfileUtil";
+import { getHeroMap, getMatchMetaData } from "../../Util/ProfileUtil";
 import rankData from '../../assets/rankings.json';
 import souls from '../../assets/souls.png'
 
@@ -8,46 +9,77 @@ import globals from '../../globals';
 import statlockLogo from '../../assets/statlock_logo2.png';
 const gColors = globals.globalColors;
 
+const maxPageSize = 10
+
 const Matches = ({ accountId }) => {
     const [matches, setMatches] = useState([]);
+    const [displayedMatches, setDisplayedMatches] = useState([])
+    const [numMatchesLoaded, setNumMatchesLoaded] = useState(0)
     const [heroes, setHeroes] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [visibleMatches, setVisibleMatches] = useState(5);
+    const [initLoading, setInitLoading] = useState(true);
+    const [loadingMore, setLoadingMore] = useState(false)
+    const [moreToLoad, setMoreToLoad] = useState(true)
 
     useEffect(() => {
         async function fetchData() {
+
             if (!accountId) return;
-            setLoading(true);
+            setInitLoading(true);   
             const history = await getMatchHistory(accountId);
             const heroData = await getHeroMap();
             setMatches(history);
             setHeroes(heroData);
-            setLoading(false);
+            await getPageOfMatches(history)
+            setInitLoading(false);
         }
         fetchData();
     }, [accountId]);
 
-    const loadMoreMatches = () => {
-        setVisibleMatches((prev) => prev + 5);
+    async function loadMoreMatches(){ 
+        setLoadingMore(true)
+        await getPageOfMatches(matches)
+        setLoadingMore(false)
     };
 
-    function getRankFromBadge(averageMatchBadge) {
-        const rank = rankData.find((r, index) => {
-            const nextRank = rankData[index + 1];
-            return (
-                averageMatchBadge >= r.tier * 10 &&
-                (!nextRank || averageMatchBadge < nextRank.tier * 10)
-            );
-        });
-    
-        if (!rank) return null;
+
+    async function getPageOfMatches(matchData){
+        console.log("METADATA FETCH START")
+        let i = numMatchesLoaded
+        let pageSize = 0
+        let newPageData = []
+        //get the detailed data for the next page of matches so they can be displayed
+        while(i<matchData.length && pageSize < maxPageSize){
+            const matchToLoadID = matchData[i].match_id
+            const metaData = await getMatchMetaData(matchToLoadID)
+            console.log("metadata for match " + matchToLoadID)
+            console.log(metaData)
+            const matchToDisplay = {...matchData[i], ...metaData}
+            newPageData.push(matchToDisplay)
+            i++
+            pageSize++
+        }
+
+        setDisplayedMatches([...displayedMatches, ...newPageData])
+
+        if(i>=matchData.length){
+            setMoreToLoad(false)
+        }
+        setNumMatchesLoaded(i)
         
-        const subrank = Math.min(Math.floor((averageMatchBadge % 10) / 2), 5) + 1; // Determine subrank
-        return rank.images[`small_subrank${subrank}`] || rank.images.small;
     }
+
+    function getRankFromBadge(averageMatchBadge) {
+        const badgeStr = averageMatchBadge.toString()
+        const baseRank = rankData[parseInt(badgeStr.substring(0, badgeStr.length-1))]
+        const subRank = badgeStr.substring(badgeStr.length-1)
+        const rankImg = baseRank.images[`small_subrank${subRank}`]
+        return rankImg
+    }
+
+
     return (
         <div className="rounded-lg text-stone-200 flex flex-col">
-            {loading ? (
+            {initLoading ? (
                 <div className="flex justify-center items-center w-full py-10">
                     <img src={statlockLogo} className="w-50 h-50 animate-spin bg-stone-700 rounded-full" />
                 </div>
@@ -55,9 +87,9 @@ const Matches = ({ accountId }) => {
                 <p>No match history available.</p>
             ) : (
                 <ul className="space-y-2 flex flex-col">
-                    {matches.slice(0, visibleMatches).map((match, index) => {
+                    {displayedMatches.map((match, index) => {
                         const hero = heroes[match.hero_id] || { name: "Unknown Hero", image: "" };
-                        const rankImage = getRankFromBadge(match.average_match_badge);
+                        const rankImage = getRankFromBadge(Math.round( (match.average_badge_team0 + match.average_badge_team1)/2 ));
                         const kills = match.player_kills || 0;
                         const deaths = match.player_deaths || 0;
                         const assists = match.player_assists || 0;
@@ -102,13 +134,13 @@ const Matches = ({ accountId }) => {
                                             <h2 
                                             style={{ color: match.match_result === 1 ? "green" : "red" }}
                                             className="forevs2 underline">{match.game_mode}</h2>
-                                            <p className="forevs text-sm flex">
+                                            <div className="forevs text-sm flex">
                                                 <div className="font-bold text-center">
                                                     {match.player_kills} / {match.player_deaths} / {match.player_assists}
-                                                    <div className="text-xs border-t-1 border-stone-500 text-center pt-0.5">{kda} KDA</div>
+                                                    <p className="text-xs border-t-1 border-stone-500 text-center pt-0.5">{kda} KDA</p>
                                                     
                                                 </div>
-                                            </p>
+                                            </div>
                                         </div>
                                         
                                         {/* Match Stats */}
@@ -205,17 +237,31 @@ const Matches = ({ accountId }) => {
             )}
 
             {/* Show More Button */}
-            {visibleMatches < matches.length && (
-                <button
-                    onClick={loadMoreMatches}
-                    className="mt-10 self-center text-stone-200 forevs2
-                    transition duration-200 ease-in-out hover:scale-105 hover:underline hover:cursor-pointer hover:opacity-80"
-                >
-                    Show More Matches
-                </button>
-            )}
+            {moreToLoad && 
+                <div className="self-center">
+                {loadingMore?
+
+                    <div className="flex justify-center items-center w-full py-10">
+                        <img src={statlockLogo} className="w-12 h-12 animate-spin bg-stone-700 rounded-full" />
+                    </div>                    
+                :
+                    <button
+                        onClick={()=>loadMoreMatches()}
+                        className="mt-10 self-center text-stone-200 forevs2
+                        transition duration-200 ease-in-out hover:scale-105 hover:underline hover:cursor-pointer hover:opacity-80"
+                    >
+                        Show More Matches
+                    </button>
+                    
+
+                }
+                </div>
+            }
         </div>
     );
+};
+Matches.propTypes = {
+    accountId: PropTypes.string.isRequired,
 };
 
 export default Matches;

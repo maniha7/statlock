@@ -51,7 +51,7 @@ const Profile = () => {
                     <div className="flex flex-wrap">
                         <img 
                             className="w-30 h-flex rounded-lg border-b-4 border-x-2 border-t-1 border-stone-800 m-2" 
-                            src={user?.avatar || ""} 
+                            src={user?.avatarfull || ""} 
                             alt="Profile Pic" 
                         />
                         <h1 className="mx-2 font-bold text-xl text-stone-300 forevs2 mt-5">
@@ -86,7 +86,7 @@ const Profile = () => {
                 }}
             >
                 {/* Profile Section */}
-                {activeSection === 'PROFILE' &&  
+                {activeSection === 'PROFILE' &&  accountId &&
                     <section>
                         <div className="m-5">
                             <Matches accountId={accountId} />
